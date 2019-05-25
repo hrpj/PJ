@@ -42,7 +42,7 @@ $dm = $_SESSION["result2"];
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Only Me</a>
-              <a class="dropdown-item" href="#">All Staffs</a>
+              <a class="dropdown-item" href="#">Any Staffs</a>
               <a class="dropdown-item" href="#">Branch</a>
             </div>
             </li>
@@ -63,13 +63,13 @@ $dm = $_SESSION["result2"];
               Create
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">New Staff</a>
-              <a class="dropdown-item" href="#">New Branch</a>
-              <a class="dropdown-item" href="#">New Department</a>
-              <a class="dropdown-item" href="#">New Training Course</a>
+              <a class="dropdown-item" href="NewStaff.html">New Staff</a>
+              <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
+              <a class="dropdown-item" href="NewDepartment.html">New Department</a>
+              <a class="dropdown-item" href="NewTraining.html">New Training Course</a>
             </div>
           </li>
-		  <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Analysis Report
           </a>
@@ -128,38 +128,32 @@ $dm = $_SESSION["result2"];
 ?>  
   <body>
       <div class = "Attendance"><h3>Daily Attendance Status</h></div>
-    <!-- Information -->
-    <div class="Infor"><i class="fas fa-calendar-alt"></i>Date : <?php echo $year.'-'.$dm ?><br>
+    <!-- Information -->		
+	<div class="Infor"><i class="fas fa-calendar-alt"></i>Date : <?php echo $year.'-'.$dm ?><br>
 	<br><i class="fas fa-address-card"></i>Staff ID : <?php echo $search ?><br>
 	<br><i class="fas fa-file-signature"></i>Name : <?php echo $name ?><br>
-	<br><i class="fas fa-user-clock"></i>Arrival Time :<br>
-	<br><i class="fas fa-door-open"></i>Exit Time :<br>
-	<br><i class="fas fa-comment-alt"></i>Description :
-	</div>
+    <br><i class="fas fa-user-clock"></i>Arrival Time :<br>
+	<br><i class="fas fa-door-open"></i>Exit Time :</div>
     <div class="Infor1"><i class="fas fa-clock"></i>Start time : <?php echo $timeIn ?><br>
-	<br><i class="fas fa-stopwatch"></i>Finish time : <?php echo $timeOut ?><br>
-		<br><i class="fas fa-user-check"></i>Approval Staff :
-		</div>	
+	<br><i class="fas fa-stopwatch"></i>Finish time : <?php echo $timeOut ?></div>
     <!-- End Information -->
 	
     <!-- Fill Information -->
     <div class="form-group row">
     <div class="col-sm-10">
-      <input type="ArrivalTime" name="class="form-control" id="inputTime" placeholder="ArrivalTime">
+      <input type="Time" class="form-control" id="inputTime" placeholder="ArrivalTime">
     </div>
   </div>
+  
   <div class="form-group row">
       <div class="dropdown">
           <div class="Status">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Status
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Normal</a>
-    <a class="dropdown-item" href="#">Miss</a>
-    <a class="dropdown-item" href="#">Late</a>
-  </div>
-</div>
+              <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
+                  <option value="1">Normal</option>
+                  <option value="2">Miss</option>
+                  <option value="2">Late</option>
+              </select>
+	</div>
 </div>
 <form>
   <div class="ExitTime">
@@ -167,31 +161,17 @@ $dm = $_SESSION["result2"];
   </div>
     <div class="dropdown1">
         <div class="Status1">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Status
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Normal</a>
-    <a class="dropdown-item" href="#">Miss</a>
-    <a class="dropdown-item" href="#">Early</a>
-  </div>
+            <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
+                <option value="1">Normal</option>
+                <option value="2">Miss</option>
+                <option value="2">Early</option>
+            </select>
    </div>
 </div>
 </form>
     <!-- End Fill -->
-    <!-- Description -->
-    <form>
-<div class="form">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></div></form>
-  <!-- End Description -->
-  <!-- Approval -->
-  <form>
-      <div class="Approval">
-        <input type="text" class="form-control" placeholder="Firstname Lastname">
-      </div>
-  </form>
-<!-- End Approval-->
-<!-- Buttons -->
+	
+    <!-- Buttons -->
 <table class="thebutton">
     <tr><td>
     <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'AttendanceStatusForHR.html';">Save</button>
@@ -199,13 +179,12 @@ $dm = $_SESSION["result2"];
 </table>
 <!-- End Buttons -->
 
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+</html>
 <?php mysqli_close($con); ?>
 </html>
