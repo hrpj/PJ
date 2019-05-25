@@ -41,9 +41,5 @@ session_start();
 	mysqli_query($con,"UPDATE timeattendance SET status = '$statusOut' WHERE staffId LIKE '$search' AND year LIKE '$year' AND date LIKE '$dm' AND type LIKE 'Out'");
 		
 	mysqli_close($con);
-	
-	echo $timeIn ;
-	echo $statusIn ;
-	echo $timeOut ;
-	echo $statusOut ;
+	header("Location: http://localhost/HRPJ/HR/AttendanceStatusForHR-01Success.php");
 ?>
