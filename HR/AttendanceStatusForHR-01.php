@@ -177,7 +177,7 @@ $dm = $_SESSION["result2"];
 			</td></tr>
 		</table>
 	</form>
-<!-- End Buttons -->
+	<!-- End Buttons -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
