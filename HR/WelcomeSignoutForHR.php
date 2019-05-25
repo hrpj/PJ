@@ -39,7 +39,7 @@ session_start();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Only Me</a>
-          <a class="dropdown-item" href="#">All Staffs</a>
+          <a class="dropdown-item" href="#">Any Staffs</a>
           <a class="dropdown-item" href="#">Branch</a>
         </div>
         </li>
@@ -60,6 +60,25 @@ session_start();
           <a class="dropdown-item" href="#">New Training Course</a>
         </div>
       </li>
+	  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Analysis Report
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="NewStaff.html">Age Range of Staffs</a>
+            <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
+            <a class="dropdown-item" href="NewDepartment.html">Top 5 Highest Concern Score</a>
+            <a class="dropdown-item" href="NewTraining.html">Concern Score in Bang Khae Branch</a>
+            <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
+            <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
+            <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
+            <a class="dropdown-item" href="NewStaff.html">The highest average competency score of each department</a>
+            <a class="dropdown-item" href="NewStaff.html">Amount of leave of each staff of each department in Bang Khae</a>
+            <a class="dropdown-item" href="NewStaff.html">The highest amount of leave in each department in Bang Khae</a>
+            <a class="dropdown-item" href="NewStaff.html">Field and Degree in IT department</a>
+            <a class="dropdown-item" href="NewStaff.html">Income table of each Staff</a>
+          </div>
+        </li>
         </ul>
         <ul class="nav justify-content-end">
             <li class="nav-item">
