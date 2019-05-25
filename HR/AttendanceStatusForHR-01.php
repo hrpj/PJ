@@ -139,7 +139,7 @@ $dm = $_SESSION["result2"];
     <!-- End Information -->
 	
     <!-- Fill Information -->
-	<form action="search.php" method="POST" >
+	<form action="editAttendance.php" method="POST" >
 		<div class="form-group row">
 			<div class="col-sm-10">
 				<input type="Time" name="timeIn" class="form-control" id="inputTime" placeholder="ArrivalTime">
@@ -157,7 +157,7 @@ $dm = $_SESSION["result2"];
 			</div>
 		</div>
 	</form>
-	<form action="search.php" method="POST" >
+	<form action="editAttendance.php" method="POST" >
 		<div class="ExitTime">
 			<input type="Time" name="timeOut" class="form-control" id="inputTime" placeholder="ExitTime">
 		</div>
