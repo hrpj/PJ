@@ -139,20 +139,20 @@ $dm = $_SESSION["result2"];
     <!-- End Information -->
 	
     <!-- Fill Information -->
-    <div class="form-group row">
+	<div class="form-group row">
     <div class="col-sm-10">
-      <input type="Time" class="form-control" id="inputTime" placeholder="ArrivalTime">
+    <input type="Time" class="form-control" id="inputTime" placeholder="ArrivalTime">
     </div>
-  </div>
+	</div>
   
-  <div class="form-group row">
-      <div class="dropdown">
-          <div class="Status">
-              <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
-                  <option value="1">Normal</option>
-                  <option value="2">Miss</option>
-                  <option value="2">Late</option>
-              </select>
+    <div class="form-group row">
+    <div class="dropdown">
+    <div class="Status">
+    <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
+    <option value="1">Normal</option>
+	<option value="2">Miss</option>
+	<option value="2">Late</option>
+	</select>
 	</div>
 </div>
 <form>
@@ -177,6 +177,7 @@ $dm = $_SESSION["result2"];
     <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'AttendanceStatusForHR.html';">Save</button>
 </td></tr>
 </table>
+</form>
 <!-- End Buttons -->
 
     <!-- Optional JavaScript -->
