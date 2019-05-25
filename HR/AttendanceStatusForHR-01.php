@@ -150,23 +150,22 @@ $dm = $_SESSION["result2"];
 		<div class="dropdown">
 			<div class="Status">
 				<select class="btn  btn-secondary" name="statusIn" id="master_id" onchange="sSelect()">
-					<option value="1">Normal</option>
-					<option value="2">Miss</option>
-					<option value="2">Late</option>
+					<option value="Normal">Normal</option>
+					<option value="Miss">Miss</option>
+					<option value="Late">Late</option>
 				</select>
 			</div>
 		</div>
-	</form>
-	<form action="editAttendance.php" method="POST" >
+	
 		<div class="ExitTime">
 			<input type="Time" name="timeOut" class="form-control" id="inputTime" placeholder="ExitTime">
 		</div>
 		<div class="dropdown1">
 			<div class="Status1">
 				<select class="btn btn-secondary" name="statusOut" id="master_id" onchange="sSelect()">
-					<option value="1">Normal</option>
-					<option value="2">Miss</option>
-					<option value="2">Early</option>
+					<option value="Normal">Normal</option>
+					<option value="Miss">Miss</option>
+					<option value="Early">Early</option>
 				</select>
 			</div>
 		</div>
