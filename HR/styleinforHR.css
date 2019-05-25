@@ -27,5 +27,120 @@ h6
     top:50%;
     left:50%;
     margin-left:700px;
-    margin-top:-504px;
+    margin-top:-408px;
+}
+.WorkHis
+{
+    margin-top: 30px;
+    margin-left: 300px;
+}
+.table
+{
+    width:700px;
+    top:100%;
+    left:100%;
+    margin-left:300px;
+    margin-top:10px;
+}
+.thebuttons
+{
+    margin-top:30px;
+    margin-left:1050px;
+    height:100px;
+}
+.ID
+{
+    width:190px;
+    margin-left:400px;
+    margin-top:-365px;
+}
+.Name
+{
+    width:190px;
+    margin-left:400px;
+    margin-top:10px;
+}
+.Gender
+{
+    width:200px;
+    margin-left:400px;
+    margin-top:15px;
+}
+.DOB
+{
+    width:150px;
+    margin-left:440px;
+    margin-top:15px;
+}
+.University
+{
+    width:170px;
+    margin-left:420px;
+    margin-top:10px;
+}
+.Field
+{
+    width:210px;
+    margin-left:380px;
+    margin-top:10px;
+}
+.Degree
+{
+    width:190px;
+    margin-left:400px;
+    margin-top:10px;
+}
+.StartDate
+{
+    width:170px;
+    margin-left:420px;
+    margin-top:10px;
+}
+.Department
+{
+    width:190px;
+    margin-left:840px;
+    margin-top:-370px;
+}
+.Position
+{
+    width:230px;
+    margin-left:800px;
+    margin-top:10px;
+}
+.Branch
+{
+    width:230px;
+    margin-left:800px;
+    margin-top:10px;
+}
+.Mobile
+{
+    width:160px;
+    margin-left:870px;
+    margin-top:10px;
+}
+.Tel
+{
+    width:180px;
+    margin-left:850px;
+    margin-top:10px;
+}
+.Address
+{
+    width:230px;
+    margin-left:800px;
+    margin-top:10px;
+}
+.Bank
+{
+    width:180px;
+    margin-left:850px;
+    margin-top:10px;
+}
+.EndDate
+{
+    width:220px;
+    margin-left:810px;
+    margin-top:10px;
 }
