@@ -139,45 +139,45 @@ $dm = $_SESSION["result2"];
     <!-- End Information -->
 	
     <!-- Fill Information -->
-	<div class="form-group row">
-    <div class="col-sm-10">
-    <input type="Time" class="form-control" id="inputTime" placeholder="ArrivalTime">
-    </div>
-	</div>
-  
-    <div class="form-group row">
-    <div class="dropdown">
-    <div class="Status">
-    <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
-    <option value="1">Normal</option>
-	<option value="2">Miss</option>
-	<option value="2">Late</option>
-	</select>
-	</div>
-</div>
-<form>
-  <div class="ExitTime">
-    <input type="Time" class="form-control" id="inputTime" placeholder="ExitTime">
-  </div>
-    <div class="dropdown1">
-        <div class="Status1">
-            <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
-                <option value="1">Normal</option>
-                <option value="2">Miss</option>
-                <option value="2">Early</option>
-            </select>
-   </div>
-</div>
-</form>
-    <!-- End Fill -->
-	
-    <!-- Buttons -->
-<table class="thebutton">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'AttendanceStatusForHR.html';">Save</button>
-</td></tr>
-</table>
-</form>
+	<form action="search.php" method="POST" >
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<input type="Time" name="timeIn" class="form-control" id="inputTime" placeholder="ArrivalTime">
+			</div>
+		</div>
+	  
+		<div class="form-group row">
+		<div class="dropdown">
+			<div class="Status">
+				<select class="btn  btn-secondary" name="statusIn" id="master_id" onchange="sSelect()">
+					<option value="1">Normal</option>
+					<option value="2">Miss</option>
+					<option value="2">Late</option>
+				</select>
+			</div>
+		</div>
+	</form>
+	<form action="search.php" method="POST" >
+		<div class="ExitTime">
+			<input type="Time" name="timeOut" class="form-control" id="inputTime" placeholder="ExitTime">
+		</div>
+		<div class="dropdown1">
+			<div class="Status1">
+				<select class="btn btn-secondary" name="statusOut" id="master_id" onchange="sSelect()">
+					<option value="1">Normal</option>
+					<option value="2">Miss</option>
+					<option value="2">Early</option>
+				</select>
+			</div>
+		</div>
+		<!-- End Fill -->
+		<!-- Buttons -->
+		<table class="thebutton">
+			<tr><td>
+				<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Save</button>
+			</td></tr>
+		</table>
+	</form>
 <!-- End Buttons -->
 
     <!-- Optional JavaScript -->
