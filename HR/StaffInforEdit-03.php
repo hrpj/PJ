@@ -147,15 +147,15 @@ session_start();
         <!-- End PHP code for value -->
 
         <!-- Fill Information -->
-        <form>
+        <form action="StaffInforEditAction.php" method="post">
             <div class="ID">
                 <input type="text" class="form-control" value="<?php echo "$search"; ?>">
             </div>
             <div class="Name">
-                <input type="text" class="form-control" value="<?php echo "$staffName"; ?>">
+                <input type="text" class="form-control" name="staffName" value="<?php echo "$staffName"; ?>">
             </div>
             <div class="Gender">
-                <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
+                <select class="btn btn-secondary" name="gender" onchange="sSelect()">
                     <option value="Female"<?php if(!strcasecmp($gender,"female"))
                     echo "selected = 'true';"?> >Female</option>
                     <option value="Male"<?php if(!strcasecmp($gender,"male"))
@@ -163,10 +163,10 @@ session_start();
                 </select>
             </div>
             <div class="DOB">
-                <input type="Date" class="form-control" id="DOB" value="<?php echo "$DOB"; ?>">
+                <input type="Date" class="form-control" name="DOB" value="<?php echo "$DOB"; ?>">
             </div>
             <div class="StartDate">
-            <input type="Date" class="form-control" id="Start" value="<?php echo "$startDate"; ?>">
+                <input type="Date" class="form-control" name="start" value="<?php echo "$startDate"; ?>">
             </div>
             <div class="Department">
                 <input type="text" class="form-control" value="<?php echo "$departmentName"; ?>">
@@ -178,15 +178,15 @@ session_start();
                 <input type="text" class="form-control" value="<?php echo "$BranchName"; ?>">
             </div>
             <div class="Mobile">
-                <input type="text" class="form-control" value="<?php echo "$telNOStaff"; ?>">
+                <input type="text" class="form-control" name="mobilePhoneNo" value="<?php echo "$telNOStaff"; ?>">
             </div>
             <div class="Address">
-                <input type="text" class="form-control" value="<?php echo "$staffAddress"; ?>">
+                <input type="text" class="form-control" name="staffAddress" value="<?php echo "$staffAddress"; ?>">
             </div>
             <div class="Bank">
                 <input type="text" class="form-control" value="<?php echo "$bankAccount"; ?>">
             </div>
-        </form>
+        <!--</form> -->
 
         <!-- Table Work History -->
         <div class = "WorkHis"><h4>Work History</h></div>
@@ -200,12 +200,22 @@ session_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><input class="form-control" type="text" placeholder="Company Name"></td>
-                        <td><input type="Date" class="form-control" id="DOB" placeholder="Date of Birth"></td>
-                        <td><input type="Date" class="form-control" id="DOB" placeholder="Date of Birth"></td>
-                    </tr>
+                    <?php
+                        $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
+                        $count=$result->num_rows;
+                        $i = 1;
+                        while ($row = mysqli_fetch_array($result))
+                        {
+                            echo "<tr>";
+                            echo "<th scope='row'>".$i."</th>";
+                            echo "<td><input class='form-control' name='company".$i."' type='text' value='".$row['company']."'</td>";
+                            echo "<td><input type='Date' class='form-control' name='startDate".$i."' value='".$row['startDate']."''></td>";
+                            echo "<td><input type='Date' class='form-control' name='endDate".$i."' value='".$row['endDate']."''></td>";
+                            echo "</tr>";
+                            $i++;
+                        }
+                        echo "<input type='hidden' name='i' value='".$i."'>";
+                    ?>
                 </tbody>
             </table>
         <div class = "Graduate"><h4>Graduate History</h></div>
@@ -219,27 +229,42 @@ session_start();
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><input class="form-control" type="text" placeholder="University Name"></td>
-                        <td><input class="form-control" type="text" placeholder="Field"></td>
-                        <td><input class="form-control" type="text" placeholder="Degree"></td>
-                    </tr>
+                    <?php
+                        $result = mysqli_query($con,"SELECT * FROM education WHERE staffID LIKE '$search'");
+                        $count=$result->num_rows;
+                        $j = 1;
+                        while ($row = mysqli_fetch_array($result))
+                        {
+                            echo "<tr>";
+                            echo "<th scope='row'>".$i."</th>";
+                            echo "<td><input class='form-control' type='text' name='university".$i."' value='".$row['university']."'></td>";
+                            echo "<td><input class='form-control' type='text' name='field".$i."' value='".$row['field']."''></td>";
+                            echo "<td><input class='form-control' type='text' name='degree".$i."' value='".$row['degree']."''></td>";
+                            echo "</tr>";
+                            $j++;
+                        }
+                        echo "<input type='hidden' name='j' value='".$j."'>";
+                    ?>
                 </tbody>
             </table>
+        <!--</form> -->
         <!-- End Table Work History -->
+
+        <!-- onclick="window.location.href = '#';" -->
 
         <table class="thebuttons">
             <tr>
                 <td>
-                    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = '#';">Save</button>
+                    <button type="submit" class="btn btn-outline-dark" >Save</button>
                 </td>
                 <td>
-                    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/SearchInforStaff-01.php';">Cancel</button></span>
+                    <span>
+                        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/SearchInforStaff-01.php';">Cancel</button>
+                    </span>
                 </td>
             </tr>
         </table>
->>>>>>> 1797fe37f8a35fd2c16963b5ecc49d275a3a24cc
+        </form>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
