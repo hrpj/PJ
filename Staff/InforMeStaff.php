@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Information Myself</title>
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -117,23 +117,31 @@
             <?php 
                 $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffId LIKE '$id'");
                 $count=$result->num_rows;
+                $i = 1;
                 if ((empty($count))) 
                 {
-                    header("Location: http://localhost/HRPJ/Staff/TimeManageFindForStaffError.php?");
-                }
-                $i = 1;
-                while ($row = mysqli_fetch_array($result))
-                {
-                    $company = $row['company'];
-                    $startDate = $row['startDate'];
-                    $endDate = $row['endDate'];
                     echo "<tr>";
                     echo "<th scope='row'>".$i."</th>";
-                    echo "<td>".$company."</td>";
-                    echo "<td>".$startDate."</td>";
-                    echo "<td>".$endDate."</td>";
+                    echo "<td>No Data</td>";
+                    echo "<td>----/--/--</td>";
+                    echo "<td>----/--/--</td>";
                     echo "</tr> ";
-                    $i++;
+                }
+                else
+                {
+                    while ($row = mysqli_fetch_array($result))
+                    {
+                        $company = $row['company'];
+                        $startDate = $row['startDate'];
+                        $endDate = $row['endDate'];
+                        echo "<tr>";
+                        echo "<th scope='row'>".$i."</th>";
+                        echo "<td>".$company."</td>";
+                        echo "<td>".$startDate."</td>";
+                        echo "<td>".$endDate."</td>";
+                        echo "</tr> ";
+                        $i++;
+                    }
                 }
             ?>
         </tbody>
@@ -155,11 +163,16 @@
             <?php 
                 $result = mysqli_query($con,"SELECT * FROM education WHERE staffId LIKE '$id'");
                 $count=$result->num_rows;
+                $i = 1;
                 if ((empty($count))) 
                 {
-                    header("Location: http://localhost/HRPJ/Staff/TimeManageFindForStaffError.php?");
+                    echo "<tr>";
+                    echo "<th scope='row'>".$i."</th>";
+                    echo "<td>No Data</td>";
+                    echo "<td>No Data</td>";
+                    echo "<td>No Data</td>";
+                    echo "</tr> ";
                 }
-                $i = 1;
                 while ($row = mysqli_fetch_array($result))
                 {
                     $university = $row['university'];
