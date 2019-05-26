@@ -91,12 +91,33 @@
                           <th scope="col">Amount</th>
                       </tr>
                   </thead>
-                  <tbody>
+<!--                  <tbody>
+                      <?php 
+                          $result = mysqli_query($con,"SELECT * FROM deduction WHERE staffId LIKE '$id'");
+                          $count=$result->num_rows;
+                          if ((empty($count))) 
+                          {
+                              echo "<tr>";
+                              echo "<td> -- </td>";
+                              echo "<td> -- </td>";
+                              echo "</tr> ";
+                          }
+                          else
+                          {
+                              while ($row = mysqli_fetch_array($result))
+                              {
+                                  echo "<tr>";
+                                  echo "<td>".$row['description']."</td>";
+                                  echo "<td>".$row['amount']."</td>";
+                                  echo "</tr> ";
+                              }
+                          }
+                      ?>
                       <tr>
                           <td>Salary</td>
                           <td>27000</td>
                       </tr>
-                  </tbody>
+                  </tbody> -->
               </table>
           <div class="table2">Deduction
               <table class="table">
@@ -112,14 +133,20 @@
                           $count=$result->num_rows;
                           if ((empty($count))) 
                           {
-                              header("Location: http://localhost/HRPJ/Staff/TimeManageFindForStaffError.php?");
-                          }
-                          while ($row = mysqli_fetch_array($result))
-                          {
                               echo "<tr>";
-                              echo "<td>".$row['description']."</td>";
-                              echo "<td>".$row['amount']."</td>";
+                              echo "<td> -- </td>";
+                              echo "<td> -- </td>";
                               echo "</tr> ";
+                          }
+                          else
+                          {
+                              while ($row = mysqli_fetch_array($result))
+                              {
+                                  echo "<tr>";
+                                  echo "<td>".$row['description']."</td>";
+                                  echo "<td>".$row['amount']."</td>";
+                                  echo "</tr> ";
+                              }
                           }
                       ?>
                   </tbody>

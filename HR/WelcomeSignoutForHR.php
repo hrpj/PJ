@@ -38,7 +38,7 @@ session_start();
 						Information
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
 						<a class="dropdown-item" href="#">Any Staffs</a>
 						<a class="dropdown-item" href="#">Branch</a>
 					</div>
@@ -102,11 +102,25 @@ session_start();
       <!-- Welcome message -->
       <marquee direction="left"><font color="#696969" size="5">Welcome K.
 	  <?php 
-			$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
-			while ($row = mysqli_fetch_array($result))
-			{
-				echo $row['staffName'] ; 
-			}?> to ILoveDB Company</font></marquee>
+            $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                echo $row['staffName'] ;
+                $_SESSION["staffName"] = $row['staffName'];
+                $_SESSION["positionID"] = $positionID = $row['positionID'];
+            }
+            $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                $_SESSION["departmentID"] = $departmentID = $row['departmentID'];
+            }
+            $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                $_SESSION["departmentName"] = $row['departmentName'];
+                $_SESSION["BranchName"] = $row['BranchName'];
+            }
+            ?> to ILoveDB Company</font></marquee>
       <hr>
       <!-- Start Slide -->
 <center>
