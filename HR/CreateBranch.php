@@ -12,14 +12,14 @@ if ($conn->connect_error) {
 }
 
 // Escape user inputs for security
-$branchName = mysqli_real_escape_string($link, $_REQUEST['branchName']);
-$address = mysqli_real_escape_string($link, $_REQUEST['branchAddress']);
-$telNo = mysqli_real_escape_string($link, $_REQUEST['telNo']);
-$code = mysqli_real_escape_string($link, $_REQUEST['manageID']);
+$branchName = mysqli_real_escape_string($conn, $_REQUEST['branchName']);
+$address = mysqli_real_escape_string($conn, $_REQUEST['branchAddress']);
+$telNo = mysqli_real_escape_string($conn, $_REQUEST['telNo']);
+$code = mysqli_real_escape_string($conn, $_REQUEST['manageID']);
 
 
 $sql = "INSERT INTO branch (branchName, address, tellNo, code)
-VALUES ($branchName, $address, $telNo, $code)";
+VALUES ('$branchName', '$address', '$telNo', '$code')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
