@@ -68,31 +68,13 @@ session_start();
                 $bankAccount = $row['bankAccount'];
                 $telNOStaff = $row['telNo'];
                 $staffAddress = $row['address'];
+                $startDate = $row['startDate'];
             }
             $staffName = $_SESSION['staffName'];
             echo $staffName; ?>
           <br><br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?>
           <br><br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?>
-          <br><br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?> 
-          <br><br><i class="fas fa-university"></i>University : <?php 
-            $result = mysqli_query($con,"SELECT * FROM education WHERE staffID LIKE '$id'");
-            while ($row = mysqli_fetch_array($result))
-            {
-                $university = $row['university'];
-                $field = $row['field'];
-                $degree = $row['degree'];
-            }
-            echo "$university"; ?>
-          <br><br><i class="fas fa-book-reader"></i>Field : <?php echo "$field"; ?>
-          <br><br><i class="fas fa-user-graduate"></i>Degree : <?php echo "$degree"; ?>
-          <br><br><i class="fas fa-money-check-alt"></i>Work History : <?php 
-            $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$id'");
-            while ($row = mysqli_fetch_array($result))
-            {
-                $company = $row['company'];
-                $PositionBefore = $row['PositionBefore'];
-            }
-            echo $company.' '.$PositionBefore; ?>
+          <br><br><i class="fas fa-hourglass-start"></i>Start Date : <?php echo "$startDate"; ?>
       </div>
 
       <div class="Infor1"><br><br>
@@ -122,8 +104,91 @@ session_start();
             }
             echo $telNOBranch; ?>
           <br><br><i class="fas fa-building"></i>Adress : <?php echo "$staffAddress"; ?>
+          <br><br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?> 
       </div>
       <!-- End Information -->
+      <div class = "WorkHis"><h>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a></h></div>
+
+<!-- Table Work History -->
+<div class = "WorkHis"><h4>Work History</h></div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Company</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+            $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffId LIKE '$id'");
+            $count=$result->num_rows;
+            if ((empty($count))) 
+            {
+                header("Location: http://localhost/HRPJ/Staff/TimeManageFindForStaffError.php?");
+            }
+            $i = 1;
+            while ($row = mysqli_fetch_array($result))
+            {
+                $company = $row['company'];
+                $startDate = $row['startDate'];
+                $endDate = $row['endDate'];
+                echo "<tr>";
+                echo "<th scope='row'>".$i."</th>";
+                echo "<td>".$company."</td>";
+                echo "<td>".$startDate."</td>";
+                echo "<td>".$endDate."</td>";
+                echo "</tr> ";
+                $i++;
+            }
+        ?>
+    </tbody>
+</table>
+<!-- End Table Work History -->
+
+<!-- Start Table Graduate -->
+<div class = "Graduate"><h4>Graduate History</h></div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">University</th>
+        <th scope="col">Field</th>
+        <th scope="col">Degree</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+            $result = mysqli_query($con,"SELECT * FROM education WHERE staffId LIKE '$id'");
+            $count=$result->num_rows;
+            if ((empty($count))) 
+            {
+                header("Location: http://localhost/HRPJ/Staff/TimeManageFindForStaffError.php?");
+            }
+            $i = 1;
+            while ($row = mysqli_fetch_array($result))
+            {
+                $university = $row['university'];
+                $field = $row['field'];
+                $degree = $row['degree'];
+                echo "<tr>";
+                echo "<th scope='row'>".$i."</th>";
+                echo "<td>".$university."</td>";
+                echo "<td>".$field."</td>";
+                echo "<td>".$degree."</td>";
+                echo "</tr> ";
+                $i++;
+            }
+        ?>
+    </tbody>
+</table>
+
+<table class="thebuttons">
+    <tr><td>
+    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php';">Back</button>
+</td></tr>
+</table>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
