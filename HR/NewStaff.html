@@ -4,11 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CreateBranch</title>
+    <title>Create New Staff</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylebranch.css" rel="stylesheet">
+    <link href="stylenewstaff.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -29,8 +29,8 @@
           Information
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="InforMe.html">Only Me</a>
-          <a class="dropdown-item" href="InforStaff.html">Any Staffs</a>
+          <a class="dropdown-item" href="InforMeHR.html">Only Me</a>
+          <a class="dropdown-item" href="SearchInforStaff.html">Any Staffs</a>
           <a class="dropdown-item" href="InforBranch.html">Branch</a>
         </div>
         </li>
@@ -86,36 +86,92 @@
 </nav>
   </head>
   <body>
-      <div class = "CreateBranch"><h3>Create New Branch</h></div>
-          <!-- Information -->
-          <div class="Infor"><i class="fas fa-file-signature"></i>Branch Name : <br><br><br><i class="fas fa-address-book"></i>Branch Address : <br><br><br><i class="fas fa-phone"></i>Telephone Number :
-          <br><br><br><i class="fas fa-portrait"></i>Manager : </div>
-          <!-- End Information -->
-          <!-- Form -->
-  <div class="BranchName">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Branch Name">
+      <div class = "NewStaff"><h3>Create New Staff</h></div>
+<!-- Fill Date -->
+<form>
+    <div class="StartDate">
+      Start Date : <input type="Date" class="form-control" id="Start" placeholder="StartDate">
     </div>
-  </div>
-  <div class="BranchAddress">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Branch Address">
+    <div class="EndDate">
+      End Date : <input type="Date" class="form-control" id="End" placeholder="EndDate">
     </div>
-  </div>
-  <div class="Telephone">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Telephone Number">
+    <div class="Firstname">
+      First Name : <input type="text" class="form-control" placeholder="First Name">
     </div>
-  </div>
-  <div class="Manager">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Manager ID">
+    <div class="Lastname">
+      Last Name : <input type="text" class="form-control" placeholder="Last Name">
     </div>
+    <div class="Address">
+      Address : <input type="text" class="form-control" placeholder="Address">
+    </div>
+    <div class="Mobile">
+      Mobilephone No. : <input type="text" class="form-control" placeholder="Mobile">
+    </div>
+    <div class="Email">
+      Email : <input type="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="DOB">
+      Date Of Birth : <input type="Date" class="form-control" id="DOB" placeholder="DOB">
+    </div>
+    <div class="Gender">
+        <div class="form-group">
+    <label for="exampleFormControlSelect1">Gender</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Female</option>
+      <option>Male</option>
+    </select>
   </div>
-  <!-- End Form -->
-  <div class="NextBut">
-  <button type="button" class="btn btn-dark" onclick="window.location.href = 'BranchToDepartment.html';">Next</button>
- <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></div>
+    </div>
+    <div class="Bank">
+      Bank account : <input type="text" class="form-control" placeholder="Bank">
+    </div>
+    <div class="Branch">
+        <div class="form-group">
+    <label for="exampleFormControlSelect1">Branch</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Bang Khae</option>
+      <option>Bang Ruk</option>
+    </select>
+  </div>
+  <div class="Department">
+      <div class="form-group">
+  <label for="exampleFormControlSelect1">Department</label>
+  <select class="form-control" id="exampleFormControlSelect1">
+    <option>Finance</option>
+    <option>Marketing</option>
+  </select>
+</div>
+<div class="Position">
+    <div class="form-group">
+<label for="exampleFormControlSelect1">Position</label>
+<select class="form-control" id="exampleFormControlSelect1">
+  <option>Manager</option>
+  <option>Staff</option>
+</select>
+</div>
+<div class="StaffID">
+  Staff ID : <input type="text" class="form-control" placeholder="StaffID">
+</div>
+<div class="Upload">
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+<span class="input-group-text" id="inputGroupFileAddon01">Profile picture (.jpg)</span>
+</div>
+<div class="custom-file">
+<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+</div>
+</div>
+</div>
+</form>
+<!-- End Fill -->
+<table class="thebuttons">
+    <tr><td>
+    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
+</td><td>
+    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+</td></tr>
+</table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
