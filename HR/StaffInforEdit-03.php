@@ -103,7 +103,7 @@ session_start();
             <i class="fas fa-address-card"></i>Staff ID : 
             <br><br><i class="fas fa-file-signature"></i>Name : 
             <br><br><i class="fas fa-venus-mars"></i>Gender : 
-            <br><br><i class="fas fa-birthday-cake"></i>Date of birth :
+            <br><br><i class="fas fa-birthday-cake"></i>Date of birth : 
             <br><br><i class="fas fa-hourglass-start"></i>Start Date : 
             <br><br>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a>
         </div>
@@ -156,8 +156,10 @@ session_start();
             </div>
             <div class="Gender">
                 <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
+                    <option value="Female"<?php if(!strcasecmp($gender,"female"))
+                    echo "selected = 'true';"?> >Female</option>
+                    <option value="Male"<?php if(!strcasecmp($gender,"male"))
+                    echo "selected = 'true';"?> >Male</option>
                 </select>
             </div>
             <div class="DOB">
@@ -185,6 +187,7 @@ session_start();
                 <input type="text" class="form-control" value="<?php echo "$bankAccount"; ?>">
             </div>
         </form>
+
         <!-- Table Work History -->
         <div class = "WorkHis"><h4>Work History</h></div>
             <table class="table">
@@ -225,6 +228,7 @@ session_start();
                 </tbody>
             </table>
         <!-- End Table Work History -->
+
         <table class="thebuttons">
             <tr>
                 <td>
