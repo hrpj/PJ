@@ -53,7 +53,7 @@ h6
     top:50%;
     left:50%;
     margin-left:300px;
-    margin-top:80px;
+    margin-top:30px;
 }
 .tableone
 {
@@ -61,7 +61,7 @@ h6
     top:50%;
     left:50%;
     margin-left:300px;
-    margin-top:70px;
+    margin-top:30px;
 }
 .table2
 {
@@ -69,7 +69,7 @@ h6
     top:50%;
     left:50%;
     margin-left:500px;
-    margin-top:-153px;
+    margin-top:-215px;
 }
 .tabletwo
 {
@@ -78,4 +78,51 @@ h6
     left:50%;
     margin-left:500px;
     margin-top:-139px;
+}
+.Salary
+{
+    width: 200px;
+    margin-left:300px;
+    margin-top:40px;
+}
+.SalaryFill
+{
+    width: 200px;
+    margin-left:80px;
+    margin-top:-30px;
+}
+.SaveSalary
+{
+    width: 200px;
+    margin-left:605px;
+    margin-top:-40px;
+}
+.SaveBonus
+{
+    width: 200px;
+    margin-left:305px;
+    margin-top:-125px;
+}
+.AddBonus
+{
+    width: 200px;
+    margin-left:305px;
+    margin-top:40px;
+}
+.SaveDeduc
+{
+    width: 200px;
+    margin-left:810px;
+    margin-top:-90px;
+}
+.AddDeduc
+{
+    width: 200px;
+    margin-left:810px;
+    margin-top:40px;
+}
+.Back
+{
+    margin-top:80px;
+    margin-left:790px;
 }
