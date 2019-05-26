@@ -145,21 +145,20 @@ session_start();
 			<br><i class="fas fa-history"></i>Year : <input type="text" name="year" class="form-control" placeholder="Year">
 		</div>
 		
-<?php	$result2 = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$id' AND year LIKE '$year' And date < '$month%' Order by date Desc");
+<?php	$result = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$id' AND year LIKE '$year' And date < '$month%' Order by date Desc");
 		
-		$count=$result2->num_rows;
+		$count=$result->num_rows;
 		if ( empty($count) ) 
 		{
 			$salary = "Not found Salary";
 		}
 		else
 		{
-			while ($row = mysqli_fetch_array($result2))
+			while ($row = mysqli_fetch_array($result))
 			{
 				$salary = $row['salary'];
 			}
 		}
-
 ?>		
 		<!-- End Information -->
 		<div class="Salary"><h5>Salary : <?php echo "$salary" ; ?> ฿</h></div>
@@ -173,12 +172,28 @@ session_start();
 							<th scope="col">Amount</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>Bonus</td>
-							<td>2000</td>
-						</tr>
-					</tbody>
+					
+<?php	$result2 = mysqli_query($con,"SELECT * FROM bonus WHERE staffID LIKE '$id' AND year LIKE '$year' And date LIKE '$month%'");
+		
+		$count=$result2->num_rows;
+		if ( empty($count) ) 
+		{
+			echo "<tbody><tr><td>-----</td><td>----</td></tr></tbody> ";
+		}
+		else
+		{
+			while($row = mysqli_fetch_array($result2))
+			{
+				$des = $row['description'];
+				$amount = $row{'amount'};
+				echo "<tbody>";
+				echo "<tr>";
+				echo "<td>".$des."</td>" ;
+				echo "<td>".$amount."</td>";
+				echo "</tr></tbody> ";
+			}
+		}
+?>			
 				</table>
 
 			<div class="tabletwo">
@@ -190,12 +205,31 @@ session_start();
 							<th scope="col">Amount</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>Withholding Tax</td>
-							<td>2500</td>
-						</tr>
-					</tbody>
+<?php	$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE staffID LIKE '$id' AND year LIKE '$year' And date LIKE '$month%'");
+		
+		$count=$result2->num_rows;
+		if ( empty($count) ) 
+		{
+			echo "<tbody>";
+			echo "<tr>";
+			echo "<td>----</td>" ;
+			echo "<td>----</td>";
+			echo "</tr></tbody> ";
+		}
+		else
+		{
+			while($row = mysqli_fetch_array($result2))
+			{
+				$des2 = $row['description'];
+				$amount2 = $row{'amount'};
+				echo "<tbody>";
+				echo "<tr>";
+				echo "<td>".$des."</td>" ;
+				echo "<td>".$amount."</td>";
+				echo "</tr></tbody> ";
+			}
+		}
+?>
 				</table>
 			</div>
 			
