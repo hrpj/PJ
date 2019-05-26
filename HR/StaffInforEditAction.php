@@ -8,6 +8,7 @@ session_start();
 	}
 
 	// escape variables for security
+	$search = mysqli_real_escape_string($con, $_POST["search"]);
 	$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
 	$gender = mysqli_real_escape_string($con, $_POST['gender']);
 	$start = mysqli_real_escape_string($con, $_POST['start']);
@@ -15,6 +16,7 @@ session_start();
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
+	echo $search;
 // Company case
 	$i2 = $i;
 	while ($i2 > 0) 
