@@ -214,6 +214,7 @@ session_start();
                             echo "</tr>";
                             $i++;
                         }
+                        $i-=1;
                         echo "<input type='hidden' name='i' value='".$i."'>";
                     ?>
                 </tbody>
@@ -236,13 +237,14 @@ session_start();
                         while ($row = mysqli_fetch_array($result))
                         {
                             echo "<tr>";
-                            echo "<th scope='row'>".$i."</th>";
-                            echo "<td><input class='form-control' type='text' name='university".$i."' value='".$row['university']."'></td>";
-                            echo "<td><input class='form-control' type='text' name='field".$i."' value='".$row['field']."''></td>";
-                            echo "<td><input class='form-control' type='text' name='degree".$i."' value='".$row['degree']."''></td>";
+                            echo "<th scope='row'>".$j."</th>";
+                            echo "<td><input class='form-control' type='text' name='university".$j."' value='".$row['university']."'></td>";
+                            echo "<td><input class='form-control' type='text' name='field".$j."' value='".$row['field']."''></td>";
+                            echo "<td><input class='form-control' type='text' name='degree".$j."' value='".$row['degree']."''></td>";
                             echo "</tr>";
                             $j++;
                         }
+                        $j-=1;
                         echo "<input type='hidden' name='j' value='".$j."'>";
                     ?>
                 </tbody>
