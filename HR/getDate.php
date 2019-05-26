@@ -23,6 +23,7 @@ session_start();
 	$_SESSION["result2"] = $result2;
 	
 	mysqli_close($con);
+	
 	header("Location: http://localhost/HRPJ/HR/TimeManageSuccessForHR-04.php");
 
 ?>
