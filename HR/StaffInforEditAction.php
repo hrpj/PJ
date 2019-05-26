@@ -5,9 +5,8 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 // Check connection
 	if (mysqli_connect_errno()) 
 	{
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		//echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-
 // escape variables
 	$search = mysqli_real_escape_string($con, $_POST["search"]);
 	$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
@@ -17,7 +16,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
-	echo $i;
+	//echo $i;
 $check = 0;
 // Company start
     $Temp = 1;
@@ -27,27 +26,27 @@ $check = 0;
 			case '1':	$company[0] = mysqli_real_escape_string($con, $_POST['company1']);
 						$startDate[0] = mysqli_real_escape_string($con, $_POST['startDate1']);
 						$endDate[0] = mysqli_real_escape_string($con, $_POST['endDate1']);
-						echo $company[0]." ".$startDate[0]." ".$endDate[0];
+						//echo $company[0]." ".$startDate[0]." ".$endDate[0];
 						break;
 			case '2': 	$company[1] = mysqli_real_escape_string($con, $_POST['company2']);
 						$startDate[1] = mysqli_real_escape_string($con, $_POST['startDate2']);
 						$endDate[1] = mysqli_real_escape_string($con, $_POST['endDate2']);
-						echo $company[1]." ".$startDate[1]." ".$endDate[1];
+						//echo $company[1]." ".$startDate[1]." ".$endDate[1];
 						break;
 			case '3': 	$company[2] = mysqli_real_escape_string($con, $_POST['company3']);
 						$startDate[2] = mysqli_real_escape_string($con, $_POST['startDate3']);
 						$endDate[2] = mysqli_real_escape_string($con, $_POST['endDate3']);
-						echo $company[2]." ".$startDate[2]." ".$endDate[2];
+						//echo $company[2]." ".$startDate[2]." ".$endDate[2];
 						break;
 			case '4': 	$company[3] = mysqli_real_escape_string($con, $_POST['company4']);
 						$startDate[3] = mysqli_real_escape_string($con, $_POST['startDate4']);
 						$endDate[3] = mysqli_real_escape_string($con, $_POST['endDate4']);
-						echo $company[3]." ".$startDate[3]." ".$endDate[3];
+						//echo $company[3]." ".$startDate[3]." ".$endDate[3];
 						break;
 			case '5': 	$company[4] = mysqli_real_escape_string($con, $_POST['company5']);
 						$startDate[4] = mysqli_real_escape_string($con, $_POST['startDate5']);
 						$endDate[4] = mysqli_real_escape_string($con, $_POST['endDate5']);
-						echo $company[4]." ".$startDate[4]." ".$endDate[4];
+						//echo $company[4]." ".$startDate[4]." ".$endDate[4];
 						break;
 			case '6': 	$company[5] = mysqli_real_escape_string($con, $_POST['company6']);
 						$startDate[5] = mysqli_real_escape_string($con, $_POST['startDate6']);
@@ -73,22 +72,27 @@ $check = 0;
 		}
 		$Temp++;
 	}
-	echo "    ".$Temp."     ";
+	//echo "    ".$Temp."     ";
 	$count = 0;
 	$result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
     while ($row = mysqli_fetch_array($result))
     {
-    	$companySearch = $row['company'];
-    	$startSearch = $row['startDate'];
-    	$endSearch = $row['endDate'];
-    	mysqli_query($con,"UPDATE workinghistory SET company ='$company[$count]',startDate ='$startDate[$count]',endDate ='$endDate[$count]' WHERE company LIKE '$companySearch',startDate ='$startSearch',endDate ='$endSearch'");
+    	$companySearch[$count] = $row['company'];
+    	$startSearch[$count] = $row['startDate'];
+    	$endSearch[$count] = $row['endDate'];
+    	//mysqli_query($con,"UPDATE workinghistory SET company ='$company[$count]',startDate ='$startDate[$count]',endDate ='$endDate[$count]' WHERE company LIKE '$companySearch',startDate ='$startSearch',endDate ='$endSearch'");
     	$count++;
     	if (($Temp-1) == $count) 
     	{
     		$check = 1;
     	}
     }
-// company end
+    $count = 0;
+    while ($count < $i) 
+    {
+    	mysqli_query($con,"UPDATE workinghistory SET company ='$company[$count]',startDate ='$startDate[$count]',endDate ='$endDate[$count]' WHERE company LIKE '$companySearch[$count]',startDate ='$startSearch[$count]',endDate ='$endSearch[$count]'");
+		$count++;
+	}
 // university recieve case
 	$Temp = $j;
 	while ($Temp > 0) 
@@ -97,43 +101,44 @@ $check = 0;
 			case '1':	$university1 = mysqli_real_escape_string($con, $_POST['university1']);
 						$field1 = mysqli_real_escape_string($con, $_POST['field1']);
 						$degree1 = mysqli_real_escape_string($con, $_POST['degree1']);
-						echo "$university1";
+						//echo "$university1";
 						break;
 			case '2': 	$university2 = mysqli_real_escape_string($con, $_POST['university2']);
-						echo "$university2";
+						//echo "$university2";
 						break;
 			case '3': 	$university3 = mysqli_real_escape_string($con, $_POST['university3']);
-						echo "$university3";
+						//echo "$university3";
 						break;
 			case '4': 	$university4 = mysqli_real_escape_string($con, $_POST['university4']);
-						echo "$university4";
+						//echo "$university4";
 						break;
 			case '5': 	$university5 = mysqli_real_escape_string($con, $_POST['university5']);
-						echo "$university5";
+						//echo "$university5";
 						break;
 			case '6': 	$university6 = mysqli_real_escape_string($con, $_POST['university6']);
-						echo "$university6";
+						//echo "$university6";
 						break;
 			case '7': 	$university7 = mysqli_real_escape_string($con, $_POST['university7']);
-						echo "$university7";
+						//echo "$university7";
 						break;
 			case '8': 	$university8 = mysqli_real_escape_string($con, $_POST['university8']);
-						echo "$university8";
+						//echo "$university8";
 						break;
 			case '9': 	$university9 = mysqli_real_escape_string($con, $_POST['university9']);
-						echo "$university9";
+						//echo "$university9";
 						break;
 			case '10': 	$university10 = mysqli_real_escape_string($con, $_POST['university10']);
-						echo "$university10";
+						//echo "$university10";
 						break;
 			default: break;
 		}
 		$Temp--;
 	}
 // university recieve end
-mysqli_close($con);
+	mysqli_close($con);
 if ($check) 
 {
-	header("Location: http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+	header('Refresh: 5; URL=http://localhost/HRPJ/HR/StaffInforEdit-03.php');
+	//header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 }
 ?>
