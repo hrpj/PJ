@@ -10,20 +10,20 @@ $search = $_SESSION["search"];
 $year = $_SESSION["year"];
 $dm = $_SESSION["result2"];
 ?>
-<!doctype html>
 <html lang="en">
+
   <head>
-    <!-- Required meta tags -->
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TimeManageSuccess</title>
-    <!-- Bootstrap CSS -->
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="font.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
-    <!-- Nav Bar -->
+    
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
         <a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
@@ -54,8 +54,8 @@ $dm = $_SESSION["result2"];
         Payment Slip
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="PaymentStaffForHR.html">Only Me</a>
-            <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
+            <a class="dropdown-item" href="#">Only Me</a>
+            <a class="dropdown-item" href="#">Any Staffs</a>
         </div>
         </li>
         <li class="nav-item dropdown">
@@ -74,18 +74,18 @@ $dm = $_SESSION["result2"];
             Analysis Report
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="NewStaff.html">Age Range of Staffs</a>
-            <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
-            <a class="dropdown-item" href="NewDepartment.html">Top 5 Highest Concern Score</a>
-            <a class="dropdown-item" href="NewTraining.html">Concern Score in Bang Khae Branch</a>
-            <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
-            <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
-            <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
-            <a class="dropdown-item" href="NewStaff.html">The highest average competency score of each department</a>
-            <a class="dropdown-item" href="NewStaff.html">Amount of leave of each staff of each department in Bang Khae</a>
-            <a class="dropdown-item" href="NewStaff.html">The highest amount of leave in each department in Bang Khae</a>
-            <a class="dropdown-item" href="NewStaff.html">Field and Degree in IT department</a>
-            <a class="dropdown-item" href="NewStaff.html">Income table of each Staff</a>
+            <a class="dropdown-item" href="#">Age Range of Staffs</a>
+            <a class="dropdown-item" href="#">Salary in every position and department</a>
+            <a class="dropdown-item" href="#">Top 5 Highest Concern Score</a>
+            <a class="dropdown-item" href="#">Concern Score in Bang Khae Branch</a>
+            <a class="dropdown-item" href="#">Daily Attendance in Bang Khae Branch</a>
+            <a class="dropdown-item" href="#">Work time of any position</a>
+            <a class="dropdown-item" href="#">Work time and Salary of position in any department</a>
+            <a class="dropdown-item" href="#">The highest average competency score of each department</a>
+            <a class="dropdown-item" href="#">Amount of leave of each staff of each department in Bang Khae</a>
+            <a class="dropdown-item" href="#">The highest amount of leave in each department in Bang Khae</a>
+            <a class="dropdown-item" href="#">Field and Degree in IT department</a>
+            <a class="dropdown-item" href="#">Income table of each Staff</a>
           </div>
         </li>
         </ul>
@@ -96,8 +96,8 @@ $dm = $_SESSION["result2"];
         </ul>
     </div>
 	</nav>
-  </head>
-  
+</head>
+
   
 <body>
     <br><div align="right"><i class="fas fa-user-clock"></i>
@@ -105,12 +105,12 @@ $dm = $_SESSION["result2"];
         <hr>
 	<!-- Date -->
 	<form action="getDate.php" method="POST" >
-	<div class = "Date">
-	<input type="date" name="date" id="myDate" value="<?php echo $year.'-'.$dm ?>">
-	<p>Click the button to get the status of the date.</p>
-	<input type="hidden" name="search" value="<?php echo "$search" ?>">
-	<button type="submit" onclick="window.location.href = '#' ">Submit</button>
-	</div>
+		<div class = "Date">
+			<input type="date" name="date" id="myDate" value="<?php echo $year.'-'.$dm ?>">
+			<p>Click the button to get the status of the date.</p>
+			<input type="hidden" name="search" value="<?php echo "$search" ?>">
+			<button type="submit" onclick="window.location.href = '#' ">Submit</button>
+		</div>
 	</form>
 
 	<!-- End Date -->
@@ -128,6 +128,7 @@ $dm = $_SESSION["result2"];
 <?php 
 	$result = mysqli_query($con,"SELECT * FROM timeattendance WHERE staffId LIKE '$search' AND year LIKE '$year' AND date LIKE '$dm'");
 	$count=$result->num_rows;
+	mysqli_close($con);
 	if ((empty($count))) 
 	{
 		header("Location: http://localhost/HRPJ/HR/TimeManageFindForHR-03ERROR.php?search=$search");
@@ -164,6 +165,6 @@ $dm = $_SESSION["result2"];
   </body>
 
 <?php 
- mysqli_close($con);
+ 
 ?>
 </html>
