@@ -63,14 +63,13 @@ session_start();
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
             while ($row = mysqli_fetch_array($result))
             {
-                $staffName = $row['staffName'];
                 $gender = $row['gender'];
                 $DOB = $row['dateOfBirth'];
                 $bankAccount = $row['bankAccount'];
                 $telNOStaff = $row['telNo'];
                 $staffAddress = $row['address'];
-                $positionID = $row['positionID'];
             }
+            $staffName = $_SESSION['staffName'];
             echo $staffName; ?>
           <br><br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?>
           <br><br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?>
@@ -98,17 +97,18 @@ session_start();
 
       <div class="Infor1"><br><br>
           <i class="fas fa-layer-group"></i>Department : <?php 
+            $positionID = $_SESSION['positionID'];
+            $departmentID = $_SESSION['departmentID'];
+            $BranchName = $_SESSION['BranchName'];
             $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
             while ($row = mysqli_fetch_array($result))
             {
                 $positionName = $row['positionName'];
-                $departmentID = $row['departmentID'];
             }
             $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
             while ($row = mysqli_fetch_array($result))
             {
                 $departmentName= $row['departmentName'];
-                $BranchName = $row['BranchName'];
             }
             echo "$departmentName"; ?>
           <br><br><i class="fas fa-briefcase"></i>Position : <?php echo "$positionName"; ?>
