@@ -1,5 +1,6 @@
 <?php 
 session_start();
+ob_start();
 $con=mysqli_connect("localhost","root","","hrmanager");
 // Check connection
 if (mysqli_connect_errno()) 
@@ -56,7 +57,7 @@ $dm = $_SESSION["result2"];
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Only Me</a>
             <a class="dropdown-item" href="#">Any Staffs</a>
-        </div>
+        </div> 
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,7 +105,7 @@ $dm = $_SESSION["result2"];
         Staff ID : <?php echo "$search" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <hr>
 	<!-- Date -->
-	<form action="getDate.php" method="POST" >
+	<form action="getDate.php" method="POST" > 
 		<div class = "Date">
 			<input type="date" name="date" id="myDate" value="<?php echo $year.'-'.$dm ?>">
 			<p>Click the button to get the status of the date.</p>
@@ -125,13 +126,13 @@ $dm = $_SESSION["result2"];
     </tr>
 	</thead>
 	<tbody>
-<?php 
+		<?php 
 	$result = mysqli_query($con,"SELECT * FROM timeattendance WHERE staffId LIKE '$search' AND year LIKE '$year' AND date LIKE '$dm'");
 	$count=$result->num_rows;
 	mysqli_close($con);
 	if ((empty($count))) 
 	{
-		header("Location: http://localhost/HRPJ/HR/TimeManageFindForHR-03ERROR.php?search=$search");
+		header("Location: http://localhost/HRPJ/HR/TimeManageFindForHR-03ERROR.php");
 	}
 
 	while ($row = mysqli_fetch_array($result))
@@ -146,7 +147,7 @@ $dm = $_SESSION["result2"];
 		echo "</tr> ";
 	}
 ?>
-  </tbody> 
+ </tbody> 
 </table>
 </div>
 <!-- End Table -->
