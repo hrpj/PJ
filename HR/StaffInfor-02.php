@@ -130,7 +130,7 @@ session_start();
 	  	<br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?><br>
 	  	<br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?><br>
 	  	<br><i class="fas fa-hourglass-start"></i>Start Date : <?php echo "$startDate"; ?><br>
-	  	<br>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a></div>
+	  	<br>Check behavior : <a href="CompetenceforHR.html" class="button-link">Click here!</a></div>
       	<div class="Infor1"><br>
 	  	<br><i class="fas fa-layer-group"></i>Department : <?php echo "$departmentName"; ?><br>
 	  	<br><i class="fas fa-briefcase"></i>Position : <?php echo "$positionName"; ?><br>
@@ -139,7 +139,7 @@ session_start();
 	  	<br><i class="fas fa-building"></i>Address : <?php echo "$staffAddress"; ?><br>
 	  	<br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?></div>
       	<!-- End Information -->
-	  
+		<div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
 	  
       	<!-- Table Work History -->
       	<div class = "WorkHis"><h4>Work History</h></div>
