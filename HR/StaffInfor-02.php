@@ -197,7 +197,7 @@ session_start();
     <tr><td>
     <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'StaffInforEdit.html';">Edit</button>
 </td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'SearchInforStaff.html';">Back</button></span>
+    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/SearchInforStaff-01.php';">Back</button></span>
 </td></tr>
 </table>
 
