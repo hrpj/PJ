@@ -27,9 +27,14 @@ h6
     top:50%;
     left:50%;
     margin-left:700px;
-    margin-top:-408px;
+    margin-top:-313px;
 }
 .WorkHis
+{
+    margin-top: 30px;
+    margin-left: 300px;
+}
+.Graduate
 {
     margin-top: 30px;
     margin-left: 300px;
@@ -42,6 +47,7 @@ h6
     margin-left:300px;
     margin-top:10px;
 }
+
 .thebuttons
 {
     margin-top:30px;
@@ -52,7 +58,7 @@ h6
 {
     width:190px;
     margin-left:400px;
-    margin-top:-365px;
+    margin-top:-270px;
 }
 .Name
 {
@@ -72,24 +78,7 @@ h6
     margin-left:440px;
     margin-top:15px;
 }
-.University
-{
-    width:170px;
-    margin-left:420px;
-    margin-top:10px;
-}
-.Field
-{
-    width:210px;
-    margin-left:380px;
-    margin-top:10px;
-}
-.Degree
-{
-    width:190px;
-    margin-left:400px;
-    margin-top:10px;
-}
+
 .StartDate
 {
     width:170px;
@@ -100,7 +89,7 @@ h6
 {
     width:190px;
     margin-left:840px;
-    margin-top:-370px;
+    margin-top:-230px;
 }
 .Position
 {
@@ -136,11 +125,5 @@ h6
 {
     width:180px;
     margin-left:850px;
-    margin-top:10px;
-}
-.EndDate
-{
-    width:220px;
-    margin-left:810px;
     margin-top:10px;
 }
