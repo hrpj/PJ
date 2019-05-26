@@ -31,8 +31,8 @@ session_start();
 						Information
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Only Me</a>
-						<a class="dropdown-item" href="#">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
 						<a class="dropdown-item" href="#">Branch</a>
 					</div>
 				</li>
