@@ -98,23 +98,23 @@ session_start();
 		</div>
 	</nav>
 </head>
-<?php       $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
-            while ($row = mysqli_fetch_array($result))
-            {
-                $positionID = $row['positionID'];
-				$branchName = $row['branchName'];
-            }
-            $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
-            while ($row = mysqli_fetch_array($result))
-            {
-				$positionName = $row['positionName'];
-                $departmentID = $row['departmentID'];
-            }
-            $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
-            while ($row = mysqli_fetch_array($result))
-            {
-                $departmentName = $row['departmentName'];
-            }
+<?php   $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
+        while ($row = mysqli_fetch_array($result))
+        {
+            $positionID = $row['positionID'];
+			$branchName = $row['branchName'];
+        }
+        $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+        while ($row = mysqli_fetch_array($result))
+        {
+			$positionName = $row['positionName'];
+            $departmentID = $row['departmentID'];
+        }
+        $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+        while ($row = mysqli_fetch_array($result))
+        {
+            $departmentName = $row['departmentName'];
+        }
 ?>
 <body>
     <div class = "Payment"><h3>Payment Slip</h></div>
@@ -144,15 +144,25 @@ session_start();
 			<br><i class="fas fa-map-marker-alt"></i></i>Branch : <?php echo "$branchName" ; ?> <br>
 			<br><i class="fas fa-history"></i>Year : <input type="text" name="year" class="form-control" placeholder="Year">
 		</div>
-<?php	
-
-
-
-
+		
+<?php	$result2 = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$id' AND year LIKE '$year' And date < '$month%' Order by date Desc");
+		
+		$count=$result2->num_rows;
+		if ( empty($count) ) 
+		{
+			$salary = "Not found Salary";
+		}
+		else
+		{
+			while ($row = mysqli_fetch_array($result2))
+			{
+				$salary = $row['salary'];
+			}
+		}
 
 ?>		
 		<!-- End Information -->
-		<div class="Salary"><h5>Salary : 27000</h></div>
+		<div class="Salary"><h5>Salary : <?php echo "$salary" ; ?> ฿</h></div>
 		<form>
 			<div class="tableone">
 				Bonus
