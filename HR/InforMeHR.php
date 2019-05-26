@@ -40,7 +40,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
-              <a class="dropdown-item" href="#">Any Staffs</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
               <a class="dropdown-item" href="#">Branch</a>
             </div>
           </li>
@@ -97,7 +97,7 @@
   </head>
   <body>
       <div class = "StaffInfor"><h3>Staff Information</h></div>
-    <div align ="center"><img src="ImageStaff.jpg" width="400" height="300"></div>
+    <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
     <!-- Information -->
     <div class="Infor">
         <i class="fas fa-address-card"></i>Staff ID : <?php echo "$id"; ?>
@@ -121,7 +121,7 @@
     </div>
 
     <div class="Infor1"><br><br>
-        <br><br><br><br><i class="fas fa-layer-group"></i>Department : <?php 
+        <i class="fas fa-layer-group"></i>Department : <?php 
             $positionID = $_SESSION['positionID'];
             $departmentID = $_SESSION['departmentID'];
             $BranchName = $_SESSION['BranchName'];
@@ -235,7 +235,7 @@
     <table class="thebuttons">
         <tr>
             <td>
-                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php';">Back</button>
+                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/WelcomeSignoutForHR.php';">Back</button>
             </td>
         </tr>
     </table>
