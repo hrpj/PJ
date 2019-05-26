@@ -95,17 +95,27 @@ session_start();
     </div>
 	</nav>
   </head>
-  
-  
-  
-  
-  
+<?php 
+	$result = mysqli_query($con,"SELECT * FROM staff WHERE staffId LIKE '$id'");
+
+	while ($row = mysqli_fetch_array($result))
+	{
+		$name = $row["staffName"];
+		$positionID = $row["positionID"];
+	}
+	
+?>   
   <body>
       <div class = "Payment"><h3>Payment Slip</h></div>
       <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
       <!-- Information -->
-      <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : HR031003<br><br><i class="fas fa-layer-group"></i>Department : Human Resource Management<br><br><i class="fas fa-calendar-alt"></i>Month : DEC</div>
-      <div class="Infor1"><br><br><i class="fas fa-briefcase"></i>Position : Manager<br><br><i class="fas fa-map-marker-alt"></i></i>Branch : Bang Mod<br><br><i class="fas fa-history"></i>Year : 2018</div>
+      <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : HR031003<br>
+	  <br><i class="fas fa-layer-group"></i>Department : Human Resource Management<br>
+	  <br><i class="fas fa-calendar-alt"></i>Month : DEC</div>
+      <div class="Infor1"><br>
+	  <br><i class="fas fa-briefcase"></i>Position : Manager<br>
+	  <br><i class="fas fa-map-marker-alt"></i></i>Branch : Bang Mod<br>
+	  <br><i class="fas fa-history"></i>Year : 2018</div>
       <!-- End Information -->
       <form>
           <div class="table1">
