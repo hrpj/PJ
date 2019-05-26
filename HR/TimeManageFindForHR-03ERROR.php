@@ -16,84 +16,84 @@ $search = $_SESSION["search"];
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-        <a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
+		<a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-    <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item ">
-        <a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page</a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Information
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Only Me</a>
-          <a class="dropdown-item" href="#">Any Staffs</a>
-          <a class="dropdown-item" href="#">Branch</a>
-        </div>
-        </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Payment Slip
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Only Me</a>
-                  <a class="dropdown-item" href="#">Any Staffs</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Create
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">New Staff</a>
-          <a class="dropdown-item" href="#">New Branch</a>
-          <a class="dropdown-item" href="#">New Department</a>
-          <a class="dropdown-item" href="#">New Training Course</a>
-        </div>
-      </li>
-	  <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Analysis Report
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="NewStaff.html">Age Range of Staffs</a>
-            <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
-            <a class="dropdown-item" href="NewDepartment.html">Top 5 Highest Concern Score</a>
-            <a class="dropdown-item" href="NewTraining.html">Concern Score in Bang Khae Branch</a>
-            <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
-            <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
-            <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
-            <a class="dropdown-item" href="NewStaff.html">The highest average competency score of each department</a>
-            <a class="dropdown-item" href="NewStaff.html">Amount of leave of each staff of each department in Bang Khae</a>
-            <a class="dropdown-item" href="NewStaff.html">The highest amount of leave in each department in Bang Khae</a>
-            <a class="dropdown-item" href="NewStaff.html">Field and Degree in IT department</a>
-            <a class="dropdown-item" href="NewStaff.html">Income table of each Staff</a>
-          </div>
-        </li>
-        </ul>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost/HRPJ/WelcomeSignin.html">Sign out</a>
-            </li>
-        </ul>
-    </div>
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Information
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Only Me</a>
+						<a class="dropdown-item" href="#">Any Staffs</a>
+						<a class="dropdown-item" href="#">Branch</a>
+					</div>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Payment Slip
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/PaymentStaffForHR.php">Only Me</a>
+						<a class="dropdown-item" href="#">Any Staffs</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Create
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">New Staff</a>
+						<a class="dropdown-item" href="#">New Branch</a>
+						<a class="dropdown-item" href="#">New Department</a>
+						<a class="dropdown-item" href="#">New Training Course</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Analysis Report
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Age Range of Staffs</a>
+						<a class="dropdown-item" href="#">Salary in every position and department</a>
+						<a class="dropdown-item" href="#">Top 5 Highest Concern Score</a>
+						<a class="dropdown-item" href="#">Concern Score in Bang Khae Branch</a>
+						<a class="dropdown-item" href="#">Daily Attendance in Bang Khae Branch</a>
+						<a class="dropdown-item" href="#">Work time of any position</a>
+						<a class="dropdown-item" href="#">Work time and Salary of position in any department</a>
+						<a class="dropdown-item" href="#">The highest average competency score of each department</a>
+						<a class="dropdown-item" href="#">Amount of leave of each staff of each department in Bang Khae</a>
+						<a class="dropdown-item" href="#">The highest amount of leave in each department in Bang Khae</a>
+						<a class="dropdown-item" href="#">Field and Degree in IT department</a>
+						<a class="dropdown-item" href="#">Income table of each Staff</a>
+					</div>
+				</li>
+			</ul>
+			<ul class="nav justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost/HRPJ/WelcomeSignin.html">Sign out</a>
+				</li>
+			</ul>
+		</div>
 	</nav>
 	<div class="alert alert-dismissible alert-warning">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <h4 class="alert-heading">Warning!</h4>
-  <p class="mb-0">Date not found.</p>
-</div>
-  </head>
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<h4 class="alert-heading">Warning!</h4>
+		<p class="mb-0">Date not found.</p>
+	</div>
+</head>
 
 
   <body>

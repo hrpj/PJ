@@ -89,50 +89,21 @@
       <div class = "Payment"><h3>Payment Slip</h></div>
       <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
       <!-- Information -->
-      <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : HR031003<br><br><i class="fas fa-layer-group"></i>Department : Human Resource Management<br><br><i class="fas fa-calendar-alt"></i>Month : DEC</div>
-      <div class="Infor2"><br><br><i class="fas fa-briefcase"></i>Position : Manager<br><br><i class="fas fa-map-marker-alt"></i></i>Branch : Bang Mod<br><br><i class="fas fa-history"></i>Year : 2018</div>
+      <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : HR031003<br><br><i class="fas fa-layer-group"></i>Department : Human Resource Management<br><br><i class="fas fa-calendar-alt"></i>Month : <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select></div>
+      <div class="Infor1"><br><br><i class="fas fa-briefcase"></i>Position : Manager<br><br><i class="fas fa-map-marker-alt"></i></i>Branch : Bang Mod<br><br><i class="fas fa-history"></i>Year : <input type="text" class="form-control" placeholder="Year"></div>
       <!-- End Information -->
-      <form>
-          <div class="table1">
-              Income
-      <table class="table">
-      <thead class="thead-dark">
-      <tr>
-      <th scope="col">Type</th>
-      <th scope="col">Amount</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td><input type="text" class="form-control" id="Type" aria-describedby="Type" placeholder="Original Type"></td>
-      <td><input type="text" class="form-control" id="Amount" aria-describedby="Amount" placeholder="Original Amount"></td>
-      </tr>
-      </tbody>
-      </table>
-      <div class="table2">
-          Deduction
-      <table class="table">
-      <thead class="thead-dark">
-      <tr>
-      <th scope="col">Type</th>
-      <th scope="col">Amount</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td><input type="text" class="form-control" id="Type" aria-describedby="Type" placeholder="Original Type"></td>
-      <td><input type="text" class="form-control" id="Amount" aria-describedby="Amount" placeholder="Original Amount"></td>
-      </tr>
-      </tbody>
-      </table>
-  </div>
-</form>
-      <table class="AddNCancel">
+      <table class="FindCancel">
           <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffAdd.html';">Save</button>
+      <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffSuccessForHR.html';">Find</button>
       </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Back</button>
-      </td></tr>
+  <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
+  </td></tr>
       </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
