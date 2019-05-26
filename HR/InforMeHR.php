@@ -95,6 +95,9 @@
       </div>
     </nav>
   </head>
+  
+  
+  
   <body>
       <div class = "StaffInfor"><h3>Staff Information</h></div>
     <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
