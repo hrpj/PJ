@@ -33,13 +33,13 @@ session_start();
 				<li class="nav-item active">
 					<a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown ">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Information
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
-						<a class="dropdown-item" href="#">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
 						<a class="dropdown-item" href="#">Branch</a>
 					</div>
 				</li>
