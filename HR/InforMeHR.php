@@ -97,7 +97,7 @@
   </head>
   <body>
       <div class = "StaffInfor"><h3>Staff Information</h></div>
-    <div align ="center"><img src="ImageStaff.jpg" width="400" height="300"></div>
+    <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
     <!-- Information -->
     <div class="Infor">
         <i class="fas fa-address-card"></i>Staff ID : <?php echo "$id"; ?>
@@ -235,7 +235,7 @@
     <table class="thebuttons">
         <tr>
             <td>
-                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php';">Back</button>
+                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/WelcomeSignoutForHR.php';">Back</button>
             </td>
         </tr>
     </table>
