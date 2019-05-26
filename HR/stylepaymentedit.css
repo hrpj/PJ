@@ -15,24 +15,37 @@ h6
 }
 .Infor
 {
-    width:400px;
+    width:390px;
     top:50%;
     left:50%;
-    margin-left:400px;
+    margin-left:300px;
     margin-top:30px;
 }
 .Infor1
 {
-    width:400px;
+    width:250px;
     top:50%;
     left:50%;
     margin-left:800px;
-    margin-top:-170px;
+    margin-top:-205px;
+}
+.Infor2
+{
+    width:250px;
+    top:50%;
+    left:50%;
+    margin-left:800px;
+    margin-top:-166px;
 }
 .AddNCancel
 {
     margin-top:80px;
     margin-left:730px;
+}
+.FindCancel
+{
+    margin-top:80px;
+    margin-left:1030px;
 }
 .table1
 {
@@ -42,6 +55,14 @@ h6
     margin-left:300px;
     margin-top:80px;
 }
+.tableone
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:300px;
+    margin-top:70px;
+}
 .table2
 {
     width:300px;
@@ -49,4 +70,12 @@ h6
     left:50%;
     margin-left:500px;
     margin-top:-153px;
+}
+.tabletwo
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:500px;
+    margin-top:-139px;
 }
