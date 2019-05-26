@@ -1,6 +1,9 @@
 <?php 
 session_start();
   $id = $_SESSION["ID"];
+  $positionID = $_SESSION['positionID'];
+  $departmentID = $_SESSION['departmentID'];
+  $BranchName = $_SESSION['BranchName'];
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
   if (mysqli_connect_errno()) 
@@ -59,12 +62,22 @@ session_start();
 
       <!-- Information -->
       <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo $id; ?>
-          <br><br><i class="fas fa-layer-group"></i>Department : Human Resource Management
+          <br><br><i class="fas fa-layer-group"></i>Department : <?php 
+            $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                echo $row['departmentName'];
+            }?>
           <br><br><i class="fas fa-calendar-alt"></i>Month : DEC
       </div>
       <div class="Infor1">
-          <br><br><i class="fas fa-briefcase"></i>Position : Manager
-          <br><br><i class="fas fa-map-marker-alt"></i></i>Branch : Bang Mod
+          <br><br><i class="fas fa-briefcase"></i>Position : <?php 
+            $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                echo $row['positionName'];
+            }?>
+          <br><br><i class="fas fa-map-marker-alt"></i></i>Branch : <?php echo $BranchName; ?>
           <br><br><i class="fas fa-history"></i>Year : 2018
       </div>
       <!-- End Information -->
