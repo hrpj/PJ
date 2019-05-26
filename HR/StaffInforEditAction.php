@@ -1,5 +1,6 @@
 <?php 
 session_start();
+ob_start();
 $con=mysqli_connect("localhost","root","","hrmanager");
 // Check connection
 	if (mysqli_connect_errno()) 
@@ -73,13 +74,12 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	}
 	$count = 0;
 	$result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
-  	$count=$result->num_rows;
     while ($row = mysqli_fetch_array($result))
     {
     	$companySearch = $row['company'];
     	$startSearch = $row['startDate'];
     	$endSearch = $row['endDate'];
-    	$send = mysqli_query($con,"UPDATE workinghistory SET company ='".$company[0]."',startDate ='".$startDate[0]."',endDate ='".$endDate[0]."' WHERE company LIKE '".$companySearch."',startDate ='".$startSearch."',endDate ='".$endSearch."'");
+    	mysqli_query($con,"UPDATE workinghistory SET company ='".$company[$count]."',startDate ='".$startDate[$count]."',endDate ='".$endDate[$count]."' WHERE company LIKE '".$companySearch."',startDate ='".$startSearch."',endDate ='".$endSearch."'");
     	$count++;
     }
 // company end
@@ -128,4 +128,5 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 
 	//header("Location: http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 	mysqli_close($con);
+	//header("Location: http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 ?>
