@@ -10,6 +10,7 @@ $search = $_SESSION["search"];
 $year = $_SESSION["year"];
 $dm = $_SESSION["result2"];
 ?>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -49,7 +50,13 @@ $dm = $_SESSION["result2"];
         <a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Payment Slip</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Payment Slip
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="PaymentStaffForHR.html">Only Me</a>
+            <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
+        </div>
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,35 +99,34 @@ $dm = $_SESSION["result2"];
   </head>
   
   
-  <body>
+<body>
     <br><div align="right"><i class="fas fa-user-clock"></i>
         Staff ID : <?php echo "$search" ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <hr>
-<!-- Date -->
-<form action="getDate.php" method="POST" >
-<div class = "Date">
-<input type="date" name="date" id="myDate" value="<?php echo $year.'-'.$dm ?>">
-<p>Click the button to get the status of the date.</p>
-<input type="hidden" name="search" value="<?php echo "$search" ?>">
-<button type="submit" onclick="window.location.href = '#' ">Submit</button>
-</div>
-</form>
+	<!-- Date -->
+	<form action="getDate.php" method="POST" >
+	<div class = "Date">
+	<input type="date" name="date" id="myDate" value="<?php echo $year.'-'.$dm ?>">
+	<p>Click the button to get the status of the date.</p>
+	<input type="hidden" name="search" value="<?php echo "$search" ?>">
+	<button type="submit" onclick="window.location.href = '#' ">Submit</button>
+	</div>
+	</form>
 
-<!-- End Date -->
-<!-- Table -->
-<div class="TableStatus">
-<table class="table">
-  <thead>
+	<!-- End Date -->
+	<!-- Table -->
+	<div class="TableStatus">
+	<table class="table">
+	<thead>
     <tr>
       <th scope="col">Type</th>
       <th scope="col">Time</th>
       <th scope="col">Status</th>
     </tr>
-  </thead>
-  <tbody>
- <?php 
+	</thead>
+	<tbody>
+<?php 
 	$result = mysqli_query($con,"SELECT * FROM timeattendance WHERE staffId LIKE '$search' AND year LIKE '$year' AND date LIKE '$dm'");
-	
 	$count=$result->num_rows;
 	if ((empty($count))) 
 	{
