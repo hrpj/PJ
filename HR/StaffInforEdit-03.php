@@ -149,7 +149,7 @@ session_start();
         <!-- Fill Information -->
         <form action="StaffInforEditAction.php" method="post">
             <div class="ID">
-                <input type="text" class="form-control" value="<?php echo "$search"; ?>">
+                <input type="text" class="form-control" name="search" value="<?php echo "$search"; ?>">
             </div>
             <div class="Name">
                 <input type="text" class="form-control" name="staffName" value="<?php echo "$staffName"; ?>">
