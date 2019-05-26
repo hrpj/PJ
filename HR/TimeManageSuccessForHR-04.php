@@ -10,7 +10,6 @@ $search = $_SESSION["search"];
 $year = $_SESSION["year"];
 $dm = $_SESSION["result2"];
 ?>
-<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -121,6 +120,7 @@ $dm = $_SESSION["result2"];
   <tbody>
  <?php 
 	$result = mysqli_query($con,"SELECT * FROM timeattendance WHERE staffId LIKE '$search' AND year LIKE '$year' AND date LIKE '$dm'");
+	
 	$count=$result->num_rows;
 	if ((empty($count))) 
 	{
