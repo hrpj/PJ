@@ -60,8 +60,22 @@ session_start();
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
             while ($row = mysqli_fetch_array($result))
             {
-                echo $row['staffName'] ; 
-            }?> to ILoveDB Company</font></marquee>
+                echo $row['staffName'] ;
+                $_SESSION["staffName"] = $row['staffName'];
+                $_SESSION["positionID"] = $positionID = $row['positionID'];
+            }
+            $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                $_SESSION["departmentID"] = $departmentID = $row['departmentID'];
+            }
+            $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                $_SESSION["departmentName"] = $row['departmentName'];
+                $_SESSION["BranchName"] = $row['BranchName'];
+            }
+            ?> to ILoveDB Company</font></marquee>
       <hr>
       <!-- Start Slide -->
 <center>
