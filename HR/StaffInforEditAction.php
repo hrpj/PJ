@@ -1,13 +1,13 @@
 <?php 
 session_start();
-	$con=mysqli_connect("localhost","root","","hrmanager");
-	// Check connection
+$con=mysqli_connect("localhost","root","","hrmanager");
+// Check connection
 	if (mysqli_connect_errno()) 
 	{
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	// escape variables for security
+// escape variables
 	$search = mysqli_real_escape_string($con, $_POST["search"]);
 	$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
 	$gender = mysqli_real_escape_string($con, $_POST['gender']);
@@ -16,12 +16,12 @@ session_start();
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
-	echo $search;
-// Company case
-	$i2 = $i;
-	while ($i2 > 0) 
+
+// Company recieve case
+	$Temp = $i;
+	while ($Temp > 0) 
 	{
-		switch ($i2) {
+		switch ($Temp) {
 			case '1':	$company1 = mysqli_real_escape_string($con, $_POST['company1']);
 						echo "$company1";
 						break;
@@ -84,12 +84,12 @@ session_start();
 						break;
 			default: break;
 		}
-		$i2--;
+		$Temp--;
 	}
-	$i2 = $i;
-	while ($i2 > 0) 
+	$Temp = $i;
+	while ($Temp > 0) 
 	{
-		switch ($i2) {
+		switch ($Temp) {
 			case '1':	$startDate1 = mysqli_real_escape_string($con, $_POST['startDate1']);
 						echo "$startDate1";
 						break;
@@ -152,12 +152,12 @@ session_start();
 						break;
 			default: break;
 		}
-		$i2--;
+		$Temp--;
 	}
-	$i2 = $i;
-	while ($i2 > 0) 
+	$Temp = $i;
+	while ($Temp > 0) 
 	{
-		switch ($i2) {
+		switch ($Temp) {
 			case '1':	$endDate1 = mysqli_real_escape_string($con, $_POST['endDate1']);
 						echo "$endDate1";
 						break;
@@ -220,14 +220,14 @@ session_start();
 						break;
 			default: break;
 		}
-		$i2--;
+		$Temp--;
 	}
-// company end
-// university case
-	$j2 = $j;
-	while ($j2 > 0) 
+// company recieve end
+// university recieve case
+	$Temp = $j;
+	while ($Temp > 0) 
 	{
-		switch ($j2) {
+		switch ($Temp) {
 			case '1':	$university1 = mysqli_real_escape_string($con, $_POST['university1']);
 						echo "$university1";
 						break;
@@ -290,12 +290,12 @@ session_start();
 						break;
 			default: break;
 		}
-		$j2--;
+		$Temp--;
 	}
-	$j2 = $j;
-	while ($j2 > 0) 
+	$Temp = $j;
+	while ($Temp > 0) 
 	{
-		switch ($j2) {
+		switch ($Temp) {
 			case '1':	$field1 = mysqli_real_escape_string($con, $_POST['field1']);
 						echo "$field1";
 						break;
@@ -358,12 +358,12 @@ session_start();
 						break;
 			default: break;
 		}
-		$j2--;
+		$Temp--;
 	}
-	$j2 = $j;
-	while ($j2 > 0) 
+	$Temp = $j;
+	while ($Temp > 0) 
 	{
-		switch ($j2) {
+		switch ($Temp) {
 			case '1':	$degree1 = mysqli_real_escape_string($con, $_POST['degree1']);
 						echo "$degree1";
 						break;
@@ -426,9 +426,18 @@ session_start();
 						break;
 			default: break;
 		}
-		$j2--;
+		$Temp--;
 	}
-// university end
+// university recieve end
+	//search and update
+        $Temp = $i;
+        while ($Temp>0))
+        {
+        	$result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
+        	
+            $Temp--;
+        }
+
 
 	echo $staffName;
 	echo $gender;
