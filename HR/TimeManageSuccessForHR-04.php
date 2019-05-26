@@ -10,7 +10,6 @@ $search = $_SESSION["search"];
 $year = $_SESSION["year"];
 $dm = $_SESSION["result2"];
 ?>
-<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
