@@ -92,10 +92,10 @@
     <hr>
 	  
     <!-- Search -->
-    <form class="form-inline my-2 my-lg-0">
+    <form action="search2.php" method="POST" class="form-inline my-2 my-lg-0">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Staff ID&nbsp;&nbsp;
-		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href = 'StaffInfor.html';">Search</button>
+		<input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="window.location.href = 'StaffInfor.html';">Search</button>
     </form>
 	
 	
