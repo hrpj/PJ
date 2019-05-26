@@ -37,13 +37,13 @@ $dm = $_SESSION["result2"];
         <a class="nav-link" href="http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php">Page <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Information</a>
+        <a class="nav-link" href="http://localhost/HRPJ/Staff/InforMeStaff.php">Information</a>
         </li>
         <li class="nav-item active">
         <a class="nav-link" href="http://localhost/HRPJ/Staff/TimeManageFindForStaff.php">Time Attendance</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="#">Payment Slip</a>
+        <a class="nav-link" href="http://localhost/HRPJ/Staff/PaymentStaffForStaff.php">Payment Slip</a>
         </li>
         </ul>
         <ul class="nav justify-content-end">
