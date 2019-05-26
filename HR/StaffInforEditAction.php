@@ -17,7 +17,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
-
+	echo $i;
 $check = 0;
 // Company start
     $Temp = 1;
@@ -73,6 +73,7 @@ $check = 0;
 		}
 		$Temp++;
 	}
+	echo "    ".$Temp."     ";
 	$count = 0;
 	$result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
     while ($row = mysqli_fetch_array($result))
@@ -82,7 +83,7 @@ $check = 0;
     	$endSearch = $row['endDate'];
     	mysqli_query($con,"UPDATE workinghistory SET company ='$company[$count]',startDate ='$startDate[$count]',endDate ='$endDate[$count]' WHERE company LIKE '$companySearch',startDate ='$startSearch',endDate ='$endSearch'");
     	$count++;
-    	if ($Temp == $count) 
+    	if (($Temp-1) == $count) 
     	{
     		$check = 1;
     	}
@@ -130,11 +131,9 @@ $check = 0;
 		$Temp--;
 	}
 // university recieve end
-	//header("Location: http://localhost/HRPJ/HR/StaffInforEdit-03.php");
-	mysqli_close($con);
-if (check) 
+mysqli_close($con);
+if ($check) 
 {
-header("Location: http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+	header("Location: http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 }
-//header("Location: http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 ?>
