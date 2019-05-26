@@ -99,27 +99,26 @@ session_start();
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
             while ($row = mysqli_fetch_array($result))
             {
+            	$staffName = $row['staffName'];
                 $gender = $row['gender'];
                 $DOB = $row['dateOfBirth'];
                 $bankAccount = $row['bankAccount'];
                 $telNOStaff = $row['mobilePhoneNo'];
                 $staffAddress = $row['address'];
                 $startDate = $row['startDate'];
+                $positionID = $row['positionID'];
             }
-			
-            $staffName = $_SESSION['staffName'];
-			$positionID = $_SESSION['positionID'];
-            $departmentID = $_SESSION['departmentID'];
-            $BranchName = $_SESSION['BranchName'];
             $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
             while ($row = mysqli_fetch_array($result))
             {
                 $positionName = $row['positionName'];
+                $departmentID = $row['departmentID'];
             }
             $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
             while ($row = mysqli_fetch_array($result))
             {
-                $departmentName= $row['departmentName'];
+                $departmentName = $row['departmentName'];
+                $BranchName = $row['BranchName'];
             }
 ?>
 <body>
