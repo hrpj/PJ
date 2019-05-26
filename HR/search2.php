@@ -24,7 +24,7 @@ session_start();
 		$_SESSION["search"] = $row['staffID'];
 		if ($result != False )
 		{
-			header("Location: http://localhost/HRPJ/HR/TimeAttendanceSearchSuccessForHR-02.php");
+			header("Location: http://localhost/HRPJ/HR/StaffInfor-02.php");
 		}
 		else
 		{
