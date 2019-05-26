@@ -37,13 +37,13 @@ session_start();
         <li class="nav-item">
         <a class="nav-link" href="http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php">Page <span class="sr-only"></span></a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
         <a class="nav-link" href="http://localhost/HRPJ/Staff/InforMeStaff.php">Information</a>
         </li>
         <li class="nav-item">
         <a class="nav-link" href="http://localhost/HRPJ/Staff/TimeManageFindForStaff.php">Time Attendance</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
         <a class="nav-link" href="http://localhost/HRPJ/Staff/PaymentStaffForStaff.php">Payment Slip</a>
         </li>
         </ul>
