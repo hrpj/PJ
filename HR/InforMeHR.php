@@ -121,7 +121,7 @@
     </div>
 
     <div class="Infor1"><br><br>
-        <br><br><br><br><i class="fas fa-layer-group"></i>Department : <?php 
+        <i class="fas fa-layer-group"></i>Department : <?php 
             $positionID = $_SESSION['positionID'];
             $departmentID = $_SESSION['departmentID'];
             $BranchName = $_SESSION['BranchName'];
