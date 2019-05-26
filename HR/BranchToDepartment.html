@@ -88,13 +88,20 @@
   <body>
        <div class = "DepartinBranch"><h3>Department in Branch</h></div>
            <!-- Fill Department -->
-           <div class="Depart1">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Department ID and Department name</span>
-  </div>
-  <input type="text" aria-label="ID" class="form-control">
-  <input type="text" aria-label="Name" class="form-control">
-</div>
+           <table class="table">
+           <thead class="thead-dark">
+           <tr>
+           <th scope="col">Department ID</th>
+           <th scope="col">Department Name</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr>
+           <td><input type="text" class="form-control" id="ID"></td>
+           <td><input type="text" class="form-control" id="Name"></td>
+           </tr>
+           </tbody>
+           </table>
            <!-- End Fill Department -->
            <div class ="More"><a href="BranchToDepartment.html" class="button-link">Add more</a></div>
            <div class="NextBut">
