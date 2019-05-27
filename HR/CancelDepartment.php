@@ -13,6 +13,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$branchName = $_SESSION["BRANCH"];
+
 // Escape user inputs for security
 $departmentID = $_SESSION["DEPARTMENT"];
 
@@ -22,6 +24,7 @@ $sql = "DELETE FROM department WHERE departmentID='$departmentID'";
 
 if ($conn->query($sql) === TRUE) {
   $_SESSION["Department"] = "";
+  $_SESSION["BRANCH"] = $branchName;
   header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
 } else {
   echo "Something went wrong, can't delete department";
