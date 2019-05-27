@@ -72,7 +72,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 		}
 		$Temp++;
 	}
-	//echo "    ".$Temp."     ";
+
 	$count = 0;
 	$result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
     while ($row = mysqli_fetch_array($result))
@@ -80,56 +80,78 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     	$companySearch[$count] = $row['company'];
     	$startSearch[$count] = $row['startDate'];
     	$endSearch[$count] = $row['endDate'];
-    	//mysqli_query($con,"UPDATE workinghistory SET company ='$company[$count]',startDate ='$startDate[$count]',endDate ='$endDate[$count]' WHERE company LIKE '$companySearch',startDate ='$startSearch',endDate ='$endSearch'");
     	$count++;
     }
     $count = 0;
-
     while ($count < $i) 
     {
     	$sql = mysqli_query($con,"UPDATE workinghistory SET company ='".$company[$count]."',startDate ='".$startDate[$count]."',endDate ='".$endDate[$count]."' WHERE company LIKE '".$companySearch[$count]."' AND startDate ='".$startSearch[$count]."' AND endDate ='".$endSearch[$count]."';");
 		$count++;
 	}
+
 // university recieve case
-	$Temp = $j;
-	while ($Temp > 0) 
+	$Temp = 1;
+	while ($Temp <= $i)
 	{
 		switch ($Temp) {
-			case '1':	$university1 = mysqli_real_escape_string($con, $_POST['university1']);
-						$field1 = mysqli_real_escape_string($con, $_POST['field1']);
-						$degree1 = mysqli_real_escape_string($con, $_POST['degree1']);
-						//echo "$university1";
+			case '1':	$university[0] = mysqli_real_escape_string($con, $_POST['university1']);
+						$field[0] = mysqli_real_escape_string($con, $_POST['field1']);
+						$degree[0] = mysqli_real_escape_string($con, $_POST['degree1']);
 						break;
-			case '2': 	$university2 = mysqli_real_escape_string($con, $_POST['university2']);
-						//echo "$university2";
+			case '2': 	$university[1] = mysqli_real_escape_string($con, $_POST['university2']);
+						$field[1] = mysqli_real_escape_string($con, $_POST['field2']);
+						$degree[1] = mysqli_real_escape_string($con, $_POST['degree2']);
 						break;
-			case '3': 	$university3 = mysqli_real_escape_string($con, $_POST['university3']);
-						//echo "$university3";
+			case '3': 	$university[2] = mysqli_real_escape_string($con, $_POST['university3']);
+						$field[2] = mysqli_real_escape_string($con, $_POST['field3']);
+						$degree[2] = mysqli_real_escape_string($con, $_POST['degree3']);
 						break;
-			case '4': 	$university4 = mysqli_real_escape_string($con, $_POST['university4']);
-						//echo "$university4";
+			case '4': 	$university[3] = mysqli_real_escape_string($con, $_POST['university4']);
+						$field[3] = mysqli_real_escape_string($con, $_POST['field4']);
+						$degree[3] = mysqli_real_escape_string($con, $_POST['degree4']);
 						break;
-			case '5': 	$university5 = mysqli_real_escape_string($con, $_POST['university5']);
-						//echo "$university5";
+			case '5': 	$university[4] = mysqli_real_escape_string($con, $_POST['university5']);
+						$field[4] = mysqli_real_escape_string($con, $_POST['field5']);
+						$degree[4] = mysqli_real_escape_string($con, $_POST['degree5']);
 						break;
-			case '6': 	$university6 = mysqli_real_escape_string($con, $_POST['university6']);
-						//echo "$university6";
+			case '6': 	$university[5] = mysqli_real_escape_string($con, $_POST['university6']);
+						$field[5] = mysqli_real_escape_string($con, $_POST['field6']);
+						$degree[5] = mysqli_real_escape_string($con, $_POST['degree6']);
 						break;
-			case '7': 	$university7 = mysqli_real_escape_string($con, $_POST['university7']);
-						//echo "$university7";
+			case '7': 	$university[6] = mysqli_real_escape_string($con, $_POST['university7']);
+						$field[6] = mysqli_real_escape_string($con, $_POST['field7']);
+						$degree[6] = mysqli_real_escape_string($con, $_POST['degree7']);
 						break;
-			case '8': 	$university8 = mysqli_real_escape_string($con, $_POST['university8']);
-						//echo "$university8";
+			case '8': 	$university[7] = mysqli_real_escape_string($con, $_POST['university8']);
+						$field[7] = mysqli_real_escape_string($con, $_POST['field8']);
+						$degree[7] = mysqli_real_escape_string($con, $_POST['degree8']);
 						break;
-			case '9': 	$university9 = mysqli_real_escape_string($con, $_POST['university9']);
-						//echo "$university9";
+			case '9': 	$university[8] = mysqli_real_escape_string($con, $_POST['university9']);
+						$field[8] = mysqli_real_escape_string($con, $_POST['field9']);
+						$degree[8] = mysqli_real_escape_string($con, $_POST['degree9']);
 						break;
-			case '10': 	$university10 = mysqli_real_escape_string($con, $_POST['university10']);
-						//echo "$university10";
+			case '10': 	$university[9] = mysqli_real_escape_string($con, $_POST['university10']);
+						$field[9] = mysqli_real_escape_string($con, $_POST['field10']);
+						$degree[9] = mysqli_real_escape_string($con, $_POST['degree10']);
 						break;
 			default: break;
 		}
-		$Temp--;
+		$Temp++;
+	}
+	$count = 0;
+	$result = mysqli_query($con,"SELECT * FROM education WHERE staffID LIKE '$search'");
+    while ($row = mysqli_fetch_array($result))
+    {
+    	$universitySearch[$count] = $row['university'];
+    	$fieldSearch[$count] = $row['field'];
+    	$degreeSearch[$count] = $row['degree'];
+    	$count++;
+    }
+    $count = 0;
+    while ($count < $i) 
+    {
+    	$sql = mysqli_query($con,"UPDATE education SET university ='".$universitySearch[$count]."',field ='".$fieldSearch[$count]."',degree ='".$degreeSearch[$count]."' WHERE university LIKE '".$university[$count]."' AND field LIKE '".$field[$count]."' AND degree LIKE '".$degree[$count]."';");
+		$count++;
 	}
 // university recieve end
 	mysqli_close($con);
