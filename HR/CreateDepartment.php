@@ -33,7 +33,7 @@ if (isset($_POST['create']))
     $row = mysqli_fetch_array($result);
     $_SESSION["DEPARTMENT"] = $row['departmentID'];
 
-    header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
+    header('Location: http://localhost/HRPJ/HR/PositionandSalary.php');
   }
   else
   {
@@ -67,8 +67,6 @@ else if (isset($_POST['delete']))
 
 $_SESSION["BRANCH"] = $branchName;
 $_SESSION["DEPARTMENT"] = $departmentID;
-
-header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
 
 $conn->close();
 
