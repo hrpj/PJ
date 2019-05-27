@@ -17,11 +17,10 @@ if ($conn->connect_error) {
 $branchName = mysqli_real_escape_string($conn, $_REQUEST['branchName']);
 $address = mysqli_real_escape_string($conn, $_REQUEST['branchAddress']);
 $telNo = mysqli_real_escape_string($conn, $_REQUEST['telNo']);
-$code = mysqli_real_escape_string($conn, $_REQUEST['manageID']);
 
 
-$sql = "INSERT INTO branch (branchName, address, tellNo, code)
-VALUES ('$branchName', '$address', '$telNo', '$code')";
+$sql = "INSERT INTO branch (branchName, address, tellNo)
+VALUES ('$branchName', '$address', '$telNo')";
 
 
 if ($conn->query($sql) === TRUE) {
