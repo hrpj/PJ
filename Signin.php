@@ -1,8 +1,8 @@
-<?php 
+<?php
 session_start();
 	$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
-	if (mysqli_connect_errno()) 
+	if (mysqli_connect_errno())
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
@@ -10,13 +10,13 @@ session_start();
 	// escape variables for security
 	$id = mysqli_real_escape_string($con, $_POST['id']);
 	$password = mysqli_real_escape_string($con, $_POST['password']);
-	
+
 	$hr = "HR";
-	
+
 	$result = mysqli_query($con,"SELECT * FROM staff WHERE staffId LIKE '$id'");
-	
+
 	$count=$result->num_rows;
-	if ((empty($count))) 
+	if ((empty($count)))
 	{
 		header("Location: http://localhost/HRPJ/ErrorSignin.html");
 	}
@@ -27,9 +27,15 @@ session_start();
 		$positionID = $row['positionID'];
 		if ($password == $row['password'])
 		{
-			$result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+			$result = mysqli_query($con,"SELECT s.staffID AS staffID,p.positionName AS positionName,d.departmentName AS departmentName
+																		FROM position p
+																		LEFT JOIN staff s
+																		ON s.positionID = p.positionID
+																		LEFT JOIN department d
+																		ON d.departmentID = p.departmentID
+																		WHERE s.staffID LIKE '$id'");
 			$row = mysqli_fetch_array($result);
-			if(strpos($row['positionName'],$hr)!==false)
+			if(($row['departmentName']==="HR")!==false)
 			{
 				header("Location: http://localhost/HRPJ/HR/WelcomeSignoutForHR.php");
 			}
@@ -43,7 +49,7 @@ session_start();
 			header("Location: http://localhost/HRPJ/ErrorSignin.html");
 		}
 	}
-	
+
 	mysqli_close($con);
 	session_write_close();
 ?>
