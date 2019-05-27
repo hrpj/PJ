@@ -103,7 +103,7 @@ session_start();
                 $gender = $row['gender'];
                 $DOB = $row['dateOfBirth'];
                 $bankAccount = $row['bankAccount'];
-                $telNOStaff = $row['mobilePhoneNo'];
+                $telNOStaff = $row['telNo'];
                 $staffAddress = $row['address'];
                 $startDate = $row['startDate'];
                 $positionID = $row['positionID'];
