@@ -111,11 +111,11 @@
       $i = 1;
       while ($row = mysqli_fetch_array($result))
       {
-        $branchName = $row['branchName'];
         echo "<tr>";
+        $branchName[$i] = $row['branchName'];
         echo "<th scope='row'>".$i."</th>";
-        echo "<td>".$branchName."</td>";
-        echo "<td><a href='http://localhost/HRPJ/HR/ViewBranch.php?branchName='".$branchName."' class='button-link'>View</a></td>";
+        echo "<td>".$branchName[$i]."</td>";
+        echo "<td><a href='http://localhost/HRPJ/HR/ViewBranch.php?branchName='".$branchName[$i]."' class='button-link'>View</a></td>";
         echo "</tr> ";
         $i++;
       }
