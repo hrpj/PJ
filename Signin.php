@@ -24,10 +24,12 @@ session_start();
 	while ($row = mysqli_fetch_array($result))
 	{
 		$_SESSION["ID"] = $row['staffID'];
-	
+		$positionID = $row['positionID'];
 		if ($password == $row['password'])
 		{
-			if(strpos($row['positionID'],$hr)!==false)
+			$result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+			$row = mysqli_fetch_array($result);
+			if(strpos($row['positionName'],$hr)!==false)
 			{
 				header("Location: http://localhost/HRPJ/HR/WelcomeSignoutForHR.php");
 			}
