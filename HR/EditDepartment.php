@@ -6,6 +6,13 @@ session_start();
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
+  $departmentID = $_SESSION["DEPARTMENT"];
+  $_SESSION["DEPARTMENT"] = $departmentID;
+  $result = mysqli_query($con,"SELECT d.departmentName AS departmentName
+                                FROM department d
+                                WHERE departmentID LIKE $departmentID");
+  $row = mysqli_fetch_array($result);
+  $departmentName = $row['departmentName'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -104,21 +111,29 @@ session_start();
 
   <body>
       <div class = "NameBranch"><h3>Edit Department</h3></div>
-      <form>
-      <div class="Previous">
-        Previous Department Name : <br>Something
-      </div>
-      <div class="New">
-        New Department Name : <input type="text" class="form-control" placeholder="Name">
-      </div>
-  </form>
-<table class="Back">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'ViewBranch.html';">Save</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'ViewBranch.html';">Cancel</button></span>
-</td></tr>
-</table>
+
+      <!-- __________________________Start form_________________________ -->
+      <form action="EditDepartmentSubmit.php" method="post">
+        <div class="Previous">
+          Previous Department Name : <br><?php echo $departmentName; ?>
+        </div>
+        <div class="New">
+          New Department Name : <input type="text" name="NewDepartmentName" class="form-control" placeholder="Name">
+        </div>
+        <table class="Back">
+          <tr>
+            <td>
+                <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'ViewBranch.html';">Save</button>
+            </td>
+            <td>
+              <span>
+                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'ViewBranch.html';">Cancel</button>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <!-- __________________________Start form_________________________ -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
