@@ -92,34 +92,38 @@
           <br><br><br><i class="fas fa-portrait"></i>Manager : </div>
           <!-- End Information -->
           <!-- Form -->
-  <div class="BranchName">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Branch Name">
-    </div>
-  </div>
-  <div class="BranchAddress">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Branch Address">
-    </div>
-  </div>
-  <div class="Telephone">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Telephone Number">
-    </div>
-  </div>
-  <div class="Manager">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Manager ID">
-    </div>
-  </div>
-  <!-- End Form -->
-  <div class="NextBut">
-  <button type="button" class="btn btn-dark" onclick="window.location.href = 'BranchToDepartment.html';">Next</button>
- <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+          <form name="branchForm" action="CreateBranch.php" method="post">
+                    <!-- Form -->
+          <div class="BranchName">
+            <div class="col">
+              <input type="text" name="branchName" class="form-control" placeholder="Branch Name">
+            </div>
+          </div>
+          <div class="BranchAddress">
+            <div class="col">
+              <input type="text" name="branchAddress" class="form-control" placeholder="Branch Address">
+            </div>
+          </div>
+          <div class="Telephone">
+            <div class="col">
+              <input type="text" name="telNo" class="form-control" placeholder="Telephone Number">
+            </div>
+          </div>
+          <div class="Manager">
+            <div class="col">
+              <input type="text" name="manageID" class="form-control" placeholder="Manager ID">
+            </div>
+          </div>
+          <div class="NextBut">
+            <button type="submit" class="btn btn-dark" onclick="window.location.href = 'NewDepartment.php';">Next</button>
+            <button type="button" class="btn btn-dark" onclick="window.location.href = 'CancelBranch.php';">Cancel</button>
+          </div>
+        </form>
+        <!-- End Form -->
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+          </body>
 </html>
