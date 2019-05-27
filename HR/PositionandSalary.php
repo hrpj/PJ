@@ -94,12 +94,16 @@ session_start();
         </div>
     </nav>
   </head>
+  <!--____________________________________End Nav bar_____________________________________-->
   <body>
-    <div class = "DepartinBranch"><h3>Branch : <?php echo $_SESSION["BRANCH"]; ?></h></div>
-    <div class = "DepartinBranch"><h3>Department : <?php echo $_SESSION["DEPARTMENT"]; ?></h></div>
+
+  <!--________________________________________________________________________________ -->
+    <div><h3>Branch : <?php echo $_SESSION["BRANCH"]; ?></h></div>
+    <div><h3>Department ID : <?php echo $_SESSION["DEPARTMENT"]; ?></h></div>
 
 
-   <!---##############################FORM##################################------------>
+   <!---___________________________Table with Form__________________________________----------->
+   <div align="center">
      <form name="ManagePosition" action="CreateEditDeletePosition.php" method="post">
         <?php
            $branch = $_SESSION["BRANCH"];
@@ -165,15 +169,14 @@ session_start();
           <button type="submit" name="create" class="btn btn-dark"> <h4> Add </h4> </button>
         </div>
      </form>
+   </div>
    <!---------------------------------------------------------------------------------------------------------------->
 
 
-   <!--______________________________________________Next, Back and Cancel__________________________________________________-->
-   			<form action="index.html" method="post">
-   				<div class="NextBut">
-           	 <button type="button" class="btn btn-dark" onclick="window.location.href = 'NewDepartment.html';">OK</button>
+   <!--______________________________________________OK and Cancel__________________________________________________-->
+   			<form method="post">
+           	 <button type="button" class="btn btn-dark" onclick="window.location.href = 'NewDepartment.php';">OK</button>
         		 <button type="button" class="btn btn-dark" onclick="window.location.href = 'CancelDepartment.php';">Cancel</button>
-   	 			</div>
    			</form>
    <!---------------------------------------------------------------------------------------------------------------->
 
