@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -86,46 +95,71 @@
     </nav>
   </head>
   <body>
-      <!-- Department -->
-      <div class = "PositionandSalary"><h3>Position and Salary</h3></div>
-      <div class="Department">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Department</label>
-  <select class="custom-select" id="inputGroupSelect01">
-    <option selected>Choose...</option>
-    <option value="1">1 - Marketing</option>
-    <option value="2">2 - Finance</option>
-  </select>
-</div>
-<!-- Position -->
-<div class="Position">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Position</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-</div>
-<!-- Salary -->
-<div class="MinSalary">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Minimum Salary</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-</div>
-<div class="MaxSalary">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Maximum Salary</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-</div>
-<!-- Buttons -->
-<div class ="More"><a href="PositionandSalary.html" class="button-link">Add more</a>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-<table class="NextBut">
-    <tr><td>
-<button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Save</button>
-</td><td>
-<button type="button" class="btn btn-dark" onclick="window.location.href = 'BranchToDepartment.html';">Cancel</button>
-</td></tr>
-</table>
+    <div class = "DepartinBranch"><h3>Branch : <?php echo $_SESSION["BRANCH"]; ?></h></div>
+    <div class = "DepartinBranch"><h3>Department : <?php echo $_SESSION["DEPARTMENT"]; ?></h></div>
+
+
+   <!---##############################FORM##################################------------>
+     <form name="ManagePosition" action="CreateEditDeletePosition.php" method="post">
+        <?php
+           $branch = $_SESSION["BRANCH"];
+           $departmentID = $_SESSION["DEPARTMENT"];
+           $sql = "SELECT * FROM position WHERE departmentID LIKE '$departmentID'";
+           $result = mysqli_query($con,$sql);
+         ?>
+
+        <table class="table">
+         <thead class="thead-dark">
+           <tr>
+             <th scope="col">Position Name</th>
+             <th scope="col">Department Name</th>
+             <th scope="col">Branch Name</th>
+             <th scope="col">Edit</th>
+             <th scope="col">Delete</th>
+           </tr>
+         </thead>
+        <tbody>
+          <?php
+           while($row = mysqli_fetch_array($result)) {
+              $ID = $row['departmentID'];
+              $name = $row['departmentName'];
+              $branchName = $row['BranchName'];
+              echo "<tr>
+               <td>".$ID."</td>
+               <td>".$name."</td>
+               <td>
+                 <button type=\"submit\"
+                   name=\"edit\"
+                   value=\"".$ID."\"
+                   class=\"btn btn-success\">
+                   <h6>edit</h6>
+                 </button>
+               </td>
+               <td>
+                 <button type=\"submit\"
+                   name=\"delete\"
+                   value=\"".$ID."\"
+                   class=\"btn btn-danger\">
+                   <h6>delete</h6>
+                 </button>
+               </td>
+              </tr>";
+           }
+          ?>
+          <tr>
+            <td><input type="text" name="departmentID" class="form-control" id="ID"></td>
+            <td><input type="text" name="departmentName" class="form-control" id="Name"></td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+        </table>
+
+        <div align="center">
+          <button type="submit" name="create" class="btn btn-dark"> <h4> Add </h4> </button>
+        </div>
+     </form>
+   <!---------------------------------------------------------------------------------------------------------------->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

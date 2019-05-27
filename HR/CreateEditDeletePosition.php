@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Escape user inputs for security
-$departmentID = mysqli_real_escape_string($conn, $_REQUEST['departmentID']);
+$departmentID = mysqli_real_escape_string($conn, $_REQUEST['positionName']);
 $departmentName = mysqli_real_escape_string($conn, $_REQUEST['departmentName']);
 $branchName = $_SESSION["BRANCH"];
 
