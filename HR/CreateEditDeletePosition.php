@@ -14,13 +14,20 @@ if ($conn->connect_error) {
 }
 
 // Escape user inputs for security
-$departmentID = mysqli_real_escape_string($conn, $_REQUEST['positionName']);
-$departmentName = mysqli_real_escape_string($conn, $_REQUEST['departmentName']);
-$branchName = $_SESSION["BRANCH"];
+$positionName = mysqli_real_escape_string($conn, $_REQUEST['positionName']);
+$minSalary = mysqli_real_escape_string($conn, $_REQUEST['minSalary']);
+$maxSalary = mysqli_real_escape_string($conn, $_REQUEST['maxSalary']);
+$departmentID = $_SESSION["DEPARTMENT"];
+
+$sql = "SELECT positionID FROM position WHERE departmentID LIKE '$departmentID'";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_array($result);
+
+$positionID = 10000000 + (int)$departmentID*1000 + ;
 
 if (isset($_POST['create'])) {
   //create
-  $sql = "INSERT INTO department (departmentID, departmentName, BranchName)
+  $sql = "INSERT INTO position (positionID, positionName, minSalary, maxSalary, departmentID)
   VALUES ('$departmentID', '$departmentName', '$branchName')";
 
   if ($conn->query($sql) === TRUE) {
