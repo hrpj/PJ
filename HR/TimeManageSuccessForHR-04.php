@@ -45,7 +45,7 @@ $dm = $_SESSION["result2"];
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
-						<a class="dropdown-item" href="#">Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforBranch.php">Branch</a>
 					</div>
 				</li>
 				<li class="nav-item active">
