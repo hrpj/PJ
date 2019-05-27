@@ -16,8 +16,11 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
-	//echo $i;
 
+	if (!$i) 
+		$sql=1;
+	if (!$j) 
+		$lalala=1;
 // Company start
     $Temp = 1;
 	while ($Temp <= $i)
@@ -150,20 +153,23 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     $count = 0;
     while ($count < $i) 
     {
-    	$sql = mysqli_query($con,"UPDATE education SET university ='".$universitySearch[$count]."',field ='".$fieldSearch[$count]."',degree ='".$degreeSearch[$count]."' WHERE university LIKE '".$university[$count]."' AND field LIKE '".$field[$count]."' AND degree LIKE '".$degree[$count]."';");
+    	$lalala = mysqli_query($con,"UPDATE education SET university ='".$universitySearch[$count]."',field ='".$fieldSearch[$count]."',degree ='".$degreeSearch[$count]."' WHERE university LIKE '".$university[$count]."' AND field LIKE '".$field[$count]."' AND degree LIKE '".$degree[$count]."';");
 		$count++;
 	}
 // university recieve end
 	mysqli_close($con);
-if ($sql) 
+if ($sql)
 {
-	//header('Refresh: 1; URL=http://localhost/HRPJ/HR/StaffInforEdit-03.php');
-	header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+	if ($lalala) 
+	{
+		//header('Refresh: 1; URL=http://localhost/HRPJ/HR/StaffInforEdit-03.php');
+		header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+	}
+	else
+	echo "query error2";
 }
 else
 {
 	echo "query error";
-	// Prints the day, date, month, year, time, AM or PM
-	echo date("l jS \of F Y h:i:s A e",time());
 }
 ?>
