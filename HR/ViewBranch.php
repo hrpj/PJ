@@ -97,6 +97,27 @@
   <body>
       <div class = "NameBranch"><h3> <?php echo $branchName ?> </h3></div>
 
+      <!-- Branch Infor -->
+      <?php
+        $result = mysqli_query($con,"SELECT * FROM branch WHERE branchName LIKE '".$branchName."'");
+        $count = $result->num_rows;
+        if (empty($count))
+        {
+          echo "ERROR, No data found.";
+        }
+        else
+        {
+          while ($row = mysqli_fetch_array($result))
+          {
+            $address = $row['address'];
+            $telNo = $row['telNo'];
+            echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch address : ".$address."<br><br>";
+            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch Telephone Number : ".$telNo."<br>";
+          }
+        }
+      ?>
+      <!-- End Branch Infor -->
+
       <!-- Department Table -->
       <table class="table">
           <thead class="thead-dark">
@@ -117,17 +138,18 @@
                   echo "<td>No data</td>";
                   echo "</tr>";
                 }
-                while ($row = mysqli_fetch_array($result))
+                else
                 {
-                  $departmentID = $row['departmentID'];
-                  $departmentName = $row['departmentName'];
-                  $count=$result->num_rows;
-                  echo "<tr>";
-                  echo "<td>".$departmentID."</td>";
-                  echo "<td>".$departmentName."</td>";
-                  //echo"<td><a href='ViewBranchEdit.html' class='button-link'>Edit</a></td>";
-                  //echo "<td><a href='ViewBranch.html' class='button-link'>Delete</a></td>";
-                  echo "</tr>";
+                  while ($row = mysqli_fetch_array($result))
+                  {
+                    $departmentID = $row['departmentID'];
+                    $departmentName = $row['departmentName'];
+                    $count=$result->num_rows;
+                    echo "<tr>";
+                    echo "<td>".$departmentID."</td>";
+                    echo "<td>".$departmentName."</td>";
+                    echo "</tr>";
+                  }
                 }
               ?>
           </tbody>
@@ -162,16 +184,19 @@
                     echo "<td> -- </td>";
                     echo "</tr>";
                   }
-                  while ($row2 = mysqli_fetch_array($result2))
+                  else
                   {
-                    echo "<tr>";
-                    echo "<td>".$departmentName."</td>";
-                    echo "<td>".$row2['positionName']."</td>";
-                    echo "<td>".$row2['minSalary']."</td>";
-                    echo "<td>".$row2['maxSalary']."</td>";
-                    //echo"<td><a href='ViewBranchEdit.html' class='button-link'>Edit</a></td>";
-                    //echo "<td><a href='ViewBranch.html' class='button-link'>Delete</a></td>";
-                    echo "</tr>";
+                    while ($row2 = mysqli_fetch_array($result2))
+                    {
+                      echo "<tr>";
+                      echo "<td>".$departmentName."</td>";
+                      echo "<td>".$row2['positionName']."</td>";
+                      echo "<td>".$row2['minSalary']."</td>";
+                      echo "<td>".$row2['maxSalary']."</td>";
+                      //echo"<td><a href='ViewBranchEdit.html' class='button-link'>Edit</a></td>";
+                      //echo "<td><a href='ViewBranch.html' class='button-link'>Delete</a></td>";
+                      echo "</tr>";
+                    }
                   }
                 }
               ?>
