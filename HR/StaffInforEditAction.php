@@ -86,10 +86,11 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     	$sql = mysqli_query($con,"UPDATE workinghistory SET company ='".$company[$count]."',startDate ='".$startDate[$count]."',endDate ='".$endDate[$count]."' WHERE company LIKE '".$companySearch[$count]."' AND startDate ='".$startSearch[$count]."' AND endDate ='".$endSearch[$count]."';");
 		$count++;
 	}
+// Company end
 
 // university recieve case
 	$Temp = 1;
-	while ($Temp <= $i)
+	while ($Temp <= $j)
 	{
 		switch ($Temp) {
 			case '1':	$university[0] = mysqli_real_escape_string($con, $_POST['university1']);
@@ -146,7 +147,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     	$count++;
     }
     $count = 0;
-    while ($count < $i) 
+    while ($count < $j) 
     {
     	$lalala = mysqli_query($con,"UPDATE education SET university ='".$universitySearch[$count]."',field ='".$fieldSearch[$count]."',degree ='".$degreeSearch[$count]."' WHERE university LIKE '".$university[$count]."' AND field LIKE '".$field[$count]."' AND degree LIKE '".$degree[$count]."';");
 		$count++;
