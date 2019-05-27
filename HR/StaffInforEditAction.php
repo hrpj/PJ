@@ -8,12 +8,12 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 		//echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 // escape variables
-	$search = mysqli_real_escape_string($con, $_POST["search"]);
-	$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
-	$gender = mysqli_real_escape_string($con, $_POST['gender']);
-	$start = mysqli_real_escape_string($con, $_POST['start']);
-	$mobilePhoneNo = mysqli_real_escape_string($con, $_POST['mobilePhoneNo']);
-	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
+	$search = $_SESSION["search"];
+	//$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
+	//$gender = mysqli_real_escape_string($con, $_POST['gender']);
+	//$start = mysqli_real_escape_string($con, $_POST['start']);
+	//$mobilePhoneNo = mysqli_real_escape_string($con, $_POST['mobilePhoneNo']);
+	//$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
 
@@ -70,7 +70,6 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 		}
 		$Temp++;
 	}
-
 	$count = 0;
 	$result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
     while ($row = mysqli_fetch_array($result))
@@ -83,7 +82,9 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     $count = 0;
     while ($count < $i) 
     {
-    	$sql = mysqli_query($con,"UPDATE workinghistory SET company ='".$company[$count]."',startDate ='".$startDate[$count]."',endDate ='".$endDate[$count]."' WHERE company LIKE '".$companySearch[$count]."' AND startDate ='".$startSearch[$count]."' AND endDate ='".$endSearch[$count]."';");
+    	$sql = mysqli_query($con,"UPDATE workinghistory SET company ='".$company[$count]."',startDate ='".$startDate[$count]."',endDate ='".$endDate[$count]."' WHERE company LIKE '".$companySearch[$count]."' AND startDate ='".$startSearch[$count]."' AND endDate ='".$endSearch[$count]."'AND staffID LIKE'".$search."';");
+    	echo $companySearch[$count].$startSearch[$count].$endSearch[$count]."<br>" ;
+		echo $company[$count].$startDate[$count].$endDate[$count]."<br>" ;
 		$count++;
 	}
 // Company end
@@ -149,7 +150,9 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     $count = 0;
     while ($count < $j) 
     {
-    	$lalala = mysqli_query($con,"UPDATE education SET university ='".$universitySearch[$count]."',field ='".$fieldSearch[$count]."',degree ='".$degreeSearch[$count]."' WHERE university LIKE '".$university[$count]."' AND field LIKE '".$field[$count]."' AND degree LIKE '".$degree[$count]."';");
+    	$lalala = mysqli_query($con,"UPDATE education SET university ='".$universitySearch[$count]."',field ='".$fieldSearch[$count]."',degree ='".$degreeSearch[$count]."' WHERE university LIKE '".$university[$count]."' AND field LIKE '".$field[$count]."' AND degree LIKE '".$degree[$count]."' AND staffID LIKE'".$search."';");
+		echo $universitySearch[$count].$fieldSearch[$count].$degreeSearch[$count]."<br>" ;
+		echo $university[$count].$field[$count].$degree[$count]."<br>" ;
 		$count++;
 	}
 // university recieve end
@@ -159,13 +162,13 @@ if ($sql)
 {
 	if ($lalala) 
 	{
-		header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+		//header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 	}
 	else
-	echo "query error2";
+	echo "education query error";
 }
 else
 {
-	echo "query error";
+	echo "workinkhistory query error";
 }
 ?>
