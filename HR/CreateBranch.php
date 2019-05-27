@@ -19,7 +19,7 @@ $address = mysqli_real_escape_string($conn, $_REQUEST['branchAddress']);
 $telNo = mysqli_real_escape_string($conn, $_REQUEST['telNo']);
 
 
-$sql = "INSERT INTO branch (branchName, address, tellNo)
+$sql = "INSERT INTO branch (branchName, address, telNo)
 VALUES ('$branchName', '$address', '$telNo')";
 
 
@@ -27,6 +27,7 @@ if ($conn->query($sql) === TRUE) {
   $_SESSION["BRANCH"] = $branchName;
   header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
 } else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
   header('Location: http://localhost/HRPJ/HR/NewBranchForHR.html');
 }
 
