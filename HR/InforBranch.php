@@ -105,19 +105,32 @@
     </tr>
   </thead>
   <tbody>
-    <?php 
+    <?php
       $result = mysqli_query($con,"SELECT * FROM branch WHERE 1 ");
       $count=$result->num_rows;
-      $i = 1;
-      while ($row = mysqli_fetch_array($result))
+      $Temp = 1;
+      if ((empty($count))) 
       {
         echo "<tr>";
-        $branchName[$i] = $row['branchName'];
-        echo "<th scope='row'>".$i."</th>";
-        echo "<td>".$branchName[$i]."</td>";
-        echo "<td><a href='http://localhost/HRPJ/HR/ViewBranch.php?branchName='".$branchName[$i]."' class='button-link'>View</a></td>";
+        echo "<th scope='row'>".$Temp."</th>";
+        echo "<td>No Data</td>";
         echo "</tr> ";
-        $i++;
+      }
+      else
+      {
+        while ($row = mysqli_fetch_array($result))
+        {
+          echo "<tr>";
+          $branchName[$Temp] = $row['branchName'];
+          echo "<th scope='row'>".$Temp."</th>";
+          echo "<td>".$branchName[$Temp]."</td>";
+          echo "<form action ='ViewBranch.php' method ='post'>";
+          echo "<td> <input type='hidden' name='branchName' value='".$branchName[$Temp]."'> <button type='submit' class='btn btn-outline-dark' >view</button></td>";
+          //echo "<td><a href='http://localhost/HRPJ/HR/ViewBranch.php?branchName='".$branchName[$Temp]."' class='button-link'>View</a></td>";
+          echo "</form>";
+          echo "</tr> ";
+          $Temp++;
+        }
       }
     ?>
   </tbody>
