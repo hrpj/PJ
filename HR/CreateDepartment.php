@@ -14,17 +14,25 @@ if ($conn->connect_error) {
 }
 
 // Escape user inputs for security
-$departmentID = mysqli_real_escape_string($conn, $_REQUEST['departmentID']);
 $departmentName = mysqli_real_escape_string($conn, $_REQUEST['departmentName']);
 $branchName = $_SESSION["BRANCH"];
 
-if (isset($_POST['create'])) {
+if (isset($_POST['create']))
+{
   //create
   $sql = "INSERT INTO department (departmentID, departmentName, BranchName)
-  VALUES ('$departmentID', '$departmentName', '$branchName')";
+  VALUES (NULL, '$departmentName', '$branchName')";
 
-  if ($conn->query($sql) === TRUE) {
+  if ($conn->query($sql) === TRUE)
+  {
     $_SESSION["BRANCH"] = $branchName;
+    $result = mysqli_query($conn,"SELECT d.departmentID AS departmentID
+                                  FROM department d
+                                  WHERE departmentName LIKE '$departmentName'
+                                  AND BranchName LIKE '$branchName'");
+    $row = mysqli_fetch_array($result);
+    $_SESSION["DEPARTMENT"] = $row['departmentID'];
+
     header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
   }
   else
