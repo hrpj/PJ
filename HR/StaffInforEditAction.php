@@ -150,7 +150,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     $count = 0;
     while ($count < $j) 
     {
-    	$lalala = mysqli_query($con,"UPDATE education SET university ='".$universitySearch[$count]."',field ='".$fieldSearch[$count]."',degree ='".$degreeSearch[$count]."' WHERE university LIKE '".$university[$count]."' AND field LIKE '".$field[$count]."' AND degree LIKE '".$degree[$count]."' AND staffID LIKE'".$search."';");
+    	$lalala = mysqli_query($con,"UPDATE education SET university ='".$university[$count]."',field ='".$field[$count]."',degree ='".$degree[$count]."' WHERE university LIKE '".$universitySearch[$count]."' AND field LIKE '".$fieldSearch[$count]."' AND degree LIKE '".$degreeSearch[$count]."' AND staffID LIKE'".$search."';");
 		echo $universitySearch[$count].$fieldSearch[$count].$degreeSearch[$count]."<br>" ;
 		echo $university[$count].$field[$count].$degree[$count]."<br>" ;
 		$count++;
@@ -162,7 +162,7 @@ if ($sql)
 {
 	if ($lalala) 
 	{
-		//header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+		header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 	}
 	else
 	echo "education query error";
