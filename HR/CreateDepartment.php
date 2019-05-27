@@ -53,7 +53,7 @@ else if (isset($_POST['edit']))
   $row = mysqli_fetch_array($result);
   $_SESSION["DEPARTMENT"] = $row['departmentID'];
   //currently not doing anything
-  header('Location: http://localhost/HRPJ/HR/editDe.php');
+  header('Location: http://localhost/HRPJ/HR/EditDepartment.php');
   //end edit
 }
 else if (isset($_POST['delete']))
