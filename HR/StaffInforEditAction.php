@@ -17,7 +17,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
 	//echo $i;
-$check = 0;
+
 // Company start
     $Temp = 1;
 	while ($Temp <= $i)
@@ -82,15 +82,12 @@ $check = 0;
     	$endSearch[$count] = $row['endDate'];
     	//mysqli_query($con,"UPDATE workinghistory SET company ='$company[$count]',startDate ='$startDate[$count]',endDate ='$endDate[$count]' WHERE company LIKE '$companySearch',startDate ='$startSearch',endDate ='$endSearch'");
     	$count++;
-    	if (($Temp-1) == $count) 
-    	{
-    		$check = 1;
-    	}
     }
     $count = 0;
+
     while ($count < $i) 
     {
-    	mysqli_query($con,"UPDATE workinghistory SET company ='$company[$count]',startDate ='$startDate[$count]',endDate ='$endDate[$count]' WHERE company LIKE '$companySearch[$count]',startDate ='$startSearch[$count]',endDate ='$endSearch[$count]'");
+    	$sql = mysqli_query($con,"UPDATE workinghistory SET company ='".$company[$count]."',startDate ='".$startDate[$count]."',endDate ='".$endDate[$count]."' WHERE company LIKE '".$companySearch[$count]."' AND startDate ='".$startSearch[$count]."' AND endDate ='".$endSearch[$count]."';");
 		$count++;
 	}
 // university recieve case
@@ -136,9 +133,15 @@ $check = 0;
 	}
 // university recieve end
 	mysqli_close($con);
-if ($check) 
+if ($sql) 
 {
-	header('Refresh: 5; URL=http://localhost/HRPJ/HR/StaffInforEdit-03.php');
-	//header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+	//header('Refresh: 1; URL=http://localhost/HRPJ/HR/StaffInforEdit-03.php');
+	header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+}
+else
+{
+	echo "query error";
+	// Prints the day, date, month, year, time, AM or PM
+	echo date("l jS \of F Y h:i:s A e",time());
 }
 ?>
