@@ -1,9 +1,9 @@
-<?php 
+<?php
 session_start();
 	$id = $_SESSION["ID"];
 	$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
-	if (mysqli_connect_errno()) 
+	if (mysqli_connect_errno())
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
@@ -51,7 +51,7 @@ session_start();
 						Payment Slip
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/P01-1-PaymentSearchForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/PaymentStaffForHR.php">Only Me</a>
 						<a class="dropdown-item" href="#">Any Staffs</a>
 					</div>
 				</li>
@@ -61,7 +61,7 @@ session_start();
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">New Staff</a>
-						<a class="dropdown-item" href="#">New Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HR/NewBranchForHR.html">New Branch</a>
 						<a class="dropdown-item" href="#">New Department</a>
 						<a class="dropdown-item" href="#">New Training Course</a>
 					</div>
@@ -94,14 +94,14 @@ session_start();
 		</div>
 	</nav>
 </head>
-  
-  
-  <body>		
+
+
+  <body>
 
       <br>
       <!-- Welcome message -->
       <marquee direction="left"><font color="#696969" size="5">Welcome K.
-	  <?php 
+	  <?php
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
             while ($row = mysqli_fetch_array($result))
             {
