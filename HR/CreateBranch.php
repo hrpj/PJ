@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -6,6 +7,7 @@ $dbname = "hrmanager";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -21,11 +23,17 @@ $code = mysqli_real_escape_string($conn, $_REQUEST['manageID']);
 $sql = "INSERT INTO branch (branchName, address, tellNo, code)
 VALUES ('$branchName', '$address', '$telNo', '$code')";
 
+
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+  $_SESSION["BRANCH"] = $branchName;
+  header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+  header('Location: http://localhost/HRPJ/HR/NewBranchForHR.html');
 }
 
+
+
+
 $conn->close();
+
 ?>
