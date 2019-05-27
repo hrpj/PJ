@@ -1,3 +1,11 @@
+<?php 
+  $con=mysqli_connect("localhost","root","","hrmanager");
+  // Check connection
+  if (mysqli_connect_errno()) 
+  {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,7 +39,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
               <a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
-              <a class="dropdown-item" href="#">Branch</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HR/InforBranch.php">Branch</a>
             </div>
           </li>
           <li class="nav-item">
@@ -86,7 +94,7 @@
     </nav>
   </head>
   <body>
-      <div class = "NameBranch"><h3>Name Branch</h3></div>
+      <div class = "NameBranch"><h3><?php echo $branchName; ?></h3></div>
       <!-- Table -->
           <table class="table">
               <thead class="thead-dark">
@@ -122,4 +130,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+  <?php mysqli_close($con);?>
 </html>
