@@ -218,18 +218,21 @@
                     echo "<td>No Data</td>";
                     echo "</tr> ";
                 }
-                while ($row = mysqli_fetch_array($result))
+                else
                 {
-                    $university = $row['university'];
-                    $field = $row['field'];
-                    $degree = $row['degree'];
-                    echo "<tr>";
-                    echo "<th scope='row'>".$i."</th>";
-                    echo "<td>".$university."</td>";
-                    echo "<td>".$field."</td>";
-                    echo "<td>".$degree."</td>";
-                    echo "</tr> ";
-                    $i++;
+                  while ($row = mysqli_fetch_array($result))
+                  {
+                      $university = $row['university'];
+                      $field = $row['field'];
+                      $degree = $row['degree'];
+                      echo "<tr>";
+                      echo "<th scope='row'>".$i."</th>";
+                      echo "<td>".$university."</td>";
+                      echo "<td>".$field."</td>";
+                      echo "<td>".$degree."</td>";
+                      echo "</tr> ";
+                      $i++;
+                  }
                 }
             ?>
         </tbody>
