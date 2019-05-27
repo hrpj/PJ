@@ -157,12 +157,12 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 		$count++;
 	}
 // university recieve end
-	mysqli_close($con);
+
+mysqli_close($con);
 if ($sql)
 {
 	if ($lalala) 
 	{
-		//header('Refresh: 1; URL=http://localhost/HRPJ/HR/StaffInforEdit-03.php');
 		header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
 	}
 	else
