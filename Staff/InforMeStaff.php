@@ -66,7 +66,7 @@
                 $gender = $row['gender'];
                 $DOB = $row['dateOfBirth'];
                 $bankAccount = $row['bankAccount'];
-                $telNOStaff = $row['telNo'];
+                $telNOStaff = $row['mobilePhoneNo'];
                 $staffAddress = $row['address'];
                 $startDate = $row['startDate'];
             }
