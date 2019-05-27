@@ -111,9 +111,10 @@ session_start();
         <table class="table">
          <thead class="thead-dark">
            <tr>
+             <th scope="col">Position ID</th>
              <th scope="col">Position Name</th>
-             <th scope="col">Department Name</th>
-             <th scope="col">Branch Name</th>
+             <th scope="col">Min Salary</th>
+             <th scope="col">Max Salary</th>
              <th scope="col">Edit</th>
              <th scope="col">Delete</th>
            </tr>
@@ -121,12 +122,15 @@ session_start();
         <tbody>
           <?php
            while($row = mysqli_fetch_array($result)) {
-              $ID = $row['departmentID'];
-              $name = $row['departmentName'];
-              $branchName = $row['BranchName'];
+              $ID = $row['positionID'];
+              $name = $row['positionName'];
+              $min = $row['minSalary'];
+              $max = $row['maxSalary'];
               echo "<tr>
                <td>".$ID."</td>
                <td>".$name."</td>
+               <td>".$min."</td>
+               <td>".$max."</td>
                <td>
                  <button type=\"submit\"
                    name=\"edit\"
@@ -147,8 +151,10 @@ session_start();
            }
           ?>
           <tr>
-            <td><input type="text" name="departmentID" class="form-control" id="ID"></td>
-            <td><input type="text" name="departmentName" class="form-control" id="Name"></td>
+            <td>Auto-increment</td>
+            <td><input type="text" name="positionName" class="form-control" id="Name"></td>
+            <td><input type="text" name="minSalary" class="form-control" id="Min"></td>
+            <td><input type="text" name="maxSalary" class="form-control" id="Max"></td>
             <td>-</td>
             <td>-</td>
           </tr>
@@ -159,6 +165,16 @@ session_start();
           <button type="submit" name="create" class="btn btn-dark"> <h4> Add </h4> </button>
         </div>
      </form>
+   <!---------------------------------------------------------------------------------------------------------------->
+
+
+   <!--______________________________________________Next, Back and Cancel__________________________________________________-->
+   			<form action="index.html" method="post">
+   				<div class="NextBut">
+           	 <button type="button" class="btn btn-dark" onclick="window.location.href = 'NewDepartment.html';">OK</button>
+        		 <button type="button" class="btn btn-dark" onclick="window.location.href = 'CancelDepartment.php';">Cancel</button>
+   	 			</div>
+   			</form>
    <!---------------------------------------------------------------------------------------------------------------->
 
     <!-- Optional JavaScript -->
