@@ -6,6 +6,13 @@ session_start();
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
+  $departmentID = $_SESSION["DEPARTMENT"];
+  $_SESSION["DEPARTMENT"] = $departmentID;
+  $result = mysqli_query($con,"SELECT d.departmentName AS departmentName
+                                FROM department d
+                                WHERE departmentID LIKE $departmentID");
+  $row = mysqli_fetch_array($result);
+  $departmentName = $row['departmentName'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -100,6 +107,7 @@ session_start();
   <!--________________________________________________________________________________ -->
     <div><h3>Branch : <?php echo $_SESSION["BRANCH"]; ?></h></div>
     <div><h3>Department ID : <?php echo $_SESSION["DEPARTMENT"]; ?></h></div>
+    <div><h3>Department Name : <?php echo $departmentName; ?></h></div>
 
 
    <!---___________________________Table with Form__________________________________----------->
