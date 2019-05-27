@@ -16,6 +16,8 @@ if ($conn->connect_error) {
 // Escape user inputs for security
 $departmentName = mysqli_real_escape_string($conn, $_REQUEST['departmentName']);
 $branchName = $_SESSION["BRANCH"];
+$_SESSION["BRANCH"] = $branchName;
+
 
 if (isset($_POST['create']))
 {
@@ -25,7 +27,6 @@ if (isset($_POST['create']))
 
   if ($conn->query($sql) === TRUE)
   {
-    $_SESSION["BRANCH"] = $branchName;
     $result = mysqli_query($conn,"SELECT d.departmentID AS departmentID
                                   FROM department d
                                   WHERE departmentName LIKE '$departmentName'
@@ -45,8 +46,14 @@ else if (isset($_POST['edit']))
 {
   $whichID = $_POST['edit'];
   //edit
+  $result = mysqli_query($conn,"SELECT d.departmentID AS departmentID
+                                FROM department d
+                                WHERE departmentName LIKE '$departmentName'
+                                AND BranchName LIKE '$branchName'");
+  $row = mysqli_fetch_array($result);
+  $_SESSION["DEPARTMENT"] = $row['departmentID'];
   //currently not doing anything
-  header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
+  header('Location: http://localhost/HRPJ/HR/editDe.php');
   //end edit
 }
 else if (isset($_POST['delete']))
