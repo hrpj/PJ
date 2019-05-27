@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,7 +20,7 @@
     <link href="styleview.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
-    <!-- Nav Bar -->
+    <!-- _______________________________________________Nav Bar_____________________________________________ -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
         <a class="navbar-brand" href="#">&nbsp;ILoveDB Company</a>
@@ -91,6 +100,8 @@
     </div>
 </nav>
   </head>
+<!-- _____________________________________end nav bar____________________________________________ -->
+
   <body>
       <div class = "NameBranch"><h3>Edit Department</h3></div>
       <form>
