@@ -46,12 +46,7 @@ else if (isset($_POST['edit']))
 {
   $whichID = $_POST['edit'];
   //edit
-  $result = mysqli_query($conn,"SELECT d.departmentID AS departmentID
-                                FROM department d
-                                WHERE departmentName LIKE '$departmentName'
-                                AND BranchName LIKE '$branchName'");
-  $row = mysqli_fetch_array($result);
-  $_SESSION["DEPARTMENT"] = $row['departmentID'];
+  $_SESSION["DEPARTMENT"] = $whichID;
   //currently not doing anything
   header('Location: http://localhost/HRPJ/HR/EditDepartment.php');
   //end edit
