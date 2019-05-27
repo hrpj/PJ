@@ -5,6 +5,7 @@
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
+  $branchName = $_GET['branchName'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -94,7 +95,7 @@
     </nav>
   </head>
   <body>
-      <div class = "NameBranch"><h3><?php echo $branchName; ?></h3></div>
+      <div class = "NameBranch"><h3> <?php echo $branchName ?> </h3></div>
       <!-- Table -->
           <table class="table">
               <thead class="thead-dark">
@@ -108,20 +109,32 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td>Human Resource Management</td>
-                      <td>Manager</td>
-                      <td>30000</td>
-                      <td>65000</td>
-                      <td><a href="ViewBranchEdit.html" class="button-link">Edit</a></td>
-                      <td><a href="ViewBranch.html" class="button-link">Delete</a></td>
-                  </tr>
+                  <?php
+                    $sql = "SELECT * FROM department WHERE branchName LIKE'".$branchName."'";
+                    $result = mysqli_query($con,$sql);
+                    while ($row = mysqli_fetch_array($result))
+                    {
+                      $departmentName = $row['departmentName'];
+                      echo $row['departmentID'];
+                      $sql2 = "SELECT * FROM position WHERE departmentID LIKE'".$row['departmentID']."'";
+                      $result2 = mysqli_query($con,$sql2);
+                      while ($row2 = mysqli_fetch_array($result2))
+                      {
+                        echo "<td>".$departmentName."</td>";
+                        echo "<td>".$row2['positionName']."</td>";
+                        echo "<td>".$row2['minSalary']."</td>";
+                        echo "<td>".$row2['maxSalary']."</td>";
+                        echo"<td><a href='ViewBranchEdit.html' class='button-link'>Edit</a></td>";
+                        echo "<td><a href='ViewBranch.html' class='button-link'>Delete</a></td>";
+                      }
+                    }
+                  ?>
               </tbody>
           </table>
           <!-- End Table -->
           <table class="Back">
               <tr><td>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'InforBranch.html';">Back</button>
+              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/InforBranch.php';">Back</button>
           </td></tr>
           </table>
     <!-- Optional JavaScript -->
