@@ -56,17 +56,13 @@ else if (isset($_POST['delete']))
   $sql = "DELETE FROM department WHERE departmentID='$whichID'";
   if(mysqli_query($conn, $sql)){
     echo "Record was deleted successfully.";
+    header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
   }
   else{
     echo "ERROR: Could not able to execute $sql. ". mysqli_error($conn);
   }
   //end delete
 }
-
-
-
-$_SESSION["BRANCH"] = $branchName;
-$_SESSION["DEPARTMENT"] = $departmentID;
 
 $conn->close();
 
