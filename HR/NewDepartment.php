@@ -111,7 +111,6 @@ session_start();
 	           	<tr>
 	           		<th scope="col">Department ID</th>
 	           		<th scope="col">Department Name</th>
-								<th scope="col">Branch Name</th>
 								<th scope="col">Edit</th>
 								<th scope="col">Delete</th>
 	           	</tr>
@@ -121,7 +120,6 @@ session_start();
 						 	while($row = mysqli_fetch_array($result)) {
 								 $ID = $row['departmentID'];
 								 $name = $row['departmentName'];
-								 $branchName = $row['BranchName'];
 								 echo "<tr>
 								 	<td>".$ID."</td>
 								 	<td>".$name."</td>
