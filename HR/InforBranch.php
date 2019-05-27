@@ -111,10 +111,11 @@
       $i = 1;
       while ($row = mysqli_fetch_array($result))
       {
+        $branchName = $row['branchName'];
         echo "<tr>";
         echo "<th scope='row'>".$i."</th>";
-        echo "<td>".$row['branchName']."</td>";
-        echo "<td><a href='http://localhost/HRPJ/HR/ViewBranch.php?branchName='".$row['branchName']."' class='button-link'>View</a></td>";
+        echo "<td>".$branchName."</td>";
+        echo "<td><a href='http://localhost/HRPJ/HR/ViewBranch.php?branchName='".$branchName."' class='button-link'>View</a></td>";
         echo "</tr> ";
         $i++;
       }
@@ -124,7 +125,7 @@
 <!-- End Table -->
 <table class="threebuttons">
     <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
+    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/WelcomeSignoutForHR.php';">Back</button>
 </td></tr>
 </table>
     <!-- Optional JavaScript -->
