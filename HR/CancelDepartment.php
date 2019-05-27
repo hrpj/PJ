@@ -23,7 +23,7 @@ $sql = "DELETE FROM department WHERE departmentID='$departmentID'";
 
 
 if ($conn->query($sql) === TRUE) {
-  $_SESSION["Department"] = "";
+  $_SESSION["DEPARTMENT"] = "";
   $_SESSION["BRANCH"] = $branchName;
   header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
 } else {
