@@ -25,6 +25,7 @@ if (isset($_POST['create'])) {
 
   if ($conn->query($sql) === TRUE) {
     $_SESSION["BRANCH"] = $branchName;
+    header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
   }
   else
   {
