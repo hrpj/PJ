@@ -145,7 +145,7 @@ session_start();
 							}
 						 ?>
 	           <tr>
-		           <td><input type="text" name="departmentID" class="form-control" id="ID"></td>
+		           <td>Auto-Increment</td>
 		           <td><input type="text" name="departmentName" class="form-control" id="Name"></td>
 							 <td>-</td>
 							 <td>-</td>
