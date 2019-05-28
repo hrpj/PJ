@@ -23,7 +23,7 @@
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-            <a class="navbar-brand" href="#">&nbsp;ILoveDB Company</a>
+            <a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,16 +31,16 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-            <a class="nav-link" href="WelcomeSignoutForHR.html">Page</a>
+            <a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page</a>
             </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Information
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="InforMeHR.html">Only Me</a>
-              <a class="dropdown-item" href="SearchInforStaff.html">Any Staffs</a>
-              <a class="dropdown-item" href="InforBranch.html">Branch</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
             </div>
             </li>
             <li class="nav-item dropdown">
@@ -48,8 +48,8 @@
               Time Attendance
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="PaymentSearchForHR.html">Daily Attendance Status</a>
-                  <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
+                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+                  <a class="dropdown-item" href="#">Leave</a>
             </div>
         </li>
             <li class="nav-item dropdown">
@@ -57,8 +57,8 @@
               Payment Slip
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="PaymentSearchForHR.html">Only Me</a>
-                  <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
+                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
+                  <a class="dropdown-item" href="#">Any Staffs</a>
             </div>
         </li>
             <li class="nav-item dropdown">
@@ -67,9 +67,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="NewStaff.html">New Staff</a>
-              <a class="dropdown-item" href="BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
               <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
-              <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Training Course</a>
               <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
             </div>
           </li>
@@ -95,7 +95,7 @@
             </ul>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="WelcomeSignin.html">Sign out</a>
+                    <a class="nav-link" href="http://localhost/HRPJ/WelcomeSignin.html">Sign out</a>
                 </li>
             </ul>
         </div>
