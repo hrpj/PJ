@@ -1,8 +1,8 @@
-<?php 
+<?php
 session_start();
 $con=mysqli_connect("localhost","root","","hrmanager");
 // Check connection
-if (mysqli_connect_errno()) 
+if (mysqli_connect_errno())
 {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
@@ -26,7 +26,7 @@ $dm = $_SESSION["result2"];
     <!-- Nav Bar -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-		<a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -34,7 +34,7 @@ $dm = $_SESSION["result2"];
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,14 +47,14 @@ $dm = $_SESSION["result2"];
 					</div>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/PaymentStaffForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
 						<a class="dropdown-item" href="#">Any Staffs</a>
 					</div>
 				</li>
@@ -102,7 +102,7 @@ $dm = $_SESSION["result2"];
 		<p class="mb-0">Time Attendance has been modified.</p>
 	</div>
 </head>
-<?php 
+<?php
 	$result = mysqli_query($con,"SELECT * FROM staff WHERE staffId LIKE '$search'");
 
 	while ($row = mysqli_fetch_array($result))
@@ -110,14 +110,14 @@ $dm = $_SESSION["result2"];
 		$name = $row["staffName"];
 		$positionID = $row["positionID"];
 	}
-	
+
 	$date = $year. '-' .$dm;
 	$unixTimestamp = strtotime($date);
 	$dayOfWeek = date("l", $unixTimestamp);
 
 	$result = mysqli_query($con,"SELECT * FROM dailyworkingtime WHERE positionID LIKE '$positionID' AND day LIKE '$dayOfWeek'");
 	$count = $result -> num_rows;
-	if ((empty($count))) 
+	if ((empty($count)))
 	{
 		$timeIn = "--:--:--";
 		$timeOut = "--:--:--";
@@ -130,10 +130,10 @@ $dm = $_SESSION["result2"];
 			$timeOut = $row["timeOut"];
 		}
 	}
-?>  
+?>
   <body>
       <div class = "Attendance"><h3>Daily Attendance Status</h></div>
-    <!-- Information -->		
+    <!-- Information -->
 	<div class="Infor"><i class="fas fa-calendar-alt"></i>Date : <?php echo $year.'-'.$dm ?><br>
 	<br><i class="fas fa-address-card"></i>Staff ID : <?php echo $search ?><br>
 	<br><i class="fas fa-file-signature"></i>Name : <?php echo $name ?><br>
@@ -142,7 +142,7 @@ $dm = $_SESSION["result2"];
     <div class="Infor1"><i class="fas fa-clock"></i>Start time : <?php echo $timeIn ?><br>
 	<br><i class="fas fa-stopwatch"></i>Finish time : <?php echo $timeOut ?></div>
     <!-- End Information -->
-	
+
     <!-- Fill Information -->
 	<form action="editAttendance.php" method="POST" >
 		<div class="form-group row">
@@ -150,7 +150,7 @@ $dm = $_SESSION["result2"];
 				<input type="Time" name="timeIn" class="form-control" id="inputTime" placeholder="ArrivalTime">
 			</div>
 		</div>
-	  
+
 		<div class="form-group row">
 		<div class="dropdown">
 			<div class="Status">
@@ -161,7 +161,7 @@ $dm = $_SESSION["result2"];
 				</select>
 			</div>
 		</div>
-	
+
 		<div class="ExitTime">
 			<input type="Time" name="timeOut" class="form-control" id="inputTime" placeholder="ExitTime">
 		</div>
