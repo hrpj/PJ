@@ -25,10 +25,10 @@ $sql = "DELETE FROM department WHERE departmentID='$departmentID'";
 if ($conn->query($sql) === TRUE) {
   $_SESSION["DEPARTMENT"] = "";
   $_SESSION["BRANCH"] = $branchName;
-  header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
+  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewDepartment.php');
 } else {
   echo "Something went wrong, can't delete department";
-  //header('Location: http://localhost/HRPJ/HR/WelcomeSignoutForHR.php');
+  //header('Location: http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php');
 }
 
 $conn->close();
