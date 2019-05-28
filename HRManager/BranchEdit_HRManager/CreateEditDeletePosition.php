@@ -57,7 +57,7 @@ if (isset($_POST['create'])) {
   VALUES ('$positionID', '$positionName', '$minSalary', '$maxSalary', '$departmentID')";
 
   if ($conn->query($sql) === TRUE) {
-    header('Location: http://localhost/HRPJ/HR/PositionandSalary.php');
+    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
   }
   else
   {
@@ -70,7 +70,7 @@ else if (isset($_POST['edit']))
   $whichID = $_POST['edit'];
   //edit
   //echo "currently not doing anything";
-  header('Location: http://localhost/HRPJ/HR/PositionandSalary.php');
+  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
   //end edit
 }
 else if (isset($_POST['delete']))
@@ -80,7 +80,7 @@ else if (isset($_POST['delete']))
   $sql = "DELETE FROM position WHERE positionID='$whichID'";
   if(mysqli_query($conn, $sql)){
     echo "Record was deleted successfully.";
-    header('Location: http://localhost/HRPJ/HR/PositionandSalary.php');
+    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
   }
   else{
     echo "ERROR: Could not able to execute $sql. ". mysqli_error($conn);
