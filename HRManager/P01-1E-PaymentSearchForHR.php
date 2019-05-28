@@ -104,7 +104,6 @@ session_start();
             while ($row = mysqli_fetch_array($result))
             {
                 $positionID = $row['positionID'];
-				$branchName = $row['branchName'];
             }
             $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
             while ($row = mysqli_fetch_array($result))
@@ -116,7 +115,8 @@ session_start();
             while ($row = mysqli_fetch_array($result))
             {
                 $departmentName = $row['departmentName'];
-            }
+				$branchName = $row['BranchName'];
+            }			
 ?>
 <body>
 	<form action="searchMyPaymant.php" method="POST">

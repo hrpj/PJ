@@ -41,7 +41,7 @@ session_start();
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
-						<a class="dropdown-item" href="#">Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
 					</div>
 				</li>
 				<li class="nav-item">
@@ -53,7 +53,7 @@ session_start();
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
-						<a class="dropdown-item" href="#">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -62,7 +62,7 @@ session_start();
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">New Staff</a>
-						<a class="dropdown-item" href="#">New Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
 						<a class="dropdown-item" href="#">New Department</a>
 						<a class="dropdown-item" href="#">New Training Course</a>
 					</div>
