@@ -38,7 +38,7 @@ if($row['total'] === '0')//No
 else//Yes
 {
   //After the last ID
-  $sql = "SELECT positionID AS lastID FROM position WHERE departmentID LIKE '$departmentID'";
+  $sql = "SELECT MAX(positionID) AS lastID FROM position WHERE departmentID LIKE '$departmentID'";
   $result = mysqli_query($conn,$sql);
   $row = mysqli_fetch_array($result);
 
@@ -57,11 +57,14 @@ if (isset($_POST['create'])) {
   VALUES ('$positionID', '$positionName', '$minSalary', '$maxSalary', '$departmentID')";
 
   if ($conn->query($sql) === TRUE) {
-    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
+    $_SERVER['REQUEST_URI'];
+    echo "Insert Success <br>";
+    echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
   }
   else
   {
-    echo "Fail to insert, try again later";
+    echo "Fail to insert, try again later <br>";
+    echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
   }
   //end create
 }
@@ -79,8 +82,9 @@ else if (isset($_POST['delete']))
   $whichID = $_POST['delete'];
   $sql = "DELETE FROM position WHERE positionID='$whichID'";
   if(mysqli_query($conn, $sql)){
-    echo "Record was deleted successfully.";
-    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
+    echo "Record was deleted successfully.<br>";
+    $_SERVER['REQUEST_URI'];
+    echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
   }
   else{
     echo "ERROR: Could not able to execute $sql. ". mysqli_error($conn);
