@@ -45,10 +45,10 @@ session_start();
 		        </div>
 		        </li>
 		        <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		          Time Attendance
 		        </a>
-		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		        <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
 		              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
 		              <a class="dropdown-item" href="#">Leave</a>
 		        </div>
@@ -63,7 +63,7 @@ session_start();
 		        </div>
 		    </li>
 		        <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		          Create<span class="sr-only">(current)</span>
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -110,7 +110,6 @@ session_start();
 		while ($row = mysqli_fetch_array($result))
 		{
 			$name = $row['staffName'] ;
-			$branch = $row['branchName'] ;
 			$positionID = $row['positionID'];
 		}
 
@@ -125,6 +124,7 @@ session_start();
 		while ($row = mysqli_fetch_array($result))
 		{
 			$departmentName = $row['departmentName'] ;
+			$branch = $row['BranchName'] ;
 		}
 
 		?>

@@ -7,12 +7,9 @@ session_start();
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	$search = mysqli_real_escape_string($con, $_POST['search2']);
-	$positionID = mysqli_real_escape_string($con, $_POST['position']);
-	$departmentID = mysqli_real_escape_string($con, $_POST['departmentID']);
-	$branchName = mysqli_real_escape_string($con, $_POST['branchName']);
-	$month = mysqli_real_escape_string($con, $_POST['month']);
-	$year = mysqli_real_escape_string($con, $_POST['year']);
+	$search = mysqli_real_escape_string($con, $_POST['edit']);
+	$date = mysqli_real_escape_string($con, $_POST['edit2']);
+	$type = mysqli_real_escape_string($con, $_POST['edit3']);
 
 	$_SESSION["search"] = $search;
 	$_SESSION["positionID"] = $positionID;

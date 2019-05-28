@@ -109,12 +109,13 @@ session_start();
     <br>
     <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
     <!-- Search -->
-		<form action="P02-1.25-PepareSearch.php" method="POST">
+	
+		<form id="searchform" action="P02-1.25-PepareSearch.php" method="POST">
 			<div class="StaffID">
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?php if(!empty($_SESSION["search"])){echo $_SESSION["search"];} else {echo "Input StaffID";} ?>" >
-					<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
+					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?php if(!empty($_SESSION["search"])){echo $_SESSION["search"];}?>" >
+					<button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
 
 				</div>
 			</div>
@@ -133,15 +134,24 @@ session_start();
 						$departmentName  = $_SESSION["departmentName"];
 						echo "<option value=".$branchName.">".$branchName."</option>";
 					}
-					else if(empty($_SESSION["search"]) && !empty($branchName))
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]))
 					{
 						$branchName = $_SESSION["branchName"];
-						
-						echo "<option value=".$BranchName.">".$BranchName."</option>";
+						echo "<option value=".$branchName.">".$branchName."</option>";
+					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["departmentID"]))
+					{
+						$departmentID = $_SESSION["departmentID"];
+						$result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID' ");
+						while ($row = mysqli_fetch_array($result))
+						{
+							$BranchName = $row['BranchName'];
+							echo "<option value=".$BranchName.">".$BranchName."</option>";
+						}
 					}
 					else
 					{
-						echo "<option selected >Choose...</option>";
+						echo "<option value='' selected>Choose...</option>";
 						$result = mysqli_query($con,"SELECT * FROM branch ");
 						while ($row = mysqli_fetch_array($result))
 						{
@@ -149,9 +159,8 @@ session_start();
 							echo "<option value=".$BranchName.">".$BranchName."</option>";
 						}
 					}
-?>
-				</select>
-				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
+?>				</select>
+				<button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
 			</div>
 			
 			<div class="Department">
@@ -162,23 +171,58 @@ session_start();
 					{
 						echo "<option value=".$departmentID.">".$departmentName."-".$branchName."</option>";
 					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]))
+					{
+						echo "<option value='' selected>Choose...</option>";
+						$result = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$branchName%'");
+						while ($row = mysqli_fetch_array($result))
+						{
+							$departmentID = $row['departmentID'];
+							$departmentName = $row['departmentName'];
+							echo "<option value='".$departmentID."'>".$departmentName."-".$branchName."</option>";
+						}
+					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["departmentID"]))
+					{
+						$result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+						while ($row = mysqli_fetch_array($result))
+						{
+							$departmentID = $row['departmentID'];
+							$departmentName = $row['departmentName'];
+							echo "<option value='".$departmentID."'>".$departmentName."-".$BranchName."</option>";
+						}
+					}
 					else
 					{
-						echo "<option selected>Choose...</option>";
+						echo "<option value='' selected>Choose...</option>";
 						$result2 = mysqli_query($con,"SELECT * FROM department");
 						while ($row = mysqli_fetch_array($result2))
 						{
 							$departmentID = $row['departmentID'];
 							$departmentName = $row['departmentName'];
 							$BranchName2 = $row['BranchName'];
-							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName2."</option>";
 						}
 					}
-?>
+?>		
 				</select> 
-				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
+				<button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
 			</div>
-			
+		</form>
+		<form id="searchList" action="P02-1.5-searchAnyPayment.php" method="POST">
+<?php 		if(!empty($_SESSION["search"]))
+			{
+				echo "<input type='hidden' name='search2' value=".$_SESSION["search"].">";
+			}
+			if(!empty($_SESSION["departmentID"]))
+			{
+				echo "<input type='hidden' name='branchName' value=".$_SESSION["branchName"].">";
+			}
+			if(!empty($_SESSION["departmentID"]))
+			{
+				echo "<input type='hidden' name='departmentID' value=".$_SESSION["departmentID"].">";
+			}
+?>			
 			<div class="Position">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Position</label>
@@ -188,9 +232,31 @@ session_start();
 					{
 						echo "<option value=".$positionID.">".$departmentID."-".$positionName."</option>";
 					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]))
+					{
+						echo "<option value='' selected>Choose...</option>";
+						$result2 = mysqli_query($con,"SELECT * FROM position WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE '$branchName%')");
+						while ($row = mysqli_fetch_array($result2))
+						{
+							$positionID = $row['positionID'];
+							$positionName = $row['positionName'];
+							echo "<option value=".$positionID.">".$departmentID."-".$positionName."</option>";
+						}
+					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["departmentID"]))
+					{
+						echo "<option value='' selected>Choose...</option>";
+						$result = mysqli_query($con,"SELECT * FROM position WHERE departmentID LIKE '$departmentID'");
+						while ($row = mysqli_fetch_array($result))
+						{
+							$positionID = $row['positionID'];
+							$positionName = $row['positionName'];
+							echo "<option value=".$positionID.">".$departmentID."-".$positionName."</option>";
+						}
+					}
 					else
 					{
-						echo "<option selected>Choose...</option>";
+						echo "<option value='' selected>Choose...</option>";
 						$result2 = mysqli_query($con,"SELECT * FROM position");
 						while ($row = mysqli_fetch_array($result2))
 						{
@@ -204,40 +270,48 @@ session_start();
 				</select>
 			</div>
 			<br><br>
-		</form>
-	<form action="P02-1.5-PepareSearch.php" method="POST">	
+			
+		
 		<div class="Month">
 			Month : <select class="form-control" name="month" id="exampleFormControlSelect1">
-			<option>01</option>
-			<option>02</option>
-			<option>03</option>
-			<option>04</option>
-			<option>05</option>
-			<option>06</option>
-			<option>07</option>
-			<option>08</option>
-			<option>09</option>
-			<option>10</option>
-			<option>11</option>
-			<option>12</option>
+			<option value='' >--</option>
+			<option value='01'>01</option>
+			<option value='02'>02</option>
+			<option value='03'>03</option>
+			<option value='04'>04</option>
+			<option value='05'>05</option>
+			<option value='06'>06</option>
+			<option value='07'>07</option>
+			<option value='08'>08</option>
+			<option value='09'>09</option>
+			<option value='10'>10</option>
+			<option value='11'>11</option>
+			<option value='12'>12</option>
 			</select>
 		</div>
 		<div class="Year">
-			Year : <input type="text" class="form-control" placeholder="Year">
+			Year : <input type="text" name="year" class="form-control" placeholder="Year">
 		</div>
 		
 		<!-- End Search -->
 		<table class="NextBut">
 			<tr>
 				<td>
-					<button type="button" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
+					<button type="submit" form="searchList" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
+				</td>
+	</form>	
+				<td>
+					<form id="clear">
+					<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php';">Clear</button>
+					</form>
 				</td>
 				<td>
 					<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
 				</td>
 			</tr>
 		</table>
-	</form>
+	
+			
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

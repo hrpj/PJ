@@ -1,6 +1,9 @@
 <?php
 session_start();
   $search = $_SESSION["search"];
+  $_SESSION["branchName"] = 0;
+  $_SESSION["departmentName"] = 0;
+  $_SESSION["checkFirst"] = 1;
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
   if (mysqli_connect_errno())

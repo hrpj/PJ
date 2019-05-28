@@ -112,7 +112,7 @@ session_start();
 
    <!---___________________________Table with Form__________________________________----------->
    <div align="center">
-     <form name="ManagePosition" action="CreateEditDeletePosition.php" method="post">
+    <form name="ManagePosition" action="CreateEditDeletePosition.php" method="post">
         <?php
            $branch = $_SESSION["BRANCH"];
            $departmentID = $_SESSION["DEPARTMENT"];
@@ -134,7 +134,8 @@ session_start();
          </thead>
         <tbody>
           <?php
-           while($row = mysqli_fetch_array($result)) {
+           while($row = mysqli_fetch_array($result)) 
+		   {
               $ID = $row['positionID'];
               $name = $row['positionName'];
               $min = $row['minSalary'];
@@ -177,7 +178,7 @@ session_start();
         <div align="center">
           <button type="submit" name="create" class="btn btn-dark"> <h4> Add </h4> </button>
         </div>
-     </form>
+    </form>
    </div>
    <!---------------------------------------------------------------------------------------------------------------->
 
