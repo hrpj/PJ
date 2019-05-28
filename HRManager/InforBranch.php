@@ -1,7 +1,7 @@
-<?php 
+<?php
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
-  if (mysqli_connect_errno()) 
+  if (mysqli_connect_errno())
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
@@ -22,7 +22,7 @@
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-      <a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+      <a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,27 +30,27 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Information
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
-              <a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
-              <a class="dropdown-item" href="http://localhost/HRPJ/HR/InforBranch.php">Branch</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
+            <a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Payment Slip
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="http://localhost/HRPJ/HR/PaymentStaffForHR.php">Only Me</a>
+              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
               <a class="dropdown-item" href="#">Any Staffs</a>
             </div>
           </li>
@@ -109,7 +109,7 @@
       $result = mysqli_query($con,"SELECT * FROM branch WHERE 1 ");
       $count=$result->num_rows;
       $Temp = 1;
-      if ((empty($count))) 
+      if ((empty($count)))
       {
         echo "<tr>";
         echo "<th scope='row'>".$Temp."</th>";
@@ -126,7 +126,7 @@
           echo "<td>".$branchName[$Temp]."</td>";
           echo "<form action ='ViewBranch.php' method ='post'>";
           echo "<td> <input type='hidden' name='branchName' value='".$branchName[$Temp]."'> <button type='submit' class='btn btn-outline-dark' >view</button></td>";
-          //echo "<td><a href='http://localhost/HRPJ/HR/ViewBranch.php?branchName='".$branchName[$Temp]."' class='button-link'>View</a></td>";
+          //echo "<td><a href='http://localhost/HRPJ/HRManager/ViewBranch.php?branchName='".$branchName[$Temp]."' class='button-link'>View</a></td>";
           echo "</form>";
           echo "</tr> ";
           $Temp++;
@@ -138,7 +138,7 @@
 <!-- End Table -->
 <table class="threebuttons">
     <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/WelcomeSignoutForHR.php';">Back</button>
+    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
 </td></tr>
 </table>
     <!-- Optional JavaScript -->
