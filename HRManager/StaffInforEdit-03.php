@@ -242,6 +242,7 @@ session_start();
                         <th scope="col">Company</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">End Date</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -256,12 +257,15 @@ session_start();
                             echo "<td><input class='form-control' name='company".$i."' type='text' value='".$row['company']."'</td>";
                             echo "<td><input type='Date' class='form-control' name='startDate".$i."' value='".$row['startDate']."''></td>";
                             echo "<td><input type='Date' class='form-control' name='endDate".$i."' value='".$row['endDate']."''></td>";
+                            echo "<td><button type='submit'class='btn btn-outline-dark'>Delete</button>";
                             echo "</tr>";
                             $i++;
                         }
                         $i-=1;
                         echo "<input type='hidden' name='i' value='".$i."'>";
                     ?>
+                    <tr>
+                    </tr>
                 </tbody>
             </table>
         <div class = "Graduate"><h4>Graduate History</h></div>
