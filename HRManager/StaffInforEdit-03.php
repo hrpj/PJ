@@ -249,7 +249,7 @@ session_start();
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Company</th>
+                        <th scope="col">Company&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">End Date</th>
                         <th scope="col">Delete</th>
@@ -286,6 +286,7 @@ session_start();
                         <th scope="col">University</th>
                         <th scope="col">Field</th>
                         <th scope="col">Degree</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -300,6 +301,7 @@ session_start();
                             echo "<td><input class='form-control' type='text' name='university".$j."' value='".$row['university']."'></td>";
                             echo "<td><input class='form-control' type='text' name='field".$j."' value='".$row['field']."''></td>";
                             echo "<td><input class='form-control' type='text' name='degree".$j."' value='".$row['degree']."''></td>";
+                            echo "<td><button type='submit'class='btn btn-outline-dark'>Delete</button>";
                             echo "</tr>";
                             $j++;
                         }
