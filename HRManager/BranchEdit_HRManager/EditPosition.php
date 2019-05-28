@@ -10,7 +10,7 @@ session_start();
   $_SESSION["POSID"] = $positionID;
   $result = mysqli_query($con,"SELECT *
                                 FROM position
-                                WHERE positionID LIKE $positionID");
+                                WHERE positionID LIKE '$positionID'");
   $row = mysqli_fetch_array($result);
 	$positionID = $row['positionID'];
 	$positionName = $row['positionName'];
@@ -18,6 +18,8 @@ session_start();
 	$maxSalary = $row['maxSalary'];
 	$departmentID = $row['departmentID'];
 ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,7 +30,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styleview.css" rel="stylesheet">
+    <link href="styleeditposition.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- _____________________________________________________________________________Nav Bar_________________- -->
@@ -117,7 +119,7 @@ session_start();
   </head>
   <body>
       <div class = "NameBranch"><h3>Edit Position</h3></div>
-      <form>
+      <form action="EditPositionSubmit.php">
       <div class="Previous">
         Position ID : <br><?php echo $positionID; ?>
       </div>
@@ -142,7 +144,7 @@ session_start();
 
 			<table class="Back">
 			    <tr><td>
-			    <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition1.html';">Save</button>
+			    <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'PositionandSalary.html';">Save</button>
 			</td><td>
 			    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition.php';">Cancel</button></span>
 			</td></tr>

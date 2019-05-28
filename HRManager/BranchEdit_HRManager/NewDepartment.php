@@ -160,7 +160,7 @@ session_start();
 <!--______________________________________________Next, Back and Cancel__________________________________________________-->
 			<form action="index.html" method="post">
 				<div class="NextBut">
-        	<button type="button" class="btn btn-dark" onclick="window.location.href = 'PositionandSalary.html';">Next</button>
+        	<button type="button" class="btn btn-dark" onclick="window.location.href = '/HRPJ/HRManager/WelcomeSignoutForHR.php';">DONE</button>
      			<button type="button" class="btn btn-dark" onclick="window.location.href = 'CancelBranch.php';">Cancel</button>
 	 			</div>
 			</form>
