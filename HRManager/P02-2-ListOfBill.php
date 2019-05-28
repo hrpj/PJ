@@ -1,5 +1,5 @@
 <?php
-session_start();
+	session_start();
 	$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
 	if (mysqli_connect_errno())
@@ -94,14 +94,7 @@ session_start();
 		</div>
 	</nav>
 </head>
-<?php 
-	$search5 = $_SESSION["foundID"];
-	$positionID = $_SESSION["posi"];
-	$departmentID = $_SESSION["depart"];
-	$branchName = $_SESSION["bran"];
-	$month  = $_SESSION["month"];
-	$year = $_SESSION["year"];
-?>
+
 <body>
     <br>
     <h2>&nbsp;&nbsp;&nbsp;List Of Bill </h2>
@@ -119,7 +112,14 @@ session_start();
 				</tr>
 			</thead>
 			
-<?php 		if(!empty($search5))
+<?php 		$search5 = $_SESSION["foundID"];
+			$positionID = $_SESSION["posi"];
+			$departmentID = $_SESSION["depart"];
+			$branchName = $_SESSION["bran"];
+			$month  = $_SESSION["month"];
+			$year = $_SESSION["year"];
+
+			if(!empty($search5))
 			{
 				echo "1";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE staffID LIKE '$search5' AND date LIKE '$month%' AND year LIKE '$year%'");
@@ -149,7 +149,11 @@ session_start();
 			}
 			else
 			{
-				echo "1111111";
+				echo  $search5;
+				echo  $positionID;
+				echo  $departmentID;
+				echo  $branchName;
+				echo "1111";
 			}
 			
 			while ($row1 = mysqli_fetch_array($result1))
