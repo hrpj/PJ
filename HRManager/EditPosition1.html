@@ -1,20 +1,10 @@
-<?php
-session_start();
-	$con=mysqli_connect("localhost","root","","hrmanager");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Branch</title>
+    <title>Edit Position</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -57,7 +47,7 @@ session_start();
         <a class="nav-link" href="Payment.html">Payment Slip</a>
         </li>
         <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Create<span class="sr-only">(current)</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -96,70 +86,38 @@ session_start();
     </div>
 </nav>
   </head>
-
-<!-- ______________________________ Query  _____________________________ -->
-<?php
-   $sql = "SELECT * FROM branch";
-   $result = mysqli_query($con,$sql);
-   $i = (int)0;
- ?>
-
   <body>
-    <div class = "InfoBranch"><h3>Edit Branch</h></div>
+    <div class = "InfoBranch"><h3>Edit Position</h></div>
         <!-- Table -->
-  <form action="EditBranch2.php" method="post">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
-          <th scope="col">Tel</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-         while($row = mysqli_fetch_array($result)) {
-            $i = $i + 1;
-            $bName = $row['branchName'];
-            $bAddress = $row['address'];
-            $bTel = $row['telNo'];
-            echo "<tr>
-             <td>".$i."</td>
-             <td>".$bName."</td>
-             <td>".$bAddress."</td>
-             <td>".$bTel."</td>
-             <td>
-               <button type=\"submit\"
-                 name=\"edit\"
-                 value=\"".$bName."\"
-                 class=\"btn btn-success\">
-                 <h6>edit</h6>
-               </button>
-             </td>
-             <td>
-               <button type=\"submit\"
-                 name=\"delete\"
-                 value=\"".$bName."\"
-                 class=\"btn btn-danger\">
-                 <h6>delete</h6>
-               </button>
-             </td>
-            </tr>";
-         }
-        ?>
-      </tbody>
-    </table>
-  </form>
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Position ID</th>
+      <th scope="col">Position Name</th>
+      <th scope="col">Minimum Salary</th>
+      <th scope="col">Maximum Salary</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Manager</td>
+      <td>12345</td>
+      <td>56789</td>
+      <td><a href="EditPosition2.html" class="button-link">Edit</a></td>
+      <td><a href="EditPosition1.html" class="button-link">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
 <!-- End Table -->
 <table class="threebuttons">
-    <tr>
-      <td>
-        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Finish</button>
-      </td>
-    </tr>
+    <tr><td>
+    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Finish</button>
+</td><td>
+<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditDepartment1.html';">Back</button>
+</td></tr>
 </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

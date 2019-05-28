@@ -1,24 +1,14 @@
-<?php
-session_start();
-	$con=mysqli_connect("localhost","root","","hrmanager");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Branch</title>
+    <title>Staff Manage</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styleinfobranch.css" rel="stylesheet">
+    <link href="font.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -36,11 +26,11 @@ session_start();
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Information<span class="sr-only">(current)</span>
+          Information
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="InforMe.html">Only Me</a>
-          <a class="dropdown-item" href="InforStaff.html">Any Staffs</a>
+          <a class="dropdown-item" href="InforMeHR.html">Only Me</a>
+          <a class="dropdown-item" href="SearchInforStaff.html">Any Staffs</a>
           <a class="dropdown-item" href="InforBranch.html">Branch</a>
         </div>
         </li>
@@ -53,19 +43,25 @@ session_start();
               <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
         </div>
     </li>
-        <li class="nav-item">
-        <a class="nav-link" href="Payment.html">Payment Slip</a>
-        </li>
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Payment Slip
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="PaymentSearchForHR.html">Only Me</a>
+              <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
+        </div>
+    </li>
+        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Create<span class="sr-only">(current)</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="NewStaff.html">New Staff</a>
           <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
+          <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
           <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
           <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
-
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -96,71 +92,20 @@ session_start();
     </div>
 </nav>
   </head>
-
-<!-- ______________________________ Query  _____________________________ -->
-<?php
-   $sql = "SELECT * FROM branch";
-   $result = mysqli_query($con,$sql);
-   $i = (int)0;
- ?>
-
   <body>
-    <div class = "InfoBranch"><h3>Edit Branch</h></div>
-        <!-- Table -->
-  <form action="EditBranch2.php" method="post">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
-          <th scope="col">Tel</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-         while($row = mysqli_fetch_array($result)) {
-            $i = $i + 1;
-            $bName = $row['branchName'];
-            $bAddress = $row['address'];
-            $bTel = $row['telNo'];
-            echo "<tr>
-             <td>".$i."</td>
-             <td>".$bName."</td>
-             <td>".$bAddress."</td>
-             <td>".$bTel."</td>
-             <td>
-               <button type=\"submit\"
-                 name=\"edit\"
-                 value=\"".$bName."\"
-                 class=\"btn btn-success\">
-                 <h6>edit</h6>
-               </button>
-             </td>
-             <td>
-               <button type=\"submit\"
-                 name=\"delete\"
-                 value=\"".$bName."\"
-                 class=\"btn btn-danger\">
-                 <h6>delete</h6>
-               </button>
-             </td>
-            </tr>";
-         }
-        ?>
-      </tbody>
-    </table>
-  </form>
-<!-- End Table -->
-<table class="threebuttons">
-    <tr>
-      <td>
-        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Finish</button>
-      </td>
-    </tr>
-</table>
+      <br>
+      <h2>&nbsp;&nbsp;&nbsp;Staff Manage</h2>
+      <hr>
+      <!-- Search -->
+      <form class="form-inline my-2 my-lg-0">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Staff ID&nbsp;&nbsp;
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.href = 'StaffInfor.html';">Search</button>
+    </form>
+    <!-- End Search -->
+    <div class="Searching">
+      <i><font color = "#D3D3D3"> Search Staff ID that you want to delete. </font></i>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
