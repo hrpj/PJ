@@ -1,3 +1,20 @@
+<?php
+  session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+
+  $branchName = $_SESSION["BRANCH"];
+
+  $result = mysqli_query($con,"SELECT *
+                                FROM branch
+                                WHERE branchName LIKE '$branchName'");
+  $row = mysqli_fetch_array($result);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -93,40 +110,49 @@
 </nav>
   </head>
   <body>
-      <div class = "NameBranch"><h3>Edit Branch</h3></div>
-      <form>
-      <div class="Previous">
-        Previous Branch ID : <br>Something
+      <div class = "NameBranch"><h3>Edit Branch : </h3></div>
+      <form action="EditBranchController2.php">
+        <div class="Previous">
+          <b>Previous Branch Name : <?php echo $row['branchName']; ?> </b>
+        </div>
+        <div class="New">
+          New Branch Name : <input type="text" name="branchName" class="form-control" placeholder="Name">
+        </div>
+        <div class="PreviousMin">
+          <b>Previous Branch Address : <?php echo $row['address']; ?></b>
+        </div>
+        <div class="NewMin">
+          New Branch Address : <input type="text" name="branchAddress" class="form-control" placeholder="Address">
       </div>
-      <div class="New">
-        New Branch ID : <input type="text" class="form-control" placeholder="ID">
-      </div>
-      <div class="PreviousMin">
-        Previous Branch Name : <br>Something
-      </div>
-      <div class="NewMin">
-        New Branch Name : <input type="text" class="form-control" placeholder="Name">
-    </div>
-      <div class="PreviousMin">
-        Previous Address : <br>Something
-      </div>
-      <div class="NewMin">
-        New Address : <input type="text" class="form-control" placeholder="Address">
-      </div>
-      <div class="PreviousMax">
-        Previous Telephone No. : <br>Something
-      </div>
-      <div class="NewMax">
-        New Telephone No. : <input type="text" class="form-control" placeholder="Tel">
-      </div>
-  </form>
-<table class="Back">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditBranch1.html';">Save</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditBranch1.html';">Cancel</button></span>
-</td></tr>
-</table>
+        <div class="PreviousMin">
+          <b>Previous Telephone No. : <?php echo $row['telNo']; ?></b>
+        </div>
+        <div class="NewMin">
+          New Telephone No. : <input type="text" name="telNo" class="form-control" placeholder="Tel">
+        </div>
+
+        <table class="Back">
+          <tr>
+            <td>
+              <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'EditBranch1.html';">Save</button>
+            </td>
+            <td>
+              <span>
+                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'NewDepartment.php';">Skip</button>
+              </span>
+            </td>
+            <td>
+              <span>
+                <?php $_SESSION["BRANCH"] = $branchName ?>
+                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = '/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
+              </span>
+            </td>
+          </tr>
+        </table>
+
+      </form>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
