@@ -26,8 +26,8 @@ if ($conn->query($sql) === TRUE) {
   echo "<a href=\"javascript:history.go(-2)\">GO BACK</a>";
 }
 else {
-    echo "Error updating record: " . $conn->error;
-    echo "<a href=\"javascript:history.go(-2)\">GO BACK</a>";
+  echo "Error updating record: " . $conn->error;
+  echo "<a href=\"javascript:history.go(-2)\">GO BACK</a>";
 }
 
 
