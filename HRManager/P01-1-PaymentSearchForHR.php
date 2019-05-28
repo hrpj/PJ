@@ -1,9 +1,9 @@
-<?php 
+<?php
 session_start();
 	$id = $_SESSION["ID"];
 	$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
-	if (mysqli_connect_errno()) 
+	if (mysqli_connect_errno())
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
@@ -24,7 +24,7 @@ session_start();
     <!-- Nav Bar -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-		<a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -32,27 +32,27 @@ session_start();
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item dropdown ">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Information
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
 						<a class="dropdown-item" href="#">Branch</a>
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
 				</li>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/P01-1-PaymentSearchForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
 						<a class="dropdown-item" href="#">Any Staffs</a>
 					</div>
 				</li>
@@ -114,14 +114,14 @@ session_start();
             }
 ?>
 <body>
-	<form action="searchMyPaymant.php" method="POST"> 
+	<form action="searchMyPaymant.php" method="POST">
 		<div class = "Payment"><h3>Payment Slip</h></div>
 		<div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
-		
+
 		<!-- Information -->
 		<div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo $id ; ?><br>
 			<br><i class="fas fa-layer-group"></i>Department : <?php echo $departmentID ; ?><br>
-			<br><i class="fas fa-calendar-alt"></i>Month : 
+			<br><i class="fas fa-calendar-alt"></i>Month :
 			<select class="form-control" name="month" id="exampleFormControlSelect1">
 				<option>01</option>
 				<option>02</option>
@@ -141,7 +141,7 @@ session_start();
 			<br><i class="fas fa-map-marker-alt"></i></i>Branch : <?php echo "$branchName" ; ?> <br>
 			<br><i class="fas fa-history"></i>Year : <input type="text" name="year" class="form-control" placeholder="Year">
 		</div>
-		
+
 		<!-- End Information -->
 		<table class="FindCancel">
 			<tr>
@@ -149,13 +149,13 @@ session_start();
 					<button type="submit" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
 				</td>
 				<td>
-					<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/WelcomeSignoutForHR.php';">Back</button>
+					<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
 				</td>
 			</tr>
 		</table>
-		
+
 	</form>
-	  
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
