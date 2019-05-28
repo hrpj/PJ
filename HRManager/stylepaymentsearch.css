@@ -40,11 +40,17 @@ h6
     margin-left:550px;
     margin-top:-38px;
 }
-.MonthAndYear
+.Month
 {
     width: 300px;
     margin-left:-550px;
     margin-top:40px;
+}
+.Year
+{
+    width: 300px;
+    margin-left:0px;
+    margin-top:-62px;
 }
 .NextBut
 {
