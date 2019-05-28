@@ -140,7 +140,7 @@ session_start();
         <div class="form-group">
     <label for="exampleFormControlSelect1">Branch</label>
     <select class="form-control" id="exampleFormControlSelect1">
-      <option>Bang Khae <?php echo $qBranchName; ?></option>
+      <option>Bang Khae</option>
       <option>Bang Ruk</option>
     </select>
   </div>
