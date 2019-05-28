@@ -1,14 +1,14 @@
 <?php
 session_start();
   $search = $_SESSION["search"];
+  $_SESSION["branchName"] = 0;
+  $_SESSION["departmentName"] = 0;
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
   if (mysqli_connect_errno())
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-  $_SESSION["branchName"] = 0;
-  $_SESSION["departmentName"] = 0;
 ?>
 <!doctype html>
 <html lang="en">
