@@ -7,6 +7,8 @@ session_start();
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
+  $_SESSION["branchName"] = 0;
+  $_SESSION["departmentName"] = 0;
 ?>
 <!doctype html>
 <html lang="en">
