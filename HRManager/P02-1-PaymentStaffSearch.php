@@ -100,13 +100,13 @@ session_start();
     <br>
     <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
     <!-- Search -->
-	<form action="P02-1.25-PepareSearch.php" method="POST">
+	<form action="P02-1.5-PepareSearch.php" method="POST">
 		<form action="P02-1.25-PepareSearch.php" method="POST">
 			<div class="StaffID">
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
 					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-					<button type="submit" href="#"><i class="fas fa-search"></i></button>
+					<a href="#"><i class="fas fa-search"></i></a>
 				</div>
 			</div>
 			
