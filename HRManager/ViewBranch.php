@@ -204,11 +204,18 @@
       </table>
       <!-- End Position Table -->
       <table class="Back">
-          <tr>
-            <td>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/InforBranch.php';">Back</button>
-            </td>
-          </tr>
+        <tr>
+          <td>
+            <form action='http://localhost/HRPJ/HRManager/ViewBranchEdit.php'>
+              <button type="submit" class="btn btn-outline-dark" >Edit</button>
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/InforBranch.php';">Back</button>
+          </td>
+        </tr>
       </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
