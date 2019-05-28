@@ -130,21 +130,12 @@ session_start();
 		
 		<div class="Department">
 		<div class="input-group-prepend">
-			<label class="input-group-text" for="inputGroupSelect01">Department</label>
-			<select class="custom-select" id="inputGroupSelect01">
-				<option selected>Choose...</option>
-<?php     		
-				$result2 = mysqli_query($con,"SELECT * FROM department ");
-				while ($row = mysqli_fetch_array($result2))
-				{
-					$departmentID = $row['departmentID'];
-					$departmentName = $row['departmentName'];
-					$BranchName2 = $row['BranchName'];
-					echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
-				}
-?>
-			</select> 
-			<a href="#"><i class="fas fa-search"></i></a>
+		<label class="input-group-text" for="inputGroupSelect01">Department</label>
+		<select class="custom-select" id="inputGroupSelect01">
+		<option selected>Choose...</option>
+		<option value="1">1 - Marketing</option>
+		<option value="2">2 - Finance</option>
+		</select> <a href="#"><i class="fas fa-search"></i></a>
 		</div>
 		
 		<div class="Position">
