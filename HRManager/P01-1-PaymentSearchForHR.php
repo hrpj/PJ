@@ -99,7 +99,6 @@ session_start();
             while ($row = mysqli_fetch_array($result))
             {
                 $positionID = $row['positionID'];
-				$branchName = $row['branchName'];
             }
             $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
             while ($row = mysqli_fetch_array($result))
@@ -111,7 +110,8 @@ session_start();
             while ($row = mysqli_fetch_array($result))
             {
                 $departmentName = $row['departmentName'];
-            }
+				$branchName = $row['BranchName'];
+            }			
 ?>
 <body>
 	<form action="searchMyPaymant.php" method="POST">
@@ -120,7 +120,7 @@ session_start();
 
 		<!-- Information -->
 		<div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo $id ; ?><br>
-			<br><i class="fas fa-layer-group"></i>Department : <?php echo $departmentID ; ?><br>
+			<br><i class="fas fa-layer-group"></i>Department : <?php echo $departmentName ; ?><br>
 			<br><i class="fas fa-calendar-alt"></i>Month :
 			<select class="form-control" name="month" id="exampleFormControlSelect1">
 				<option>01</option>

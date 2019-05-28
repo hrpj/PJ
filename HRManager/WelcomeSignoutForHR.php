@@ -51,7 +51,7 @@ session_start();
 						Payment Slip
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
 						<a class="dropdown-item" href="#">Any Staffs</a>
 					</div>
 				</li>
