@@ -167,6 +167,8 @@ session_start();
   </div>
   </form>
 <!-- ____________________________________ Start Form 2 _________________________________________ -->
+<form>
+<div class="Department">
 <div class="form-group">
 	<form action="NewStaff3" method="post">
     <label for="exampleFormControlSelect1">Department</label>
@@ -181,6 +183,8 @@ session_start();
     </select>
 	</form>
 </div>
+</div>
+</form>
 
   <!-- End Fill -->
 <form action="index.html" method="post">
