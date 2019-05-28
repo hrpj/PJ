@@ -95,134 +95,95 @@
     </nav>
   </head>
   <body>
-      <div class = "NameBranch"><h3> <?php echo $branchName ?> </h3></div>
+    <form>
+      <div class = "NameBranch"><h3><?php echo "<input class='form-control' type='text' name='branchName' value='".$branchName."'></td>" ?></h3></div>
 
-      <!-- Branch Infor -->
-      <?php
-        $result = mysqli_query($con,"SELECT * FROM branch WHERE branchName LIKE '".$branchName."'");
-        $count = $result->num_rows;
-        if (empty($count))
-        {
-          echo "ERROR, No data found.";
-        }
-        else
-        {
-          while ($row = mysqli_fetch_array($result))
-          {
-            $address = $row['address'];
-            $telNo = $row['telNo'];
-            echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch address : ".$address."<br><br>";
-            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch Telephone Number : ".$telNo."<br>";
-          }
-        }
-      ?>
-      <!-- End Branch Infor -->
+      <!-- Table -->
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">DepartmentID</th>
+            <th scope="col">DepartmentName</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            $sql = "SELECT * FROM department WHERE branchName LIKE'".$branchName."'";
+            $result = mysqli_query($con,$sql);
+            while ($row = mysqli_fetch_array($result))
+            {
+              $departmentID = $row['departmentID'];
+              $departmentName = $row['departmentName'];
+              echo "<tr>";
+              echo "<td><input class='form-control' type='text' name='departmentID' value='".$departmentID."'></td>";
+              echo "<td><input class='form-control' type='text' name='departmentName' value='".$departmentName."'></td>";
+              echo "</tr>";
+            }
+          ?>
+        </tbody>
+      </table>
+      <!-- End Table -->
 
-      <!-- Department Table -->
+      <!-- Table -->
       <table class="table">
-          <thead class="thead-dark">
-              <tr>
-                  <th scope="col">Department ID</th>
-                  <th scope="col">Department Name</th>
-              </tr>
-          </thead>
-          <tbody>
-              <?php
-                $sql = "SELECT * FROM department WHERE branchName LIKE'".$branchName."'";
-                $result = mysqli_query($con,$sql);
-                $count=$result->num_rows;
-                if (empty($count))
-                {
-                  echo "<tr>";
-                  echo "<td> - </td>";
-                  echo "<td>No data</td>";
-                  echo "</tr>";
-                }
-                else
-                {
-                  while ($row = mysqli_fetch_array($result))
-                  {
-                    $departmentID = $row['departmentID'];
-                    $departmentName = $row['departmentName'];
-                    $count=$result->num_rows;
-                    echo "<tr>";
-                    echo "<td>".$departmentID."</td>";
-                    echo "<td>".$departmentName."</td>";
-                    echo "</tr>";
-                  }
-                }
-              ?>
-          </tbody>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Department</th>
+            <th scope="col">Position</th>
+            <th scope="col">Minimum Salary</th>
+            <th scope="col">Maximum Salary</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            $sql = "SELECT * FROM department WHERE branchName LIKE'".$branchName."'";
+            $result = mysqli_query($con,$sql);
+            while ($row = mysqli_fetch_array($result))
+            {
+              $departmentID = $row['departmentID'];
+              $departmentName = $row['departmentName'];
+              $count=$result->num_rows;
+              echo "<tr>";
+              echo "<td><input class='form-control' type='text' name='departmentID' value='".$departmentID."'></td>";
+              echo "<td><input class='form-control' type='text' name='departmentName' value='".$departmentName."'></td>";
+              echo "</tr>";
+            }
+          ?>
+          <tr>
+            <td>Human Resource Management</td>
+            <td>Manager</td>
+            <td><input class="form-control" type="text" placeholder="Original MinSalary"></td>
+            <td><input class="form-control" type="text" placeholder="Original Maximum"></td>
+            <td><a href="ViewBranchEdit.html" class="button-link">Edit</a></td>
+            <td><a href="ViewBranch.html" class="button-link">Delete</a></td>
+          </tr>
+        </tbody>
       </table>
-      <!-- End Department Table -->
-      <!-- Position Table -->
-      <table class="table">
-          <thead class="thead-dark">
-              <tr>
-                  <th scope="col">Department</th>
-                  <th scope="col">Position</th>
-                  <th scope="col">Minimum Salary</th>
-                  <th scope="col">Maximum Salary</th>
-              </tr>
-          </thead>
-          <tbody>
-              <?php
-                $sql = "SELECT * FROM department WHERE branchName LIKE'".$branchName."'";
-                $result = mysqli_query($con,$sql);
-                while ($row = mysqli_fetch_array($result))
-                {
-                  $departmentName = $row['departmentName'];
-                  $sql2 = "SELECT * FROM position WHERE departmentID LIKE'".$row['departmentID']."'";
-                  $result2 = mysqli_query($con,$sql2);
-                  $count=$result2->num_rows;
-                  if (empty($count))
-                  {
-                    echo "<tr>";
-                    echo "<td>No data</td>";
-                    echo "<td>No data</td>";
-                    echo "<td> -- </td>";
-                    echo "<td> -- </td>";
-                    echo "</tr>";
-                  }
-                  else
-                  {
-                    while ($row2 = mysqli_fetch_array($result2))
-                    {
-                      echo "<tr>";
-                      echo "<td>".$departmentName."</td>";
-                      echo "<td>".$row2['positionName']."</td>";
-                      echo "<td>".$row2['minSalary']."</td>";
-                      echo "<td>".$row2['maxSalary']."</td>";
-                      //echo"<td><a href='ViewBranchEdit.html' class='button-link'>Edit</a></td>";
-                      //echo "<td><a href='ViewBranch.html' class='button-link'>Delete</a></td>";
-                      echo "</tr>";
-                    }
-                  }
-                }
-              ?>
-          </tbody>
+      <!-- End Table -->
+
+      <table class="twobuttons">
+          <tr>
+            <td>
+              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'ViewBranch.html';">Save</button>
+            </td>
+            <td>
+              <span>
+                <form action='http://localhost/HRPJ/HRManager/ViewBranch.php' method="post" >
+                  <?php echo "<input type='hidden' name='branchName' value='".$branchName."'>" ?>
+                  <button type="submit" class="btn btn-outline-dark" >Cancle</button>
+                </form>
+              </span>
+            </td>
+          </tr>
       </table>
-      <!-- End Position Table -->
-      <table class="Back">
-        <tr>
-          <td>
-            <form action='http://localhost/HRPJ/HRManager/ViewBranchEdit.php' method="post" >
-              <?php echo "<input type='hidden' name='branchName' value='".$branchName."'>" ?>
-              <button type="submit" class="btn btn-outline-dark" >Edit</button>
-            </form>
-          </td>
-          <td>
-            <span>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/InforBranch.php';">Back</button>
-            </span>
-          </td>
-        </tr>
-      </table>
+    </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-  <?php mysqli_close($con);?>
 </html>

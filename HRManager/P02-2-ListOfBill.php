@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Payment Slip Search</title>
+    <title>List of Bill</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -34,15 +34,9 @@
           <a class="dropdown-item" href="InforBranch.html">Branch</a>
         </div>
         </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Time Attendance
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="PaymentSearchForHR.html">Daily Attendance Status</a>
-              <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
-        </div>
-    </li>
+        <li class="nav-item">
+        <a class="nav-link" href="TimeAttendanceSearchForHR.html">Time Attendance</a>
+        </li>
         <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Payment Slip
@@ -52,36 +46,34 @@
             <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
         </div>
     </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Create<span class="sr-only">(current)</span>
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="NewStaff.html">New Staff</a>
-      <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
-      <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
-      <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
-      <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
-
-    </div>
-  </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Create
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="NewStaff.html">New Staff</a>
+          <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
+          <a class="dropdown-item" href="NewDepartment.html">New Department</a>
+          <a class="dropdown-item" href="NewTraining.html">New Training Course</a>
+        </div>
+      </li>
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Analysis Report
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="NewStaff.html">Age range of staffs</a>
+        <a class="dropdown-item" href="NewStaff.html">Age Range of Staffs</a>
         <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
+        <a class="dropdown-item" href="NewDepartment.html">Top 5 Highest Concern Score</a>
+        <a class="dropdown-item" href="NewTraining.html">Concern Score in Bang Khae Branch</a>
         <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
         <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
         <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of every staff in Bang Khae branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of IT department in Bang Khae</a>
-        <a class="dropdown-item" href="NewStaff.html">The most leave type of month in company</a>
-        <a class="dropdown-item" href="NewStaff.html">The people who has the most sick leave type</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of staff in each branch</a>
-        <a class="dropdown-item" href="NewStaff.html">The manager who has the most salary in company</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of gender in this company</a>
+        <a class="dropdown-item" href="NewStaff.html">The highest average competency score of each department</a>
+        <a class="dropdown-item" href="NewStaff.html">Amount of leave of each staff of each department in Bang Khae</a>
+        <a class="dropdown-item" href="NewStaff.html">The highest amount of leave in each department in Bang Khae</a>
+        <a class="dropdown-item" href="NewStaff.html">Field and Degree in IT department</a>
+        <a class="dropdown-item" href="NewStaff.html">Income table of each Staff</a>
       </div>
     </li>
         </ul>
@@ -95,57 +87,34 @@
   </head>
   <body>
       <br>
-      <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
-      <!-- Search -->
-      <div class="StaffID">
-      <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </div>
-      </div>
-      <div class="Branch">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Branch</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Bang Khae</option>
-      <option value="2">Bang Mod</option>
-      </select>
-      </div>
-      <div class="Department">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Department</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">1 - Marketing</option>
-      <option value="2">2 - Finance</option>
-      </select>
-      </div>
-      <div class="Position">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Position</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Supervisor</option>
-      <option value="2">Manager</option>
-      </select>
-      </div>
-<br><br><div class="Month">
-Month : <select class="form-control" id="exampleFormControlSelect1">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select></div>
-<div class="Year">
-Year : <input type="text" class="form-control" placeholder="Year"></div>
-      <!-- End Search -->
-      <table class="NextBut">
+      <h2>&nbsp;&nbsp;&nbsp;List Of Bill </h2>
+      <!-- Table -->
+      <table class="table">
+      <thead class="thead-dark">
+      <tr>
+      <th scope="col">StaffID</th>
+      <th scope="col">Branch</th>
+      <th scope="col">Year</th>
+      <th scope="col">Month</th>
+      <th scope="col">Edit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>FN010001</td>
+      <td>Bang Khae</td>
+      <td>2019</td>
+      <td>FEB</td>
+      <td><a href="PaymentStaffEdit.html" class="button-link">Edit</a></td>
+      </tr>
+      </tbody>
+      </table>
+      <!-- End Table -->
+      <table class="AddNCancel">
           <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Find</button>
+      <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffAdd.html';">Add</button>
       </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
+      <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffSearch.html';">Back</button>
       </td></tr>
       </table>
     <!-- Optional JavaScript -->

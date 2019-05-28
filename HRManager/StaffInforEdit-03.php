@@ -116,6 +116,8 @@ session_start();
             <br><br><i class="fas fa-money-check-alt"></i>Bank Account :
         </div>
         <!-- End Information -->
+        <div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
+
 
         <!-- PHP code for value -->
         <?php
