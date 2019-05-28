@@ -167,7 +167,6 @@ session_start();
   </div>
   </form>
 <!-- ____________________________________ Start Form 2 _________________________________________ -->
-<form>
 <div class="Department">
 <div class="form-group">
 	<form action="NewStaff3" method="post">
@@ -184,7 +183,6 @@ session_start();
 	</form>
 </div>
 </div>
-</form>
 
   <!-- End Fill -->
 <form action="index.html" method="post">
