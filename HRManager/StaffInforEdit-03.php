@@ -44,18 +44,6 @@ session_start();
       						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
       					</div>
       				</li>
-      				<li class="nav-item">
-      					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
-      				</li>
-      				<li class="nav-item dropdown">
-      					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      						Payment Slip
-      					</a>
-      					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
-      						<a class="dropdown-item" href="#">Any Staffs</a>
-      					</div>
-      				</li>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Time Attendance
@@ -65,6 +53,15 @@ session_start();
                           <a class="dropdown-item" href="#">Leave</a>
                     </div>
                 </li>
+      				<li class="nav-item dropdown">
+      					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      						Payment Slip
+      					</a>
+      					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
+      						<a class="dropdown-item" href="#">Any Staffs</a>
+      					</div>
+      				</li>
       				<li class="nav-item dropdown">
       					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       						Create
