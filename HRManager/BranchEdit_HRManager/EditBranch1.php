@@ -107,7 +107,7 @@ session_start();
   <body>
     <div class = "InfoBranch"><h3>Edit Branch</h></div>
         <!-- Table -->
-  <form action="EditBranch2.php" method="post">
+  <form action="EditBranchController1.php" method="post">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -161,6 +161,7 @@ session_start();
       </td>
     </tr>
 </table>
+<?php $con->close(); ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
