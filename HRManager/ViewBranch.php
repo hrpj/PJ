@@ -33,7 +33,7 @@
             <li class="nav-item">
             <a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Information
             </a>
@@ -212,12 +212,6 @@
       <!-- End Position Table -->
       <table class="Back">
         <tr>
-          <td>
-            <form action='http://localhost/HRPJ/HRManager/ViewBranchEdit.php' method="post" >
-              <?php echo "<input type='hidden' name='branchName' value='".$branchName."'>" ?>
-              <button type="submit" class="btn btn-outline-dark" >Edit</button>
-            </form>
-          </td>
           <td>
             <span>
               <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/InforBranch.php';">Back</button>
