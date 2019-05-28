@@ -106,7 +106,7 @@ session_start();
 <!-- Fill Date -->
 <form action="NewStaff2.php" method="post" id="staffForm">
       <div class="StartDate">
-        Start Date : <input type="Date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
+        Start Date : <input type="date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
       </div>
       <div class="Firstname">
         First Name : <input type="text" name="fName" class="form-control" placeholder="First Name">
