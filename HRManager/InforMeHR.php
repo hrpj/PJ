@@ -152,6 +152,7 @@
         <br><br><i class="fas fa-building"></i>Adress : <?php echo "$staffAddress"; ?>
         <br><br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?>
     </div>
+    <div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
     <!-- End Information -->
 
     <!-- Table Work History -->

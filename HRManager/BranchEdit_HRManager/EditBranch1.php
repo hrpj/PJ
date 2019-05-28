@@ -1,3 +1,13 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -86,83 +96,70 @@
     </div>
 </nav>
   </head>
-<<<<<<< HEAD:HRManager/BranchEdit_HRManager/EditBranch1.php
 
 <!-- ______________________________ Query  _____________________________ -->
 <?php
-   $branch = $_SESSION['BRANCH'];
    $sql = "SELECT * FROM branch";
    $result = mysqli_query($con,$sql);
    $i = (int)0;
  ?>
 
-=======
->>>>>>> e3b3762c28b457e31c746f30867610f8b3199dc2:HRManager/BranchEdit_HRManager/EditBranch1.html
   <body>
     <div class = "InfoBranch"><h3>Edit Branch</h></div>
         <!-- Table -->
-        <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Tel</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-<<<<<<< HEAD:HRManager/BranchEdit_HRManager/EditBranch1.php
-    <?php
-     while($row = mysqli_fetch_array($result)) {
-        $i = $i + 1;
-        $bName = $row['branchName'];
-        $bAddress = $row['address'];
-        $bTel = $row['telNo'];
-        echo "<tr>
-         <td>".$i."</td>
-         <td>".$bName."</td>
-         <td>".$bAddress."</td>
-         <td>".$bTel."</td>
-         <td>
-           <button type=\"submit\"
-             name=\"edit\"
-             value=\"".$bName."\"
-             class=\"btn btn-success\">
-             <h6>edit</h6>
-           </button>
-         </td>
-         <td>
-           <button type=\"submit\"
-             name=\"delete\"
-             value=\"".$bName."\"
-             class=\"btn btn-danger\">
-             <h6>delete</h6>
-           </button>
-         </td>
-        </tr>";
-     }
-    ?>
-=======
-    <tr>
-      <th scope="row">1</th>
-      <td>Bang Khae</td>
-      <td>Somewhere in Bang Khae</td>
-      <td>0999999999</td>
-      <td><a href="EditBranch2.html" class="button-link">Edit</a></td>
-      <td><a href="EditBranch1.html" class="button-link">Delete</a></td>
-    </tr>
->>>>>>> e3b3762c28b457e31c746f30867610f8b3199dc2:HRManager/BranchEdit_HRManager/EditBranch1.html
-  </tbody>
-</table>
+  <form action="EditBranch2.php" method="post">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Tel</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+         while($row = mysqli_fetch_array($result)) {
+            $i = $i + 1;
+            $bName = $row['branchName'];
+            $bAddress = $row['address'];
+            $bTel = $row['telNo'];
+            echo "<tr>
+             <td>".$i."</td>
+             <td>".$bName."</td>
+             <td>".$bAddress."</td>
+             <td>".$bTel."</td>
+             <td>
+               <button type=\"submit\"
+                 name=\"edit\"
+                 value=\"".$bName."\"
+                 class=\"btn btn-success\">
+                 <h6>edit</h6>
+               </button>
+             </td>
+             <td>
+               <button type=\"submit\"
+                 name=\"delete\"
+                 value=\"".$bName."\"
+                 class=\"btn btn-danger\">
+                 <h6>delete</h6>
+               </button>
+             </td>
+            </tr>";
+         }
+        ?>
+      </tbody>
+    </table>
+  </form>
 <!-- End Table -->
 <table class="threebuttons">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditDepartment1.html';">Next</button>
-</td><td>
-<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button>
-</td></tr>
+    <tr>
+      <td>
+        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Finish</button>
+      </td>
+    </tr>
 </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

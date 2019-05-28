@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   $id = $_SESSION["ID"];
   $positionID = $_SESSION['positionID'];
@@ -6,7 +6,7 @@
   $BranchName = $_SESSION['BranchName'];
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
-  if (mysqli_connect_errno()) 
+  if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
@@ -62,7 +62,7 @@
       <!-- Information -->
       <div class="Infor"><i class="fas fa-address-card">
           </i>Staff ID : <?php echo $id; ?>
-          <br><br><i class="fas fa-layer-group"></i>Department : <?php 
+          <br><br><i class="fas fa-layer-group"></i>Department : <?php
             $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
             while ($row = mysqli_fetch_array($result))
             {
@@ -71,7 +71,7 @@
           <br><br><i class="fas fa-calendar-alt"></i>Month : DEC
       </div>
       <div class="Infor1">
-          <br><br><i class="fas fa-briefcase"></i>Position : <?php 
+          <br><br><i class="fas fa-briefcase"></i>Position : <?php
             $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
             while ($row = mysqli_fetch_array($result))
             {
@@ -82,7 +82,7 @@
       </div>
       <!-- End Information -->
 
-      <form>
+
           <div class="table1">Income
               <table class="table">
                   <thead class="thead-dark">
@@ -92,10 +92,10 @@
                       </tr>
                   </thead>
 <!--                  <tbody>
-                      <?php 
+                      <?php
                           $result = mysqli_query($con,"SELECT * FROM deduction WHERE staffId LIKE '$id'");
                           $count=$result->num_rows;
-                          if ((empty($count))) 
+                          if ((empty($count)))
                           {
                               echo "<tr>";
                               echo "<td> -- </td>";
@@ -128,10 +128,10 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <?php 
+                      <?php
                           $result = mysqli_query($con,"SELECT * FROM deduction WHERE staffId LIKE '$id'");
                           $count=$result->num_rows;
-                          if ((empty($count))) 
+                          if ((empty($count)))
                           {
                               echo "<tr>";
                               echo "<td> -- </td>";
@@ -152,7 +152,7 @@
                   </tbody>
               </table>
           </div>
-      </form>
+
       <table class="AddNCancel">
           <tr>
               <td>
