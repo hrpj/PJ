@@ -98,23 +98,23 @@ session_start();
 		</div>
 	</nav>
 </head>
-<?php   $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
-        while ($row = mysqli_fetch_array($result))
-        {
-            $positionID = $row['positionID'];
-			$branchName = $row['branchName'];
-        }
-        $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
-        while ($row = mysqli_fetch_array($result))
-        {
-			$positionName = $row['positionName'];
-            $departmentID = $row['departmentID'];
-        }
-        $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
-        while ($row = mysqli_fetch_array($result))
-        {
-            $departmentName = $row['departmentName'];
-        }
+<?php       $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                $positionID = $row['positionID'];
+            }
+            $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+				$positionName = $row['positionName'];
+                $departmentID = $row['departmentID'];
+            }
+            $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+            while ($row = mysqli_fetch_array($result))
+            {
+                $departmentName = $row['departmentName'];
+				$branchName = $row['BranchName'];
+            }			
 ?>
 <body>
     <div class = "Payment"><h3>Payment Slip</h></div>

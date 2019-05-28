@@ -1,3 +1,13 @@
+<?php
+session_start();
+	$id = $_SESSION["ID"];
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,126 +22,180 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-        <a class="navbar-brand" href="#">&nbsp;ILoveDB Company</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
+		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-    <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-        <a class="nav-link" href="WelcomeSignoutForHR.html">Page</a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Information
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="InforMeHR.html">Only Me</a>
-          <a class="dropdown-item" href="SearchInforStaff.html">Any Staffs</a>
-          <a class="dropdown-item" href="InforBranch.html">Branch</a>
-        </div>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="TimeAttendanceSearchForHR.html">Time Attendance</a>
-        </li>
-        <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Payment Slip
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="PaymentStaffForHR.html">Only Me</a>
-            <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
-        </div>
-    </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Create
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="NewStaff.html">New Staff</a>
-          <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
-          <a class="dropdown-item" href="NewDepartment.html">New Department</a>
-          <a class="dropdown-item" href="NewTraining.html">New Training Course</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Analysis Report
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="NewStaff.html">Age Range of Staffs</a>
-        <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
-        <a class="dropdown-item" href="NewDepartment.html">Top 5 Highest Concern Score</a>
-        <a class="dropdown-item" href="NewTraining.html">Concern Score in Bang Khae Branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
-        <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
-        <a class="dropdown-item" href="NewStaff.html">The highest average competency score of each department</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of leave of each staff of each department in Bang Khae</a>
-        <a class="dropdown-item" href="NewStaff.html">The highest amount of leave in each department in Bang Khae</a>
-        <a class="dropdown-item" href="NewStaff.html">Field and Degree in IT department</a>
-        <a class="dropdown-item" href="NewStaff.html">Income table of each Staff</a>
-      </div>
-    </li>
-        </ul>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="WelcomeSignin.html">Sign out</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-  </head>
-  <body>
-      <br>
-      <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
-      <!-- Search -->
-      <div class="StaffID">
-      <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </div>
-      </div>
-      <div class="Branch">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Branch</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Bang Khae</option>
-      <option value="2">Bang Mod</option>
-      </select>
-      </div>
-      <div class="Department">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Department</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">1 - Marketing</option>
-      <option value="2">2 - Finance</option>
-      </select>
-      </div>
-      <div class="Position">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Position</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Supervisor</option>
-      <option value="2">Manager</option>
-      </select>
-      </div>
-<br><br>
-      <div class="MonthAndYear">Month and Year : <input type="month" class="form-control" name="daymonth"></div>
-      <!-- End Search -->
-      <table class="NextBut">
-          <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Find</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
-      </td></tr>
-      </table>
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown ">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Information
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
+				</li>
+				<li class="nav-item dropdown active">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Payment Slip
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Create
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">New Staff</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
+						<a class="dropdown-item" href="#">New Department</a>
+						<a class="dropdown-item" href="#">New Training Course</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Analysis Report
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Age Range of Staffs</a>
+						<a class="dropdown-item" href="#">Salary in every position and department</a>
+						<a class="dropdown-item" href="#">Top 5 Highest Concern Score</a>
+						<a class="dropdown-item" href="#">Concern Score in Bang Khae Branch</a>
+						<a class="dropdown-item" href="#">Daily Attendance in Bang Khae Branch</a>
+						<a class="dropdown-item" href="#">Work time of any position</a>
+						<a class="dropdown-item" href="#">Work time and Salary of position in any department</a>
+						<a class="dropdown-item" href="#">The highest average competency score of each department</a>
+						<a class="dropdown-item" href="#">Amount of leave of each staff of each department in Bang Khae</a>
+						<a class="dropdown-item" href="#">The highest amount of leave in each department in Bang Khae</a>
+						<a class="dropdown-item" href="#">Field and Degree in IT department</a>
+						<a class="dropdown-item" href="#">Income table of each Staff</a>
+					</div>
+				</li>
+			</ul>
+			<ul class="nav justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost/HRPJ/WelcomeSignin.html">Sign out</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</head>
+
+<body>
+    <br>
+    <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
+    <!-- Search -->
+	<form action="searchMyPaymant.php" method="POST">
+		<div class="StaffID">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
+				<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				<a href="#"><i class="fas fa-search"></i></a>
+			</div>
+		</div>
+		
+		<?php echo "<script>document.writeln(myval);</script>"; ?>
+		
+		<div class="Branch">
+	    <div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Branch</label>
+			<select class="custom-select" name="branch" id="select1">
+				<option selected >Choose...</option>
+<?php     		
+				$result = mysqli_query($con,"SELECT * FROM branch ");
+				while ($row = mysqli_fetch_array($result))
+				{
+					$BranchName = $row['branchName'];
+					echo "<option value=".$BranchName.">".$BranchName."</option>";
+				}
+?>
+			</select>
+			<a href="#"><i class="fas fa-search"></i>
+		</div>
+		
+		<div class="Department">
+		<div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Department</label>
+			<select class="custom-select" id="inputGroupSelect01">
+				<option selected>Choose...</option>
+<?php     		
+				$result2 = mysqli_query($con,"SELECT * FROM department ");
+				while ($row = mysqli_fetch_array($result2))
+				{
+					$departmentID = $row['departmentID'];
+					$departmentName = $row['departmentName'];
+					$BranchName2 = $row['BranchName'];
+					echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+				}
+?>
+			</select> 
+			<a href="#"><i class="fas fa-search"></i></a>
+		</div>
+		
+		<div class="Position">
+		<div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Position</label>
+			<select class="custom-select" id="inputGroupSelect01">
+				<option selected>Choose...</option>
+<?php     		$result2 = mysqli_query($con,"SELECT * FROM position");
+				while ($row = mysqli_fetch_array($result2))
+				{
+					$departmentID = $row['departmentID'];
+					$departmentName = $row['departmentName'];
+					$BranchName2 = $row['BranchName'];
+					echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+				}
+?>
+			</select>
+		</div>
+		<br><br>
+		<div class="Month">
+			Month : <select class="form-control" name="month" id="exampleFormControlSelect1">
+			<option>01</option>
+			<option>02</option>
+			<option>03</option>
+			<option>04</option>
+			<option>05</option>
+			<option>06</option>
+			<option>07</option>
+			<option>08</option>
+			<option>09</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			</select>
+		</div>
+		<div class="Year">
+			Year : <input type="text" class="form-control" placeholder="Year">
+		</div>
+		
+		<!-- End Search -->
+		<table class="NextBut">
+			<tr>
+				<td>
+					<button type="button" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
+				</td>
+			</tr>
+		</table>
+	</form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

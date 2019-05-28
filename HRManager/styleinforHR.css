@@ -31,7 +31,7 @@ h6
 }
 .WorkHis
 {
-    margin-top: 80px;
+    margin-top: 30px;
     margin-left: 300px;
 }
 .Graduate
@@ -58,25 +58,25 @@ h6
 {
     width:190px;
     margin-left:400px;
-    margin-top:-325px;
+    margin-top:-270px;
 }
 .Name
 {
     width:190px;
     margin-left:400px;
-    margin-top:12px;
+    margin-top:10px;
 }
 .Gender
 {
     width:200px;
     margin-left:400px;
-    margin-top:12px;
+    margin-top:15px;
 }
 .DOB
 {
     width:150px;
     margin-left:440px;
-    margin-top:12px;
+    margin-top:15px;
 }
 
 .StartDate

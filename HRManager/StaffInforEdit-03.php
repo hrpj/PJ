@@ -41,7 +41,7 @@ session_start();
       					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
       						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
       						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
-      						<a class="dropdown-item" href="#">Branch</a>
+      						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
       					</div>
       				</li>
       				<li class="nav-item">
@@ -100,7 +100,7 @@ session_start();
         <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
         <!-- Information -->
         <div class="Infor">
-            <i class="fas fa-address-card"></i>Staff ID :
+            <i class="fas fa-address-card"></i>Staff ID : &nbsp&nbsp&nbsp&nbsp<?php echo $search ?>
             <br><br><i class="fas fa-file-signature"></i>Name :
             <br><br><i class="fas fa-venus-mars"></i>Gender :
             <br><br><i class="fas fa-birthday-cake"></i>Date of birth :
@@ -143,16 +143,16 @@ session_start();
             while ($row = mysqli_fetch_array($result))
             {
                 $departmentName = $row['departmentName'];
-                $BranchName = $row['BranchName'];
+                $branchName = $row['BranchName'];
             }
         ?>
         <!-- End PHP code for value -->
 
         <!-- Fill Information -->
         <form action="StaffInforEditAction.php" method="post">
-            <div class="ID">
-                <input type="text" class="form-control" name="search" value="<?php echo "$search"; ?>">
-            </div>
+            <!--<div class="ID">
+                <input type="text" class="form-control" name="search" value="<?php //echo "$search"; ?>">
+            </div>-->
             <div class="Name">
                 <input type="text" class="form-control" name="staffName" value="<?php echo "$staffName"; ?>">
             </div>
@@ -170,15 +170,58 @@ session_start();
             <div class="StartDate">
                 <input type="Date" class="form-control" name="start" value="<?php echo "$startDate"; ?>">
             </div>
+
             <div class="Department">
-                <input type="text" class="form-control" value="<?php echo "$departmentName"; ?>">
+                <select class="btn btn-secondary" name="departmentName" id='DepartmententSelect' onchange="sSelect()">
+                  <?php
+                    $sqlDepartment = "SELECT * FROM department WHERE branchName LIKE '$branchName'";
+                    $deparmentSelect = mysqli_query($con,$sqlDepartment);
+                    while ($row = mysqli_fetch_array($deparmentSelect))
+                    {
+                      $DepartmentName = $row['departmentName'];
+                      $BranchName = $row['BranchName'];
+                      echo "<option value='".$DepartmentName."'";
+                      if(!strcasecmp($departmentName,$DepartmentName))
+                        echo "selected = 'true';";
+                      echo ">".$BranchName." - ".$DepartmentName."</option>";
+                    }
+                  ?>
+                </select>
             </div>
+
             <div class="Position">
-                <input type="text" class="form-control" value="<?php echo "$positionName"; ?>">
+                <select class="btn btn-secondary" name="position" id='PositionSelect' onchange="sSelect()">
+                  <?php
+                    $sqlPosition = "SELECT * FROM position WHERE departmentID LIKE '$departmentID' ";
+                    $positionSelect = mysqli_query($con,$sqlPosition);
+                    while ($row = mysqli_fetch_array($positionSelect))
+                    {
+                      $PositionName = $row['positionName'];
+                      echo "<option value='".$PositionName."'";
+                      if(!strcasecmp($positionName,$PositionName))
+                        echo "selected = 'true';";
+                      echo ">".$PositionName."</option>";
+                    }
+                  ?>
+                </select>
             </div>
+
             <div class="Branch">
-                <input type="text" class="form-control" value="<?php echo "$BranchName"; ?>">
+              <select class="btn btn-secondary" name="branch" id="BranchSelect" onchange="sSelect()">
+                <?php
+                  $branchSelect = mysqli_query($con,"SELECT * FROM branch WHERE 1");
+                  while ($row = mysqli_fetch_array($branchSelect))
+                  {
+                    $BranchName = $row['branchName'];
+                    echo "<option value='".$BranchName."'";
+                    if(!strcasecmp($branchName,$BranchName))
+                      echo "selected = 'true';";
+                    echo ">".$BranchName."</option>";
+                  }
+                ?>
+              </select>
             </div>
+
             <div class="Mobile">
                 <input type="text" class="form-control" name="mobilePhoneNo" value="<?php echo "$telNOStaff"; ?>">
             </div>
