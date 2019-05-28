@@ -69,11 +69,11 @@ session_start();
 						<a class="dropdown-item" href="#">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
 						<a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
-=======
+<!--=======-->
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.html">Edit Branch</a>
->>>>>>> e3b3762c28b457e31c746f30867610f8b3199dc2
+<!-->>>>>>> e3b3762c28b457e31c746f30867610f8b3199dc2-->
 						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 					</div>
 				</li>
