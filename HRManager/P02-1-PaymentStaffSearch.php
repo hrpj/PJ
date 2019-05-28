@@ -172,6 +172,10 @@ session_start();
 							echo "<option value='".$departmentID."'>".$departmentName."-".$branchName."</option>";
 						}
 					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]))
+					{
+						
+					}
 					else
 					{
 						echo "<option selected>Choose...</option>";

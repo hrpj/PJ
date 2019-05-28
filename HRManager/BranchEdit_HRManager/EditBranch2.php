@@ -138,7 +138,7 @@
             </td>
             <td>
               <span>
-                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'NewDepartment.php';">Skip</button>
+                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditBranch3.php';">Skip</button>
               </span>
             </td>
             <td>
@@ -151,6 +151,7 @@
         </table>
 
       </form>
+      <?php $con->close(); ?>
 
 
     <!-- Optional JavaScript -->

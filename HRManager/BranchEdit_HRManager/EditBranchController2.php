@@ -25,7 +25,7 @@ $sql = "UPDATE branch
 
 if ($conn->query($sql) === TRUE) {
   $_SESSION["BRANCH"] = $branchName;
-  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewDepartment.php');
+  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch3.php');
 } else {
   echo "Error updating record: " . $conn->error;
   echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
