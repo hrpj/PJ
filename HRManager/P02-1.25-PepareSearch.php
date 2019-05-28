@@ -7,27 +7,51 @@ session_start();
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
+	$searchNew = mysqli_real_escape_string($con, $_POST['search']);
+	$branchNew = mysqli_real_escape_string($con, $_POST['branch']);
+	$departmentNew = mysqli_real_escape_string($con, $_POST['department']);
+	$positionNew = mysqli_real_escape_string($con, $_POST['position']);
 
-	$search = mysqli_real_escape_string($con, $_POST['search']);
-	$branch = mysqli_real_escape_string($con, $_POST['branch']);
-	$department = mysqli_real_escape_string($con, $_POST['branch']);
-	$position = mysqli_real_escape_string($con, $_POST['position']);
-
-	$result = mysqli_query($con,"SELECT * FROM bonus WHERE staffId LIKE '$id' AND year LIKE '$year' AND date LIKE '$month%'");
-	$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE staffId LIKE '$id' AND year LIKE '$year' AND date LIKE '$month%'");
-
-	$count1=$result->num_rows;
-	$count2=$result2->num_rows;
-
-	if ( empty($count1) && empty($count2) )
+	if(!empty($searchNew))
 	{
-		header("Location: http://localhost/HRPJ/HRManager/P01-1E-PaymentSearchForHR.php");
+		$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$searchNew'");
+		$count=$result->num_rows;
+		if ((empty($count)))
+		{
+			header("Location: http://localhost/HRPJ/HRManager/P02-1ERROR-PaymentStaffSearch.php");
+		}
+		else
+		{
+			while ($row = mysqli_fetch_array($result))
+			{
+				$_SESSION["search"] = $searchID = $row['staffID'];
+				$_SESSION["positionID"] = $positionID = $row['positionID'];
+			}
+			$result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
+			while ($row = mysqli_fetch_array($result))
+			{
+				$_SESSION["positionName"] = $positionName = $row['positionName'];
+				$_SESSION["departmentID"] = $departmentID = $row['departmentID'];
+			}
+			$result = mysqli_query($con,"SELECT * FROM department WHERE departmentID = '$departmentID'");
+			while ($row = mysqli_fetch_array($result))
+			{
+				$_SESSION["departmentName"] = $departmentName = $row['departmentName'];
+				$_SESSION["branchName"] = $branchName = $row['BranchName'];
+			}
+			header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
+		}
+	}
+	else if(empty($searchNew) && !empty($branchNew) && empty($departmentNew) && empty($positionNew))
+	{
+		$_SESSION["branchName"] = $branchNew;
+		echo $branchNew;
+		header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
 	}
 	else
 	{
-		$_SESSION["YEAR"] = $year;
-		$_SESSION["MONTH"] = $month;
-		header("Location: http://localhost/HRPJ/HRManager/P01-2-PaymentStaffSuccessForHR.php");
+		echo $searchNew;
 	}
+	
 	mysqli_close($con);
 ?>
