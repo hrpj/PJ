@@ -14,16 +14,20 @@ if ($conn->connect_error) {
 }
 
 // Escape user inputs for security
-$departmentName = mysqli_real_escape_string($conn, $_REQUEST['NewDepartmentName']);
-$departmentID = $_SESSION["DEPARTMENT"];
+$newName = mysqli_real_escape_string($conn, $_REQUEST['newName']);
+$newMax = mysqli_real_escape_string($conn, $_REQUEST['newMax']);
+$newMin = mysqli_real_escape_string($conn, $_REQUEST['newMin']);
+$positionID = $_SESSION["POSID"];
 
-$sql = "UPDATE department SET departmentName='$departmentName' WHERE departmentID = $departmentID";
+$sql = "UPDATE position SET positionName='$newName', maxSalary='$newMax', minSalary='$newMin' WHERE positionID = $positionID";
 
 if ($conn->query($sql) === TRUE) {
-    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionEditDepartment.php');
+  echo "Update Success <br>";
+  echo "<a href=\"javascript:history.go(-2)\">GO BACK</a>";
 }
 else {
     echo "Error updating record: " . $conn->error;
+    echo "<a href=\"javascript:history.go(-2)\">GO BACK</a>";
 }
 
 
