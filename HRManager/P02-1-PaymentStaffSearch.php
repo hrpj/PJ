@@ -134,10 +134,20 @@ session_start();
 						$departmentName  = $_SESSION["departmentName"];
 						echo "<option value=".$branchName.">".$branchName."</option>";
 					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]))
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]))
 					{
 						$branchName = $_SESSION["branchName"];
 						echo "<option value=".$branchName.">".$branchName."</option>";
+					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["departmentID"]) && empty($_SESSION["branchName"]))
+					{
+						$departmentID = $_SESSION["departmentID"];
+						$result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID' ");
+						while ($row = mysqli_fetch_array($result))
+						{
+							$BranchName = $row['BranchName'];
+							echo "<option value=".$BranchName.">".$BranchName."</option>";
+						}
 					}
 					else
 					{
