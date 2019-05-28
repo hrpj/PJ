@@ -6,7 +6,6 @@ session_start();
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-	
 ?>
 <!doctype html>
 <html lang="en">
@@ -96,13 +95,12 @@ session_start();
 	</nav>
 </head>
 <?php 
-	$search = $_SESSION["search"];
-	$positionID = $_SESSION["positionID"];
-	$departmentID = $_SESSION["departmentID"];
-	$branchName = $_SESSION["branchName"];
+	$search5 = $_SESSION["foundID"];
+	$positionID = $_SESSION["posi"];
+	$departmentID = $_SESSION["depart"];
+	$branchName = $_SESSION["bran"];
 	$month  = $_SESSION["month"];
 	$year = $_SESSION["year"];
-
 ?>
 <body>
     <br>
@@ -120,29 +118,38 @@ session_start();
 					<th scope="col">Edit</th>
 				</tr>
 			</thead>
-<?php 	if(!empty($search))
+			
+<?php 		if(!empty($search5))
 			{
-				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE staffID LIKE '$search' AND date LIKE '$month%' AND year LIKE '$year%'");
-				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE staffID LIKE '$search' AND date LIKE '$month%' AND year LIKE '$year%'");
+				echo "1";
+				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE staffID LIKE '$search5' AND date LIKE '$month%' AND year LIKE '$year%'");
+				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE staffID LIKE '$search5' AND date LIKE '$month%' AND year LIKE '$year%'");
 			}
-			else if(empty($search) && !empty($positionID))
+			else if(empty($search5) && !empty($positionID))
 			{
+				echo "11";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID LIKE '$positionID')");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID LIKE '$positionID')");
 			}
-			else if(empty($search) && empty($positionID) && !empty($departmentID))
+			else if(empty($search5) && empty($positionID) && !empty($departmentID))
 			{
+				echo "111";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
 												WHERE departmentID LIKE ‘$departmentID’))");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
 												WHERE departmentID LIKE ‘$departmentID’))");
 			}
-			else if(empty($search) && empty($positionID) && empty($departmentID) && !empty($branchName))
+			else if(empty($search5) && empty($positionID) && empty($departmentID) && !empty($branchName))
 			{
+				echo "1111";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
 												WHERE departmentID IN (SELECT departmentID FROM department WHERE branchName LIKE '$branchName%')))");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
 												WHERE departmentID IN (SELECT departmentID FROM department WHERE branchName LIKE '$branchName%'))");
+			}
+			else
+			{
+				echo "1111111";
 			}
 			
 			while ($row1 = mysqli_fetch_array($result1))
@@ -168,7 +175,7 @@ session_start();
 				echo "<td>".$positionName."</td>";
 				echo "<td>".$date."</td>";
 				echo "<td>bonus</td>";
-				echo "<td><a href='#' type='submit' name='edit' value='".$ID."' class='button-link'>Edit</a></td>";
+				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
 				echo "<input type='hidden' name='edit2' value=".$date."</td>";
 				echo "<input type='hidden' name='edit3' value='bounus'</td>";
 				echo "</tr>";
@@ -198,7 +205,7 @@ session_start();
 				echo "<td>".$positionName."</td>";
 				echo "<td>".$date."</td>";
 				echo "<td>deduction</td>";
-				echo "<td><a href='#' type='submit' name='edit' value='".$ID."' class='button-link'>Edit</a></td>";
+				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
 				echo "<input type='hidden' name='edit2' value=".$date."</td>";
 				echo "<input type='hidden' name='edit3' value='deduction'</td>";
 				echo "</tr>";
@@ -212,7 +219,7 @@ session_start();
 	
     <table class="AddNCancel">
 		<tr><td>
-			<button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffSearch.html';">Back</button>
+			<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php';">Back</button>
 		</td></tr>
     </table>
     <!-- Optional JavaScript -->
