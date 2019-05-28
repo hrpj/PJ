@@ -24,7 +24,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styleposition.css" rel="stylesheet">
+    <link href="stylepositionandsalary.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -105,10 +105,10 @@ session_start();
   <body>
 
   <!--________________________________________________________________________________ -->
-    <div><h3>Branch : <?php echo $_SESSION["BRANCH"]; ?></h></div>
-    <div><h3>Department ID : <?php echo $_SESSION["DEPARTMENT"]; ?></h></div>
-    <div><h3>Department Name : <?php echo $departmentName; ?></h></div>
 
+		<div class ="Branch"><h4>Branch : <?php echo $_SESSION["BRANCH"]; ?> </h4>
+			 <h4>Department ID : <?php echo $_SESSION["DEPARTMENT"]; ?> </h4>
+			 <h4>Department Name : <?php echo $departmentName; ?> </h4></div>
 
    <!---___________________________Table with Form__________________________________----------->
    <div align="center">
@@ -184,8 +184,10 @@ session_start();
 
    <!--______________________________________________OK and Cancel__________________________________________________-->
    			<form method="post">
-           	 <button type="button" class="btn btn-dark" onclick="window.location.href = 'NewDepartment.php';">OK</button>
-        		 <button type="button" class="btn btn-dark" onclick="window.location.href = 'CancelDepartment.php';">Cancel</button>
+					<div class="OKCancel">
+						<button type="button" class="btn btn-dark" onclick="window.location.href = 'NewDepartment.php';">OK</button>
+						<button type="button" class="btn btn-dark" onclick="window.location.href = 'CancelDepartment.php';">Cancel</button>
+					</div>
    			</form>
    <!---------------------------------------------------------------------------------------------------------------->
 
