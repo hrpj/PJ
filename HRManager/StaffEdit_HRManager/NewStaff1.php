@@ -8,8 +8,8 @@ session_start();
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-  $qBranchName = NULL;
-  $qDepartmentID = NULL;
+  $sql = "SELECT branchName FROM branch";
+  $result = mysqli_query($con,$sql);
 ?>
 
 <!doctype html>
@@ -104,85 +104,65 @@ session_start();
 <body>
   <div class = "NewStaff"><h3>Create New Staff</h></div>
 <!-- Fill Date -->
-<form>
-    <div class="StartDate">
-      Start Date : <input type="Date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
+<form action="NewStaff2.php" method="post" id="staffForm">
+      <div class="StartDate">
+        Start Date : <input type="Date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
+      </div>
+      <div class="Firstname">
+        First Name : <input type="text" name="fName" class="form-control" placeholder="First Name">
+      </div>
+      <div class="Lastname">
+        Last Name : <input type="text" name="lName" class="form-control" placeholder="Last Name">
+      </div>
+      <div class="Address">
+        Address : <input type="text" name="address" class="form-control" placeholder="Address">
+      </div>
+      <div class="Mobile">
+        Mobilephone No. : <input type="text" name="telNo" class="form-control" placeholder="Mobile">
+      </div>
+      <div class="DOB">
+        Date Of Birth : <input type="Date" name="dateOfBirth" class="form-control" id="DOB" placeholder="DOB">
+      </div>
+      <div class="Gender">
+          <div class="form-group">
+      <label for="exampleFormControlSelect1">Gender</label>
+      <select class="form-control" name="gender">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="transgender">Transgender</option>
+      </select>
     </div>
-    <div class="Firstname">
-      First Name : <input type="text" name="fName" class="form-control" placeholder="First Name">
+      </div>
+      <div class="Bank">
+        Bank account : <input type="text" name="bankAccount" class="form-control" placeholder="Bank">
+      </div>
+      <div class="Branch">
+          <div class="form-group">
+      <label for="exampleFormControlSelect1">Branch</label>
+      <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
+        <option>Choose Branch</option>
+        <?php
+         while($row = mysqli_fetch_array($result)) {
+            $name = $row['branchName'];
+            echo "<option value=\"".$name."\">".$name."</option>";
+         }
+        ?>
+      </select>
+      <noscript><input type="submit" value="Submit"></noscript>
     </div>
-    <div class="Lastname">
-      Last Name : <input type="text" name="lName" class="form-control" placeholder="Last Name">
-    </div>
-    <div class="Address">
-      Address : <input type="text" name="address" class="form-control" placeholder="Address">
-    </div>
-    <div class="Mobile">
-      Mobilephone No. : <input type="text" name="telNo" class="form-control" placeholder="Mobile">
-    </div>
-    <div class="DOB">
-      Date Of Birth : <input type="Date" name="dateOfBirth" class="form-control" id="DOB" placeholder="DOB">
-    </div>
-    <div class="Gender">
-        <div class="form-group">
-    <label for="exampleFormControlSelect1">Gender</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Female</option>
-      <option>Male</option>
-      <option>Transgender</option>
-    </select>
   </div>
-    </div>
-    <div class="Bank">
-      Bank account : <input type="text"  class="form-control" placeholder="Bank">
-    </div>
-    <div class="Branch">
-        <div class="form-group">
-    <label for="exampleFormControlSelect1">Branch</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Bang Khae</option>
-      <option>Bang Ruk</option>
-    </select>
-  </div>
-  <div class="Department">
-      <div class="form-group">
-  <label for="exampleFormControlSelect1">Department</label>
-  <select class="form-control" id="exampleFormControlSelect1">
-    <option>Finance</option>
-    <option>Marketing</option>
-  </select>
-</div>
-<div class="Position">
-    <div class="form-group">
-<label for="exampleFormControlSelect1">Position</label>
-<select class="form-control" id="exampleFormControlSelect1">
-  <option>Manager</option>
-  <option>Staff</option>
-</select>
-</div>
-<div class="StaffID">
-  Staff ID : <input type="text" class="form-control" placeholder="StaffID">
-</div>
-<div class="Upload">
-<div class="input-group mb-3">
-<div class="input-group-prepend">
-<span class="input-group-text" id="inputGroupFileAddon01">Profile picture (.jpg)</span>
-</div>
-<div class="custom-file">
-<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-</div>
-</div>
-</div>
+  </form>
+
+  <!-- End Fill -->
+<form action="CreateStaffController.php" method="post" id="staffForm">
+  <table class="thebuttons">
+      <tr><td>
+      <button type="submit" name="submit" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
+  </td><td>
+      <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+  </td></tr>
+  </table>
 </form>
-<!-- End Fill -->
-<table class="thebuttons">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
-</td></tr>
-</table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
