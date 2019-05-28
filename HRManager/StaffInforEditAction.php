@@ -1,9 +1,9 @@
-<?php 
+<?php
 session_start();
 ob_start();
 $con=mysqli_connect("localhost","root","","hrmanager");
 // Check connection
-	if (mysqli_connect_errno()) 
+	if (mysqli_connect_errno())
 	{
 		//echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
@@ -17,9 +17,9 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
 
-	if (!$i) 
+	if (!$i)
 		$sql=1;
-	if (!$j) 
+	if (!$j)
 		$lalala=1;
 // Company start
     $Temp = 1;
@@ -80,7 +80,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     	$count++;
     }
     $count = 0;
-    while ($count < $i) 
+    while ($count < $i)
     {
     	$sql = mysqli_query($con,"UPDATE workinghistory SET company ='".$company[$count]."',startDate ='".$startDate[$count]."',endDate ='".$endDate[$count]."' WHERE company LIKE '".$companySearch[$count]."' AND startDate ='".$startSearch[$count]."' AND endDate ='".$endSearch[$count]."'AND staffID LIKE'".$search."';");
     	echo $companySearch[$count].$startSearch[$count].$endSearch[$count]."<br>" ;
@@ -148,7 +148,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     	$count++;
     }
     $count = 0;
-    while ($count < $j) 
+    while ($count < $j)
     {
     	$lalala = mysqli_query($con,"UPDATE education SET university ='".$university[$count]."',field ='".$field[$count]."',degree ='".$degree[$count]."' WHERE university LIKE '".$universitySearch[$count]."' AND field LIKE '".$fieldSearch[$count]."' AND degree LIKE '".$degreeSearch[$count]."' AND staffID LIKE'".$search."';");
 		echo $universitySearch[$count].$fieldSearch[$count].$degreeSearch[$count]."<br>" ;
@@ -160,9 +160,9 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 mysqli_close($con);
 if ($sql)
 {
-	if ($lalala) 
+	if ($lalala)
 	{
-		header("Location:http://localhost/HRPJ/HR/StaffInforEdit-03.php");
+		header("Location:http://localhost/HRPJ/HRManager/StaffInforEdit-03.php");
 	}
 	else
 	echo "education query error";
