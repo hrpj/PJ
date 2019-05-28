@@ -12,11 +12,12 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
 	$gender = mysqli_real_escape_string($con, $_POST['gender']);
 	$start = mysqli_real_escape_string($con, $_POST['start']);
-	$mobilePhoneNo = mysqli_real_escape_string($con, $_POST['mobilePhoneNo']);
+	$telNo = mysqli_real_escape_string($con, $_POST['mobilePhoneNo']);
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
 
+//Condition for no working history or no education history
 	if (!$i)
 		$sql=1;
 	if (!$j)
@@ -157,12 +158,33 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	}
 // university recieve end
 
+// staff information 
+	$searchStaff = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
+    while ($row = mysqli_fetch_array($searchStaff))
+    {
+    	$staffNameSearch = $row['staffName'];
+    	$genderSearch = $row['gender'];
+    	$startSearch = $row['startDate'];
+    	$telNoSearch = $row['telNo'];
+    	$addressSearch = $row['address'];
+    }
+    $updateStaff = mysqli_query($con,"UPDATE staff SET staffName = '$staffName', startDate ='$start', gender = '$gender', telNo = '$telNo', address = '$staffAddress' WHERE staffID LIKE '$search' AND staffName LIKE '$staffNameSearch' AND startDate ='$startSearch' AND gender LIKE '$genderSearch' AND telNo LIKE '$telNoSearch' AND address LIKE '".$addressSearch."' ");
+
+// end staff information
+if ($searchStaff)
+{
+	echo "<br>searchStaff pass";
+}
+if ($updateStaff)
+{
+	echo "<br>updateStaff pass";
+}
 mysqli_close($con);
 if ($sql)
 {
 	if ($lalala)
 	{
-		header("Location:http://localhost/HRPJ/HRManager/StaffInforEdit-03.php");
+		header("Location:http://localhost/HRPJ/HRManager/StaffInfor-02.php");
 	}
 	else
 	echo "education query error";
