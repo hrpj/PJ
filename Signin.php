@@ -6,7 +6,7 @@ session_start();
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-
+//hello
 	// escape variables for security
 	$id = mysqli_real_escape_string($con, $_POST['id']);
 	$password = mysqli_real_escape_string($con, $_POST['password']);

@@ -44,9 +44,15 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
-				</li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Time Attendance
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+                      <a class="dropdown-item" href="#">Leave</a>
+                </div>
+            </li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
@@ -63,8 +69,9 @@ session_start();
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">New Staff</a>
 						<a class="dropdown-item" href="#">New Branch</a>
-						<a class="dropdown-item" href="#">New Department</a>
-						<a class="dropdown-item" href="#">New Training Course</a>
+                        <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
+                        <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
+                        <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
