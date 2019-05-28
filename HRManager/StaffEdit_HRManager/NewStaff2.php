@@ -8,8 +8,21 @@ session_start();
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-  $sql = "SELECT branchName FROM branch";
-  $result = mysqli_query($con,$sql);
+	$startDate = mysqli_real_escape_string($con, $_REQUEST['startDate']);
+	$fName = mysqli_real_escape_string($con, $_REQUEST['fName']);
+	$lName = mysqli_real_escape_string($con, $_REQUEST['lName']);
+	$address = mysqli_real_escape_string($con, $_REQUEST['address']);
+	$telNo = mysqli_real_escape_string($con, $_REQUEST['telNo']);
+	$dateOfBirth = mysqli_real_escape_string($con, $_REQUEST['dateOfBirth']);
+	$gender = $_POST['gender'];  // Storing Selected Value In Variable
+	$bankAccount = mysqli_real_escape_string($con, $_REQUEST['bankAccount']);
+	$branchName = $_POST['branchName'];
+
+	$sql = "SELECT branchName FROM branch";
+	$result = mysqli_query($con,$sql);
+
+	$sql = "SELECT departmentName FROM department WHERE branchName LIKE '$branchName'";
+	$result2 = mysqli_query($con,$sql);
 ?>
 
 <!doctype html>
@@ -106,27 +119,28 @@ session_start();
 <!-- Fill Date -->
 <form action="NewStaff2.php" method="post" id="staffForm">
       <div class="StartDate">
-        Start Date : <input type="Date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
+        Start Date : <input type="Date" name="startDate" value=<?php echo "$startDate"; ?> class="form-control" id="Start" placeholder="StartDate">
       </div>
       <div class="Firstname">
-        First Name : <input type="text" name="fName" class="form-control" placeholder="First Name">
+        First Name : <input type="text" name="fName" value=<?php echo "$fName"; ?> class="form-control" placeholder="First Name">
       </div>
       <div class="Lastname">
-        Last Name : <input type="text" name="lName" class="form-control" placeholder="Last Name">
+        Last Name : <input type="text" name="lName" value=<?php echo "$lName"; ?> class="form-control" placeholder="Last Name">
       </div>
       <div class="Address">
-        Address : <input type="text" name="address" class="form-control" placeholder="Address">
+        Address : <input type="text" name="address" value=<?php echo "$address"; ?> class="form-control" placeholder="Address">
       </div>
       <div class="Mobile">
-        Mobilephone No. : <input type="text" name="telNo" class="form-control" placeholder="Mobile">
+        Mobilephone No. : <input type="text" name="telNo" value=<?php echo "$telNo"; ?> class="form-control" placeholder="Mobile">
       </div>
       <div class="DOB">
-        Date Of Birth : <input type="Date" name="dateOfBirth" class="form-control" id="DOB" placeholder="DOB">
+        Date Of Birth : <input type="Date" name="dateOfBirth" value=<?php echo "$dateOfBirth"; ?> class="form-control" id="DOB" placeholder="DOB">
       </div>
       <div class="Gender">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Gender</label>
       <select class="form-control" name="gender">
+				<option value=<?php echo "$gender"; ?>><?php echo "$gender"; ?></option>
         <option value="female">Female</option>
         <option value="male">Male</option>
         <option value="transgender">Transgender</option>
@@ -134,17 +148,17 @@ session_start();
     </div>
       </div>
       <div class="Bank">
-        Bank account : <input type="text" name="bankAccount" class="form-control" placeholder="Bank">
+        Bank account : <input type="text" name="bankAccount" value=<?php echo "$bankAccount"; ?> class="form-control" placeholder="Bank">
       </div>
       <div class="Branch">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
       <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
-        <option>Choose Branch</option>
+        <option><?php echo "$branchName"; ?></option>
         <?php
          while($row = mysqli_fetch_array($result)) {
             $name = $row['branchName'];
-            echo "<option value=\"".$name."\">".$name."</option>";
+            echo "<option value=".$name.">".$name."</option>";
          }
         ?>
       </select>
@@ -152,12 +166,27 @@ session_start();
     </div>
   </div>
   </form>
+<!-- ____________________________________ Start Form 2 _________________________________________ -->
+<div class="form-group">
+	<form action="NewStaff3" method="post">
+    <label for="exampleFormControlSelect1">Department</label>
+    <select name="departmentName" class="form-control" id="exampleFormControlSelect1">
+			<option>Choose Department</option>
+			<?php
+			 while($row = mysqli_fetch_array($result2)) {
+					$name = $row['departmentName'];
+					echo "<option value=\"".$name."\">".$name."</option>";
+			 }
+			?>
+    </select>
+	</form>
+</div>
 
   <!-- End Fill -->
-<form action="CreateStaffController.php" method="post" id="staffForm">
+<form action="index.html" method="post">
   <table class="thebuttons">
       <tr><td>
-      <button type="submit" name="submit" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
+      <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
   </td><td>
       <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
   </td></tr>

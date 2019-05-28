@@ -8,8 +8,8 @@ session_start();
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-  $sql = "SELECT branchName FROM branch";
-  $result = mysqli_query($con,$sql);
+  $qBranchName = NULL;
+  $qDepartmentID = NULL;
 ?>
 
 <!doctype html>
@@ -104,7 +104,7 @@ session_start();
 <body>
   <div class = "NewStaff"><h3>Create New Staff</h></div>
 <!-- Fill Date -->
-<form action="NewStaff2.php" method="post" id="staffForm">
+<form action="CreateStaffController.php" method="post" enctype="multipart/form-data" id="staffForm">
       <div class="StartDate">
         Start Date : <input type="Date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
       </div>
@@ -127,9 +127,9 @@ session_start();
           <div class="form-group">
       <label for="exampleFormControlSelect1">Gender</label>
       <select class="form-control" name="gender">
-        <option value="female">Female</option>
-        <option value="male">Male</option>
-        <option value="transgender">Transgender</option>
+        <option>Female</option>
+        <option>Male</option>
+        <option>Transgender</option>
       </select>
     </div>
       </div>
@@ -139,25 +139,46 @@ session_start();
       <div class="Branch">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
-      <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
-        <option>Choose Branch</option>
-        <?php
-         while($row = mysqli_fetch_array($result)) {
-            $name = $row['branchName'];
-            echo "<option value=\"".$name."\">".$name."</option>";
-         }
-        ?>
+      <select name="branchName" class="form-control" id="exampleFormControlSelect1">
+        <?php  ?>
+        <option>Bang Khae</option>
+        <option>Bang Ruk</option>
       </select>
-      <noscript><input type="submit" value="Submit"></noscript>
+    </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Department</label>
+    <select name="departmentName" class="form-control" id="exampleFormControlSelect1">
+      <option>Finance</option>
+      <option>Marketing</option>
+    </select>
+  </div>
+  <div class="Position">
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Position</label>
+      <select name="positionName" class="form-control" id="exampleFormControlSelect1">
+        <option>Manager</option>
+        <option>Staff</option>
+      </select>
+    </div>
+    <div class="StaffID">
+      Password : <input type="text" name="password" class="form-control" placeholder="Password">
+    </div>
+    <div class="Upload">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Profile picture (.jpg)</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div>
     </div>
   </div>
-  </form>
-
   <!-- End Fill -->
-<form action="CreateStaffController.php" method="post" id="staffForm">
   <table class="thebuttons">
       <tr><td>
-      <button type="submit" name="submit" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
+      <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
   </td><td>
       <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
   </td></tr>
