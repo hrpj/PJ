@@ -2,10 +2,12 @@
 session_start();
   $search = $_SESSION["search"];
   $branchName = $_SESSION["branchName"];
-  echo $_SESSION["branchName"];
+  //echo $_SESSION["branchName"];
   $departmentName = $_SESSION["departmentName"];
-  echo $_SESSION["departmentName"];
+  //echo $_SESSION["departmentName"];
   echo $_SESSION["checkFirst"];
+  $departmentID2 = $_SESSION["departmentID"];
+  echo "$departmentID2";
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
   if (mysqli_connect_errno())
@@ -158,7 +160,7 @@ session_start();
                 {
                   $departmentName = $row['departmentName'];
                 }
-                if ($branchName == 0)
+                if ($_SESSION["checkFirst"]==1)
                 {
                   //$_SESSION["checkFirst"] = 1;
                   $branchName = $row['BranchName'];
@@ -196,30 +198,33 @@ session_start();
             </div>
 
             <div class="Department">
-                <select class="btn btn-secondary" name="departmentName" onchange="sSelect()">
-                  <?php
-                    $sqlDepartment = "SELECT * FROM department WHERE branchName LIKE '$branchName'";
-                    $deparmentSelect = mysqli_query($con,$sqlDepartment);
-                    while ($row = mysqli_fetch_array($deparmentSelect))
-                    {
-                      $DepartmentName = $row['departmentName'];
-                      $BranchNameRow = $row['BranchName'];
-                      echo "<option value='".$DepartmentName."'";
-                      if(!strcasecmp($departmentName,$DepartmentName))
-                        echo "selected = 'true'";
-                      echo ">".$BranchNameRow." - ".$DepartmentName."</option>";
-                    }
-                  ?>
-                </select>
-                <form action="StaffInforSearch2Action.php" id="searchButton" method="post">
-                  <input type="hidden" name="departmentName" value=" <?php echo $DepartmentName ?> ">
-                  <button type="submit" form="searchButton" class="fas fa-search" style="border: none; background-color:white" ></button>
+                <form action="StaffInforSearch2Action.php" id="searchButton2" method="post">
+                  <select class="btn btn-secondary" name="departmentName" onchange="sSelect()">
+                    <?php
+                      $sqlDepartment = "SELECT * FROM department WHERE branchName LIKE '$branchName'";
+                      $deparmentSelect = mysqli_query($con,$sqlDepartment);
+                      while ($row = mysqli_fetch_array($deparmentSelect))
+                      {
+                        $DepartmentNameRow = $row['departmentName'];
+                        $BranchNameRow = $row['BranchName'];
+                        echo "<option value='".$DepartmentNameRow."'";
+                        if(!strcasecmp($departmentName,$DepartmentNameRow))
+                          echo "selected = 'true'";
+                        echo ">".$BranchNameRow." - ".$DepartmentNameRow."</option>";
+                      }
+                    ?>
+                  </select>
+                  <button type="submit" form="searchButton2" class="fas fa-search" style="border: none; background-color:white" ></button>
                 </form>
             </div>
 
             <div class="Position">
                 <select class="btn btn-secondary" name="position" onchange="sSelect()">
                   <?php
+                    if ($_SESSION["checkFirst"] == 3) 
+                    {
+                      $departmentID = $departmentID2;
+                    }
                     $sqlPosition = "SELECT * FROM position WHERE departmentID LIKE '$departmentID' ";
                     $positionSelect = mysqli_query($con,$sqlPosition);
                     while ($row = mysqli_fetch_array($positionSelect))
