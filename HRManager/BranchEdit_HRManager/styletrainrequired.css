@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap');
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+h6
+{
+    font-family: 'Playfair Display', serif;
+}
+.RequiredCourse
+{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.table
+{
+    width:1000px;
+    top:50%;
+    left:50%;
+    margin-left:200px;
+    margin-top:40px;
+}
+.AddNCancel
+{
+    margin-top:80px;
+    margin-left:1070px;
+}

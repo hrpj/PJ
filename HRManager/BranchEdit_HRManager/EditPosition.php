@@ -1,17 +1,37 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+	$positionID = $_SESSION["POSID"];
+  $_SESSION["POSID"] = $positionID;
+  $result = mysqli_query($con,"SELECT *
+                                FROM position
+                                WHERE positionID LIKE $positionID");
+  $row = mysqli_fetch_array($result);
+	$positionID = $row['positionID'];
+	$positionName = $row['positionName'];
+  $minSalary = $row['minSalary'];
+	$maxSalary = $row['maxSalary'];
+	$departmentID = $row['departmentID'];
+?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Payment Slip Search</title>
+    <title>Edit Position</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylepaymentsearch.css" rel="stylesheet">
+    <link href="styleview.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
-    <!-- Nav Bar -->
+    <!-- _____________________________________________________________________________Nav Bar_________________- -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
         <a class="navbar-brand" href="#">&nbsp;ILoveDB Company</a>
@@ -29,8 +49,8 @@
           Information
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="InforMeHR.html">Only Me</a>
-          <a class="dropdown-item" href="SearchInforStaff.html">Any Staffs</a>
+          <a class="dropdown-item" href="InforMe.html">Only Me</a>
+          <a class="dropdown-item" href="InforStaff.html">Any Staffs</a>
           <a class="dropdown-item" href="InforBranch.html">Branch</a>
         </div>
         </li>
@@ -43,28 +63,27 @@
               <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
         </div>
     </li>
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Payment Slip
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="PaymentStaffForHR.html">Only Me</a>
-            <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
+              <a class="dropdown-item" href="PaymentStaffForHR.html">Only Me</a>
+              <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
         </div>
     </li>
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown active">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Create<span class="sr-only">(current)</span>
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" href="NewStaff.html">New Staff</a>
       <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
-      <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
       <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
       <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 
     </div>
-  </li>
+</li>
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Analysis Report
@@ -92,62 +111,43 @@
         </ul>
     </div>
 </nav>
+
+<!-- _____________________________________________________________________________________________________________- -->
+
   </head>
   <body>
-      <br>
-      <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
-      <!-- Search -->
-      <div class="StaffID">
-      <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      <div class = "NameBranch"><h3>Edit Position</h3></div>
+      <form>
+      <div class="Previous">
+        Position ID : <br><?php echo $positionID; ?>
       </div>
+      <div class="PreviousMin">
+        Previous Position Name : <br><?php echo $positionName; ?>
       </div>
-      <div class="Branch">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Branch</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Bang Khae</option>
-      <option value="2">Bang Mod</option>
-      </select>
+      <div class="NewMin">
+        New Position Name : <input type="text" name="newName" class="form-control" placeholder="Name">
       </div>
-      <div class="Department">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Department</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">1 - Marketing</option>
-      <option value="2">2 - Finance</option>
-      </select>
+      <div class="PreviousMin">
+        Previous Minimum Salary : <br><?php echo $minSalary; ?>
       </div>
-      <div class="Position">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Position</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Supervisor</option>
-      <option value="2">Manager</option>
-      </select>
+      <div class="NewMin">
+        New Minimum Salary : <input type="text" name="newMin" class="form-control" placeholder="Minimum Salary">
       </div>
-<br><br><div class="Month">
-Month : <select class="form-control" id="exampleFormControlSelect1">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select></div>
-<div class="Year">
-Year : <input type="text" class="form-control" placeholder="Year"></div>
-      <!-- End Search -->
-      <table class="NextBut">
-          <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Find</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
-      </td></tr>
-      </table>
+      <div class="PreviousMax">
+        Previous Maximum Salary : <br><?php echo $maxSalary; ?>
+      </div>
+      <div class="NewMax">
+        New Maximum Salary : <input type="text" name="newMax" class="form-control" placeholder="Maximum Salary">
+      </div>
+
+			<table class="Back">
+			    <tr><td>
+			    <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition1.html';">Save</button>
+			</td><td>
+			    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition.php';">Cancel</button></span>
+			</td></tr>
+			</table>
+  </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

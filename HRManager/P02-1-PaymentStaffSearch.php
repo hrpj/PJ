@@ -34,15 +34,9 @@
           <a class="dropdown-item" href="InforBranch.html">Branch</a>
         </div>
         </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Time Attendance
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="PaymentSearchForHR.html">Daily Attendance Status</a>
-              <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
-        </div>
-    </li>
+        <li class="nav-item">
+        <a class="nav-link" href="TimeAttendanceSearchForHR.html">Time Attendance</a>
+        </li>
         <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Payment Slip
@@ -52,36 +46,34 @@
             <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
         </div>
     </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Create<span class="sr-only">(current)</span>
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="NewStaff.html">New Staff</a>
-      <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
-      <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
-      <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
-      <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
-
-    </div>
-  </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Create
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="NewStaff.html">New Staff</a>
+          <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
+          <a class="dropdown-item" href="NewDepartment.html">New Department</a>
+          <a class="dropdown-item" href="NewTraining.html">New Training Course</a>
+        </div>
+      </li>
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Analysis Report
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="NewStaff.html">Age range of staffs</a>
+        <a class="dropdown-item" href="NewStaff.html">Age Range of Staffs</a>
         <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
+        <a class="dropdown-item" href="NewDepartment.html">Top 5 Highest Concern Score</a>
+        <a class="dropdown-item" href="NewTraining.html">Concern Score in Bang Khae Branch</a>
         <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
         <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
         <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of every staff in Bang Khae branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of IT department in Bang Khae</a>
-        <a class="dropdown-item" href="NewStaff.html">The most leave type of month in company</a>
-        <a class="dropdown-item" href="NewStaff.html">The people who has the most sick leave type</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of staff in each branch</a>
-        <a class="dropdown-item" href="NewStaff.html">The manager who has the most salary in company</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of gender in this company</a>
+        <a class="dropdown-item" href="NewStaff.html">The highest average competency score of each department</a>
+        <a class="dropdown-item" href="NewStaff.html">Amount of leave of each staff of each department in Bang Khae</a>
+        <a class="dropdown-item" href="NewStaff.html">The highest amount of leave in each department in Bang Khae</a>
+        <a class="dropdown-item" href="NewStaff.html">Field and Degree in IT department</a>
+        <a class="dropdown-item" href="NewStaff.html">Income table of each Staff</a>
       </div>
     </li>
         </ul>
@@ -130,16 +122,8 @@
       <option value="2">Manager</option>
       </select>
       </div>
-<br><br><div class="Month">
-Month : <select class="form-control" id="exampleFormControlSelect1">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select></div>
-<div class="Year">
-Year : <input type="text" class="form-control" placeholder="Year"></div>
+<br><br>
+      <div class="MonthAndYear">Month and Year : <input type="month" class="form-control" name="daymonth"></div>
       <!-- End Search -->
       <table class="NextBut">
           <tr><td>

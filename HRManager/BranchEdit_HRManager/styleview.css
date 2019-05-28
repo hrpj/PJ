@@ -49,3 +49,36 @@ h6
     margin-left:1130px;
     height:100px;
 }
+.Previous
+{
+    margin-top:100px;
+    margin-left:500px;
+}
+.New
+{
+    width: 300px;
+    margin-top:30px;
+    margin-left:500px;
+}
+.PreviousMin
+{
+    margin-top:50px;
+    margin-left:500px;
+}
+.NewMin
+{
+    width: 300px;
+    margin-top:30px;
+    margin-left:500px;
+}
+.PreviousMax
+{
+    margin-top:50px;
+    margin-left:500px;
+}
+.NewMax
+{
+    width: 300px;
+    margin-top:30px;
+    margin-left:500px;
+}
