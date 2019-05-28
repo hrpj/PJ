@@ -1,9 +1,9 @@
-<?php 
+<?php
   session_start();
   $id = $_SESSION["ID"];
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
-  if (mysqli_connect_errno()) 
+  if (mysqli_connect_errno())
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
@@ -59,7 +59,7 @@
     <!-- Information -->
     <div class="Infor">
         <i class="fas fa-address-card"></i>Staff ID : <?php echo "$id"; ?>
-        <br><br><i class="fas fa-file-signature"></i>Name : <?php 
+        <br><br><i class="fas fa-file-signature"></i>Name : <?php
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
             while ($row = mysqli_fetch_array($result))
             {
@@ -79,7 +79,7 @@
     </div>
 
     <div class="Infor1"><br><br>
-        <br><br><br><br><i class="fas fa-layer-group"></i>Department : <?php 
+        <br><br><br><br><i class="fas fa-layer-group"></i>Department : <?php
             $positionID = $_SESSION['positionID'];
             $departmentID = $_SESSION['departmentID'];
             $BranchName = $_SESSION['BranchName'];
@@ -98,10 +98,10 @@
         <br><br><i class="fas fa-map-marker-alt"></i></i>Branch : <?php echo "$BranchName"; ?>
         <br><br><i class="fas fa-mobile-alt"></i>Mobilephone No. : <?php echo "$telNOStaff"; ?>
         <br><br><i class="fas fa-building"></i>Adress : <?php echo "$staffAddress"; ?>
-        <br><br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?> 
+        <br><br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?>
     </div>
+    <div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
     <!-- End Information -->
-
     <!-- Table Work History -->
     <div class = "WorkHis"><h4>Work History</h></div>
     <table class="table">
@@ -114,11 +114,11 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
+            <?php
                 $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffId LIKE '$id'");
                 $count=$result->num_rows;
                 $i = 1;
-                if ((empty($count))) 
+                if ((empty($count)))
                 {
                     echo "<tr>";
                     echo "<th scope='row'>".$i."</th>";
@@ -160,11 +160,11 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
+            <?php
                 $result = mysqli_query($con,"SELECT * FROM education WHERE staffId LIKE '$id'");
                 $count=$result->num_rows;
                 $i = 1;
-                if ((empty($count))) 
+                if ((empty($count)))
                 {
                     echo "<tr>";
                     echo "<th scope='row'>".$i."</th>";
