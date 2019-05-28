@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap');
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+h6
+{
+    font-family: 'Playfair Display', serif;
+}
+.DepartinBranch
+{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.Infor
+{
+    width:400px;
+    top:50%;
+    left:50%;
+    margin-left:300px;
+    margin-top:70px;
+}
+.Infor1
+{
+    width:400px;
+    top:50%;
+    left:50%;
+    margin-left:700px;
+    margin-top:-264px;
+}
+.Depart1
+{
+    width:340px;
+    top:50%;
+    left:50%;
+    margin-left:500px;
+    margin-top:130px;
+}
+.More
+{
+    width:350px;
+    top:50%;
+    left:50%;
+    margin-left:630px;
+    margin-top:30px;
+}
+.NextBut
+{
+    margin-top:100px;
+    margin-left:1000px;
+}
+.Infor1
+{
+    width:400px;
+    top:50%;
+    left:50%;
+    margin-left:700px;
+    margin-top:-264px;
+}
+.table
+{
+    width:1000px;
+    top:50%;
+    left:50%;
+    margin-left:200px;
+    margin-top:40px;
+}
