@@ -8,8 +8,30 @@ session_start();
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-  $qBranchName = NULL;
-  $qDepartmentID = NULL;
+	session_start();
+		$id = $_SESSION["ID"];
+		$con=mysqli_connect("localhost","root","","hrmanager");
+		// Check connection
+		if (mysqli_connect_errno())
+		{
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
+
+		$startDate = mysqli_real_escape_string($con, $_REQUEST['startDate']);
+		$fName = mysqli_real_escape_string($con, $_REQUEST['fName']);
+		$lName = mysqli_real_escape_string($con, $_REQUEST['lName']);
+		$address = mysqli_real_escape_string($con, $_REQUEST['address']);
+		$telNo = mysqli_real_escape_string($con, $_REQUEST['telNo']);
+		$dateOfBirth = mysqli_real_escape_string($con, $_REQUEST['dateOfBirth']);
+		$gender = $_POST['gender'];  // Storing Selected Value In Variable
+		$bankAccount = mysqli_real_escape_string($con, $_REQUEST['bankAccount']);
+		$branchName = $_POST['branchName'];
+
+		$sql = "SELECT branchName FROM branch";
+		$result = mysqli_query($con,$sql);
+
+		$sql = "SELECT departmentName FROM department WHERE branchName LIKE '$branchName'";
+		$result2 = mysqli_query($con,$sql);
 ?>
 
 <!doctype html>
