@@ -10,7 +10,6 @@ session_start();
 	$searchNew = mysqli_real_escape_string($con, $_POST['search']);
 	$branchNew = mysqli_real_escape_string($con, $_POST['branch']);
 	$departmentNew = mysqli_real_escape_string($con, $_POST['department']);
-	$positionNew = mysqli_real_escape_string($con, $_POST['position']);
 
 	if(!empty($searchNew))
 	{
@@ -42,18 +41,17 @@ session_start();
 			header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
 		}
 	}
-	else if(empty($searchNew) && !empty($branchNew) && empty($departmentNew) && empty($positionNew))
+	else if(empty($searchNew) && !empty($branchNew) && empty($departmentNew))
 	{
 		$_SESSION["branchName"] = $branchNew;
 		header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
 	}
-	else if(empty($searchNew) && !empty($branchNew) && !empty($departmentNew) && empty($positionNew))
+	else if(empty($searchNew) && !empty($departmentNew))
 	{
-		$_SESSION["branchName"] = $branchNew;
 		$_SESSION["departmentID"] = $departmentNew;
 		header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
 	}
-	else if(empty($searchNew) && !empty($branchNew) && !empty($departmentNew) && !empty($positionNew))
+	else if(empty($searchNew) && !empty($branchNew) && !empty($departmentNew))
 	{
 		echo "2";
 	}
