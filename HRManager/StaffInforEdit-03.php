@@ -187,6 +187,7 @@ session_start();
                     }
                   ?>
                 </select>
+                <a href="#"><i class="fas fa-search"></i></a>
             </div>
 
             <div class="Position">
@@ -204,6 +205,7 @@ session_start();
                     }
                   ?>
                 </select>
+                <a href="#"><i class="fas fa-search"></i></a>
             </div>
 
             <div class="Branch">
@@ -220,6 +222,7 @@ session_start();
                   }
                 ?>
               </select>
+              <a href="#"><i class="fas fa-search"></i></a>
             </div>
 
             <div class="Mobile">
