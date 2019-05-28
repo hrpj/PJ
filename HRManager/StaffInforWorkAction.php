@@ -62,13 +62,18 @@ session_start();
 
 	$delete = mysqli_query($con,"DELETE FROM workinghistory WHERE staffID LIKE '".$search."' AND company LIKE '".$company."' AND startDate ='".$startDate."' AND endDate ='".$endDate."';");
 
-	if ($company) 
-		echo "Yeah!!";	
+	if ($company)
+	{
+		echo "Yeah!!";
+		if ($delete)
+		{
+			echo "Deleted!!";
+			header("Location:http://localhost/HRPJ/HRManager/StaffInfor-02.php");
+		}
+		else
+			echo "sql delete error";
+	}
 	else
 		echo "sql company error";
-	if ($delete) 
-		echo "Deleted!!";	
-	else
-		echo "sql delete error";
 mysqli_close($con);
 ?>
