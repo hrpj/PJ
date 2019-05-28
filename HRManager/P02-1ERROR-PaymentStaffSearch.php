@@ -1,6 +1,11 @@
 <?php
 session_start();
-	$con=mysqli_connect("localhost","root","","hrmanager");
+	session_destroy(); 
+	//$_SESSION["search"] = $search;
+	//$_SESSION["positionID"] = $positionID;
+	//$_SESSION["departmentID"] = $departmentID;
+	//$_SESSION["branchName"] = $branchName;
+	//$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
 	if (mysqli_connect_errno())
 	{
@@ -93,6 +98,11 @@ session_start();
 			</ul>
 		</div>
 	</nav>
+	<div class="alert alert-dismissible alert-warning">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<h4 class="alert-heading">Warning!</h4>
+		<p class="mb-0">Wrong Staff ID</p>
+	</div>
 </head>
 
 <body>
@@ -103,7 +113,7 @@ session_start();
 			<div class="StaffID">
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?php if(!empty($_SESSION["search"])){echo $_SESSION["search"];}?>" >
+					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?php if(!empty($_SESSION["search"])){echo $_SESSION["search"];} else {echo "Input StaffID";} ?>" >
 					<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
 
 				</div>
@@ -123,7 +133,7 @@ session_start();
 						$departmentName  = $_SESSION["departmentName"];
 						echo "<option value=".$branchName.">".$branchName."</option>";
 					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]) && empty($_SESSION["positionID"]))
+					else if(empty($_SESSION["search"]) && !empty($branchName))
 					{
 						$branchName = $_SESSION["branchName"];
 						
@@ -152,18 +162,6 @@ session_start();
 					{
 						echo "<option value=".$departmentID.">".$departmentName."-".$branchName."</option>";
 					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]) && empty($_SESSION["positionID"]))
-					{
-						echo "<option selected>Choose...</option>";
-						$result2 = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$branchName' ");
-						while ($row = mysqli_fetch_array($result2))
-						{
-							$departmentID = $row['departmentID'];
-							$departmentName = $row['departmentName'];
-							$BranchName2 = $row['BranchName'];
-							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
-						}
-					}
 					else
 					{
 						echo "<option selected>Choose...</option>";
@@ -189,18 +187,6 @@ session_start();
 <?php     			if(!empty($_SESSION["search"]))
 					{
 						echo "<option value=".$positionID.">".$departmentID."-".$positionName."</option>";
-					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]) && empty($_SESSION["positionID"]))
-					{
-						echo "<option selected>Choose...</option>";
-						$result2 = mysqli_query($con,"SELECT * FROM position WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE '$branchName')");
-						while ($row = mysqli_fetch_array($result2))
-						{
-							$departmentID = $row['departmentID'];
-							$departmentName = $row['departmentName'];
-							$BranchName2 = $row['BranchName'];
-							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName2."</option>";
-						}
 					}
 					else
 					{
@@ -245,9 +231,6 @@ session_start();
 			<tr>
 				<td>
 					<button type="button" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-dark" onclick="window.location.href = '#';">Clear</button>
 				</td>
 				<td>
 					<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>

@@ -156,7 +156,7 @@ session_start();
         <!-- End PHP code for value -->
 
         <!-- Fill Information -->
-        <form action="StaffInforEditAction.php" method="post">
+        <form id="formSave" action="StaffInforEditAction.php" method="post">
             <!--<div class="ID">
                 <input type="text" class="form-control" name="search" value="<?php //echo "$search"; ?>">
             </div>-->
@@ -262,12 +262,21 @@ session_start();
                         $i = 1;
                         while ($row = mysqli_fetch_array($result))
                         {
+                            $company = $row['company'];
+                            $startDate = $row['startDate'];
+                            $endDate = $row['endDate'];
                             echo "<tr>";
+                            echo "<form id='companyDelete' action='StaffInforWorkAction.php' method='post' >";
                             echo "<th scope='row'>".$i."</th>";
-                            echo "<td><input class='form-control' name='company".$i."' type='text' value='".$row['company']."'</td>";
-                            echo "<td><input type='Date' class='form-control' name='startDate".$i."' value='".$row['startDate']."''></td>";
-                            echo "<td><input type='Date' class='form-control' name='endDate".$i."' value='".$row['endDate']."''></td>";
-                            echo "<td><button type='submit'class='btn btn-outline-dark'>Delete</button>";
+                            echo "<input type='hidden' name='company".$i."' value = '".$company."' >";
+                            echo "<input type='hidden' name='startDate".$i."' value = '".$startDate."' >";
+                            echo "<input type='hidden' name='endDate".$i."' value = '".$endDate."' >";
+                            echo "<input type='hidden' name='i' value='".$i."'>";
+                            echo "</form>";
+                            echo "<td><input class='form-control' name='company".$i."' type='text' value='".$company."'</td>";
+                            echo "<td><input type='Date' class='form-control' name='startDate".$i."' value='".$startDate."''></td>";
+                            echo "<td><input type='Date' class='form-control' name='endDate".$i."' value='".$endDate."''></td>";
+                            echo "<td><button type='submit'form='companyDelete' class='btn btn-outline-dark'>Delete</button>";
                             echo "</tr>";
                             $i++;
                         }
@@ -296,12 +305,21 @@ session_start();
                         $j = 1;
                         while ($row = mysqli_fetch_array($result))
                         {
+                            $university = $row['university'];
+                            $field = $row['field'];
+                            $degree = $row['degree'];
                             echo "<tr>";
+                            echo "<form id='educationDelete' action='StaffInforEducationAction.php' method='post' >";
                             echo "<th scope='row'>".$j."</th>";
-                            echo "<td><input class='form-control' type='text' name='university".$j."' value='".$row['university']."'></td>";
-                            echo "<td><input class='form-control' type='text' name='field".$j."' value='".$row['field']."''></td>";
-                            echo "<td><input class='form-control' type='text' name='degree".$j."' value='".$row['degree']."''></td>";
-                            echo "<td><button type='submit'class='btn btn-outline-dark'>Delete</button>";
+                            echo "<input type='hidden' name='university".$j."' value='".$university."'>";
+                            echo "<input type='hidden' name='field".$j."' value='".$field."''>";
+                            echo "<input type='hidden' name='degree".$j."' value='".$degree."''>";
+                            echo "<input type='hidden' name='j' value='".$j."'>";
+                            echo "</form>";
+                            echo "<td><input class='form-control' type='text' name='university".$j."' value='".$university."'></td>";
+                            echo "<td><input class='form-control' type='text' name='field".$j."' value='".$field."''></td>";
+                            echo "<td><input class='form-control' type='text' name='degree".$j."' value='".$degree."''></td>";
+                            echo "<td><button type='submit' form='educationDelete' class='btn btn-outline-dark'>Delete</button>";
                             echo "</tr>";
                             $j++;
                         }
@@ -318,7 +336,7 @@ session_start();
         <table class="thebuttons">
             <tr>
                 <td>
-                    <button type="submit" class="btn btn-outline-dark" >Save</button>
+                    <button type="submit" form="formSave" class="btn btn-outline-dark" >Save</button>
                 </td>
                 <td>
                     <span>
