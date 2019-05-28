@@ -1,9 +1,9 @@
-<?php 
+<?php
 session_start();
   $search = $_SESSION["search"];
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
-  if (mysqli_connect_errno()) 
+  if (mysqli_connect_errno())
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
@@ -24,7 +24,7 @@ session_start();
       	<!-- Nav Bar -->
       	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-      		<a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+      		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
       		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       			<span class="navbar-toggler-icon"></span>
       		</button>
@@ -32,27 +32,27 @@ session_start();
       		<div class="collapse navbar-collapse" id="navbarColor02">
       			<ul class="navbar-nav mr-auto">
       				<li class="nav-item">
-      					<a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+      					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
       				</li>
       				<li class="nav-item dropdown active">
       					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       						Information
       					</a>
       					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
-      						<a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
+      						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+      						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
       						<a class="dropdown-item" href="#">Branch</a>
       					</div>
       				</li>
       				<li class="nav-item">
-      					<a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
+      					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
       				</li>
       				<li class="nav-item dropdown">
       					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       						Payment Slip
       					</a>
       					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      						<a class="dropdown-item" href="http://localhost/HRPJ/HR/PaymentStaffForHR.php">Only Me</a>
+      						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
       						<a class="dropdown-item" href="#">Any Staffs</a>
       					</div>
       				</li>
@@ -100,25 +100,25 @@ session_start();
         <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
         <!-- Information -->
         <div class="Infor">
-            <i class="fas fa-address-card"></i>Staff ID : 
-            <br><br><i class="fas fa-file-signature"></i>Name : 
-            <br><br><i class="fas fa-venus-mars"></i>Gender : 
-            <br><br><i class="fas fa-birthday-cake"></i>Date of birth : 
-            <br><br><i class="fas fa-hourglass-start"></i>Start Date : 
+            <i class="fas fa-address-card"></i>Staff ID :
+            <br><br><i class="fas fa-file-signature"></i>Name :
+            <br><br><i class="fas fa-venus-mars"></i>Gender :
+            <br><br><i class="fas fa-birthday-cake"></i>Date of birth :
+            <br><br><i class="fas fa-hourglass-start"></i>Start Date :
             <br><br>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a>
         </div>
         <div class="Infor1">
-            <br><br><i class="fas fa-layer-group"></i>Department : 
-            <br><br><i class="fas fa-briefcase"></i>Position : 
-            <br><br><i class="fas fa-map-marker-alt"></i></i>Branch : 
+            <br><br><i class="fas fa-layer-group"></i>Department :
+            <br><br><i class="fas fa-briefcase"></i>Position :
+            <br><br><i class="fas fa-map-marker-alt"></i></i>Branch :
             <br><br><i class="fas fa-mobile-alt"></i>Mobilephone No. :
-            <br><br><i class="fas fa-building"></i>Address : 
-            <br><br><i class="fas fa-money-check-alt"></i>Bank Account : 
+            <br><br><i class="fas fa-building"></i>Address :
+            <br><br><i class="fas fa-money-check-alt"></i>Bank Account :
         </div>
         <!-- End Information -->
 
         <!-- PHP code for value -->
-        <?php 
+        <?php
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
             while ($row = mysqli_fetch_array($result))
             {
@@ -261,7 +261,7 @@ session_start();
                 </td>
                 <td>
                     <span>
-                        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/SearchInforStaff-01.php';">Cancel</button>
+                        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/SearchInforStaff-01.php';">Cancel</button>
                     </span>
                 </td>
             </tr>
