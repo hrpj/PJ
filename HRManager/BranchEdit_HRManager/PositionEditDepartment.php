@@ -105,7 +105,7 @@ session_start();
   <body>
 
   <!--________________________________________________________________________________ -->
-    <div class="Branch"><h6>Position and Salary</h>
+    <div class="Branch"><h2>Position and Salary</h><hr>
 		<h4>Branch : <?php echo $_SESSION["BRANCH"]; ?></h4>
     <h4>Department ID : <?php echo $_SESSION["DEPARTMENT"]; ?></h4>
     <h4>Department Name : <?php echo $departmentName; ?></h4></div>
