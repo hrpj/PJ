@@ -106,7 +106,8 @@ session_start();
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
 					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-					<a href="#"><i class="fas fa-search"></i></a>
+					<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
+
 				</div>
 			</div>
 			
@@ -124,7 +125,7 @@ session_start();
 					}
 ?>
 				</select>
-				<a href="#"><i class="fas fa-search"></i></a>
+				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
 			</div>
 			
 			<div class="Department">
@@ -143,7 +144,7 @@ session_start();
 					}
 ?>
 				</select> 
-				<a href="#"><i class="fas fa-search"></i></a>
+				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
 			</div>
 			
 			<div class="Position">
