@@ -206,14 +206,15 @@
       <table class="Back">
         <tr>
           <td>
-            <form action='http://localhost/HRPJ/HRManager/ViewBranchEdit.php'>
+            <form action='http://localhost/HRPJ/HRManager/ViewBranchEdit.php' method="post" >
+              <?php echo "<input type='hidden' name='branchName' value='".$branchName."'>" ?>
               <button type="submit" class="btn btn-outline-dark" >Edit</button>
             </form>
           </td>
-        </tr>
-        <tr>
           <td>
-            <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/InforBranch.php';">Back</button>
+            <span>
+              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/InforBranch.php';">Back</button>
+            </span>
           </td>
         </tr>
       </table>
