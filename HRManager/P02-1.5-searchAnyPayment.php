@@ -1,5 +1,11 @@
 <?php
-session_start();
+	session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
 
 	$search = mysqli_real_escape_string($con, $_POST['search2']);
 	$positionID = mysqli_real_escape_string($con, $_POST['position']);
@@ -16,5 +22,4 @@ session_start();
 	$_SESSION["year"] = $year;
 	
 	header("Location: http://localhost/HRPJ/HRManager/P02-2-ListOfBill.php");
-		
 ?>
