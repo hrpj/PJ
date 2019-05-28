@@ -22,10 +22,10 @@ $sql = "DELETE FROM branch WHERE branchName='$branchName'";
 
 if ($conn->query($sql) === TRUE) {
   $_SESSION["BRANCH"] = "";
-  header('Location: http://localhost/HRPJ/HR/WelcomeSignoutForHR.php');
+  header('Location: http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php');
 } else {
   echo "Something went wrong, can't delete branch";
-  //header('Location: http://localhost/HRPJ/HR/WelcomeSignoutForHR.php');
+  //header('Location: http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php');
 }
 
 $conn->close();
