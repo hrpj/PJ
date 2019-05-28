@@ -94,6 +94,18 @@ session_start();
 		</div>
 	</nav>
 </head>
+<?php
+	if( isset( $_REQUEST['modify'] ))
+	{
+		unset ($_SESSION["search"]);
+		unset ($_SESSION["positionID"]);
+		unset ($_SESSION["positionName"]);
+		unset ($_SESSION["departmentID"]);
+		unset ($_SESSION["branchName"]);
+		unset ($_SESSION["departmentName"]);
+	}
+
+?>
 
 <body>
     <br>
@@ -123,11 +135,10 @@ session_start();
 						$departmentName  = $_SESSION["departmentName"];
 						echo "<option value=".$branchName.">".$branchName."</option>";
 					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]) && empty($_SESSION["positionID"]))
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) )
 					{
 						$branchName = $_SESSION["branchName"];
-						
-						echo "<option value=".$BranchName.">".$BranchName."</option>";
+						echo "<option value=".$branchName.">".$branchName."</option>";
 					}
 					else
 					{
@@ -164,9 +175,22 @@ session_start();
 							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
 						}
 					}
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && !empty($_SESSION["departmentID"]))
+					{
+						$_SESSION["departmentID"]
+						echo "<option selected>Choose...</option>";
+						$result2 = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$branchName' ");
+						while ($row = mysqli_fetch_array($result2))
+						{
+							$departmentID = $row['departmentID'];
+							$departmentName = $row['departmentName'];
+							$BranchName2 = $row['BranchName'];
+							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+						}
+					}
 					else
 					{
-						echo "<option selected>Choose...</option>";
+						echo "<option value='' selected>Choose...</option>";
 						$result2 = mysqli_query($con,"SELECT * FROM department");
 						while ($row = mysqli_fetch_array($result2))
 						{
@@ -204,7 +228,7 @@ session_start();
 					}
 					else
 					{
-						echo "<option selected>Choose...</option>";
+						echo "<option value='' selected>Choose...</option>";
 						$result2 = mysqli_query($con,"SELECT * FROM position");
 						while ($row = mysqli_fetch_array($result2))
 						{
@@ -244,17 +268,20 @@ session_start();
 		<table class="NextBut">
 			<tr>
 				<td>
-					<button type="button" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
+					<button type="submit" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
 				</td>
+		</form>
 				<td>
-					<button type="button" class="btn btn-dark" onclick="window.location.href = '#';">Clear</button>
+					<form>
+					<button type="submit" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php';">Clear</button>
+					</form>
 				</td>
 				<td>
 					<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
 				</td>
 			</tr>
 		</table>
-	</form>
+			
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
