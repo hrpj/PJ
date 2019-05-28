@@ -20,7 +20,7 @@ $departmentID = $_SESSION["DEPARTMENT"];
 $sql = "UPDATE department SET departmentName='$departmentName' WHERE departmentID = $departmentID";
 
 if ($conn->query($sql) === TRUE) {
-    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewDepartment.php');
+    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionEditDepartment.php');
 }
 else {
     echo "Error updating record: " . $conn->error;
