@@ -104,7 +104,6 @@ session_start();
 		unset ($_SESSION["branchName"]);
 		unset ($_SESSION["departmentName"]);
 	}
-
 ?>
 
 <body>
@@ -116,7 +115,7 @@ session_start();
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
 					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?php if(!empty($_SESSION["search"])){echo $_SESSION["search"];}?>" >
-					<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
+					<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></button>
 
 				</div>
 			</div>
@@ -135,14 +134,14 @@ session_start();
 						$departmentName  = $_SESSION["departmentName"];
 						echo "<option value=".$branchName.">".$branchName."</option>";
 					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) )
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]))
 					{
 						$branchName = $_SESSION["branchName"];
 						echo "<option value=".$branchName.">".$branchName."</option>";
 					}
 					else
 					{
-						echo "<option selected >Choose...</option>";
+						echo "<option value='' selected>Choose...</option>";
 						$result = mysqli_query($con,"SELECT * FROM branch ");
 						while ($row = mysqli_fetch_array($result))
 						{
@@ -150,9 +149,8 @@ session_start();
 							echo "<option value=".$BranchName.">".$BranchName."</option>";
 						}
 					}
-?>
-				</select>
-				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
+?>				</select>
+				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></button>
 			</div>
 			
 			<div class="Department">
@@ -163,48 +161,34 @@ session_start();
 					{
 						echo "<option value=".$departmentID.">".$departmentName."-".$branchName."</option>";
 					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]) && empty($_SESSION["positionID"]))
+					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]))
 					{
-						echo "<option selected>Choose...</option>";
-						$result2 = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$branchName' ");
-						while ($row = mysqli_fetch_array($result2))
+						echo "<option value='' selected>Choose...</option>";
+						$result = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$branchName'");
+						while ($row = mysqli_fetch_array($result))
 						{
 							$departmentID = $row['departmentID'];
 							$departmentName = $row['departmentName'];
-							$BranchName2 = $row['BranchName'];
-							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
-						}
-					}
-					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && !empty($_SESSION["departmentID"]))
-					{
-						$_SESSION["departmentID"]
-						echo "<option selected>Choose...</option>";
-						$result2 = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$branchName' ");
-						while ($row = mysqli_fetch_array($result2))
-						{
-							$departmentID = $row['departmentID'];
-							$departmentName = $row['departmentName'];
-							$BranchName2 = $row['BranchName'];
-							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+							echo "<option value='".$departmentID."'>".$departmentName."-".$branchName."</option>";
 						}
 					}
 					else
 					{
-						echo "<option value='' selected>Choose...</option>";
+						echo "<option selected>Choose...</option>";
 						$result2 = mysqli_query($con,"SELECT * FROM department");
 						while ($row = mysqli_fetch_array($result2))
 						{
 							$departmentID = $row['departmentID'];
 							$departmentName = $row['departmentName'];
 							$BranchName2 = $row['BranchName'];
-							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName2."</option>";
 						}
 					}
 ?>
 				</select> 
-				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
+				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></button>
 			</div>
-			
+		
 			<div class="Position">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Position</label>
@@ -216,7 +200,7 @@ session_start();
 					}
 					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && empty($_SESSION["departmentID"]) && empty($_SESSION["positionID"]))
 					{
-						echo "<option selected>Choose...</option>";
+						echo "<option value='' selected>Choose...</option>";
 						$result2 = mysqli_query($con,"SELECT * FROM position WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE '$branchName')");
 						while ($row = mysqli_fetch_array($result2))
 						{
@@ -242,7 +226,7 @@ session_start();
 				</select>
 			</div>
 			<br><br>
-		</form>
+		</form>	
 	<form action="P02-1.5-PepareSearch.php" method="POST">	
 		<div class="Month">
 			Month : <select class="form-control" name="month" id="exampleFormControlSelect1">
