@@ -15,24 +15,37 @@ h6
 }
 .Infor
 {
-    width:400px;
+    width:390px;
     top:50%;
     left:50%;
-    margin-left:400px;
+    margin-left:300px;
     margin-top:30px;
 }
 .Infor1
 {
-    width:400px;
+    width:250px;
     top:50%;
     left:50%;
     margin-left:800px;
-    margin-top:-170px;
+    margin-top:-205px;
+}
+.Infor2
+{
+    width:250px;
+    top:50%;
+    left:50%;
+    margin-left:800px;
+    margin-top:-166px;
 }
 .AddNCancel
 {
     margin-top:80px;
-    margin-left:730px;
+    margin-left:610px;
+}
+.FindCancel
+{
+    margin-top:80px;
+    margin-left:1030px;
 }
 .table1
 {
@@ -40,7 +53,15 @@ h6
     top:50%;
     left:50%;
     margin-left:300px;
-    margin-top:80px;
+    margin-top:30px;
+}
+.tableone
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:300px;
+    margin-top:30px;
 }
 .table2
 {
@@ -48,5 +69,60 @@ h6
     top:50%;
     left:50%;
     margin-left:500px;
-    margin-top:-153px;
+    margin-top:-215px;
+}
+.tabletwo
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:500px;
+    margin-top:-139px;
+}
+.Salary
+{
+    width: 200px;
+    margin-left:300px;
+    margin-top:40px;
+}
+.SalaryFill
+{
+    width: 200px;
+    margin-left:80px;
+    margin-top:-30px;
+}
+.SaveSalary
+{
+    width: 200px;
+    margin-left:605px;
+    margin-top:-40px;
+}
+.SaveBonus
+{
+    width: 200px;
+    margin-left:305px;
+    margin-top:-125px;
+}
+.AddBonus
+{
+    width: 200px;
+    margin-left:305px;
+    margin-top:40px;
+}
+.SaveDeduc
+{
+    width: 200px;
+    margin-left:810px;
+    margin-top:-90px;
+}
+.AddDeduc
+{
+    width: 200px;
+    margin-left:810px;
+    margin-top:40px;
+}
+.Back
+{
+    margin-top:80px;
+    margin-left:790px;
 }
