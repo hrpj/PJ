@@ -1,5 +1,5 @@
 <?php     		
-				$result2 = mysqli_query($con,"SELECT * FROM department");
+				$result2 = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$myval' ");
 				while ($row = mysqli_fetch_array($result2))
 				{
 					$departmentID = $row['departmentID'];

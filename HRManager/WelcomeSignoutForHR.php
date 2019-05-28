@@ -9,7 +9,7 @@ session_start();
 	}
 ?>
 <html lang="en">
-<head>
+  <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,7 +69,7 @@ session_start();
 						<a class="dropdown-item" href="#">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
 						<a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.html">Edit Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranch1.html">Edit Branch</a>
 						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 					</div>
 				</li>

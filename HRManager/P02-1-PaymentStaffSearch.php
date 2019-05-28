@@ -44,9 +44,15 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
-				</li>
+				<li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Time Attendance
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+		              <a class="dropdown-item" href="#">Leave</a>
+		        </div>
+		    </li>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
@@ -63,8 +69,9 @@ session_start();
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-						<a class="dropdown-item" href="#">New Department</a>
-						<a class="dropdown-item" href="#">New Training Course</a>
+						<a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
+				        <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
+				        <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -100,71 +107,70 @@ session_start();
     <br>
     <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
     <!-- Search -->
-	<form action="P02-1.5-PepareSearch.php" method="POST">
-		<form action="P02-1.25-PepareSearch.php" method="POST">
-			<div class="StaffID">
-				<div class="input-group-prepend">
-					<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-					<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-					<a href="#"><i class="fas fa-search"></i></a>
-				</div>
-			</div>
-			
-			<div class="Branch">
+	<form action="searchMyPaymant.php" method="POST">
+		<div class="StaffID">
 			<div class="input-group-prepend">
-				<label class="input-group-text" for="inputGroupSelect01">Branch</label>
-				<select class="custom-select" name="branch" id="select1">
-					<option selected >Choose...</option>
-<?php     		
-					$result = mysqli_query($con,"SELECT * FROM branch ");
-					while ($row = mysqli_fetch_array($result))
-					{
-						$BranchName = $row['branchName'];
-						echo "<option value=".$BranchName.">".$BranchName."</option>";
-					}
-?>
-				</select>
+				<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
+				<input type="text" name="search" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				<a href="#"><i class="fas fa-search"></i></a>
 			</div>
-			
-			<div class="Department">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="inputGroupSelect01">Department</label>
-				<select class="custom-select" name="department" id="inputGroupSelect01">
-					<option selected>Choose...</option>
-<?php     		
-					$result2 = mysqli_query($con,"SELECT * FROM department");
-					while ($row = mysqli_fetch_array($result2))
-					{
-						$departmentID = $row['departmentID'];
-						$departmentName = $row['departmentName'];
-						$BranchName2 = $row['BranchName'];
-						echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
-					}
+		</div>
+
+		<?php echo "<script>document.writeln(myval);</script>"; ?>
+
+		<div class="Branch">
+	    <div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Branch</label>
+			<select class="custom-select" name="branch" id="select1">
+				<option selected >Choose...</option>
+<?php
+				$result = mysqli_query($con,"SELECT * FROM branch ");
+				while ($row = mysqli_fetch_array($result))
+				{
+					$BranchName = $row['branchName'];
+					echo "<option value=".$BranchName.">".$BranchName."</option>";
+				}
 ?>
-				</select> 
-				<a href="#"><i class="fas fa-search"></i></a>
-			</div>
-			
-			<div class="Position">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="inputGroupSelect01">Position</label>
-				<select class="custom-select" name="position" id="inputGroupSelect01">
-					<option selected>Choose...</option>
+			</select>
+			<a href="#"><i class="fas fa-search"></i>
+		</div>
+
+		<div class="Department">
+		<div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Department</label>
+			<select class="custom-select" id="inputGroupSelect01">
+				<option selected>Choose...</option>
+<?php
+				$result2 = mysqli_query($con,"SELECT * FROM department ");
+				while ($row = mysqli_fetch_array($result2))
+				{
+					$departmentID = $row['departmentID'];
+					$departmentName = $row['departmentName'];
+					$BranchName2 = $row['BranchName'];
+					echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+				}
+?>
+			</select>
+			<a href="#"><i class="fas fa-search"></i></a>
+		</div>
+
+		<div class="Position">
+		<div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Position</label>
+			<select class="custom-select" id="inputGroupSelect01">
+				<option selected>Choose...</option>
 <?php     		$result2 = mysqli_query($con,"SELECT * FROM position");
-					while ($row = mysqli_fetch_array($result2))
-					{
-						$positionID = $row['positionID'];
-						$positionName = $row['positionName'];
-						$departmentID = $row['departmentID'];
-						echo "<option value=".$positionID.">".$departmentID."-".$positionName."</option>";
-					}
+				while ($row = mysqli_fetch_array($result2))
+				{
+					$departmentID = $row['departmentID'];
+					$departmentName = $row['departmentName'];
+					$BranchName2 = $row['BranchName'];
+					echo "<option value=".$departmentID.">".$departmentName."-".$BranchName."</option>";
+				}
 ?>
-				</select>
-			</div>
-			<br><br>
-		</form>
-		
+			</select>
+		</div>
+		<br><br>
 		<div class="Month">
 			Month : <select class="form-control" name="month" id="exampleFormControlSelect1">
 			<option>01</option>
@@ -184,7 +190,7 @@ session_start();
 		<div class="Year">
 			Year : <input type="text" class="form-control" placeholder="Year">
 		</div>
-		
+
 		<!-- End Search -->
 		<table class="NextBut">
 			<tr>
