@@ -154,11 +154,11 @@ session_start();
 </table>
 <!-- End Table -->
 <table class="threebuttons">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditDepartment1.html';">Next</button>
-</td><td>
-<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button>
-</td></tr>
+    <tr>
+      <td>
+        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Finish</button>
+      </td>
+    </tr>
 </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
