@@ -23,19 +23,5 @@ session_start();
 	
 	header("Location: http://localhost/HRPJ/HRManager/P02-2-ListOfBill.php");
 		
-	if(!empty($search))
-	{
-		$result = mysqli_query($con,"SELECT * FROM bonus WHERE staffID LIKE '$search' AND date LIKE '$month%' AND year LIKE '$year%'");
-		while ($row = mysqli_fetch_array($result))
-		{
-			echo $row['amount'];
-		}
-	}
-	//else if()
-	//{
-		
-	//}
-	
-	
 	mysqli_close($con);
 ?>
