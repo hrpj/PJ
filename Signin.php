@@ -37,7 +37,16 @@ session_start();
 			$row = mysqli_fetch_array($result);
 			if(($row['departmentName']==="HR")!==false)
 			{
-				header("Location: http://localhost/HRPJ/HR/WelcomeSignoutForHR.php");
+				if(($row['positionName']==="Manager")!==false)
+				{
+					header("Location: http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php");
+				}
+				else
+				{
+					/* Puak Mung Arn Duayyyyyyyyyyyyyyyyyyyyyyy
+					Login for Other position still not working -> Need to create more if clause */
+					header("Location: http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php");
+				}
 			}
 			else
 			{
