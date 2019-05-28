@@ -25,10 +25,10 @@ VALUES ('$branchName', '$address', '$telNo')";
 
 if ($conn->query($sql) === TRUE) {
   $_SESSION["BRANCH"] = $branchName;
-  header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
+  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewDepartment.php');
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
-  header('Location: http://localhost/HRPJ/HR/NewBranchForHR.html');
+  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html');
 }
 
 
