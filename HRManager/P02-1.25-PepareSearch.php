@@ -45,12 +45,17 @@ session_start();
 	else if(empty($searchNew) && !empty($branchNew) && empty($departmentNew) && empty($positionNew))
 	{
 		$_SESSION["branchName"] = $branchNew;
-		echo $branchNew;
 		header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
 	}
-	else
+	else if(empty($searchNew) && !empty($branchNew) && !empty($departmentNew) && empty($positionNew))
 	{
-		echo $searchNew;
+		$_SESSION["branchName"] = $branchNew;
+		$_SESSION["departmentID"] = $departmentNew;
+		header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
+	}
+	else if(empty($searchNew) && !empty($branchNew) && !empty($departmentNew) && !empty($positionNew))
+	{
+		echo "2";
 	}
 	
 	mysqli_close($con);
