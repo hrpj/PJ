@@ -1,9 +1,9 @@
-<?php 
+<?php
 session_start();
   $search = $_SESSION["search"];
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
-  if (mysqli_connect_errno()) 
+  if (mysqli_connect_errno())
   {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
@@ -24,7 +24,7 @@ session_start();
     <!-- Nav Bar -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-		<a class="navbar-brand" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -32,27 +32,27 @@ session_start();
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HR/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Information
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/InforMeHR.php">Only Me</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/SearchInforStaff-01.php">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
 						<a class="dropdown-item" href="#">Branch</a>
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HR/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HR/PaymentStaffForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
 						<a class="dropdown-item" href="#">Any Staffs</a>
 					</div>
 				</li>
@@ -95,7 +95,7 @@ session_start();
 		</div>
 	</nav>
 </head>
-<?php 
+<?php
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
             while ($row = mysqli_fetch_array($result))
             {
@@ -140,7 +140,7 @@ session_start();
 	  	<br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?></div>
       	<!-- End Information -->
 		<div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
-	  
+
       	<!-- Table Work History -->
       	<div class = "WorkHis"><h4>Work History</h></div>
         <table class="table">
@@ -153,11 +153,11 @@ session_start();
 			    </tr>
 			</thead>
 			<tbody>
-		    	<?php 
+		    	<?php
 	                $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffId LIKE '$search'");
 	                $count=$result->num_rows;
 	                $i = 1;
-	                if ((empty($count))) 
+	                if ((empty($count)))
 	                {
 	                    echo "<tr>";
 	                    echo "<th scope='row'>".$i."</th>";
@@ -196,11 +196,11 @@ session_start();
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
+				<?php
 	                $result = mysqli_query($con,"SELECT * FROM education WHERE staffId LIKE '$search'");
 	                $count=$result->num_rows;
 	                $i = 1;
-	                if ((empty($count))) 
+	                if ((empty($count)))
 	                {
 	                    echo "<tr>";
 	                    echo "<th scope='row'>".$i."</th>";
@@ -229,11 +229,11 @@ session_start();
 		<table class="thebuttons">
 		    <tr>
 		    	<td>
-		    		<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/StaffInforEdit-03.php';">Edit</button>
+		    		<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/StaffInforEdit-03.php';">Edit</button>
 				</td>
 				<td>
 				    <span>
-				    	<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HR/SearchInforStaff-01.php';">Back</button>
+				    	<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/SearchInforStaff-01.php';">Back</button>
 				    </span>
 				</td>
 			</tr>
