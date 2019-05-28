@@ -70,10 +70,12 @@ if (isset($_POST['create'])) {
 }
 else if (isset($_POST['edit']))
 {
-  $whichID = $_POST['edit'];
+  $_SESSION["POSID"] = $_POST['edit'];
+  $whichID = $_POST['delete'];
   //edit
   //echo "currently not doing anything";
-  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
+
+  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditPosition.php');
   //end edit
 }
 else if (isset($_POST['delete']))
