@@ -99,7 +99,6 @@ session_start();
 
 <!-- ______________________________ Query  _____________________________ -->
 <?php
-   $branch = $_SESSION['BRANCH'];
    $sql = "SELECT * FROM branch";
    $result = mysqli_query($con,$sql);
    $i = (int)0;
@@ -108,50 +107,52 @@ session_start();
   <body>
     <div class = "InfoBranch"><h3>Edit Branch</h></div>
         <!-- Table -->
-        <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Tel</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-     while($row = mysqli_fetch_array($result)) {
-        $i = $i + 1;
-        $bName = $row['branchName'];
-        $bAddress = $row['address'];
-        $bTel = $row['telNo'];
-        echo "<tr>
-         <td>".$i."</td>
-         <td>".$bName."</td>
-         <td>".$bAddress."</td>
-         <td>".$bTel."</td>
-         <td>
-           <button type=\"submit\"
-             name=\"edit\"
-             value=\"".$bName."\"
-             class=\"btn btn-success\">
-             <h6>edit</h6>
-           </button>
-         </td>
-         <td>
-           <button type=\"submit\"
-             name=\"delete\"
-             value=\"".$bName."\"
-             class=\"btn btn-danger\">
-             <h6>delete</h6>
-           </button>
-         </td>
-        </tr>";
-     }
-    ?>
-  </tbody>
-</table>
+  <form action="EditBranch2.php" method="post">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Tel</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+         while($row = mysqli_fetch_array($result)) {
+            $i = $i + 1;
+            $bName = $row['branchName'];
+            $bAddress = $row['address'];
+            $bTel = $row['telNo'];
+            echo "<tr>
+             <td>".$i."</td>
+             <td>".$bName."</td>
+             <td>".$bAddress."</td>
+             <td>".$bTel."</td>
+             <td>
+               <button type=\"submit\"
+                 name=\"edit\"
+                 value=\"".$bName."\"
+                 class=\"btn btn-success\">
+                 <h6>edit</h6>
+               </button>
+             </td>
+             <td>
+               <button type=\"submit\"
+                 name=\"delete\"
+                 value=\"".$bName."\"
+                 class=\"btn btn-danger\">
+                 <h6>delete</h6>
+               </button>
+             </td>
+            </tr>";
+         }
+        ?>
+      </tbody>
+    </table>
+  </form>
 <!-- End Table -->
 <table class="threebuttons">
     <tr>
