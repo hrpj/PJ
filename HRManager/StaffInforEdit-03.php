@@ -1,6 +1,11 @@
 <?php
 session_start();
   $search = $_SESSION["search"];
+  $branchName = $_SESSION["branchName"];
+  echo $_SESSION["branchName"];
+  $departmentName = $_SESSION["departmentName"];
+  echo $_SESSION["departmentName"];
+  echo $_SESSION["checkFirst"];
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
   if (mysqli_connect_errno())
@@ -149,8 +154,20 @@ session_start();
             $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
             while ($row = mysqli_fetch_array($result))
             {
-                $departmentName = $row['departmentName'];
-                $branchName = $row['BranchName'];
+                if ($departmentName == 0)
+                {
+                  $departmentName = $row['departmentName'];
+                }
+                if ($branchName == 0)
+                {
+                  //$_SESSION["checkFirst"] = 1;
+                  $branchName = $row['BranchName'];
+                }
+                else
+                {
+                  $_SESSION["checkFirst"] = 0;
+                }
+
             }
         ?>
         <!-- End PHP code for value -->
@@ -179,26 +196,29 @@ session_start();
             </div>
 
             <div class="Department">
-                <select class="btn btn-secondary" name="departmentName" id='DepartmententSelect' onchange="sSelect()">
+                <select class="btn btn-secondary" name="departmentName" onchange="sSelect()">
                   <?php
                     $sqlDepartment = "SELECT * FROM department WHERE branchName LIKE '$branchName'";
                     $deparmentSelect = mysqli_query($con,$sqlDepartment);
                     while ($row = mysqli_fetch_array($deparmentSelect))
                     {
                       $DepartmentName = $row['departmentName'];
-                      $BranchName = $row['BranchName'];
+                      $BranchNameRow = $row['BranchName'];
                       echo "<option value='".$DepartmentName."'";
                       if(!strcasecmp($departmentName,$DepartmentName))
-                        echo "selected = 'true';";
-                      echo ">".$BranchName." - ".$DepartmentName."</option>";
+                        echo "selected = 'true'";
+                      echo ">".$BranchNameRow." - ".$DepartmentName."</option>";
                     }
                   ?>
                 </select>
-                <a href="#"><i class="fas fa-search"></i></a>
+                <form action="StaffInforSearch2Action.php" id="searchButton" method="post">
+                  <input type="hidden" name="departmentName" value=" <?php echo $DepartmentName ?> ">
+                  <button type="submit" form="searchButton" class="fas fa-search" style="border: none; background-color:white" ></button>
+                </form>
             </div>
 
             <div class="Position">
-                <select class="btn btn-secondary" name="position" id='PositionSelect' onchange="sSelect()">
+                <select class="btn btn-secondary" name="position" onchange="sSelect()">
                   <?php
                     $sqlPosition = "SELECT * FROM position WHERE departmentID LIKE '$departmentID' ";
                     $positionSelect = mysqli_query($con,$sqlPosition);
@@ -212,24 +232,38 @@ session_start();
                     }
                   ?>
                 </select>
-                <a href="#"><i class="fas fa-search"></i></a>
             </div>
 
             <div class="Branch">
-              <select class="btn btn-secondary" name="branch" id="BranchSelect" onchange="sSelect()">
+              <form action="StaffInforSearchAction.php" id="searchButton" method="post">
+              <select class="btn btn-secondary" name="branchName" onchange="sSelect()">
                 <?php
-                  $branchSelect = mysqli_query($con,"SELECT * FROM branch WHERE 1");
-                  while ($row = mysqli_fetch_array($branchSelect))
+                  if ($_SESSION["checkFirst"]==1)
                   {
-                    $BranchName = $row['branchName'];
-                    echo "<option value='".$BranchName."'";
-                    if(!strcasecmp($branchName,$BranchName))
-                      echo "selected = 'true';";
-                    echo ">".$BranchName."</option>";
+                    $branchSelect = mysqli_query($con,"SELECT * FROM branch ");
+                    while ($row = mysqli_fetch_array($branchSelect))
+                    {
+                      $BranchNameRow = $row['branchName'];
+                      echo "<option value='".$BranchNameRow."'";
+                      if(!strcasecmp($branchName,$BranchNameRow))
+                        echo "selected = 'true';";
+                      echo ">".$BranchNameRow."</option>";
+                    }
+                  }
+                  else
+                  {
+                    $branchSelect = mysqli_query($con,"SELECT * FROM branch WHERE branchName LIKE '$branchName'");
+                    while ($row = mysqli_fetch_array($branchSelect))
+                    {
+                      $BranchNameRow = $row['branchName'];
+                      echo "<option value='".$BranchNameRow."'";
+                      echo ">".$BranchNameRow."</option>";
+                    }
                   }
                 ?>
               </select>
-              <a href="#"><i class="fas fa-search"></i></a>
+                <button type="submit" form="searchButton" class="fas fa-search" style="border: none; background-color:white" ></button>
+              </form>
             </div>
 
             <div class="Mobile">
@@ -244,7 +278,7 @@ session_start();
         <!--</form> -->
 
         <!-- Table Work History -->
-        <div class = "WorkHis"><h4>Work History</h></div>
+          <div class = "WorkHis"><h4>Work History</h></div>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -287,7 +321,9 @@ session_start();
                     </tr>
                 </tbody>
             </table>
-        <div class = "Graduate"><h4>Graduate History</h></div>
+        <!-- End Table Work History -->
+        <!-- Start Table Graduate -->
+          <div class = "Graduate"><h4>Graduate History</h></div>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -328,10 +364,8 @@ session_start();
                     ?>
                 </tbody>
             </table>
-        <!--</form> -->
-        <!-- End Table Work History -->
+        <!-- End Table Graduate -->
 
-        <!-- onclick="window.location.href = '#';" -->
 
         <table class="thebuttons">
             <tr>

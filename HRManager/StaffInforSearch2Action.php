@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["checkFirst"] = 0;
 	$con=mysqli_connect("localhost","root","","hrmanager");
 // Check connection
 	if (mysqli_connect_errno())
