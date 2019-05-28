@@ -120,7 +120,7 @@ session_start();
 
 				</div>
 			</div>
-			
+
 			<div class="Branch">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Branch</label>
@@ -154,7 +154,7 @@ session_start();
 				</select>
 				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
 			</div>
-			
+
 			<div class="Department">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Department</label>
@@ -177,7 +177,7 @@ session_start();
 					}
 					else if(empty($_SESSION["search"]) && !empty($_SESSION["branchName"]) && !empty($_SESSION["departmentID"]))
 					{
-						$_SESSION["departmentID"]
+						$_SESSION["departmentID"];
 						echo "<option selected>Choose...</option>";
 						$result2 = mysqli_query($con,"SELECT * FROM department WHERE BranchName LIKE '$branchName' ");
 						while ($row = mysqli_fetch_array($result2))
@@ -201,15 +201,15 @@ session_start();
 						}
 					}
 ?>
-				</select> 
+				</select>
 				<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></i>
 			</div>
-			
+
 			<div class="Position">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Position</label>
 				<select class="custom-select" name="position" id="inputGroupSelect01">
-					
+
 <?php     			if(!empty($_SESSION["search"]))
 					{
 						echo "<option value=".$positionID.">".$departmentID."-".$positionName."</option>";
@@ -243,7 +243,7 @@ session_start();
 			</div>
 			<br><br>
 		</form>
-	<form action="P02-1.5-PepareSearch.php" method="POST">	
+	<form action="P02-1.5-PepareSearch.php" method="POST">
 		<div class="Month">
 			Month : <select class="form-control" name="month" id="exampleFormControlSelect1">
 			<option>01</option>
@@ -263,7 +263,7 @@ session_start();
 		<div class="Year">
 			Year : <input type="text" class="form-control" placeholder="Year">
 		</div>
-		
+
 		<!-- End Search -->
 		<table class="NextBut">
 			<tr>
@@ -281,7 +281,7 @@ session_start();
 				</td>
 			</tr>
 		</table>
-			
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
