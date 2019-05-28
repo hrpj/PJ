@@ -151,6 +151,7 @@
         </table>
 
       </form>
+      <?php $con->close(); ?>
 
 
     <!-- Optional JavaScript -->
