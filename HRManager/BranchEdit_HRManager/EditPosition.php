@@ -1,3 +1,23 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+	$positionID = $_SESSION["POSID"];
+  $_SESSION["POSID"] = $positionID;
+  $result = mysqli_query($con,"SELECT *
+                                FROM position
+                                WHERE positionID LIKE $positionID");
+  $row = mysqli_fetch_array($result);
+	$positionID = $row['positionID'];
+	$positionName = $row['positionName'];
+  $minSalary = $row['minSalary'];
+	$maxSalary = $row['maxSalary'];
+	$departmentID = $row['departmentID'];
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,8 +31,8 @@
     <link href="styleview.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
-    <!-- Nav Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+    <!-- _____________________________________________________________________________Nav Bar_________________- -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
         <a class="navbar-brand" href="#">&nbsp;ILoveDB Company</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,42 +111,43 @@
         </ul>
     </div>
 </nav>
+
+<!-- _____________________________________________________________________________________________________________- -->
+
   </head>
   <body>
       <div class = "NameBranch"><h3>Edit Position</h3></div>
       <form>
       <div class="Previous">
-        Previous Position ID : <br>Something
-      </div>
-      <div class="New">
-        New Position ID : <input type="text" class="form-control" placeholder="ID">
+        Position ID : <br><?php echo $positionID; ?>
       </div>
       <div class="PreviousMin">
-        Previous Position Name : <br>Something
+        Previous Position Name : <br><?php echo $positionName; ?>
       </div>
       <div class="NewMin">
-        New Position Name : <input type="text" class="form-control" placeholder="Name">
+        New Position Name : <input type="text" name="newName" class="form-control" placeholder="Name">
       </div>
       <div class="PreviousMin">
-        Previous Minimum Salary : <br>12345
+        Previous Minimum Salary : <br><?php echo $minSalary; ?>
       </div>
       <div class="NewMin">
-        New Minimum Salary : <input type="text" class="form-control" placeholder="Minimum Salary">
+        New Minimum Salary : <input type="text" name="newMin" class="form-control" placeholder="Minimum Salary">
       </div>
       <div class="PreviousMax">
-        Previous Maximum Salary : <br>56789
+        Previous Maximum Salary : <br><?php echo $maxSalary; ?>
       </div>
       <div class="NewMax">
-        New Maximum Salary : <input type="text" class="form-control" placeholder="Maximum Salary">
+        New Maximum Salary : <input type="text" name="newMax" class="form-control" placeholder="Maximum Salary">
       </div>
+
+			<table class="Back">
+			    <tr><td>
+			    <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition1.html';">Save</button>
+			</td><td>
+			    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition.php';">Cancel</button></span>
+			</td></tr>
+			</table>
   </form>
-<table class="Back">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition1.html';">Save</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditPosition1.html';">Cancel</button></span>
-</td></tr>
-</table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
