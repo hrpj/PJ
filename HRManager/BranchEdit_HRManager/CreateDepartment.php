@@ -34,7 +34,7 @@ if (isset($_POST['create']))
     $row = mysqli_fetch_array($result);
     $_SESSION["DEPARTMENT"] = $row['departmentID'];
 
-    header('Location: http://localhost/HRPJ/HR/PositionandSalary.php');
+    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
   }
   else
   {
@@ -48,7 +48,7 @@ else if (isset($_POST['edit']))
   //edit
   $_SESSION["DEPARTMENT"] = $whichID;
   //currently not doing anything
-  header('Location: http://localhost/HRPJ/HR/EditDepartment.php');
+  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditDepartment.php');
   //end edit
 }
 else if (isset($_POST['delete']))
@@ -58,7 +58,7 @@ else if (isset($_POST['delete']))
   $sql = "DELETE FROM department WHERE departmentID='$whichID'";
   if(mysqli_query($conn, $sql)){
     echo "Record was deleted successfully.";
-    header('Location: http://localhost/HRPJ/HR/NewDepartment.php');
+    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewDepartment.php');
   }
   else{
     echo "ERROR: Could not able to execute $sql. ". mysqli_error($conn);
