@@ -102,6 +102,7 @@ session_start();
    $branch = $_SESSION['BRANCH'];
    $sql = "SELECT * FROM branch";
    $result = mysqli_query($con,$sql);
+   $i = (int)0;
  ?>
 
   <body>
@@ -119,29 +120,21 @@ session_start();
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Bang Khae</td>
-      <td>Somewhere in Bang Khae</td>
-      <td>0999999999</td>
-      <td><a href="EditBranch2.html" class="button-link">Edit</a></td>
-      <td><a href="EditBranch1.html" class="button-link">Delete</a></td>
-    </tr>
     <?php
      while($row = mysqli_fetch_array($result)) {
-        $ID = $row['positionID'];
-        $name = $row['positionName'];
-        $min = $row['minSalary'];
-        $max = $row['maxSalary'];
+        $i = $i + 1;
+        $bName = $row['branchName'];
+        $bAddress = $row['address'];
+        $bTel = $row['telNo'];
         echo "<tr>
-         <td>".$ID."</td>
-         <td>".$name."</td>
-         <td>".$min."</td>
-         <td>".$max."</td>
+         <td>".$i."</td>
+         <td>".$bName."</td>
+         <td>".$bAddress."</td>
+         <td>".$bTel."</td>
          <td>
            <button type=\"submit\"
              name=\"edit\"
-             value=\"".$ID."\"
+             value=\"".$bName."\"
              class=\"btn btn-success\">
              <h6>edit</h6>
            </button>
@@ -149,7 +142,7 @@ session_start();
          <td>
            <button type=\"submit\"
              name=\"delete\"
-             value=\"".$ID."\"
+             value=\"".$bName."\"
              class=\"btn btn-danger\">
              <h6>delete</h6>
            </button>
