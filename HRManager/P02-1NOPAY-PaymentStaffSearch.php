@@ -1,6 +1,11 @@
 <?php
 session_start();
-	$con=mysqli_connect("localhost","root","","hrmanager");
+	session_destroy(); 
+	//$_SESSION["search"] = $search;
+	//$_SESSION["positionID"] = $positionID;
+	//$_SESSION["departmentID"] = $departmentID;
+	//$_SESSION["branchName"] = $branchName;
+	//$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
 	if (mysqli_connect_errno())
 	{
@@ -93,18 +98,11 @@ session_start();
 			</ul>
 		</div>
 	</nav>
+	<div class="alert alert-dismissible alert-warning">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<h4 class="alert-heading">Don't found bonus and deduction in this month!</h4>
+	</div>
 </head>
-<?php
-	if( isset( $_REQUEST['modify'] ))
-	{
-		unset ($_SESSION["search"]);
-		unset ($_SESSION["positionID"]);
-		unset ($_SESSION["positionName"]);
-		unset ($_SESSION["departmentID"]);
-		unset ($_SESSION["branchName"]);
-		unset ($_SESSION["departmentName"]);
-	}
-?>
 
 <body>
     <br>

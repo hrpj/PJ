@@ -17,7 +17,7 @@ session_start();
 		$count=$result->num_rows;
 		if ((empty($count)))
 		{
-			header("Location: http://localhost/HRPJ/HRManager/P02-1ERROR-PaymentStaffSearch.php");
+			header("Location: http://localhost/HRPJ/HRManager/P02-1NOSTAFF-PaymentStaffSearch.php");
 		}
 		else
 		{
