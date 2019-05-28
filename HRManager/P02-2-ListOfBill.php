@@ -1,3 +1,13 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+	
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -85,39 +95,51 @@
 		</div>
 	</nav>
 </head>
+<?php 
+	$search = $_SESSION["search"];
+	$positionID = $_SESSION["positionID"];
+	$departmentID = $_SESSION["departmentID"];
+	$branchName = $_SESSION["branchName"];
+	$month  = $_SESSION["month"];
+	$year = $_SESSION["year"];
 
-  <body>
-      <br>
-      <h2>&nbsp;&nbsp;&nbsp;List Of Bill </h2>
-      <!-- Table -->
-      <table class="table">
-      <thead class="thead-dark">
-      <tr>
-      <th scope="col">StaffID</th>
-      <th scope="col">Branch</th>
-      <th scope="col">Year</th>
-      <th scope="col">Month</th>
-      <th scope="col">Edit</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>FN010001</td>
-      <td>Bang Khae</td>
-      <td>2019</td>
-      <td>FEB</td>
-      <td><a href="PaymentStaffEdit.html" class="button-link">Edit</a></td>
-      </tr>
-      </tbody>
-      </table>
-      <!-- End Table -->
-      <table class="AddNCancel">
-          <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffAdd.html';">Add</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffSearch.html';">Back</button>
-      </td></tr>
-      </table>
+	
+
+
+?>
+<body>
+    <br>
+    <h2>&nbsp;&nbsp;&nbsp;List Of Bill </h2>
+	
+    <!-- Table -->
+    <table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">StaffID</th>
+				<th scope="col">Branch</th>
+				<th scope="col">Year</th>
+				<th scope="col">Month</th>
+				<th scope="col">Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>FN010001</td>
+				<td>Bang Khae</td>
+				<td>2019</td>
+				<td>FEB</td>
+				<td><a href="PaymentStaffEdit.html" class="button-link">Edit</a></td>
+			</tr>
+		</tbody>
+    </table>
+    <!-- End Table -->
+	
+	
+    <table class="AddNCancel">
+		<tr><td>
+			<button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffSearch.html';">Back</button>
+		</td></tr>
+    </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
