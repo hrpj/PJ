@@ -9,11 +9,11 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	}
 // escape variables
 	$search = $_SESSION["search"];
-	//$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
-	//$gender = mysqli_real_escape_string($con, $_POST['gender']);
-	//$start = mysqli_real_escape_string($con, $_POST['start']);
-	//$mobilePhoneNo = mysqli_real_escape_string($con, $_POST['mobilePhoneNo']);
-	//$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
+	$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
+	$gender = mysqli_real_escape_string($con, $_POST['gender']);
+	$start = mysqli_real_escape_string($con, $_POST['start']);
+	$mobilePhoneNo = mysqli_real_escape_string($con, $_POST['mobilePhoneNo']);
+	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
 
