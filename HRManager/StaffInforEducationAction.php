@@ -15,9 +15,8 @@ session_start();
 	if (!$j)
 		$university=1;
 
-	while ($j <= $j)
-	{
-		switch ($Temp) {
+		switch ($j) 
+		{
 			case '1':	$university = mysqli_real_escape_string($con, $_POST['university1']);
 						$field = mysqli_real_escape_string($con, $_POST['field1']);
 						$degree = mysqli_real_escape_string($con, $_POST['degree1']);
