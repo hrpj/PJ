@@ -82,7 +82,7 @@ else if ($_POST["Submit"] === 'Submit') {
   $ext = pathinfo(basename($_FILES['picture']['name']), PATHINFO_EXTENSION);
   $newImageName = 'img_'.$uniqueid().'.'.$ext;
 
-  echo "SUCCESS".$staffID;
+  echo "SUCCESS".$staffID."  UND  ".$newImageName;
 
   echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
 }
