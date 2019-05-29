@@ -1,22 +1,3 @@
-<?php
-session_start();
-	$id = $_SESSION["ID"];
-	$con=mysqli_connect("localhost","root","","hrmanager");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-
-  $sql = "SELECT branchName FROM branch";
-  $resultB = mysqli_query($con,$sql);
-
-  $sql = "SELECT DISTINCT departmentName FROM department";
-  $resultD = mysqli_query($con,$sql);
-
-  $sql = "SELECT DISTINCT positionName FROM position";
-  $resultP = mysqli_query($con,$sql);
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,16 +8,16 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylesearchstaff.css" rel="stylesheet">
+    <link href="font.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-        <a class="navbar-brand" href="#">&nbsp;ILoveDB Company</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
+		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
@@ -63,7 +44,7 @@ session_start();
                       <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
                 </div>
             </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Payment Slip
                     </a>
@@ -72,7 +53,7 @@ session_start();
                         <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Create
                     </a>
@@ -111,78 +92,38 @@ session_start();
                 </li>
             </ul>
         </div>
-    </nav>
-  </head>
-  <body>
-      <br>
-      <h2>&nbsp;&nbsp;&nbsp;Staff Information Manage : Find Staff</h2>
-      <hr>
-<!-- _________________________________Form start________________________________________ -->
-		<form action="EditStaffController.php" method="post">
-      <div class="StaffID">
-      <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-<!-- _________________________________staffID select________________________________________ -->
-      <input type="text" name="staffID" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-       <a href="#"><i class="fas fa-search"></i></a></div>
-      </div>
-      <div class="Branch">
-      <div class="input-group-prepend">
-	      <label class="input-group-text" for="inputGroupSelect01">Branch</label>
-<!-- _________________________________branch select________________________________________ -->
-	      <select name="branchName" class="custom-select" id="inputGroupSelect01">
-	        <option selected value="">Choose...</option>
-	        <?php
-	         while($row = mysqli_fetch_array($resultB)) {
-	            $bName = $row['branchName'];
-	            echo "<option value=\"".$bName."\">".$bName."</option>";
-	         }
-	        ?>
-	      </select><a href="#"><i class="fas fa-search"></i></a>
-      </div>
-      <div class="Department">
-      	<div class="input-group-prepend">
-      		<label class="input-group-text" for="inputGroupSelect01">Department</label>
-<!-- _________________________________department select________________________________________ -->
-      		<select name="departmentName" class="custom-select" id="inputGroupSelect01">
-	      		<option selected value=''>Choose...</option>
-		        <?php
-		         while($row = mysqli_fetch_array($resultD)) {
-		            $dName = $row['departmentName'];
-		            echo "<option value=\"".$dName."\">".$dName."</option>";
-		         }
-		        ?>
-      		</select> <a href="#"><i class="fas fa-search"></i></a>
-      	</div>
-      	<div class="Position">
-	      <div class="input-group-prepend">
-	      <label class="input-group-text" for="inputGroupSelect01">Position</label>
-<!-- _________________________________position select________________________________________ -->
-	      <select name="positionName" class="custom-select" id="inputGroupSelect01">
-	      	<option selected value="">Choose...</option>
-						<?php
-						 while($row = mysqli_fetch_array($resultP)) {
-								$pName = $row['positionName'];
-								echo "<option value=\"".$pName."\">".$pName."</option>";
-						 }
-						?>
-      	</select>
-      </div>
-      <table class="NextBut">
-        <tr>
-					<td>
-      			<button type="submit" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Find</button>
-      		</td>
-					<td>
-      			<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
-      		</td>
-				</tr>
-      </table>
-		</form>
+        </nav>
+	<div class="alert alert-dismissible alert-warning">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<h4 class="alert-heading">Warning!</h4>
+		<p class="mb-0">Wrong Staff ID</p>
+	</div>
+</head>
+
+<body>
+    <br>
+    <h2>&nbsp;&nbsp;&nbsp;Staff Payment Slip Search</h2>
+    <hr>
+
+    <!-- Search -->
+    <form action="search3.php" method="POST" class="form-inline my-2 my-lg-0">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Staff ID&nbsp;&nbsp;
+		<input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="window.location.href = '#';">Search</button>
+    </form>
+
+
+
+
+    <!-- End Search -->
+    <div class="Searching">
+		<i><font color = "#D3D3D3"> Search Staff ID that you want to Payment Slip. </font></i>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
