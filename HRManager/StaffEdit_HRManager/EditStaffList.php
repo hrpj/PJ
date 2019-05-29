@@ -1,3 +1,25 @@
+<?php
+  session_start();
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "hrmanager";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $staffID = $_SESSION["staffID"];
+  $branchName = $_SESSION["branchName"];
+  $departmentName = $_SESSION["departmentName"];
+  $positionName = $_SESSION["positionName"];
+  $sql = $_SESSION["SQL"];
+  $result = mysqli_query($conn,$sql);
+  ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -98,20 +120,41 @@
       <h2>&nbsp;&nbsp;&nbsp;List Of Staff</h2>
       <!-- Table -->
       <table class="table">
-      <thead class="thead-dark">
-      <tr>
-      <th scope="col">Staff ID</th>
-      <th scope="col">Staff Name</th>
-      <th scope="col">View</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-      <td>FN010001</td>
-      <td>Bang Khae</td>
-      <td><a href="PaymentStaffEdit.html" class="button-link">View</a></td>
-      </tr>
-      </tbody>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Staff ID</th>
+            <th scope="col">Staff Name</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            while($row = mysqli_fetch_array($result)) {
+               $sName = $row['staffName'];
+               $sId = $row['staffID'];
+               echo "<tr>
+                <td>".$sName."</td>
+                <td>".$sId."</td>
+                <td>
+                  <button type=\"submit\"
+                    name=\"edit\"
+                    value=\"".$sId."\"
+                    class=\"btn btn-success\">
+                    <h6>edit</h6>
+                  </button>
+                </td>
+                <td>
+                  <button type=\"submit\"
+                    name=\"delete\"
+                    value=\"".$sId."\"
+                    class=\"btn btn-danger\">
+                    <h6>delete</h6>
+                  </button>
+                </td>
+               </tr>";
+            }
+          ?>
+        </tbody>
       </table>
       <!-- End Table -->
       <table class="AddNCancel">
@@ -119,6 +162,8 @@
       <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffSearch.html';">Back</button>
       </td></tr>
       </table>
+
+    <?php $conn->close(); ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
