@@ -5,9 +5,9 @@ session_start();
   //echo $_SESSION["branchName"];
   $departmentName = $_SESSION["departmentName"];
   //echo $_SESSION["departmentName"];
-  echo $_SESSION["checkFirst"];
+//  echo $_SESSION["checkFirst"];
   $departmentID2 = $_SESSION["departmentID"];
-  echo "$departmentID2";
+//  echo "$departmentID2";
   $con=mysqli_connect("localhost","root","","hrmanager");
   // Check connection
   if (mysqli_connect_errno())
@@ -122,15 +122,15 @@ session_start();
             <br><br>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a>
         </div>
         <div class="Infor1">
-            <br><br><i class="fas fa-layer-group"></i>Department :
+          <!--  <br><br><i class="fas fa-layer-group"></i>Department : -->
             <br><br><i class="fas fa-briefcase"></i>Position :
-            <br><br><i class="fas fa-map-marker-alt"></i></i>Branch :
+          <!--  <br><br><i class="fas fa-map-marker-alt"></i></i>Branch : -->
             <br><br><i class="fas fa-mobile-alt"></i>Mobilephone No. :
             <br><br><i class="fas fa-building"></i>Address :
             <br><br><i class="fas fa-money-check-alt"></i>Bank Account :
         </div>
         <!-- End Information -->
-        <div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
+        <br><br><br><br><div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
 
 
         <!-- PHP code for value -->
@@ -193,7 +193,7 @@ session_start();
             <div class="StartDate">
                 <input type="Date" class="form-control" name="start" value="<?php echo "$startDate"; ?>">
             </div>
-            <div class="Department">
+            <!--<div class="Department">
                   <select class="btn btn-secondary" name="departmentName" onchange="sSelect()">
                     <?php
                       $sqlDepartment = "SELECT * FROM department WHERE branchName LIKE '$branchName'";
@@ -209,33 +209,34 @@ session_start();
                       }
                     ?>
                   </select>
-            </div>
+            </div> -->
 
             <div class="Position">
-                <select class="btn btn-secondary" name="position" onchange="sSelect()">
+                <select class="btn btn-secondary" name="positionID" onchange="sSelect()">
                   <?php
-                    if ($_SESSION["checkFirst"] == 3) 
-                    {
-                      $departmentID = $departmentID2;
-                    }
-                    if ($_SESSION["checkFirst"] == 0) 
-                    {
-                      $departmentID = $departmentID2;
-                    }
-                    $sqlPosition = "SELECT * FROM position WHERE departmentID LIKE '$departmentID' ";
+                    $sqlPosition = "SELECT * FROM position ";
                     $positionSelect = mysqli_query($con,$sqlPosition);
                     while ($row = mysqli_fetch_array($positionSelect))
                     {
-                      $PositionName = $row['positionName'];
-                      echo "<option value='".$PositionName."'";
-                      if(!strcasecmp($positionName,$PositionName))
-                        echo "selected = 'true';";
-                      echo ">".$PositionName."</option>";
+                      $positionID = $row['positionID'];
+                      $PositionNameRow = $row['positionName'];
+                      $positionID = $row['positionID'];
+                      $departmentID = $row['departmentID'];
+                      $departmentSearch = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+                      while ($row = mysqli_fetch_array($departmentSearch))
+                      {
+                        $departmentName = $row['departmentName'];
+                        $branchNameRow = $row['BranchName'];
+                        echo "<option value='".$PositionID."'";
+                        if(!strcasecmp($positionName,$PositionNameRow))
+                          echo "selected = 'true';";
+                        echo ">".$branchNameRow."-".$departmentName."-".$PositionNameRow."</option>";
+                      }
                     }
                   ?>
                 </select>
             </div>
-            <div class="Branch">
+            <!--<div class="Branch">
                 <select class="btn btn-secondary" name="branchName" onchange="sSelect()">
                   <?php
                     if ($_SESSION["checkFirst"]==1)
@@ -262,7 +263,7 @@ session_start();
                     }
                   ?>
                 </select>
-            </div>
+            </div> -->
             <div class="Mobile">
                 <input type="text" class="form-control" name="telNo" value="<?php echo "$telNOStaff"; ?>">
             </div>
@@ -270,7 +271,7 @@ session_start();
                 <input type="text" class="form-control" name="staffAddress" value="<?php echo "$staffAddress"; ?>">
             </div>
             <div class="Bank">
-                <input type="text" class="form-control" value="<?php echo "$bankAccount"; ?>">
+                <input type="text" class="form-control" name="bankAccount" value="<?php echo "$bankAccount"; ?>">
             </div>
           <!-- Table Work History -->
             <div class = "WorkHis"><h4>Work History</h></div>
