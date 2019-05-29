@@ -29,6 +29,10 @@ if (isset($_POST['Cancel'])) {
     //header('Location: http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php');
   }
 }
+else
+{
+  header('Location: http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php');
+}
 $conn->close();
 
 ?>
