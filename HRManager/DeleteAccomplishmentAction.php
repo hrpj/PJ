@@ -13,16 +13,14 @@ session_start();
 	if (empty($accomplishmentDelete))
 	{
 		echo("ERROR!!! : No data input found.");
-		header( " refresh: 2; url=http://localhost/HRPJ/HRManager/CompetenceEditForHR.php?id=$id");
 	}
 	if (empty($id))
 	{
 		echo("ERROR!!! : No ID found.");
-		header( " refresh: 2; url=http://localhost/HRPJ/HRManager/CompetenceEditForHR.php?id=$id");
 	}
-
+	
 //mysql code to delete
-	$result = mysqli_query($con,"DELETE FROM competence WHERE staffID LIKE '$id' AND accomplishment LIKE '$accomplishmentDelete' AND date LIKE '$date' AND year LIKE '$year'); ");
+	$result = mysqli_query($con,"DELETE FROM competence WHERE staffID LIKE '$id' AND accomplishment LIKE '$accomplishmentDelete'; ");
 
 	if (empty($result))
 		echo "ERROR!!! : No result returned.";
