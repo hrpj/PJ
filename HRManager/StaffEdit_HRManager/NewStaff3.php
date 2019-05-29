@@ -26,12 +26,19 @@ session_start();
 		$gender = $_POST['gender'];  // Storing Selected Value In Variable
 		$bankAccount = mysqli_real_escape_string($con, $_REQUEST['bankAccount']);
 		$branchName = $_POST['branchName'];
+		$departmentID = $_POST['departmentID'];
 
 		$sql = "SELECT branchName FROM branch";
 		$result = mysqli_query($con,$sql);
 
-		$sql = "SELECT departmentName FROM department WHERE branchName LIKE '$branchName'";
+		$sql = "SELECT departmentName, departmentID FROM department
+						WHERE branchName LIKE '$branchName'";
 		$result2 = mysqli_query($con,$sql);
+
+
+		$sql = "SELECT positionID, positionName FROM position
+						WHERE departmentID LIKE $departmentID";
+		$result3 = mysqli_query($con,$sql);
 ?>
 
 <!doctype html>
@@ -126,54 +133,78 @@ session_start();
 <body>
   <div class = "NewStaff"><h3>Create New Staff</h></div>
 <!-- Fill Date -->
-<form action="CreateStaffController.php" method="post" enctype="multipart/form-data" id="staffForm">
+<form action="NewStaff2.php" method="post" id="staffForm">
       <div class="StartDate">
-        Start Date : <input type="Date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
+        Start Date : <input type="Date" name="startDate" value=<?php echo "$startDate"; ?> class="form-control" id="Start" placeholder="StartDate">
       </div>
       <div class="Firstname">
-        First Name : <input type="text" name="fName" class="form-control" placeholder="First Name">
+        First Name : <input type="text" name="fName" value=<?php echo "$fName"; ?> class="form-control" placeholder="First Name">
       </div>
       <div class="Lastname">
-        Last Name : <input type="text" name="lName" class="form-control" placeholder="Last Name">
+        Last Name : <input type="text" name="lName" value=<?php echo "$lName"; ?> class="form-control" placeholder="Last Name">
       </div>
       <div class="Address">
-        Address : <input type="text" name="address" class="form-control" placeholder="Address">
+        Address : <input type="text" name="address" value=<?php echo "$address"; ?> class="form-control" placeholder="Address">
       </div>
       <div class="Mobile">
-        Mobilephone No. : <input type="text" name="telNo" class="form-control" placeholder="Mobile">
+        Mobilephone No. : <input type="text" name="telNo" value=<?php echo "$telNo"; ?> class="form-control" placeholder="Mobile">
       </div>
       <div class="DOB">
-        Date Of Birth : <input type="Date" name="dateOfBirth" class="form-control" id="DOB" placeholder="DOB">
+        Date Of Birth : <input type="Date" name="dateOfBirth" value=<?php echo "$dateOfBirth"; ?> class="form-control" id="DOB" placeholder="DOB">
       </div>
       <div class="Gender">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Gender</label>
       <select class="form-control" name="gender">
-        <option>Female</option>
-        <option>Male</option>
-        <option>Transgender</option>
+				<option value=<?php echo "$gender"; ?>><?php echo "$gender"; ?></option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="transgender">Transgender</option>
       </select>
     </div>
       </div>
       <div class="Bank">
-        Bank account : <input type="text" name="bankAccount" class="form-control" placeholder="Bank">
+        Bank account : <input type="text" name="bankAccount" value=<?php echo "$bankAccount"; ?> class="form-control" placeholder="Bank">
       </div>
       <div class="Branch">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
-      <select name="branchName" class="form-control" id="exampleFormControlSelect1">
-        <?php  ?>
-        <option>Bang Khae</option>
-        <option>Bang Ruk</option>
+      <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
+        <option><?php echo "$branchName"; ?></option>
+        <?php
+         while($row = mysqli_fetch_array($result)) {
+            $name = $row['branchName'];
+            echo "<option value=".$name.">".$name."</option>";
+         }
+        ?>
       </select>
+      <noscript><input type="submit" value="Submit"></noscript>
     </div>
-  <div class="form-group">
+  </div>
+  </form>
+<!-- ____________________________________ Start Form 2 _________________________________________ -->
+<form>
+<div class="Department">
+<div class="form-group">
+	<form action="NewStaff3" method="post">
     <label for="exampleFormControlSelect1">Department</label>
     <select name="departmentName" class="form-control" id="exampleFormControlSelect1">
-      <option>Finance</option>
-      <option>Marketing</option>
+			<option><?php echo $departmentName; ?></option>
+			<?php
+			 while($row = mysqli_fetch_array($result2)) {
+					$dName = $row['departmentName'];
+					$dId = $row['departmentID'];
+					echo "<option value=\"".$dId."\">".$dName."</option>";
+			 }
+			?>
     </select>
-  </div>
+	</form>
+</div>
+</div>
+</form>
+
+<!-- ___________________________Start Form 3______________________________ -->
+
   <div class="Position">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Position</label>
