@@ -103,103 +103,34 @@ session_start();
 	</nav>
 </head>
 
-  <body>
-      <div class = "Analysis"><h3>Age Range of Staffs</h></div>
-          <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Age Range</th>
-        <th scope="col">Count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>20-29</td>
+<body>
+    <div class = "Analysis"><h3>Amount of degree of staff that graduated</h></div>
+    <table class="table">
+		<thead class="thead-dark">
+		<tr>
+			<th scope="col">Degree</th>
+			<th scope="col">Count</th>
+		</tr>
+		</thead>
 <?php
-	$date = date("Y-m-d");
-	echo $date;
-	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF(year,dateOfBirth,'$date') AS age) FROM staff WHERE age BETWEEN 20 AND 29");
+	$result = mysqli_query($con,"SELECT degree, COUNT(staffID) AS Count FROM education GROUP BY degree");
 	
-	$count=$result->num_rows;
-	if ((empty($count)))
-	{
-		$num = '----';
-		
-	}
-	else
-	{
-		while ($row = mysqli_fetch_array($result))
-		{
-			$num = $row['age'];
-			echo $num ;
-		}
-	}
-	//echo "<td>".$num."</td>";
-?>	
-      </tr>
-      <tr>
-        <td>30-39</td>
-        <?php
-	$date = date("y-m-d");
-	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF('$date', dateOfBirth)AS age) FROM staff WHERE age BETWEEN 30 AND 39");
-	if (empty($result))
-	{
-		$num = '----';
-		
-	}
-	else
-	{
-		while ($row = mysqli_fetch_array($result))
-		{
-			$num = $row['age'];
-		}
-	}
-	echo "<td>".$num."</td>";
+    while ($row = mysqli_fetch_array($result))
+    {
+		$degree = $row['degree'];
+		$Count = $row['Count'];
+				
+		echo "<tbody>
+				<tr>
+				<td>".$degree."</td>
+				<td>".$Count."</td>
+				</tr>
+			  </tbody> ";
+    }
 ?>
-      </tr>
-      <tr>
-        <td>40-49</td>
-<?php
-	$date = date("y-m-d");
-	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF('$date', dateOfBirth)AS age) FROM staff WHERE age BETWEEN 40 AND 49");
-	if (empty($result))
-	{
-		$num = '----';
-		
-	}
-	else
-	{
-		while ($row = mysqli_fetch_array($result))
-		{
-			$num = $row['age'];
-		}
-	}
-	echo "<td>".$num."</td>";
-?>
-      </tr>
-      <tr>
-        <td>50-59</td>
-<?php
-	$date = date("y-m-d");
-	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF('$date', dateOfBirth)AS age) FROM staff WHERE age BETWEEN 50 AND 59");
-	if (empty($result))
-	{
-		$num = '----';
-		
-	}
-	else
-	{
-		while ($row = mysqli_fetch_array($result))
-		{
-			$num = $row['age'];
-		}
-	}
-	echo "<td>".$num."</td>";
-?>
-      </tr>
-    </tbody>
-  </table>
-  <!-- End Table -->
+	</table>
+	<!-- End Table -->
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
