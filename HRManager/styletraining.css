@@ -19,7 +19,7 @@ h6
     top:50%;
     left:50%;
     margin-left:100px;
-    margin-top:150px;
+    margin-top:80px;
 }
 .Location
 {
@@ -55,8 +55,8 @@ h6
 }
 .twobuttons
 {
-    margin-top:100px;
-    margin-left:960px;
+    margin-top:40px;
+    margin-left:965px;
     height:100px;
 }
 .threebuttons
