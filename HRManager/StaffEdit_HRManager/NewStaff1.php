@@ -104,9 +104,9 @@ session_start();
 <body>
   <div class = "NewStaff"><h3>Create New Staff</h></div>
 <!-- Fill Date -->
-<form action="NewStaff2.php" method="post" id="staffForm">
+<form action="CreateStaffController.php" method="post" id="staffForm">
       <div class="StartDate">
-        Start Date : <input type="date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
+        Start Date : <input type="Date" name="startDate" class="form-control" id="Start" placeholder="StartDate">
       </div>
       <div class="Firstname">
         First Name : <input type="text" name="fName" class="form-control" placeholder="First Name">
@@ -139,30 +139,30 @@ session_start();
       <div class="Branch">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
-      <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
+      <select name="branchName" class="form-control" id="exampleFormControlSelect1">
         <option>Choose Branch</option>
         <?php
          while($row = mysqli_fetch_array($result)) {
             $name = $row['branchName'];
-            echo "<option value=\"".$name."\">".$name."</option>";
+            echo "<option value=".$name.">".$name."</option>";
          }
         ?>
       </select>
-      <noscript><input type="submit" value="Submit"></noscript>
+      <button type="submit" class="btn btn-primary btn-group-xs" name="Submit" value="SubmitBName">Find</button>
     </div>
   </div>
   </form>
 
   <!-- End Fill -->
-<form action="CreateStaffController.php" method="post" id="staffForm">
+
   <table class="thebuttons">
-      <tr><td>
-      <button type="submit" name="submit" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
-  </td><td>
-      <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
-  </td></tr>
+      <tr>
+				<td>
+      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+  			</td>
+			</tr>
   </table>
-</form>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
