@@ -40,7 +40,7 @@ else if ($_POST["Submit"] === 'SubmitDName') {
   $_SESSION["DEPARTMENT"] = $_POST['departmentID'];
   header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff3.php');
 }
-else if ($_POST["Submit"] === 'Submit') {
+else if ($_POST["Submit"] === 'SubmitDName') {
   //___________________________________________________Form3_______________________________________________________________
 
   $startDate = mysqli_real_escape_string($conn, $_REQUEST['startDate']);
@@ -80,11 +80,14 @@ else if ($_POST["Submit"] === 'Submit') {
 
   //___________________________________________________Insert Picture__________________________________________________
   $ext = pathinfo(basename($_FILES['picture']['name']), PATHINFO_EXTENSION);
-  $newImageName = 'img_'.$uniqueid().'.'.$ext;
+  $newImageName = 'img_'.uniqid().'.'.$ext;
 
   echo "SUCCESS".$staffID."  UND  ".$newImageName;
 
   echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
+}
+else {
+  echo "Aloha";
 }
 
 // Escape user inputs for security
