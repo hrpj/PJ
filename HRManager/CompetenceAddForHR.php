@@ -144,12 +144,18 @@ session_start();
       </div>
       <!-- End Competence -->
       <div class="InputScore1">
-        <input type="text" name="accomplishmentAdd" class="form-control" placeholder="Add Accomplishment">
-        <a href="AttendanceStatusAddForHR.html" class="btn btn-outline-dark">Add more</a>
+        <form action="CompetenceAddForHRActionPage1.php" name="addCompetence" method="post">
+          <input type="text" name="accomplishmentAdd" class="form-control" placeholder="Add Accomplishment">
+          <input type="hidden" name="id" value="<?php echo $id?>">
+          <button type="submit" name="addCompetence" class="btn btn-outline-dark">Add more</button>
+        </form>
       </div>
        <div class="InputScore2">
-        <input type="text" name="concernAdd" class="form-control" placeholder="Add Concern">
-        <a href="AttendanceStatusAddForHR.html" class="btn btn-outline-dark">Add more</a>
+        <form action="CompetenceAddForHRActionPage2.php" name="addConcern" method="post">
+          <input type="text" name="concernAdd" class="form-control" placeholder="Add Concern">
+          <input type="hidden" name="id" value="<?php echo $id?>">
+          <button type="submit" name="addConcern" class="btn btn-outline-dark">Add more</button>
+        </form>
         <br><br><br><br><br><br>
       </div>
       <!-- Concern -->
