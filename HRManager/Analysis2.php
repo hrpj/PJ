@@ -1,6 +1,5 @@
 <?php
 session_start();
-	$id = $_SESSION["ID"];
 	$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
 	if (mysqli_connect_errno())
@@ -102,37 +101,51 @@ session_start();
         </ul>
     </div>
 </nav>
-<?php
-
-
-
-
-
-?>
 </head>
-  <body>
-      <div class = "Analysis"><h3>Minimum and Maximum salary in every position in department</h></div>
-          <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Department</th>
-        <th scope="col">Position</th>
-        <th scope="col">Base Salary</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>HR</td>
-        <td>Manager</td>
-        <td>30000-48000</td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- End Table -->
+
+
+<body>
+    <div class = "Analysis"><h3>Minimum and Maximum salary in every position in department</h></div>
+    <table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Department</th>
+				<th scope="col">Position</th>
+				<th scope="col">Base Salary</th>
+			</tr>
+		</thead>
+<?php
+	$result = mysqli_query($con,"SELECT * FROM position");
+	
+    while ($row = mysqli_fetch_array($result))
+    {
+		$positionID = $row['positionID'];
+		$positionName = $row['positionName'];
+		$minSalary = $row['minSalary'];
+		$maxSalary = $row['maxSalary'];
+		$departmentID = $row['departmentID'];
+		
+		$result2 = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
+        while ($row2 = mysqli_fetch_array($result2))
+		{
+			$departmentName = $row2['departmentName'];
+		}
+		
+		echo "<tbody>
+			<tr>
+				<td>".$departmentName."</td>
+				<td>".$positionName."</td>
+				<td>".$minSalary.'-'.$maxSalary."</td>
+			</tr>
+		</tbody> ";
+    }
+?>
+	</table>
+	<!-- End Table -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
