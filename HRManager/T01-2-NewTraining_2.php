@@ -101,6 +101,12 @@ session_start();
 		</div>
 	</nav>
 </head>
+<?php
+	if( isset( $_REQUEST['modify'] ))
+	{
+		unset ($_SESSION["departmentID"]);
+	}
+?>
 
 <body>
     <br>
@@ -191,10 +197,12 @@ session_start();
     <tr><td>
     <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Add&nbsp;more</button>
     </td><td>
-    <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Clear</button>
     </td><td>
     <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Save</button>
     </td><td>
+	<form id="clear">
+		<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-2-NewTraining_2.php';">Clear</button>
+	</form>
     <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
     </td></tr>
     </table>
