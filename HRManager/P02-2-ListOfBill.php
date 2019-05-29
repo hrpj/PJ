@@ -163,12 +163,13 @@
 			else if(empty($search5) && empty($positionID) && empty($departmentID) && !empty($branchName))
 			{
 				echo '4';
-				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
-												WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE '$branchName%')))");
-				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
-												WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE '$branchName%'))");
+				$result1 = mysqli_query($con,"SSELECT d.staffID, d.amount FROM bonus d, branch b, staff s, position p, department m WHERE d.staffID = s.staffID AND
+												s.positionID = p.positionID AND p.departmentID = m.departmentID AND m.BranchName = b.branchName AND year LIKE '$year%' AND date LIKE '$month%'");
+				$result2 = mysqli_query($con,"SELECT d.staffID, d.amount FROM deduction d, branch b, staff s, position p, department m WHERE d.staffID = s.staffID AND
+												s.positionID = p.positionID AND p.departmentID = m.departmentID AND m.BranchName = b.branchName AND year LIKE '$year%' AND date LIKE '$month%'");
 			}
-
+			
+			
 			if(!empty($result1))
 			{
 				$bonus = 0;
