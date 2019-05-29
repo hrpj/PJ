@@ -1,9 +1,9 @@
-<?php 
+<?php
 session_start();
     $id = $_SESSION["ID"];
     $con=mysqli_connect("localhost","root","","hrmanager");
     // Check connection
-    if (mysqli_connect_errno()) 
+    if (mysqli_connect_errno())
     {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
@@ -41,7 +41,7 @@ session_start();
         <a class="nav-link" href="http://localhost/HRPJ/Staff/TimeManageFindForStaff.php">Time Attendance</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="http://localhost/HRPJ/Staff/PaymentStaffForStaff.php">Payment Slip</a>
+        <a class="nav-link" href="http://localhost/HRPJ/Staff/P01-1-PaymentSearchForStaff.php">Payment Slip</a>
         </li>
         </ul>
         <ul class="nav justify-content-end">
@@ -56,7 +56,7 @@ session_start();
       <br>
       <!-- Welcome message -->
       <marquee direction="left"><font color="#696969" size="5">Welcome K.
-	  <?php 
+	  <?php
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
             while ($row = mysqli_fetch_array($result))
             {
