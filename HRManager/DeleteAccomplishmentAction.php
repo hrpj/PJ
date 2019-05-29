@@ -18,9 +18,9 @@ session_start();
 	{
 		echo("ERROR!!! : No ID found.");
 	}
-
+	
 //mysql code to delete
-	$result = mysqli_query($con,"DELETE FROM competence WHERE staffID LIKE '$id' AND accomplishment LIKE '$accomplishmentDelete' AND date LIKE '$date' AND year LIKE '$year'); ");
+	$result = mysqli_query($con,"DELETE FROM competence WHERE staffID LIKE '$id' AND accomplishment LIKE '$accomplishmentDelete'; ");
 
 	if (empty($result))
 		echo "ERROR!!! : No result returned.";
