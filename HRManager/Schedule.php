@@ -123,7 +123,7 @@ session_start();
 <?php
 	date_default_timezone_set("Asia/Bangkok");
 	$date = date("Y-m-d");
-	echo $date;
+
 	$result = mysqli_query($con,"SELECT * FROM trainingschedule WHERE startDate >= '$date'");
 	while ($row = mysqli_fetch_array($result))
 	{
