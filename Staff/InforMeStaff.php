@@ -24,34 +24,40 @@
 
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-        <a class="navbar-brand" href="http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php">&nbsp;ILoveDB Company</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
+    <a class="navbar-brand" href="http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php">&nbsp;ILoveDB Company</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php">Page <span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="http://localhost/HRPJ/Staff/InforMeStaff.php">Information</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/HRPJ/Staff/TimeManageFindForStaff.php">Time Attendance</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/HRPJ/Staff/PaymentStaffForStaff.php">Payment Slip</a>
-                </li>
-            </ul>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/HRPJ/WelcomeSignin.html">Sign out</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="http://localhost/HRPJ/Staff/WelcomeSignoutForStaff.php">Page <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Information
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost/HRPJ/Staff/InforMeStaff.php">Only Me</a>
+            <a class="dropdown-item" href="http://localhost/HRPJ/Staff/Schedule.php">Training Course</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/HRPJ/Staff/TimeManageFindForStaff.php">Time Attendance</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/HRPJ/Staff/P01-1-PaymentSearchForStaff.php">Payment Slip</a>
+        </li>
+      </ul>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/HRPJ/WelcomeSignin.html">Sign out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   </head>
 <?php
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
@@ -77,7 +83,7 @@
         <br><br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?>
         <br><br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?>
         <br><br><i class="fas fa-hourglass-start"></i>Start Date : <?php echo "$startDate"; ?>
-        <br><br>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a>
+        <br><br>Check behavior point : <a href="http://localhost/HRPJ/Staff/CompetenceforStaff.php?id=<?php echo $id ?>" class="button-link">Click here!</a>
     </div>
 
     <div class="Infor1"><br><br>
