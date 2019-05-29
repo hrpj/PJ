@@ -39,9 +39,10 @@ session_start();
 	            </a>
 	            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
-	                <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Training Course</a>
+	                <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
+	                <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
+	                <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Schedule.php">Training Course</a>
 	            </div>
-	        </li>s="nav-link" href="http://localhost/HRPJ/Staff/InforMeStaff.php">Information</a>
 	        </li>
 	        <li class="nav-item">
 	        <a class="nav-link" href="http://localhost/HRPJ/Staff/TimeManageFindForStaff.php">Time Attendance</a>
