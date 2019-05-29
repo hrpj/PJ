@@ -167,7 +167,7 @@ session_start();
         <?php
          while($row = mysqli_fetch_array($result)) {
             $name = $row['branchName'];
-            echo "<option value=".$name.">".$name."</option>";
+            echo "<option value=\"".$name."\">".$name."</option>";
          }
         ?>
       </select>
