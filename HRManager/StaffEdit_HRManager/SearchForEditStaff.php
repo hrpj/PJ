@@ -87,7 +87,7 @@ session_start();
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Analysis Report
-          </a>
+          </a> 
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="NewStaff.html">Age range of staffs</a>
             <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
@@ -158,7 +158,7 @@ session_start();
 	      <label class="input-group-text" for="inputGroupSelect01">Position</label>
 <!-- _________________________________position select________________________________________ -->
 	      <select name="positionName" class="custom-select" id="inputGroupSelect01">
-	      	<option selected>Choose...</option>
+	      	<option selected value="">Choose...</option>
 						<?php
 						 while($row = mysqli_fetch_array($resultP)) {
 								$pName = $row['positionName'];
