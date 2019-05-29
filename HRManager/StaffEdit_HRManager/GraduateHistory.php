@@ -1,3 +1,24 @@
+<?php
+  session_start();
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "hrmanager";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $staffID = $_SESSION["CR_STAFFID"];
+  $sql = "SELECT * FROM education WHERE staffID LIKE '$staffID'";
+  $result = mysqli_query($conn,$sql);
+  $i = (int)0;
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -96,14 +117,51 @@
           <th scope="col">Field</th>
           <th scope="col">Degree</th>
           <th scope="col">Year</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
+      <?php
+       while($row = mysqli_fetch_array($result)) {
+          $i = $i+1;
+          $university = $row['university'];
+          $degree = $row['degree'];
+          $field = $row['field'];
+          $year = $row['year'];
+          echo "<tr>
+           <td>".$i."</td>
+           <td>".$university."</td>
+           <td>".$degree."</td>
+           <td>".$field."</td>
+           <td>".$year."</td>
+           <td>
+             <button type=\"submit\"
+               name=\"edit\"
+               value=\"".$year."\"
+               class=\"btn btn-success\">
+               <h6>edit</h6>
+             </button>
+           </td>
+           <td>
+             <button type=\"submit\"
+               name=\"delete\"
+               value=\"".$year."\"
+               class=\"btn btn-danger\">
+               <h6>delete</h6>
+             </button>
+           </td>
+          </tr>";
+       }
+      ?>
       <tbody>
         <tr>
-          <th scope="row">1</th>
+          <th scope="row"> # </th>
           <td><input class="form-control" type="text" placeholder="University Name"></td>
           <td><input class="form-control" type="text" placeholder="Field"></td>
           <td><input class="form-control" type="text" placeholder="Degree"></td>
+          <td><input class="form-control" type="year" placeholder="Year"></td>
+          <td>-</td>
+          <td>-</td>
         </tr>
       </tbody>
     </table>
