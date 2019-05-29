@@ -148,7 +148,7 @@ session_start();
     </div>
       </div>
       <div class="Bank">
-        Bank account : <input type="text" name="bankAccount" value=<?php echo "$bankAccount"; ?> class="form-control" placeholder="Bank">
+        Bank account : <input type="text" name="bankAccount" <?php echo "value = \"".$bankAccount."\""; ?> class="form-control" placeholder="Bank">
       </div>
       <div class="Branch">
           <div class="form-group">
