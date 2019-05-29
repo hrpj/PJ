@@ -1,23 +1,14 @@
-<?php
-session_start();
-	$con=mysqli_connect("localhost","root","","hrmanager");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Training Course Schedule</title>
+    <title>Edit Training Course</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styleschedule.css" rel="stylesheet">
+    <link href="styleedittraining.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -30,7 +21,7 @@ session_start();
 
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item dropdown ">
@@ -41,7 +32,6 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Schedule.php">Training Course</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -62,18 +52,18 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
 					</div>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Create
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php">New Training Course</a>
-						<a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
-						<a class="dropdown-item" href="NewBranchForHR.html">Edit Staff</a>
-						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+                        <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
+                        <a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
+                        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
+                        <a class="dropdown-item" href="NewBranchForHR.html">Edit Staff</a>
+                        <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -107,61 +97,43 @@ session_start();
 
 
 <body>
-    <br>
-    <h2>&nbsp;&nbsp;&nbsp;Training Courses Schedule </h2>
-    <!-- Table -->
-    <table class="table">
-		<thead class="thead-dark">
+    <div class = "NewTraining"><h3>Edit Training Course</h></div>
+	<form action="T01-1.5-CreateNewTraining.php" method="POST" >
+		<!-- Fill Infor -->
+		<div class="Topic">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Course ID</label>
+            <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">1 - Marketing</option>
+            <option value="2">2 - Finance</option>
+            </select> <a href="#"><i class="fas fa-search"></i></a>
+            </div>
+		</div>
+		<div class="Location">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Training Topic</span>
+				<input type="text" name="trainingTopic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+
+		<!-- End Fill -->
+		<table class="twobuttons">
 			<tr>
-				<th scope="col">Date</th>
-				<th scope="col">Course ID</th>
-				<th scope="col">Topic</th>
-				<th scope="col">Location</th>
-				<th scope="col">In charge person</th>
+				<td>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T02-1-CreateSchedule.php';">Save</button>
+				</td>
+				<td>
+					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Clear</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
+				</td>
 			</tr>
-		</thead>
-<?php
-	date_default_timezone_set("Asia/Bangkok");
-	$date = date("Y-m-d");
-	echo $date;
-	$result = mysqli_query($con,"SELECT * FROM trainingschedule WHERE startDate >= '$date'");
-	while ($row = mysqli_fetch_array($result))
-	{
-		$courseID = $row['courseID'];
-		$place = $row['place'];
-		$inChargePerson = $row['inChargePerson'];
-		$startDate = $row['startDate'];
-		$endDate = $row['endDate'];
-		$scDate = $startDate.' - '.$endDate;
-		
-		$result2 = mysqli_query($con,"SELECT * FROM trainingcourse WHERE courseID LIKE '$courseID'");
-		while ($row2 = mysqli_fetch_array($result2))
-		{
-			$courseName = $row2['courseName'];
-			
-		}
-		echo "<tbody>
-				<tr>
-				<td>".$scDate."</td>
-				<td>".$courseID."</td>
-				<td>".$courseName."</td>
-				<td>".$place."</td>
-				<td>".$inChargePerson."</td>
-				</tr>
-			</tbody>";
-	}
-?>
-    </table>
-	
-    <!-- End Table -->
-    <table class="Back">
-		<tr>
-		<td>
-			<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
-		</td>
-		</tr>
-    </table>
-	
+		</table>
+	</form>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
