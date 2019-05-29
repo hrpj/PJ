@@ -15,9 +15,9 @@ h6
 }
 .thebuttons
 {
-    margin-top:100px;
-    margin-left:1050px;
-    height:100px;
+    position: fixed;
+    bottom:20px; 
+    right: 20px;
 }
 .Compete
 {
@@ -25,29 +25,26 @@ h6
     top:100%;
     left:100%;
     margin-left:200px;
-    margin-top:80px;
+    margin-top:0px;
 }
 .CompeteTable
 {
-    width:300px;
-    top:100%;
-    left:100%;
+    width:350px;
     margin-left:200px;
     margin-top:10px;
 }
 .Concern
 {
     width:163px;
-    top:100%;
-    left:100%;
-    margin-left:800px;
-    margin-top:-174px;
+    position: absolute;
+    width:300px;
+    top:20%;
+    left:55%;
 }
 .ConcernTable
 {
-    width:300px;
-    top:100%;
-    left:100%;
-    margin-left:800px;
-    margin-top:10px;
+    position: absolute;
+    width:350px;
+    top:25%;
+    left:55%;
 }
