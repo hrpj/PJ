@@ -105,14 +105,14 @@ session_start();
 <body>
     <br>
     <h2>&nbsp;&nbsp;&nbsp;Required Position</h2>
-	
+
     <!-- Search -->
 	<form action="T01-2.25-PepareTrainingSearch.php" method="POST">
 		<div class="Department">
 		<div class="input-group-prepend">
 			<label class="input-group-text" for="inputGroupSelect01">Department</label>
 			<select class="custom-select" name="departmentID" id="inputGroupSelect01">
-<?php 	
+<?php
 		$courseID = $_SESSION['courseID'];
 		if(empty($_SESSION['departmentID']))
 		{
@@ -138,16 +138,16 @@ session_start();
 				echo "<option value='".$departmentID."'>".$BranchName." - ".$departmentName."</option>";
 			}
 		}
-?>			</select> 
+?>			</select>
 			<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></button>
 		</div>
 	</form>
-	
+
     <div class="Position">
     <div class="input-group-prepend">
 		<label class="input-group-text" for="inputGroupSelect01">Position</label>
 		<select class="custom-select" name="positionID" id="inputGroupSelect01">
-<?php 	
+<?php
 		if(empty($_SESSION['departmentID']))
 		{
 			echo "<option value='' selected>Choose...</option>";
@@ -182,7 +182,7 @@ session_start();
 				echo "<option value='".$positionID."'>".$departmentName2." - ".$positionName."</option>";
 			}
 		}
-?>		
+?>
 		</select>
     </div>
 
@@ -191,12 +191,14 @@ session_start();
     <tr><td>
     <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Add&nbsp;more</button>
     </td><td>
+    <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Clear</button>
+    </td><td>
     <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Save</button>
     </td><td>
     <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
     </td></tr>
     </table>
-	
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
