@@ -310,7 +310,7 @@ session_start();
 	</form>
 				<td>
 					<form id="clear">
-					<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php';">Clear</button>
+					<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php';">Clear</button>
 					</form>
 				</td>
 				<td>
