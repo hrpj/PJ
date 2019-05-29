@@ -93,7 +93,7 @@
 	</nav>
 </head>
 
-  <body>
+<body>
       <br>
       <h2>&nbsp;&nbsp;&nbsp;Required Position</h2>
       <!-- Search -->
@@ -104,7 +104,8 @@
       <option selected>Choose...</option>
       <option value="1">1 - Marketing</option>
       <option value="2">2 - Finance</option>
-      </select> <a href="#"><i class="fas fa-search"></i></a>
+      </select> 
+	  <button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
       </div>
       <div class="Position">
       <div class="input-group-prepend">
