@@ -12,10 +12,41 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$staffName = mysqli_real_escape_string($con, $_POST["staffName"]);
 	$gender = mysqli_real_escape_string($con, $_POST['gender']);
 	$start = mysqli_real_escape_string($con, $_POST['start']);
-	$telNo = mysqli_real_escape_string($con, $_POST['mobilePhoneNo']);
+	$telNo = mysqli_real_escape_string($con, $_POST['telNo']);
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
+
+
+
+	$NoBugProtect = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
+	while ($row = mysqli_fetch_array($NoBugProtect)) 
+	{
+		if (empty($NoBugProtect)) 
+		{
+			echo "Protecting ERROR !!!";
+		}
+		if (empty($staffName)) 
+		{
+			$staffName = $row['staffName'];
+		}
+		if (empty($gender)) 
+		{
+			$gender = $row['gender'];
+		}
+		if (empty($start)) 
+		{
+			$start = $row['startDate'];
+		}
+		if (empty($telNo)) 
+		{
+			$telNo = $row['telNo'];
+		}
+		if (empty($staffAddress)) 
+		{
+			$staffAddress = $row['address'];
+		}
+	}
 
 //Condition for no working history or no education history
 	if (!$i)
