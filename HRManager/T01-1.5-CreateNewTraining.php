@@ -20,7 +20,7 @@ session_start();
 	}
 	
 	echo "1 record added";
-	
+	unset ($_SESSION["departmentID"]);
 	header("Refresh:1; url=http://localhost/HRPJ/HRManager/T01-2-NewTraining_2.php");
 	mysqli_close($con);
 ?>
