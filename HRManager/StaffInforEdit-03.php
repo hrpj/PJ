@@ -119,7 +119,7 @@ session_start();
             <br><br><i class="fas fa-venus-mars"></i>Gender :
             <br><br><i class="fas fa-birthday-cake"></i>Date of birth :
             <br><br><i class="fas fa-hourglass-start"></i>Start Date :
-            <br><br>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a>
+            <br><br>Check behavior point : <a href="http://localhost/HRPJ/HRManager/CompetenceForHR.php?id=<?php echo $_SESSION['search'] ?>" class="button-link">Click here!</a>
         </div>
         <div class="Infor1">
           <!--  <br><br><i class="fas fa-layer-group"></i>Department : -->
