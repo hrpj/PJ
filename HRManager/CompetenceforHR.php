@@ -141,6 +141,7 @@ session_start();
             ?>
           </tbody>
         </table>
+        <br><br><br><br><br><br>
 </div>
 <!-- End Competence -->
 <!-- Concern -->
@@ -180,16 +181,17 @@ session_start();
         ?>
       </tbody>
     </table>
+    <br><br><br><br><br><br>
 </div>
 <!-- End Concern -->
 <!-- Buttons -->
 <table class="thebuttons">
     <tr>
       <td>
-        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceAddForHR.html';">Add</button>
+        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceAddForHR.php?id=<?php echo $id ?>';">Add</button>
       </td>
       <td>
-        <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceEditForHR.html';">Edit</button></span>
+        <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceEditForHR.php?id=<?php echo $id ?>';">Edit</button></span>
       </td>
       <td>
         <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancle</button></span>
