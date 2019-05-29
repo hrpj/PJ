@@ -102,63 +102,30 @@ session_start();
 	</nav>
 </head>
 
-<?php
-	function timeDiff($firstTime,$lastTime) 
-	{
-		$firstTime=strtotime($firstTime);
-		$lastTime=strtotime($lastTime);
-		$timeDiff=$lastTime-$firstTime;
-		return $timeDiff;
-	}
-
-?>
-  
   <body>
-    <div class = "Analysis"><h3>Work time of monday and salary of position in any department</h></div>
-    <table class="table">
+      <div class = "Analysis"><h3>Amount of staff in each branch</h></div>
+          <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Department</th>
-        <th scope="col">Position</th>
-        <th scope="col">Work Time (hrs.)</th>
-        <th scope="col">Base Salary</th>
+        <th scope="col">Branch</th>
+        <th scope="col">Count</th>
       </tr>
     </thead>
 <?php
-	$result = mysqli_query($con,"SELECT * FROM dailyworkingtime WHERE day LIKE 'Monday'");
+	$result = mysqli_query($con,"SELECT b.branchName, COUNT(s.staffID) AS Count FROM branch b, staff s, position p, department d WHERE s.positionID = p.positionID AND p.departmentID = d.departmentID AND d.BranchName = b.branchName GROUP BY b.branchName");
 	while ($row = mysqli_fetch_array($result))
     {
-		$positionID = $row['positionID'];
-		$timeIn = $row['timeIn'];
-		$timeOut = $row['timeOut'];
-		
-		$diffTime = (timeDiff($timeIn,$timeOut)/60)/60;
-		
-		$result2 = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID' ");
-		while ($row2 = mysqli_fetch_array($result2))
-		{
-			$departmentID = $row2['departmentID'];
-			$positionName = $row2['positionName'];
-			$minSalary = $row2['minSalary'];
-			$maxSalary = $row2['maxSalary'];
-			$salary = $minSalary.'-'.$maxSalary ;
-		}
-		$result3 = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID' ");
-		while ($row3= mysqli_fetch_array($result3))
-		{
-			$departmentName = $row3['departmentName'];
-		}
+		$branchName = $row['branchName'];
+		$Count = $row['Count'];
 		
 		echo " 	<tbody>
 				  <tr>
-					<td>".$departmentName."</td>
-					<td>".$positionName."</td>
-					<td>".$diffTime."</td>
-					<td>".$salary."</td>
+					<td>".$branchName."</td>
+					<td>".$Count."</td>
 				  </tr>
 				</tbody>";
 	}
-?>	
+?>
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->
