@@ -61,6 +61,7 @@ session_start();
             while ($row = mysqli_fetch_array($result))
             {
                 $positionID = $row['positionID'];
+				$picture = $row['picture'];
             }
             $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
             while ($row = mysqli_fetch_array($result))
@@ -78,7 +79,7 @@ session_start();
 <body>
 	<form action="searchMyPaymant.php" method="POST">
 		<div class = "Payment"><h3>Payment Slip</h></div>
-		<div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
+		<div align ="center"><img src="../staffImage/<?php echo $picture; ?>"></div>
 
 		<!-- Information -->
 		<div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo $id ; ?><br>
