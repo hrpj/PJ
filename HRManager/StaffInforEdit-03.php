@@ -156,7 +156,7 @@ session_start();
             $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
             while ($row = mysqli_fetch_array($result))
             {
-                if ($departmentName == 0)
+                if ($_SESSION["checkFirst"]==1)
                 {
                   $departmentName = $row['departmentName'];
                 }
@@ -176,9 +176,6 @@ session_start();
 
         <!-- Fill Information -->
         <form id="formSave" action="StaffInforEditAction.php" method="post">
-            <!--<div class="ID">
-                <input type="text" class="form-control" name="search" value="<?php //echo "$search"; ?>">
-            </div>-->
             <div class="Name">
                 <input type="text" class="form-control" name="staffName" value="<?php echo "$staffName"; ?>">
             </div>
@@ -196,9 +193,7 @@ session_start();
             <div class="StartDate">
                 <input type="Date" class="form-control" name="start" value="<?php echo "$startDate"; ?>">
             </div>
-
             <div class="Department">
-                <form action="StaffInforSearch2Action.php" id="searchButton2" method="post">
                   <select class="btn btn-secondary" name="departmentName" onchange="sSelect()">
                     <?php
                       $sqlDepartment = "SELECT * FROM department WHERE branchName LIKE '$branchName'";
@@ -214,14 +209,16 @@ session_start();
                       }
                     ?>
                   </select>
-                  <button type="submit" form="searchButton2" class="fas fa-search" style="border: none; background-color:white" ></button>
-                </form>
             </div>
 
             <div class="Position">
                 <select class="btn btn-secondary" name="position" onchange="sSelect()">
                   <?php
                     if ($_SESSION["checkFirst"] == 3) 
+                    {
+                      $departmentID = $departmentID2;
+                    }
+                    if ($_SESSION["checkFirst"] == 0) 
                     {
                       $departmentID = $departmentID2;
                     }
@@ -238,41 +235,36 @@ session_start();
                   ?>
                 </select>
             </div>
-
             <div class="Branch">
-              <form action="StaffInforSearchAction.php" id="searchButton" method="post">
-              <select class="btn btn-secondary" name="branchName" onchange="sSelect()">
-                <?php
-                  if ($_SESSION["checkFirst"]==1)
-                  {
-                    $branchSelect = mysqli_query($con,"SELECT * FROM branch ");
-                    while ($row = mysqli_fetch_array($branchSelect))
+                <select class="btn btn-secondary" name="branchName" onchange="sSelect()">
+                  <?php
+                    if ($_SESSION["checkFirst"]==1)
                     {
-                      $BranchNameRow = $row['branchName'];
-                      echo "<option value='".$BranchNameRow."'";
-                      if(!strcasecmp($branchName,$BranchNameRow))
-                        echo "selected = 'true';";
-                      echo ">".$BranchNameRow."</option>";
+                      $branchSelect = mysqli_query($con,"SELECT * FROM branch ");
+                      while ($row = mysqli_fetch_array($branchSelect))
+                      {
+                        $BranchNameRow = $row['branchName'];
+                        echo "<option value='".$BranchNameRow."'";
+                        if(!strcasecmp($branchName,$BranchNameRow))
+                          echo "selected = 'true';";
+                        echo ">".$BranchNameRow."</option>";
+                      }
                     }
-                  }
-                  else
-                  {
-                    $branchSelect = mysqli_query($con,"SELECT * FROM branch WHERE branchName LIKE '$branchName'");
-                    while ($row = mysqli_fetch_array($branchSelect))
+                    else
                     {
-                      $BranchNameRow = $row['branchName'];
-                      echo "<option value='".$BranchNameRow."'";
-                      echo ">".$BranchNameRow."</option>";
+                      $branchSelect = mysqli_query($con,"SELECT * FROM branch WHERE branchName LIKE '$branchName'");
+                      while ($row = mysqli_fetch_array($branchSelect))
+                      {
+                        $BranchNameRow = $row['branchName'];
+                        echo "<option value='".$BranchNameRow."'";
+                        echo ">".$BranchNameRow."</option>";
+                      }
                     }
-                  }
-                ?>
-              </select>
-                <button type="submit" form="searchButton" class="fas fa-search" style="border: none; background-color:white" ></button>
-              </form>
+                  ?>
+                </select>
             </div>
-
             <div class="Mobile">
-                <input type="text" class="form-control" name="mobilePhoneNo" value="<?php echo "$telNOStaff"; ?>">
+                <input type="text" class="form-control" name="telNo" value="<?php echo "$telNOStaff"; ?>">
             </div>
             <div class="Address">
                 <input type="text" class="form-control" name="staffAddress" value="<?php echo "$staffAddress"; ?>">
@@ -280,111 +272,109 @@ session_start();
             <div class="Bank">
                 <input type="text" class="form-control" value="<?php echo "$bankAccount"; ?>">
             </div>
-        <!--</form> -->
-
-        <!-- Table Work History -->
-          <div class = "WorkHis"><h4>Work History</h></div>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
-                        $count=$result->num_rows;
-                        $i = 1;
-                        while ($row = mysqli_fetch_array($result))
-                        {
-                            $company = $row['company'];
-                            $startDate = $row['startDate'];
-                            $endDate = $row['endDate'];
-                            echo "<tr>";
-                            echo "<form id='companyDelete' action='StaffInforWorkAction.php' method='post' >";
-                            echo "<th scope='row'>".$i."</th>";
-                            echo "<input type='hidden' name='company".$i."' value = '".$company."' >";
-                            echo "<input type='hidden' name='startDate".$i."' value = '".$startDate."' >";
-                            echo "<input type='hidden' name='endDate".$i."' value = '".$endDate."' >";
-                            echo "<input type='hidden' name='i' value='".$i."'>";
-                            echo "</form>";
-                            echo "<td><input class='form-control' name='company".$i."' type='text' value='".$company."'</td>";
-                            echo "<td><input type='Date' class='form-control' name='startDate".$i."' value='".$startDate."''></td>";
-                            echo "<td><input type='Date' class='form-control' name='endDate".$i."' value='".$endDate."''></td>";
-                            echo "<td><button type='submit'form='companyDelete' class='btn btn-outline-dark'>Delete</button>";
-                            echo "</tr>";
-                            $i++;
-                        }
-                        $i-=1;
-                        echo "<input type='hidden' name='i' value='".$i."'>";
-                    ?>
-                    <tr>
-                    </tr>
-                </tbody>
-            </table>
-        <!-- End Table Work History -->
-        <!-- Start Table Graduate -->
-          <div class = "Graduate"><h4>Graduate History</h></div>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">University</th>
-                        <th scope="col">Field</th>
-                        <th scope="col">Degree</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $result = mysqli_query($con,"SELECT * FROM education WHERE staffID LIKE '$search'");
-                        $count=$result->num_rows;
-                        $j = 1;
-                        while ($row = mysqli_fetch_array($result))
-                        {
-                            $university = $row['university'];
-                            $field = $row['field'];
-                            $degree = $row['degree'];
-                            echo "<tr>";
-                            echo "<form id='educationDelete' action='StaffInforEducationAction.php' method='post' >";
-                            echo "<th scope='row'>".$j."</th>";
-                            echo "<input type='hidden' name='university".$j."' value='".$university."'>";
-                            echo "<input type='hidden' name='field".$j."' value='".$field."''>";
-                            echo "<input type='hidden' name='degree".$j."' value='".$degree."''>";
-                            echo "<input type='hidden' name='j' value='".$j."'>";
-                            echo "</form>";
-                            echo "<td><input class='form-control' type='text' name='university".$j."' value='".$university."'></td>";
-                            echo "<td><input class='form-control' type='text' name='field".$j."' value='".$field."''></td>";
-                            echo "<td><input class='form-control' type='text' name='degree".$j."' value='".$degree."''></td>";
-                            echo "<td><button type='submit' form='educationDelete' class='btn btn-outline-dark'>Delete</button>";
-                            echo "</tr>";
-                            $j++;
-                        }
-                        $j-=1;
-                        echo "<input type='hidden' name='j' value='".$j."'>";
-                    ?>
-                </tbody>
-            </table>
-        <!-- End Table Graduate -->
-
-
-        <table class="thebuttons">
-            <tr>
-                <td>
-                    <button type="submit" form="formSave" class="btn btn-outline-dark" >Save</button>
-                </td>
-                <td>
-                    <span>
-                        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/SearchInforStaff-01.php';">Cancel</button>
-                    </span>
-                </td>
-            </tr>
-        </table>
+          <!-- Table Work History -->
+            <div class = "WorkHis"><h4>Work History</h></div>
+              <table class="table">
+                  <thead class="thead-dark">
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Company&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+                          <th scope="col">Start Date</th>
+                          <th scope="col">End Date</th>
+                          <th scope="col">Delete</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php
+                          $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffID LIKE '$search'");
+                          $count=$result->num_rows;
+                          $i = 1;
+                          while ($row = mysqli_fetch_array($result))
+                          {
+                              $company = $row['company'];
+                              $startDate = $row['startDate'];
+                              $endDate = $row['endDate'];
+                              echo "<tr>";
+                              echo "<form id='companyDelete' action='StaffInforWorkAction.php' method='post' >";
+                              echo "<th scope='row'>".$i."</th>";
+                              echo "<input type='hidden' name='company".$i."' value = '".$company."' >";
+                              echo "<input type='hidden' name='startDate".$i."' value = '".$startDate."' >";
+                              echo "<input type='hidden' name='endDate".$i."' value = '".$endDate."' >";
+                              echo "<input type='hidden' name='i' value='".$i."'>";
+                              echo "</form>";
+                              echo "<td><input class='form-control' name='company".$i."' type='text' value='".$company."'</td>";
+                              echo "<td><input type='Date' class='form-control' name='startDate".$i."' value='".$startDate."''></td>";
+                              echo "<td><input type='Date' class='form-control' name='endDate".$i."' value='".$endDate."''></td>";
+                              echo "<td><button type='submit'form='companyDelete' class='btn btn-outline-dark'>Delete</button>";
+                              echo "</tr>";
+                              $i++;
+                          }
+                          $i-=1;
+                          echo "<input type='hidden' name='i' value='".$i."'>";
+                      ?>
+                      <tr>
+                      </tr>
+                  </tbody>
+              </table>
+          <!-- End Table Work History -->
+          <!-- Start Table Graduate -->
+            <div class = "Graduate"><h4>Graduate History</h></div>
+              <table class="table">
+                  <thead class="thead-dark">
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">University</th>
+                          <th scope="col">Field</th>
+                          <th scope="col">Degree</th>
+                          <th scope="col">Delete</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php
+                          $result = mysqli_query($con,"SELECT * FROM education WHERE staffID LIKE '$search'");
+                          $count=$result->num_rows;
+                          $j = 1;
+                          while ($row = mysqli_fetch_array($result))
+                          {
+                              $university = $row['university'];
+                              $field = $row['field'];
+                              $degree = $row['degree'];
+                              echo "<tr>";
+                              echo "<form id='educationDelete' action='StaffInforEducationAction.php' method='post' >";
+                              echo "<th scope='row'>".$j."</th>";
+                              echo "<input type='hidden' name='university".$j."' value='".$university."'>";
+                              echo "<input type='hidden' name='field".$j."' value='".$field."''>";
+                              echo "<input type='hidden' name='degree".$j."' value='".$degree."''>";
+                              echo "<input type='hidden' name='j' value='".$j."'>";
+                              echo "</form>";
+                              echo "<td><input class='form-control' type='text' name='university".$j."' value='".$university."'></td>";
+                              echo "<td><input class='form-control' type='text' name='field".$j."' value='".$field."''></td>";
+                              echo "<td><input class='form-control' type='text' name='degree".$j."' value='".$degree."''></td>";
+                              echo "<td><button type='submit' form='educationDelete' class='btn btn-outline-dark'>Delete</button>";
+                              echo "</tr>";
+                              $j++;
+                          }
+                          $j-=1;
+                          echo "<input type='hidden' name='j' value='".$j."'>";
+                      ?>
+                  </tbody>
+              </table>
+          <!-- End Table Graduate -->
         </form>
+
+          <!-- Button at buttom of page -->
+            <table class="thebuttons">
+                <tr>
+                    <td>
+                        <button type="submit" form="formSave" class="btn btn-outline-dark" >Save</button>
+                    </td>
+                    <td>
+                        <span>
+                            <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/SearchInforStaff-01.php';">Cancel</button>
+                        </span>
+                    </td>
+                </tr>
+            </table>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
