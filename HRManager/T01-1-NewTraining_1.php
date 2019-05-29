@@ -115,7 +115,7 @@
 		<table class="twobuttons">
 			<tr>
 				<td>
-					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-1.75-Schedule.php';">Edit Schedule</button>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-1.75-Schedule.php';">Add Schedule</button>
 				</td>
 				<td>
 					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Next</button>
