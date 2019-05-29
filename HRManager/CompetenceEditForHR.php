@@ -103,6 +103,8 @@ session_start();
     </nav>
   </head>
   <body>
+    <form action="competenceEditForHRAction.php" method="post" id="editForm">
+      <input type="hidden" name="id" value="$id">
       <div class = "Behavior"><h3>Behavior</h></div>
           <!-- Competence -->
           <div class="Compete">Competence</div>
@@ -124,16 +126,18 @@ session_start();
                       $accomplishment = $row['accomplishment'];
                       echo "<tr>";
                       echo "<th scope='row'>".$i."</th>";
-                      echo "<td><input type='text' class='form-control' name='accomplishment' value='".$accomplishment."'></td>";
                       echo "<form action='DeleteAccomplishmentAction.php?id=$id' method='POST' id='deleteAccomplishment".$i."' >";
                       echo "<input type='hidden' name='accomplishmentDelete' value='".$accomplishment."'>";
                       echo "<input type='hidden' name='id' value='".$id."'>";
                       echo "</form>";
+                      echo "<td><input type='text' class='form-control' name='accomplishment".$i."' value='".$accomplishment."'></td>";
                       echo "<td><button type='submit' form='deleteAccomplishment".$i."' class='fas fa-trash-alt' style='border: none; background: rgba(76, 175, 80, 0.1)'></button>";
                       echo "</tr> ";
                       $i++;
                       //<input type='checkbox' input'>
                     }
+                    $i-=1;
+                    echo "<input type='hidden' name='i' value='".$i."'>";
                   ?>
                 </tbody>
               </table>
@@ -154,27 +158,30 @@ session_start();
               <?php
                 $result = mysqli_query($con,"SELECT * FROM concern WHERE staffId LIKE '$id'");
                 $count=$result->num_rows;
-                $i = 1;
+                $j = 1;
                 while ($row = mysqli_fetch_array($result))
                 {
                   $concernBehavior = $row['concernBehavior'];
                   echo "<tr>";
-                  echo "<th scope='row'>".$i."</th>";
-                  echo "<td><input type='text' class='form-control' id='concern' value='".$concernBehavior."'></td>";
+                  echo "<th scope='row'>".$j."</th>";
                   echo "<form action='DeleteConcernAction.php?id=$id' method='POST' id='deleteConcern' >";
                   echo "<input type='hidden' name='concernDelete' value='".$concernBehavior."'>";
                   echo "<input type='hidden' name='id' value='".$id."'>";
                   echo "</form>";
+                  echo "<td><input type='text' class='form-control' name='concern".$j."' value='".$concernBehavior."'></td>";
                   echo "<td><button type='submit' form='deleteConcern' class='fas fa-trash-alt' style='border: none; background: rgba(76, 175, 80, 0.1)'></button>";
                   echo "</tr> ";
-                  $i++;
+                  $j++;
                 }
+                $j-=1;
+                echo "<input type='hidden' name='j' value='".$j."'>";
               ?>
             </tbody>
           </table>
           <br><br><br><br><br><br>
       </div>
       <!-- End Concern -->
+    </form>
       <!-- Buttons -->
       <table class="thebuttons">
           <tr><!--
@@ -201,7 +208,7 @@ session_start();
               </div>
             </td>-->
             <td>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceForHR.html';">Save</button>
+              <button type="submit" form="editForm" class="btn btn-outline-dark" >Save</button>
             </td>
             <td>
               <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceForHR.php?id=<?php echo$id ?>';">Cancel</button>
