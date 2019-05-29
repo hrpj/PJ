@@ -115,10 +115,11 @@ session_start();
         <div class="Type">
         <div class="input-group-prepend">
 			<label class="input-group-text" for="inputGroupSelect01">Type</label>
-			<select class="custom-select" name="type" id="inputGroupSelect01">
+			<select class="custom-select" name="type" type="text" id="inputGroupSelect01">
 				<option selected>Choose...</option>
-				<option value="1">Sick</option>
-				<option value="2">Accident</option>
+				<option value="Sick">Sick</option>
+				<option value="Accident">Accident</option>
+				<option value="Business">Business</option>
 			</select>
         </div>
         <div class="Description">
