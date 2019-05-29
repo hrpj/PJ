@@ -18,7 +18,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylebehavioraddhr.css" rel="stylesheet">
+    <link href="stylebehavioredithr.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -119,46 +119,26 @@ session_start();
                     $result = mysqli_query($con,"SELECT * FROM competence WHERE staffId LIKE '$id'");
                     $count=$result->num_rows;
                     $i = 1;
-                    if ((empty($count)))
+                    while ($row = mysqli_fetch_array($result))
                     {
+                      $accomplishment = $row['accomplishment'];
                       echo "<tr>";
                       echo "<th scope='row'>".$i."</th>";
-                      echo "<td>No Data</td>";
+                      echo "<td><input type='text' class='form-control' name='accomplishment' value='".$accomplishment."'></td>";
+                      echo "<form action='DeleteAccomplishmentAction.php?id=$id' method='POST' id='deleteAccomplishment' >";
+                      echo "<input type='hidden' name='accomplishmentDelete' value='".$accomplishment."'>";
+                      echo "</form>";
+                      echo "<td><button type='submit' form='deleteAccomplishment' class='fas fa-trash-alt' style='border: none; background: rgba(76, 175, 80, 0.1)'></button>";
                       echo "</tr> ";
-                    }
-                    else
-                    {
-                      while ($row = mysqli_fetch_array($result))
-                      {
-                        $accomplishment = $row['accomplishment'];
-                        echo "<tr>";
-                        echo "<th scope='row'>".$i."</th>";
-                        echo "<td>".$accomplishment."</td>";
-                        echo "</tr> ";
-                        $i++;
-                      }
+                      $i++;
+                      //<input type='checkbox' input'>
                     }
                   ?>
                 </tbody>
               </table>
-              <br><br>
+              <br><br><br><br><br><br>
       </div>
       <!-- End Competence -->
-      <div class="InputScore1">
-        <form action="CompetenceAddForHRActionPage1.php" name="addCompetence" method="post">
-          <input type="text" name="accomplishmentAdd" class="form-control" placeholder="Add Accomplishment">
-          <input type="hidden" name="id" value="<?php echo $id?>">
-          <button type="submit" name="addCompetence" class="btn btn-outline-dark">Add more</button>
-        </form>
-      </div>
-       <div class="InputScore2">
-        <form action="CompetenceAddForHRActionPage2.php" name="addConcern" method="post">
-          <input type="text" name="concernAdd" class="form-control" placeholder="Add Concern">
-          <input type="hidden" name="id" value="<?php echo $id?>">
-          <button type="submit" name="addConcern" class="btn btn-outline-dark">Add more</button>
-        </form>
-        <br><br><br><br><br><br>
-      </div>
       <!-- Concern -->
       <div class="Concern">Concern</div>
       <div class="ConcernTable">
@@ -174,41 +154,60 @@ session_start();
                 $result = mysqli_query($con,"SELECT * FROM concern WHERE staffId LIKE '$id'");
                 $count=$result->num_rows;
                 $i = 1;
-                if ((empty($count)))
+                while ($row = mysqli_fetch_array($result))
                 {
+                  $concernBehavior = $row['concernBehavior'];
                   echo "<tr>";
                   echo "<th scope='row'>".$i."</th>";
-                  echo "<td>No Data</td>";
+                  echo "<td><input type='text' class='form-control' id='concern' value='".$concernBehavior."'></td>";
+                  echo "<form action='DeleteConcernAction.php?id=$id' method='POST' id='deleteConcern' >";
+                  echo "<input type='hidden' name='concernDelete' value='".$concernBehavior."'>";
+                  echo "</form>";
+                  echo "<td><button type='submit' form='deleteConcern' class='fas fa-trash-alt' style='border: none; background: rgba(76, 175, 80, 0.1)'></button>";
                   echo "</tr> ";
-                }
-                else
-                {
-                  while ($row = mysqli_fetch_array($result))
-                  {
-                    $concernBehavior = $row['concernBehavior'];
-                    echo "<tr>";
-                    echo "<th scope='row'>".$i."</th>";
-                    echo "<td>".$concernBehavior."</td>";
-                    echo "</tr> ";
-                    $i++;
-                  }
+                  $i++;
                 }
               ?>
             </tbody>
           </table>
+          <br><br><br><br><br><br>
       </div>
-
       <!-- End Concern -->
-
       <!-- Buttons -->
       <table class="thebuttons">
-          <tr>
+          <tr><!--
             <td>
-              <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceForHR.php?id=<?php echo $id ?>';">Back</button></span>
+              <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Delete</button>
+              
+              <!-- Modal --><!--
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">Are you sure you want to delete?</div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceForHR.html';">Yes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>-->
+            <td>
+              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceForHR.html';">Save</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceForHR.php?id=<?php echo$id ?>';">Cancel</button>
             </td>
           </tr>
       </table>
       <!-- End Buttons -->
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
