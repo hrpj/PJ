@@ -40,7 +40,7 @@ else if ($_POST["Submit"] === 'SubmitDName') {
   $_SESSION["DEPARTMENT"] = $_POST['departmentID'];
   header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff3.php');
 }
-else if ($_POST["Submit"] === 'SubmitDName') {
+else if ($_POST["Submit"] === 'Submit') {
   //___________________________________________________Form3_______________________________________________________________
 
   $startDate = mysqli_real_escape_string($conn, $_REQUEST['startDate']);
@@ -87,7 +87,7 @@ else if ($_POST["Submit"] === 'SubmitDName') {
   echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
 }
 else {
-  echo "Aloha";
+  echo "Aloha [".$_POST["Submit"]."]";
 }
 
 // Escape user inputs for security
