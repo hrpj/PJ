@@ -55,30 +55,6 @@ else if ($_POST["Submit"] === 'Submit') {
   $positionID = $_POST['positionID'];
   $password = $_POST['password'];
 
-  //___________________________________________  Generate staffID _________________________ _______________
-
-  $sql = "SELECT count(*) AS total FROM staff WHERE positionID LIKE $positionID";
-  $result = mysqli_query($conn,$sql);
-  $row = mysqli_fetch_array($result);
-
-  if($row['total'] === '0')//No
-  {
-    $staffID = 1000000000000 + (int)$positionID*100000 + 1;
-    $staffID = ''.$staffID;
-    $staffID = substr($staffID, 1);
-  }
-  else//Yes
-  {
-    //After the last ID
-    $sql = "SELECT MAX(staffID) AS lastID FROM staff WHERE positionID LIKE '$positionID'";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result);
-
-    $staffID = 1000000000000 + (int)$row['lastID'] + 1;
-    $staffID = ''.$staffID.'';
-    $staffID = substr($staffID, 1);
-  }
-
   //___________________________________________________Insert Picture__________________________________________________
   $ext = pathinfo(basename($_FILES['picture']['name']), PATHINFO_EXTENSION);
   $newImageName = 'img_'.uniqid().'.'.$ext;
