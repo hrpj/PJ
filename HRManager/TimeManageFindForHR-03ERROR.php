@@ -25,7 +25,7 @@ $search = $_SESSION["search"];
 
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown ">
@@ -36,7 +36,7 @@ $search = $_SESSION["search"];
                             <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
                             <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
                             <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
-                            <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Training Course</a>
+                            <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Schedule.php">Training Course</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown active">
@@ -64,10 +64,10 @@ $search = $_SESSION["search"];
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
                             <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-                            <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
-                            <a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
+                            <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php">New Training Course</a>
+                            <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T03-1-Edittraining.php">Edit Training Course</a>
                             <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
-                            <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+                            <a class="dropdown-item" href="StaffEdit_HRManager/SearchForEditStaff.php">Edit Staff</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
