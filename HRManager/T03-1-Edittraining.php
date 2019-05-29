@@ -120,6 +120,7 @@ session_start();
             </select> <a href="#"><i class="fas fa-search"></i></a>
             </div>
 		</div>
+		
 		<div class="Location">
 			<div class="input-group-prepend">
 				<span class="input-group-text" id="inputGroup-sizing-default">Training Topic</span>
