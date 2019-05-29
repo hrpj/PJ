@@ -1,29 +1,3 @@
-<?php
-session_start();
-	$id = $_SESSION["ID"];
-	$con=mysqli_connect("localhost","root","","hrmanager");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-
-	$startDate = $_SESSION["STARTDATE"];
-	$fName = $_SESSION["FNAME"];
-	$lName = $_SESSION["LNAME"];
-	$address = $_SESSION["ADDRESS"];
-	$telNo = $_SESSION["TELNO"];
-	$dateOfBirth = $_SESSION["DATEOFBIRTH"];
-	$gender = $_SESSION["GENDER"];
-	$bankAccount = $_SESSION["BANKACCOUNT"];
-	$branchName = $_SESSION["BRANCHNAME"];
-
-	$sql = "SELECT branchName FROM branch";
-	$result = mysqli_query($con,$sql);
-
-	$sql = "SELECT departmentName, departmentID FROM department WHERE branchName LIKE '$branchName'";
-	$result2 = mysqli_query($con,$sql);
-?>
 
 <!doctype html>
 <html lang="en">
@@ -154,13 +128,7 @@ session_start();
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
       <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
-        <option><?php echo "$branchName"; ?></option>
-        <?php
-         while($row = mysqli_fetch_array($result)) {
-            $name = $row['branchName'];
-            echo "<option value=".$name.">".$name."</option>";
-         }
-        ?>
+        <option>eiei</option>
       </select>
       <button type="submit" class="btn btn-primary btn-group-xs" name="Submit" value="SubmitBName">Find</button>
     </div>
@@ -172,13 +140,6 @@ session_start();
 		    <label for="exampleFormControlSelect1">Department</label>
 		    <select name="departmentID" class="form-control" id="exampleFormControlSelect1">
 					<option>Choose Department</option>
-					<?php
-					 while($row = mysqli_fetch_array($result2)) {
-							$dName = $row['departmentName'];
-							$dId = $row['departmentID'];
-							echo "<option value=\"".$dId."\">".$dName."</option>";
-					 }
-					?>
 		    </select>
 				<button type="submit" class="btn btn-primary btn-group-xs" name="Submit" value="SubmitDName">Find</button>
 		</div>
@@ -189,7 +150,7 @@ session_start();
 	<table class="thebuttons">
       <tr>
 				<td>
-      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = '/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button></span>
+      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
   			</td>
 			</tr>
   </table>
@@ -199,6 +160,5 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <?php $con->close(); ?>
   </body>
 </html>
