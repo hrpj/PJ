@@ -148,7 +148,8 @@ session_start();
 			<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></button>
 		</div>
 	</form>
-
+	
+	<form action="T01-2.5-Addreq.php" method="POST">
     <div class="Position">
     <div class="input-group-prepend">
 		<label class="input-group-text" for="inputGroupSelect01">Position</label>
@@ -157,16 +158,16 @@ session_start();
 		if(empty($_SESSION['departmentID']))
 		{
 			echo "<option value='' selected>Choose...</option>";
-			$result = mysqli_query($con,"SELECT * FROM position");
+			$result = mysqli_query($con,"SELECT * FROM position ");
 			while ($row = mysqli_fetch_array($result))
 			{
 				$positionID = $row['positionID'];
 				$positionName = $row['positionName'];
 				$departmentID2 = $row['departmentID'];
-				$result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID2'");
-				while ($row = mysqli_fetch_array($result))
+				$result2 = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID2'");
+				while ($row2 = mysqli_fetch_array($result2))
 				{
-					$departmentName2 = $row['departmentName'];
+					$departmentName2 = $row2['departmentName'];
 				}
 				echo "<option value='".$positionID."'>".$departmentName2." - ".$positionName."</option>";
 			}
@@ -174,36 +175,37 @@ session_start();
 		else
 		{
 			$departmentID = $_SESSION['departmentID'];
+			echo "<option value='' selected>Choose...</option>";
 			$result = mysqli_query($con,"SELECT * FROM position WHERE departmentID LIKE '$departmentID'");
 			while ($row = mysqli_fetch_array($result))
 			{
 				$positionID = $row['positionID'];
 				$positionName = $row['positionName'];
 				$departmentID2 = $row['departmentID'];
-				$result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID2'");
-				while ($row = mysqli_fetch_array($result))
+				$result2 = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID2'");
+				while ($row2 = mysqli_fetch_array($result2))
 				{
-					$departmentName2 = $row['departmentName'];
+					$departmentName2 = $row2['departmentName'];
 				}
 				echo "<option value='".$positionID."'>".$departmentName2." - ".$positionName."</option>";
 			}
 		}
-?>
-		</select>
+?>		</select>
     </div>
 
     <!-- End Search -->
     <table class="NextBut">
     <tr><td>
-    <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Add&nbsp;more</button>
+    <button type="submit" class="btn btn-dark" name="loop" value="1" onclick="window.location.href = '#';">Add&nbsp;more</button>
     </td><td>
+	<button type="submit" class="btn btn-dark" name="loop" value="" onclick="window.location.href = '#';">Save</button>
     </td><td>
-    <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Save</button>
-    </td><td>
-	<form id="clear">
-		<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-2-NewTraining_2.php';">Clear</button>
 	</form>
-    <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
+	<form id="clear">
+		<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-2-NewTraining_2.php'">Clear</button>
+    </form>
+	</td><td>
+    <button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php';">Back</button>
     </td></tr>
     </table>
 
