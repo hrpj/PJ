@@ -184,11 +184,17 @@ session_start();
 <!-- End Concern -->
 <!-- Buttons -->
 <table class="thebuttons">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceAddForHR.html';">Add</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceEditForHR.html';">Edit</button></span>
-</td></tr>
+    <tr>
+      <td>
+        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceAddForHR.html';">Add</button>
+      </td>
+      <td>
+        <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceEditForHR.html';">Edit</button></span>
+      </td>
+      <td>
+        <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancle</button></span>
+      </td>
+    </tr>
 </table>
 <!-- End Buttons -->
 
