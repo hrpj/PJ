@@ -87,25 +87,26 @@
   </head>
   <body>
       <div class = "NewStaff"><h3>Graduate History</h></div>
-<!-- Univ. Table -->
+<!-- ___________________________________Univ. Table_____________________________________ -->
     <table class="table">
-<thead class="thead-dark">
-<tr>
-<th scope="col">#</th>
-<th scope="col">University</th>
-<th scope="col">Field</th>
-<th scope="col">Degree</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th scope="row">1</th>
-<td><input class="form-control" type="text" placeholder="University Name"></td>
-<td><input class="form-control" type="text" placeholder="Field"></td>
-<td><input class="form-control" type="text" placeholder="Degree"></td>
-</tr>
-</tbody>
-</table>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">University</th>
+          <th scope="col">Field</th>
+          <th scope="col">Degree</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td><input class="form-control" type="text" placeholder="University Name"></td>
+          <td><input class="form-control" type="text" placeholder="Field"></td>
+          <td><input class="form-control" type="text" placeholder="Degree"></td>
+        </tr>
+      </tbody>
+    </table>
 <!-- End Table -->
 <div class="Add"><a href="GraduateHistory.html" class="button-link">Add more</a></div>
 <table class="threebuttons">

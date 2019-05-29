@@ -15,9 +15,9 @@ h6
 }
 .thebuttons
 {
-    margin-top:100px;
-    margin-left:1050px;
-    height:100px;
+    position: fixed;
+    bottom:20px; 
+    right: 157px;
 }
 .Compete
 {
@@ -29,37 +29,35 @@ h6
 }
 .CompeteTable
 {
-    width:300px;
-    top:100%;
-    left:100%;
+    width:250px;
     margin-left:200px;
     margin-top:10px;
 }
-.Concern
-{
-    width:163px;
-    top:100%;
-    left:100%;
-    margin-left:800px;
-    margin-top:-355px;
-}
-.ConcernTable
-{
-    width:300px;
-    top:100%;
-    left:100%;
-    margin-left:800px;
-    margin-top:10px;
-}
+
 .InputScore1
 {
-    width:205px;
+    width:333px;
     margin-left:200px;
     margin-top:-5px;
 }
 .InputScore2
 {
-    width:205px;
-    margin-left:800px;
-    margin-top:10px;
+    width:333px;
+    margin-left:742px;
+    margin-top:-78px;
+}
+.Concern
+{
+    width:163px;
+    position: absolute;
+    width:300px;
+    top:20%;
+    left:55%;
+}
+.ConcernTable
+{
+    position: absolute;
+    width:250px;
+    top:25%;
+    left:55%;
 }

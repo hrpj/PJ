@@ -18,7 +18,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylebehaviorhr.css" rel="stylesheet">
+    <link href="stylebehavioraddhr.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -104,102 +104,104 @@ session_start();
   </head>
   <body>
       <div class = "Behavior"><h3>Behavior</h></div>
-    <!-- Competence -->
-    <div class="Compete">Competence</div>
-    <div class="CompeteTable">
-        <table class="table table-bordered bg-success text-white">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-              $result = mysqli_query($con,"SELECT * FROM competence WHERE staffId LIKE '$id'");
-              $count=$result->num_rows;
-              $i = 1;
-              if ((empty($count)))
-              {
-                echo "<tr>";
-                echo "<th scope='row'>".$i."</th>";
-                echo "<td>No Data</td>";
-                echo "</tr> ";
-              }
-              else
-              {
-                while ($row = mysqli_fetch_array($result))
+          <!-- Competence -->
+          <div class="Compete">Competence</div>
+          <div class="CompeteTable">
+              <table class="table table-bordered bg-success text-white">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    $result = mysqli_query($con,"SELECT * FROM competence WHERE staffId LIKE '$id'");
+                    $count=$result->num_rows;
+                    $i = 1;
+                    if ((empty($count)))
+                    {
+                      echo "<tr>";
+                      echo "<th scope='row'>".$i."</th>";
+                      echo "<td>No Data</td>";
+                      echo "</tr> ";
+                    }
+                    else
+                    {
+                      while ($row = mysqli_fetch_array($result))
+                      {
+                        $accomplishment = $row['accomplishment'];
+                        echo "<tr>";
+                        echo "<th scope='row'>".$i."</th>";
+                        echo "<td>".$accomplishment."</td>";
+                        echo "</tr> ";
+                        $i++;
+                      }
+                    }
+                  ?>
+                </tbody>
+              </table>
+      </div>
+      <!-- End Competence -->
+      <div class="InputScore1">
+        <input type="text" name="accomplishmentAdd" class="form-control" placeholder="Add Accomplishment">
+        <a href="AttendanceStatusAddForHR.html" class="btn btn-outline-dark">Add more</a>
+      </div>
+       <div class="InputScore2">
+        <input type="text" name="concernAdd" class="form-control" placeholder="Add Concern">
+        <a href="AttendanceStatusAddForHR.html" class="btn btn-outline-dark">Add more</a>
+        <br><br><br><br><br><br>
+      </div>
+      <!-- Concern -->
+      <div class="Concern">Concern</div>
+      <div class="ConcernTable">
+          <table class="table table-bordered bg-danger text-white">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $result = mysqli_query($con,"SELECT * FROM concern WHERE staffId LIKE '$id'");
+                $count=$result->num_rows;
+                $i = 1;
+                if ((empty($count)))
                 {
-                  $accomplishment = $row['accomplishment'];
                   echo "<tr>";
                   echo "<th scope='row'>".$i."</th>";
-                  echo "<td>".$accomplishment."</td>";
+                  echo "<td>No Data</td>";
                   echo "</tr> ";
-                  $i++;
                 }
-              }
-            ?>
-          </tbody>
-        </table>
-        <br><br><br><br><br><br>
-</div>
-<!-- End Competence -->
-<!-- Concern -->
-<div class="Concern">Concern</div>
-<div class="ConcernTable">
-    <table class="table table-bordered bg-danger text-white">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-          $result = mysqli_query($con,"SELECT * FROM concern WHERE staffId LIKE '$id'");
-          $count=$result->num_rows;
-          $i = 1;
-          if ((empty($count)))
-          {
-            echo "<tr>";
-            echo "<th scope='row'>".$i."</th>";
-            echo "<td>No Data</td>";
-            echo "</tr> ";
-          }
-          else
-          {
-            while ($row = mysqli_fetch_array($result))
-            {
-              $concernBehavior = $row['concernBehavior'];
-              echo "<tr>";
-              echo "<th scope='row'>".$i."</th>";
-              echo "<td>".$concernBehavior."</td>";
-              echo "</tr> ";
-              $i++;
-            }
-          }
-        ?>
-      </tbody>
-    </table>
-    <br><br><br><br><br><br>
-</div>
-<!-- End Concern -->
-<!-- Buttons -->
-<table class="thebuttons">
-    <tr>
-      <td>
-        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceAddForHR.php?id=<?php echo $id ?>';">Add</button>
-      </td>
-      <td>
-        <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceEditForHR.php?id=<?php echo $id ?>';">Edit</button></span>
-      </td>
-      <td>
-        <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancle</button></span>
-      </td>
-    </tr>
-</table>
-<!-- End Buttons -->
+                else
+                {
+                  while ($row = mysqli_fetch_array($result))
+                  {
+                    $concernBehavior = $row['concernBehavior'];
+                    echo "<tr>";
+                    echo "<th scope='row'>".$i."</th>";
+                    echo "<td>".$concernBehavior."</td>";
+                    echo "</tr> ";
+                    $i++;
+                  }
+                }
+              ?>
+            </tbody>
+          </table>
+      </div>
 
+      <!-- End Concern -->
+
+      <!-- Buttons -->
+      <table class="thebuttons">
+          <tr>
+            <td>
+              <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/CompetenceForHR.php?id=<?php echo $id ?>';">Back</button></span>
+            </td>
+          </tr>
+      </table>
+      <!-- End Buttons -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

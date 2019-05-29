@@ -1,3 +1,26 @@
+<?php
+  session_start();
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "hrmanager";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $staffID = $_SESSION["CR_STAFFID"];
+  $startDate = $_SESSION["STARTDATE"];
+
+  $sql = "SELECT * FROM workinghistory WHERE staffID LIKE '$staffID' AND startDate LIKE '$startDate'";
+  $result = mysqli_query($conn,$sql);
+  $row = mysqli_fetch_array($result)
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -94,47 +117,55 @@
         </div>
     </nav>
   </head>
+
+<!-- _______________________________________ Form ____________________________________________ -->
+
   <body>
       <div class = "NameBranch"><h3>Edit Work History</h3></div>
-      <form>
+  <form action="WorkHistoryController.php" method="post">
       <div class="Previous">
-        Previous Company : <br>Something
+        From Company : <br><?php echo $row["company"]; ?>
       </div>
       <div class="New">
-        New Company : <input type="text" class="form-control" placeholder="Name">
+        To Company : <input type="text" class="form-control" name="company" <?php echo "value=\"".$row["company"]."\""; ?>>
       </div>
       <div class="PreviousD">
-        Previous Department : <br>Something
+        Previous Department : <br><?php echo $row["departmentBefore"]; ?>
       </div>
       <div class="NewD">
-        New Department : <input type="text" class="form-control" placeholder="Department">
+        New Department : <input type="text" class="form-control" name="departmentBefore" <?php echo "value=\"".$row["departmentBefore"]."\""; ?>>
     </div>
       <div class="PreviousP">
-        Previous Position : <br>Something
+        Previous Position : <br><?php echo $row["PositionBefore"]; ?>
       </div>
       <div class="NewP">
-        New Position : <input type="text" class="form-control" placeholder="Position">
+        New Position : <input type="text" class="form-control" name="positionBefore" <?php echo "value=\"".$row["PositionBefore"]."\""; ?>>
       </div>
       <div class="PreviousS">
-        Previous Start Date : <br>Something
+        Previous Start Date : <br><?php echo $row["startDate"]; ?>
       </div>
       <div class="NewS">
-        New Start Date : <input type="date" class="form-control" placeholder="Date">
+        New Start Date : <input type="date" class="form-control" name="startDate" <?php echo "value=\"".$row["startDate"]."\""; ?>>
       </div>
       <div class="PreviousE">
-        Previous End Date : <br>Something
+        Previous End Date : <br><?php echo $row["endDate"]; ?>
       </div>
       <div class="NewE">
-        New End Date : <input type="date" class="form-control" placeholder="Date">
+        New End Date : <input type="date" class="form-control" name="endDate" <?php echo "value=\"".$row["endDate"]."\""; ?>>
       </div>
-  </form>
-<table class="Back">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditBranch1.html';">Save</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditBranch1.html';">Cancel</button></span>
-</td></tr>
-</table>
+  <table class="Back">
+      <tr>
+        <td>
+          <button type="submit" name="EditSubmit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Save</button>
+        </td>
+        <td>
+          <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WorkHistory.php';">Cancel</button></span>
+        </td>
+      </tr>
+  </table>
+</form>
+
+  <?php $conn->close(); ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
