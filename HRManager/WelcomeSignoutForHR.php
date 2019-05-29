@@ -78,19 +78,19 @@ session_start();
 						Analysis Report
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis1.php">Age Range of Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis1.php">Age range of staffs</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis2.php">Salary in every position and department</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis3.php">Top 5 Highest Concern Score</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis4.php">Concern Score in Bang Khae Branch</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis5.php">Daily Attendance in Bang Khae Branch</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis6.php">Work time of any position</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis7.php">Work time and Salary of position in any department</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis8.php">The highest average competency score of each department</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis9.php">Amount of leave of each staff of each department in Bang Khae</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis10.php">The highest amount of leave in each department in Bang Khae</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis11.php">Field and Degree in IT department</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis12.php">Income table of each Staff</a>
-					</div>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis3.php">Daily Attendance in Bang Khae Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis4.php">Work time of any position</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis5.php">Work time and Salary of position in any department</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis6.php">Amount of miss of every staff in Bang Khae branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis7.php">Amount of miss of IT department in Bang Khae</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis8.php">The most leave type of month in company</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis9.php">The people who has the most sick leave type</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis10.php">Amount of staff in each branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis11.php">The manager who has the most salary in company</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis12.php">Amount of gender in this company</a>
+				    </div>
 				</li>
 			</ul>
 			<ul class="nav justify-content-end">
@@ -104,7 +104,6 @@ session_start();
 
 
   <body>
-
       <br>
       <!-- Welcome message -->
       <marquee direction="left"><font color="#696969" size="5">Welcome K.
