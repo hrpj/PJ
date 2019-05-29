@@ -29,12 +29,12 @@ session_start();
 
 		$result = mysqli_query($con,"SELECT departmentName
 																	FROM department
-																	WHERE departmentID LIKE '$departmentID'");
+																	WHERE departmentID LIKE $departmentID");
 		$row = mysqli_fetch_array($result);
-		$departmentName = $row['departmentName'];
+		$departmentName = $row["departmentName"];
 
 		$sql = "SELECT branchName FROM branch";
-		$result = mysqli_query($con,$sql);
+		$result1 = mysqli_query($con,$sql);
 
 		$sql = "SELECT departmentName, departmentID FROM department
 						WHERE branchName LIKE '$branchName'";
@@ -174,10 +174,10 @@ session_start();
       <div class="Branch">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
-      <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
-        <option><?php echo "$branchName"; ?></option>
+      <select name="branchName" class="form-control" id="exampleFormControlSelect1">
+        <option <?php echo "value = \"$branchName\""; ?> ><?php echo "$branchName"; ?></option>
         <?php
-         while($row = mysqli_fetch_array($result)) {
+         while($row = mysqli_fetch_array($result1)) {
             $name = $row['branchName'];
             echo "<option value=".$name.">".$name."</option>";
          }
@@ -191,8 +191,8 @@ session_start();
 	<div class="Department">
 		<div class="form-group">
 		    <label for="exampleFormControlSelect1">Department</label>
-		    <select name="departmentName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
-					<?php echo "<option value=\"".$departmentID."\">".$departmentName."</option>" ?>
+		    <select name="departmentID" class="form-control" id="exampleFormControlSelect1">
+					<option <?php echo " value=\"".$departmentID."\""?>> <?php echo $departmentName; ?></option>
 					<?php
 					 while($row = mysqli_fetch_array($result2)) {
 							$dName = $row['departmentName'];
@@ -208,7 +208,6 @@ session_start();
 <!-- ___________________________Start Form 3______________________________ -->
   <div class="Position">
     <div class="form-group">
-			<?php echo"Heello" ?>
       <label for="exampleFormControlSelect1">Position</label>
       <select name="positionID" class="form-control" id="exampleFormControlSelect1">
         <option>Choose Position</option>
@@ -243,10 +242,10 @@ session_start();
 	<table class="thebuttons">
       <tr>
 				<td>
-					<button type="submit" name="Submit" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Next</button>
+					<button type="submit" name="Submit" value="Submit" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Next</button>
 				</td>
 				<td>
-      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = '/HRPJ/HRManager/WelcomeSignoutForHR.php">Cancel</button></span>
   			</td>
 			</tr>
   </table>

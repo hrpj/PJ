@@ -189,7 +189,7 @@ session_start();
 	<table class="thebuttons">
       <tr>
 				<td>
-      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = '/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button></span>
   			</td>
 			</tr>
   </table>
