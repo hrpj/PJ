@@ -20,13 +20,6 @@ session_start();
     <link href="styleleave.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
 			<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
