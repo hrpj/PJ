@@ -28,82 +28,83 @@ session_start();
         <span class="navbar-toggler-icon"></span>
         </button>
 
-    <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-        <a class="nav-link" href="WelcomeSignoutForHR.html">Page</a>
-        </li>
-        <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Information
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="InforMeHR.html">Only Me</a>
-          <a class="dropdown-item" href="SearchInforStaff.html">Any Staffs</a>
-          <a class="dropdown-item" href="InforBranch.html">Branch</a>
-        </div>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Time Attendance
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="PaymentSearchForHR.html">Daily Attendance Status</a>
-              <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
-        </div>
-    </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Payment Slip
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="PaymentSearchForHR.html">Only Me</a>
-              <a class="dropdown-item" href="PaymentStaffSearch.html">Any Staffs</a>
-        </div>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Create<span class="sr-only">(current)</span>
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="NewStaff.html">New Staff</a>
-      <a class="dropdown-item" href="NewBranchForHR.html">New Branch</a>
-      <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
-      <a class="dropdown-item" href="NewDepartment.html">Edit Branch</a>
-      <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
-
-    </div>
-  </li>
-      <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Analysis Report
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="NewStaff.html">Age range of staffs</a>
-        <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
-        <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
-        <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of every staff in Bang Khae branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of IT department in Bang Khae</a>
-        <a class="dropdown-item" href="NewStaff.html">The most leave type of month in company</a>
-        <a class="dropdown-item" href="NewStaff.html">The people who has the most sick leave type</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of staff in each branch</a>
-        <a class="dropdown-item" href="NewStaff.html">The manager who has the most salary in company</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of gender in this company</a>
-      </div>
-    </li>
-        </ul>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="WelcomeSignin.html">Sign out</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown ">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Information
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Schedule.php">Training Course</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Time Attendance
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
+				</div>
+			</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Payment Slip
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown active">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Create
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php">New Training Course</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T03-1-Edittraining.php">Edit Training Course</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
+						<a class="dropdown-item" href="StaffEdit_HRManager/SearchForEditStaff.php">Edit Staff</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Analysis Report
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis1.php">Amount of degree of staff that graduated</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis2.php">Salary in every position and department</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis3.php">Daily Attendance in Bang Khae Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis4.php">Work time of any position</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis5.php">Work time and Salary of position in any department</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis6.php">Amount of miss of every staff in Bang Khae branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis7.php">Amount of miss of IT department in Bang Khae</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis8.php">The most leave type of month in company</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis9.php">The people who has the most sick leave type</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis10.php">Amount of staff in each branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis11.php">The manager who has the most salary in company</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis12.php">Amount of gender in this company</a>
+					</div>
+				</li>
+			</ul>
+			<ul class="nav justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link" href="http://localhost/HRPJ/WelcomeSignin.html">Sign out</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 </head>
-  
-  
+
+
 <body>
     <div class = "NewTraining"><h3>Create Training Courses Schedule</h></div>
 	<form action="T02-1.5-ADDSchedule.php" method="POST" >
@@ -125,35 +126,35 @@ session_start();
 				</select>
 			</div>
 		</div>
-		
+
 		<div class="Location">
 			<div class="input-group-prepend">
 				<span class="input-group-text" id="inputGroup-sizing-default">Location</span>
 				<input type="text" name="place" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
-		
+
 		<div class="Topic">
 			<div class="input-group-prepend">
 				<span class="input-group-text" id="inputGroup-sizing-default">Helding Start Date</span>
 				<input type="date" name="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
-		
+
 		<div class="End">
 			<div class="input-group-prepend">
 				<span class="input-group-text" id="inputGroup-sizing-default">Helding End Date</span>
 				<input type="date" name="endDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
-		
+
 		<div class="Incharge">
 			<div class="input-group-prepend">
 				<span class="input-group-text" id="inputGroup-sizing-default">In Charge Group</span>
 				<input type="text" name="chargePerson" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
-		
+
 		<!-- End Fill -->
 		<table class="twobuttons">
 			<tr>
@@ -169,7 +170,7 @@ session_start();
 			</tr>
 		</table>
 	</form>
-	
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

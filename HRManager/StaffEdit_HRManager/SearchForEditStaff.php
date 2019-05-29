@@ -117,11 +117,12 @@ session_start();
       <h2>&nbsp;&nbsp;&nbsp;Staff Information Manage : Find Staff</h2>
       <hr>
 <!-- _________________________________Form start________________________________________ -->
-<form class="" action="index.html" method="post">
+		<form action="EditStaffController.php" method="post">
       <div class="StaffID">
       <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+<!-- _________________________________staffID select________________________________________ -->
+      <input type="text" name="staffID" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
        <a href="#"><i class="fas fa-search"></i></a></div>
       </div>
       <div class="Branch">
@@ -156,7 +157,7 @@ session_start();
 	      <div class="input-group-prepend">
 	      <label class="input-group-text" for="inputGroupSelect01">Position</label>
 <!-- _________________________________position select________________________________________ -->
-	      <select class="custom-select" id="inputGroupSelect01">
+	      <select name="positionName" class="custom-select" id="inputGroupSelect01">
 	      	<option selected>Choose...</option>
 						<?php
 						 while($row = mysqli_fetch_array($resultP)) {

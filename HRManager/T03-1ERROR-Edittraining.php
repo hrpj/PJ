@@ -30,7 +30,7 @@ session_start();
 
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item dropdown ">
@@ -45,14 +45,14 @@ session_start();
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              Time Attendance
-	            </a>
-	            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
-	                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
-	            </div>
-	        </li>
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Time Attendance
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
+				</div>
+			</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
@@ -62,7 +62,7 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
 					</div>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Create
 					</a>
@@ -70,10 +70,9 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php">New Training Course</a>
-						<a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T03-1-Edittraining.php">Edit Training Course</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
-						<a class="dropdown-item" href="NewBranchForHR.html">Edit Staff</a>
-						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+						<a class="dropdown-item" href="StaffEdit_HRManager/SearchForEditStaff.php">Edit Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -93,7 +92,7 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis10.php">Amount of staff in each branch</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis11.php">The manager who has the most salary in company</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis12.php">Amount of gender in this company</a>
-				    </div>
+					</div>
 				</li>
 			</ul>
 			<ul class="nav justify-content-end">
@@ -147,13 +146,13 @@ session_start();
 				echo "<option value='".$courseID."'>".$courseName."</option>";
 			}
 		}
-?>		
-            </select> 
+?>
+            </select>
 			<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></button>
             </div>
 		</div>
-	</form>	
-	
+	</form>
+
 	<form action="T03-1-Edittraining.php" method="POST" >
 		<div class="Location">
 			<div class="input-group-prepend">
@@ -169,17 +168,17 @@ session_start();
 					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T02-1-CreateSchedule.php';">Save</button>
 				</td>
 				<td>
-	</form>	
+	</form>
 			<form id="clear">
 					<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T03-1-Edittraining.php';">Clear</button>
-			</form>			
+			</form>
 				</td>
 				<td>
 					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
 				</td>
 			</tr>
 		</table>
-	
+
 
 
     <!-- Optional JavaScript -->
