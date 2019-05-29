@@ -243,9 +243,6 @@ session_start();
 		<!-- End Table Work History -->
 		<table class="thebuttons">
 		    <tr>
-		    	<td>
-		    		<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/StaffInforEdit-03.php';">Edit</button>
-				</td>
 				<td>
 				    <span>
 				    	<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/SearchInforStaff-01.php';">Back</button>

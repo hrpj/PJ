@@ -107,8 +107,9 @@
 </nav>
   </head>
   <body>
-      <div class = "NewStaff"><h3>Graduate History</h></div>
+      <div class = "NewStaff"><h3>Graduate History: <?php echo $staffID; ?> </h></div>
 <!-- ___________________________________Univ. Table_____________________________________ -->
+<form action="GraduateController.php" method="post">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -156,26 +157,33 @@
       <tbody>
         <tr>
           <th scope="row"> # </th>
-          <td><input class="form-control" type="text" placeholder="University Name"></td>
-          <td><input class="form-control" type="text" placeholder="Field"></td>
-          <td><input class="form-control" type="text" placeholder="Degree"></td>
-          <td><input class="form-control" type="year" placeholder="Year"></td>
+          <td><input class="form-control" type="text" name="university" placeholder="University Name"></td>
+          <td><input class="form-control" type="text" name="degree" placeholder="Field"></td>
+          <td><input class="form-control" type="text" name="field" placeholder="Degree"></td>
+          <td><input class="form-control" type="year" name="year" placeholder="Year"></td>
           <td>-</td>
           <td>-</td>
         </tr>
       </tbody>
     </table>
+    <div class="Add">
+      <button type="submit" name="create" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+
 <!-- End Table -->
-<div class="Add"><a href="GraduateHistory.html" class="button-link">Add more</a></div>
-<table class="threebuttons">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WorkHistory.html';">Next</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'NewStaff.html';">Back</button></span>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
-</td></tr>
-</table>
+  <form action="CancelStaff.php" method="post">
+    <table class="threebuttons">
+      <tr>
+        <td>
+          <button type="submit" name="OK" class="btn btn-dark" onclick="window.location.href = 'WorkHistory.html';">Next</button>
+        </td>
+        <td>
+          <span><button type="submit" name="Cancel" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+        </td>
+      </tr>
+    </table>
+  </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
