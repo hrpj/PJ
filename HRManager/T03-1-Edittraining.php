@@ -104,27 +104,56 @@ session_start();
 		</div>
 	</nav>
 </head>
+<?php
+	if( isset( $_REQUEST['modify'] ))
+	{
+		unset ($_SESSION["courseID"]);
+	}
+?>
 
 
 <body>
     <div class = "NewTraining"><h3>Edit Training Course</h></div>
-	<form action="T01-1.5-CreateNewTraining.php" method="POST" >
+	<form action="T03-1.25-Searchcourse.php" method="POST" >
 		<!-- Fill Infor -->
 		<div class="Topic">
             <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Course ID</label>
-            <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="1">1 - Marketing</option>
-            <option value="2">2 - Finance</option>
-            </select> <a href="#"><i class="fas fa-search"></i></a>
+            <select class="custom-select" name="courseID" id="inputGroupSelect01">
+ <?php
+		if(empty($_SESSION['courseID']))
+		{
+			echo "<option value='' selected>Choose...</option>";
+			$result = mysqli_query($con,"SELECT * FROM trainingcourse");
+			while ($row = mysqli_fetch_array($result))
+			{
+				$courseID = $row['courseID'];
+				$courseName = $row['courseName'];
+				echo "<option value='".$courseID."'>".$courseID."-".$courseName."</option>";
+			}
+		}
+		else
+		{
+			$courseID = $_SESSION['courseID'];
+			$result = mysqli_query($con,"SELECT * FROM trainingcourse WHERE courseID LIKE '$courseID'");
+			while ($row = mysqli_fetch_array($result))
+			{
+				$courseName = $row['courseName'];
+				echo "<option value='".$courseID."'>".$courseName."</option>";
+			}
+		}
+?>		
+            </select> 
+			<button type="submit" class="fas fa-search" style="border: none; background-color:white" ></button>
             </div>
 		</div>
-		
+	</form>	
+	
+	<form action="T03-1.5-Edit.php" method="POST" >
 		<div class="Location">
 			<div class="input-group-prepend">
 				<span class="input-group-text" id="inputGroup-sizing-default">Training Topic</span>
-				<input type="text" name="trainingTopic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				<input type="text" name="trainingTopic" value="<?php if(empty($_SESSION['courseID'])){echo '------'; } else {echo $courseName;} ?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
 
@@ -132,17 +161,20 @@ session_start();
 		<table class="twobuttons">
 			<tr>
 				<td>
-					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T02-1-CreateSchedule.php';">Save</button>
+					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Save</button>
 				</td>
 				<td>
-					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Clear</button>
+	</form>	
+			<form id="clear">
+					<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T03-1-Edittraining.php';">Clear</button>
+			</form>			
 				</td>
 				<td>
 					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
 				</td>
 			</tr>
 		</table>
-	</form>
+	
 
 
     <!-- Optional JavaScript -->
