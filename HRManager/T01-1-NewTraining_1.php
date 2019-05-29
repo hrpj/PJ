@@ -93,31 +93,41 @@
 	</nav>
 </head>
 
- <body>
-      <div class = "NewTraining"><h3>Create New Training Course</h></div>
-          <!-- Fill Infor -->
-          <div class="Topic">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Training ID</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-          <div class="Location">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Training Topic</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-          <!-- End Fill -->
-          <table class="twobuttons">
-              <tr><td>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'Required.html';">Edit Schedule</button>
-          </td><td>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'Required.html';">Next</button>
-          </td><td>
-          <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button>
-      </td></tr>
-          </table>
+
+<body>
+    <div class = "NewTraining"><h3>Create New Training Course</h></div>
+	<form action="T01-1.5-CreateNewTraining.php" method="POST" >
+		<!-- Fill Infor -->
+		<div class="Topic">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Training ID</span>
+				<input type="text" name="trainingID" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		<div class="Location">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Training Topic</span>
+				<input type="text" name="trainingTopic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		
+		<!-- End Fill -->
+		<table class="twobuttons">
+			<tr>
+				<td>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-1.75-Schedule.php';">Edit Schedule</button>
+				</td>
+				<td>
+					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Next</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
