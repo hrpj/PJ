@@ -13,7 +13,10 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$gender = mysqli_real_escape_string($con, $_POST['gender']);
 	$start = mysqli_real_escape_string($con, $_POST['start']);
 	$telNo = mysqli_real_escape_string($con, $_POST['telNo']);
+	$bankAccount = mysqli_real_escape_string($con, $_POST['bankAccount']);
 	$staffAddress = mysqli_real_escape_string($con, $_POST['staffAddress']);
+	$DOB = mysqli_real_escape_string($con, $_POST['DOB']);
+	$positionID = mysqli_real_escape_string($con, $_POST['positionID']);
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
 
@@ -45,6 +48,18 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 		if (empty($staffAddress)) 
 		{
 			$staffAddress = $row['address'];
+		}
+		if (empty($bankAccount))
+		{
+			$bankAccount = $row['bankAccount'];
+		}
+		if (empty($DOB))
+		{
+			$DOB = $row['dateOfBirth'];
+		}
+		if (empty($positionID))
+		{
+			$positionID = $row['positionID'];
 		}
 	}
 
@@ -199,7 +214,7 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     	$telNoSearch = $row['telNo'];
     	$addressSearch = $row['address'];
     }
-    $updateStaff = mysqli_query($con,"UPDATE staff SET staffName = '$staffName', startDate ='$start', gender = '$gender', telNo = '$telNo', address = '$staffAddress' WHERE staffID LIKE '$search' AND staffName LIKE '$staffNameSearch' AND startDate ='$startSearch' AND gender LIKE '$genderSearch' AND telNo LIKE '$telNoSearch' AND address LIKE '".$addressSearch."' ");
+    $updateStaff = mysqli_query($con,"UPDATE staff SET staffName = '$staffName', startDate ='$start', gender = '$gender', telNo = '$telNo', address = '$staffAddress', bankAccount = '$bankAccount',dateOfBirth ='$DOB' WHERE staffID LIKE '$search'");
 
 // end staff information
 if ($searchStaff)
