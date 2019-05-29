@@ -242,7 +242,7 @@ session_start();
 	<table class="thebuttons">
       <tr>
 				<td>
-					<button type="submit" name="Submit" value="Submit" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Next</button>
+					<button type="submit" name="Submit" value="Submit" class="btn btn-outline-dark">Next</button>
 				</td>
 				<td>
       		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = '/HRPJ/HRManager/WelcomeSignoutForHR.php">Cancel</button></span>
