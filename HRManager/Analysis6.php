@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -93,7 +102,10 @@
     </div>
 </nav>
   </head>
-  <body>
+
+
+
+<body>
       <div class = "Analysis"><h3>Amount of miss of every staff in Bang Khae Branch</h></div>
           <table class="table">
     <thead class="thead-dark">
@@ -103,13 +115,29 @@
         <th scope="col">Leave Count</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>HR010001</td>
-        <td>Keng lnwza</td>
-        <td>3</td>
-      </tr>
-    </tbody>
+<?php
+	$result = mysqli_query($con,"SELECT *, COUNT(staffID) AS num FROM leavehistory WHERE staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID FROM position WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE 'Bang Khae')))");
+	
+    while ($row = mysqli_fetch_array($result))
+    {
+		$ID = $row['staffID'];
+		$num = $row['num'];
+	
+		$result2 = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
+		while ($row2 = mysqli_fetch_array($result2))
+		{
+			$staffName = $row2['staffName'];
+		}
+
+		echo "<tbody>
+				<tr>
+					<td>".$ID."</td>
+					<td>".$staffName."</td>
+					<td>".$num."</td>
+				</tr>
+			</tbody>";
+	}
+?>
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->
