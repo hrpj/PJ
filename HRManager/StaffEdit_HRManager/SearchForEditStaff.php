@@ -1,3 +1,22 @@
+<?php
+session_start();
+	$id = $_SESSION["ID"];
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+
+  $sql = "SELECT branchName FROM branch";
+  $resultB = mysqli_query($con,$sql);
+
+  $sql = "SELECT DISTINCT departmentName FROM department";
+  $resultD = mysqli_query($con,$sql);
+
+  $sql = "SELECT DISTINCT departmentName FROM department";
+  $resultD = mysqli_query($con,$sql);
+?>
 <!doctype html>
 <html lang="en">
   <head>
