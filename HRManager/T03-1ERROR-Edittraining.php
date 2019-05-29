@@ -103,6 +103,11 @@ session_start();
 			</ul>
 		</div>
 	</nav>
+	<div class="alert alert-dismissible alert-warning">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<h4 class="alert-heading">Error!</h4>
+		<p class="mb-0">Please select the Course!</p>
+	</div>
 </head>
 <?php
 	if( isset( $_REQUEST['modify'] ))
@@ -129,7 +134,7 @@ session_start();
 			{
 				$courseID = $row['courseID'];
 				$courseName = $row['courseName'];
-				echo "<option value='".$courseID."'>".$courseID."-".$courseName."</option>";
+				echo "<option value='".$courseID."'>".$courseName."</option>";
 			}
 		}
 		else
@@ -149,11 +154,11 @@ session_start();
 		</div>
 	</form>	
 	
-	<form action="T03-1.5-Edit.php" method="POST" >
+	<form action="T03-1-Edittraining.php" method="POST" >
 		<div class="Location">
 			<div class="input-group-prepend">
 				<span class="input-group-text" id="inputGroup-sizing-default">Training Topic</span>
-				<input type="text" name="trainingTopic" value="<?php if(empty($_SESSION['courseID'])){echo '------'; } else {echo $courseName;} ?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				<input type="text" name="trainingTopic" value="<?php echo $courseName ; ?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
 
@@ -161,7 +166,7 @@ session_start();
 		<table class="twobuttons">
 			<tr>
 				<td>
-					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Save</button>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T02-1-CreateSchedule.php';">Save</button>
 				</td>
 				<td>
 	</form>	
