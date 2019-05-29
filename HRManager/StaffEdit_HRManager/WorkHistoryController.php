@@ -15,54 +15,70 @@ if ($conn->connect_error) {
 
 // Escape user inputs for security
 $staffID = $_SESSION["CR_STAFFID"];
-$_SESSION["BRANCH"] = $branchName;
+$company = mysqli_real_escape_string($conn, $_REQUEST['company']);
+$startDate = mysqli_real_escape_string($conn, $_REQUEST['startDate']);
+$endDate = mysqli_real_escape_string($conn, $_REQUEST['endDate']);
+$departmentBefore = mysqli_real_escape_string($conn, $_REQUEST['departmentBefore']);
+$PositionBefore = mysqli_real_escape_string($conn, $_REQUEST['positionBefore']);
 
 
 if (isset($_POST['create']))
 {
   //create
-  $sql = "INSERT INTO department (departmentID, departmentName, BranchName)
-  VALUES (NULL, '$departmentName', '$branchName')";
+  $sql = "INSERT INTO workinghistory (staffID, company, departmentBefore, PositionBefore, startDate, endDate)
+  VALUES ('$staffID', '$company', '$departmentBefore', '$PositionBefore', '$startDate', '$endDate')";
 
   if ($conn->query($sql) === TRUE)
   {
-    $result = mysqli_query($conn,"SELECT d.departmentID AS departmentID
-                                  FROM department d
-                                  WHERE departmentName LIKE '$departmentName'
-                                  AND BranchName LIKE '$branchName'");
-    $row = mysqli_fetch_array($result);
-    $_SESSION["DEPARTMENT"] = $row['departmentID'];
-
-    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/PositionandSalary.php');
+    echo "Success";
+    header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/WorkHistory.php');
   }
   else
   {
     echo "Fail to insert, try again later";
+    echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
   }
   //end create
 }
 else if (isset($_POST['edit']))
 {
-  $whichID = $_POST['edit'];
+  $whichTime = $_POST['edit'];
   //edit
-  $_SESSION["DEPARTMENT"] = $whichID;
+  $_SESSION["STARTDATE"] = $whichTime;
   //currently not doing anything
-  header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditDepartment.php');
+  header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/WorkHistoryEdit.php');
   //end edit
 }
 else if (isset($_POST['delete']))
 {
   //delete
-  $whichID = $_POST['delete'];
-  $sql = "DELETE FROM department WHERE departmentID='$whichID'";
+  $whichTime = $_POST['delete'];
+  $sql = "DELETE FROM workinghistory WHERE startDate='$whichTime' AND staffID='$staffID'";
   if(mysqli_query($conn, $sql)){
     echo "Record was deleted successfully.";
-    header('Location: http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewDepartment.php');
+    header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/WorkHistory.php');
   }
   else{
     echo "ERROR: Could not able to execute $sql. ". mysqli_error($conn);
+    echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
   }
   //end delete
+}
+else if (isset($_POST['EditSubmit'])) {
+  $whichTime = $_SESSION["STARTDATE"];
+  unset($_SESSION['STARTDATE']);
+  $sql = "UPDATE workinghistory
+          SET company='$company', startDate='$startDate', endDate='$endDate'
+            , departmentBefore='$departmentBefore', PositionBefore='$PositionBefore'
+          WHERE startDate='$whichTime' AND staffID='$staffID'";
+  if(mysqli_query($conn, $sql)){
+    echo "Record was update successfully.";
+    header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/WorkHistory.php');
+  }
+  else{
+    echo "ERROR: Could not able to execute $sql. ". mysqli_error($conn);
+    echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
+  }
 }
 
 $conn->close();
