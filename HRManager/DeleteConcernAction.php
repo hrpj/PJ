@@ -19,7 +19,8 @@ session_start();
 		echo("ERROR!!! : No ID found.");
 	}
 
-	$result = mysqli_query($con,"DELETE FROM concern WHERE staffID LIKE '$id' AND concernBehavor LIKE '$concernDelete';");
+//sql code for delete
+	$result = mysqli_query($con,"DELETE FROM concern WHERE staffID LIKE '$id' AND concernBehavior LIKE '$concernDelete';");
 
 	if (empty($result))
 		echo "ERROR!!! : No result returned.";
