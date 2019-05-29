@@ -117,7 +117,7 @@ session_start();
 <body>
   <div class = "NewStaff"><h3>Create New Staff</h></div>
 <!-- Fill Date -->
-<form action="CreateStaffController.php" method="post">
+<form action="CreateStaffController.php" method="post" id="staffForm">
       <div class="StartDate">
         Start Date : <input type="Date" name="startDate" value=<?php echo "$startDate"; ?> class="form-control" id="Start" placeholder="StartDate">
       </div>
@@ -170,7 +170,7 @@ session_start();
 	<div class="Department">
 		<div class="form-group">
 		    <label for="exampleFormControlSelect1">Department</label>
-		    <select name="departmentID" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
+		    <select name="departmentID" class="form-control" id="exampleFormControlSelect1">
 					<option>Choose Department</option>
 					<?php
 					 while($row = mysqli_fetch_array($result2)) {
