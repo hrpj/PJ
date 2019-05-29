@@ -137,8 +137,8 @@
                $sName = $row['staffName'];
                $sId = $row['staffID'];
                echo "<tr>
-                <td>".$sName."</td>
                 <td>".$sId."</td>
+                <td>".$sName."</td>
                 <td>
                   <button type=\"submit\"
                     name=\"edit\"
