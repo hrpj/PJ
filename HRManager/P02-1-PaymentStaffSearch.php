@@ -215,13 +215,13 @@ session_start();
 			{
 				echo "<input type='hidden' name='search2' value=".$_SESSION["search"].">";
 			}
-			if(!empty($_SESSION["departmentID"]))
+			if(!empty($_SESSION["branchName"]))
 			{
-				echo "<input type='hidden' name='branchName' value=".$_SESSION["branchName"].">";
+				echo "<input type='hidden' name='branchName' value=".$_SESSION['branchName'].">";
 			}
 			if(!empty($_SESSION["departmentID"]))
 			{
-				echo "<input type='hidden' name='departmentID' value=".$_SESSION["departmentID"].">";
+				echo "<input type='hidden' name='departmentID' value=".$_SESSION['departmentID'].">";
 			}
 ?>			
 			<div class="Position">
