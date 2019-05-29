@@ -6,7 +6,7 @@ session_start();
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-	$f == 0;
+	$f = '0';
 ?>
 <!doctype html>
 <html lang="en">
@@ -99,7 +99,7 @@ session_start();
 			$search = $_SESSION["FoundID2"];
 			$date = $_SESSION["date"];
 			$type = $_SESSION["type"];
-			
+			echo $date ;
 			$day = explode("-", $date);
 			$year = $day[0];
 			$month = $day[1] . '-'. $day[2];
@@ -136,13 +136,17 @@ session_start();
 		<br><i class="fas fa-history"></i>Year : <?php echo $year ; ?>
 	</div>
 	
-<?php	$result = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$search' AND year LIKE '$year' And date < '$month%' Order by date Desc");
+<?php	$result = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$search' AND year LIKE '$year' And date LIKE '$month%' Order by date Desc");
 
 		$count=$result->num_rows;
 		if ( empty($count) )
 		{
-			$salary = "Not found Salary";
-			$f == 0;
+			$result = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$search' AND year = '$year' And date < '$month%' Order by date Desc");
+			while ($row = mysqli_fetch_array($result))
+			{
+				$salary = $row['salary'];
+			}
+			$f = '0';
 		}
 		else
 		{
@@ -150,8 +154,10 @@ session_start();
 			{
 				$salary = $row['salary'];
 			}
-			$f == 1;
+			$f = '1';
 		}
+		
+		echo $f ;
 ?>
     <!-- End Information -->
 	<form action="P02-3.25-editSalary.php" method="POST">
@@ -220,7 +226,7 @@ session_start();
 	<div class ="AddDeduc"><a href="BranchToDepartment.html" class="button-link">Add</a></div>
     <table class="Back">
 		<tr><td>
-			<button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Back</button>
+			<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/P02-2-ListOfBill.php';">Back</button>
 		</td></tr>
     </table>
 	
