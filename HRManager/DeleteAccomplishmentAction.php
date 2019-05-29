@@ -13,12 +13,10 @@ session_start();
 	if (empty($accomplishmentDelete))
 	{
 		echo("ERROR!!! : No data input found.");
-		header( " refresh: 2; url=http://localhost/HRPJ/HRManager/CompetenceEditForHR.php?id=$id");
 	}
 	if (empty($id))
 	{
 		echo("ERROR!!! : No ID found.");
-		header( " refresh: 2; url=http://localhost/HRPJ/HRManager/CompetenceEditForHR.php?id=$id");
 	}
 
 //mysql code to delete
