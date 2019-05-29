@@ -48,6 +48,7 @@ session_start();
 	}
 	else if(empty($searchNew) && !empty($departmentNew))
 	{
+		$_SESSION["branchName"] = $branchNew;
 		$_SESSION["departmentID"] = $departmentNew;
 		header("Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php");
 	}
