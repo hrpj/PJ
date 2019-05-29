@@ -12,11 +12,35 @@ session_start();
 	$type = mysqli_real_escape_string($con, $_POST['edit3']);
 	$check = mysqli_real_escape_string($con, $_POST['edit4']);
 	
+	if(!empty($_SESSION["depart"]))
+	{
+		$positionID = $_SESSION["posi"];
+	}
+	if(!empty($_SESSION["bran"]))
+	{
+		$departmentID = $_SESSION["depart"];
+	}
+	if(!empty($branchName))
+	{
+		$branchName = $_SESSION["bran"];
+	}
+	if(!empty($_SESSION["month"]))
+	{
+		$month  = $_SESSION["month"];
+	}
+	if(!empty($_SESSION["year"]))
+	{
+		$year = $_SESSION["year"];
+	}
+	
+	
 	$positionID = $_SESSION["posi"];
 	$departmentID = $_SESSION["depart"];
 	$branchName = $_SESSION["bran"];
 	$month  = $_SESSION["month"];
 	$year = $_SESSION["year"];
+
+echo $check;
 
 	if(!empty($search5))
 	{
@@ -76,6 +100,6 @@ session_start();
 	$_SESSION["type"] = $type;
 	
 	mysqli_close($con);
-	header("Location: http://localhost/HRPJ/HRManager/P02-3-PaymentStaffEdit.php");
+	//header("Location: http://localhost/HRPJ/HRManager/P02-3-PaymentStaffEdit.php");
 
 ?>
