@@ -30,10 +30,10 @@ session_start();
 
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item dropdown ">
+				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Information
 					</a>
@@ -45,14 +45,14 @@ session_start();
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              Time Attendance
-	            </a>
-	            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
-	                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
-	            </div>
-	        </li>
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Time Attendance
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
+				</div>
+			</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
@@ -70,10 +70,9 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php">New Training Course</a>
-						<a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T03-1-Edittraining.php">Edit Training Course</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
-						<a class="dropdown-item" href="NewBranchForHR.html">Edit Staff</a>
-						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+						<a class="dropdown-item" href="StaffEdit_HRManager/SearchForEditStaff.php">Edit Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -93,7 +92,7 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis10.php">Amount of staff in each branch</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis11.php">The manager who has the most salary in company</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis12.php">Amount of gender in this company</a>
-				    </div>
+					</div>
 				</li>
 			</ul>
 			<ul class="nav justify-content-end">
@@ -133,12 +132,12 @@ session_start();
 		$startDate = $row['startDate'];
 		$endDate = $row['endDate'];
 		$scDate = $startDate.' - '.$endDate;
-		
+
 		$result2 = mysqli_query($con,"SELECT * FROM trainingcourse WHERE courseID LIKE '$courseID'");
 		while ($row2 = mysqli_fetch_array($result2))
 		{
 			$courseName = $row2['courseName'];
-			
+
 		}
 		echo "<tbody>
 				<tr>
@@ -152,7 +151,7 @@ session_start();
 	}
 ?>
     </table>
-	
+
     <!-- End Table -->
     <table class="Back">
 		<tr>
@@ -161,7 +160,7 @@ session_start();
 		</td>
 		</tr>
     </table>
-	
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -126,19 +126,35 @@
 			$month  = $_SESSION["month"];
 			$year = $_SESSION["year"];
 
+			echo $search5 ;
+			echo '-';
+			echo $positionID ;
+			echo '-';
+			echo $departmentID ;
+			echo '-';
+			echo $branchName ;
+			echo '-';
+			echo $month  ;
+			echo '-';
+			echo $year;
+			echo '-';
+			
 
 			if(!empty($search5))
 			{
+				echo '1';
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE staffID LIKE '$search5' AND date LIKE '$month%' AND year LIKE '$year%'");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE staffID LIKE '$search5' AND date LIKE '$month%' AND year LIKE '$year%'");
 			}
 			else if(empty($search5) && !empty($positionID))
 			{
+				echo '2';
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID LIKE '$positionID')");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID LIKE '$positionID')");
 			}
 			else if(empty($search5) && empty($positionID) && !empty($departmentID))
 			{
+				echo '3';
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
 												WHERE departmentID LIKE '$departmentID'))");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
@@ -146,71 +162,84 @@
 			}
 			else if(empty($search5) && empty($positionID) && empty($departmentID) && !empty($branchName))
 			{
+				echo '4';
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
-												WHERE departmentID IN (SELECT departmentID FROM department WHERE branchName LIKE '$branchName%')))");
+												WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE '$branchName%')))");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
-												WHERE departmentID IN (SELECT departmentID FROM department WHERE branchName LIKE '$branchName%'))");
+												WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE '$branchName%'))");
 			}
 
-
-			while ($row1 = mysqli_fetch_array($result1))
+			if(!empty($result1))
 			{
-				$ID = $row1['staffID'];
-				$month  =  $row1['date'];
-				$year = $row1['year'];
-				$date = $year . '-' . $month;
+				$bonus = 0;
+				while ($row1 = mysqli_fetch_array($result1))
+				{
+					$ID = $row1['staffID'];
+					$month  =  $row1['date'];
+					$year = $row1['year'];
+					$date = $year . '-' . $month;
 
-				$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
-				while ($row = mysqli_fetch_array($result))
-				{
-					$positionID = $row['positionID'];
+					$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
+					while ($row = mysqli_fetch_array($result))
+					{
+						$positionID = $row['positionID'];
+					}
+					$result = mysqli_query($con,"SELECT positionName FROM position WHERE positionID LIKE '$positionID'");
+					while ($row = mysqli_fetch_array($result))
+					{
+						$positionName = $row['positionName'];
+					}
+					echo "<tbody>";
+					echo "<tr>";
+					echo "<td>".$ID."</td>";
+					echo "<td>".$positionName."</td>";
+					echo "<td>".$date."</td>";
+					echo "<td>bonus</td>";
+					echo "<input type='hidden' name='edit2' value=".$date."</td>";
+					echo "<input type='hidden' name='edit3' value='bounus'</td>";
+					echo "<input type='hidden' name='edit4' value=".$bonus."</td>";
+					echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
+					echo "</tr>";
+					echo "</tbody>";
+					$bonus++;
 				}
-				$result = mysqli_query($con,"SELECT positionName FROM position WHERE positionID LIKE '$positionID'");
-				while ($row = mysqli_fetch_array($result))
-				{
-					$positionName = $row['positionName'];
-				}
-				echo "<tbody>";
-				echo "<tr>";
-				echo "<td>".$ID."</td>";
-				echo "<td>".$positionName."</td>";
-				echo "<td>".$date."</td>";
-				echo "<td>bonus</td>";
-				echo "<input type='hidden' name='edit2' value=".$date."</td>";
-				echo "<input type='hidden' name='edit3' value='bounus'</td>";
-				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
-				echo "</tr>";
-				echo "</tbody>";
 			}
-
-			while ($row2 = mysqli_fetch_array($result2))
+	
+			if(!empty($result2))
 			{
-				$ID = $row2['staffID'];
-				$month  =  $row2['date'];
-				$year = $row2['year'];
-				$date = $year . '-' . $month;
+				$deduct = 0;
+				while ($row2 = mysqli_fetch_array($result2))
+				{
+					$ID = $row2['staffID'];
+					$month  =  $row2['date'];
+					$year = $row2['year'];
+					$date = $year . '-' . $month;
 
-				$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
-				while ($row = mysqli_fetch_array($result))
-				{
-					$positionID = $row['positionID'];
+					$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
+					while ($row = mysqli_fetch_array($result))
+					{
+						$positionID = $row['positionID'];
+					}
+					$result = mysqli_query($con,"SELECT positionName FROM position WHERE positionID LIKE '$positionID'");
+					while ($row = mysqli_fetch_array($result))
+					{
+						$positionName = $row['positionName'];
+					}
+					
+					echo "<tbody>";
+					echo "<tr>";
+					echo "<td>".$ID."</td>";
+					echo "<td>".$positionName."</td>";
+					echo "<td>".$date."</td>";
+					echo "<td>deduction</td>";
+					echo "<input type='hidden' name='edit2' value=".$date."</td>";
+					echo "<input type='hidden' name='edit3' value='deduction'</td>";
+					echo "<input type='hidden' name='edit4' value=".$deduct."</td>";
+					echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
+					echo "</tr>";
+					echo "</tbody>";
+					$deduct++;
 				}
-				$result = mysqli_query($con,"SELECT positionName FROM position WHERE positionID LIKE '$positionID'");
-				while ($row = mysqli_fetch_array($result))
-				{
-					$positionName = $row['positionName'];
-				}
-				echo "<tbody>";
-				echo "<tr>";
-				echo "<td>".$ID."</td>";
-				echo "<td>".$positionName."</td>";
-				echo "<td>".$date."</td>";
-				echo "<td>deduction</td>";
-				echo "<input type='hidden' name='edit2' value=".$date."</td>";
-				echo "<input type='hidden' name='edit3' value='deduction'</td>";
-				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
-				echo "</tr>";
-				echo "</tbody>";
 			}
 ?>
 		</table>

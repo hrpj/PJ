@@ -6,7 +6,7 @@ session_start();
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-	$f == 0;
+	$f = 0;
 ?>
 <!doctype html>
 <html lang="en">
@@ -103,10 +103,11 @@ session_start();
 	</nav>
 </head>
 <?php
+			
 			$search = $_SESSION["FoundID2"];
 			$date = $_SESSION["date"];
 			$type = $_SESSION["type"];
-
+echo $date;
 			$day = explode("-", $date);
 			$year = $day[0];
 			$month = $day[1] . '-'. $day[2];
