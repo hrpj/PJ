@@ -1,9 +1,5 @@
 <?php
 session_start();
-	$id = $_SESSION["ID"];
-	$year = $_SESSION["YEAR"];
-	$month = $_SESSION["MONTH"];
-
 	$con=mysqli_connect("localhost","root","","hrmanager");
 	// Check connection
 	if (mysqli_connect_errno())
@@ -107,6 +103,7 @@ session_start();
 </nav>
   </head>
   <body>
+	<form action="L01-addLeave.php" method="POST">
       <div class = "Leave"><h3>Leave Form</h></div>
           <!-- Fill Information -->
           <div class="StaffID">
@@ -136,6 +133,7 @@ session_start();
           <div class="NextBut">
           <button type="button" class="btn btn-dark" onclick="window.location.href = 'Leave.html';">Save</button>
           <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></div>
+	</form>
               <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
