@@ -113,27 +113,22 @@ session_start();
       </tr>
     </thead>
 <?php
-	$result = mysqli_query($con,"SELECT type, COUNT(type) AS LT FROM leavehistory");
+	$result = mysqli_query($con,"SELECT s.staffID, l.type, COUNT(*) AS Num FROM staff s, leavehistory l WHERE l.type = 'Sick' AND s.staffID=l.staffID GROUP BY s.staffID,l.type ORDER BY Num DESC LIMIT 1");
 	while ($row = mysqli_fetch_array($result))
     {
+		$staffID = $row['staffID'];
 		$type = $row['type'];
-		$LT = $row['LT'];
+		$Num = $row['Num'];
 		
 		echo " 	<tbody>
 				  <tr>
+					<td>".$staffID."</td>
 					<td>".$type."</td>
-					<td>".$LT."</td>
+					<td>".$Num."</td>
 				  </tr>
 				</tbody>";
 	}
 ?>
-    <tbody>
-      <tr>
-        <td>HR010111</td>
-        <td>Sick</td>
-        <td>10</td>
-      </tr>
-    </tbody>
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->
