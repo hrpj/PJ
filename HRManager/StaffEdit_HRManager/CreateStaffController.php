@@ -67,14 +67,16 @@ else if ($_POST["Submit"] === 'Submit') {
   if($successs){
     $picture = $newImageName; //
   //__________________________________________Insert all__________________________________________________________
-    $sql = "INSERT INTO staff (staffID, staffName, positionID,
+    $sql = "INSERT INTO staff (staffName, positionID,
                               bankAccount, dateOfBirth, gender,
                               address, telNo, startDate, password, picture)
-    VALUES ('$staffID', '$staffName', '$positionID', '$bankAccount', '$dateOfBirth',
+    VALUES ('$staffName', '$positionID', '$bankAccount', '$dateOfBirth',
             '$gender', '$address', '$telNo', '$startDate', '$password', '$picture')";
 
     if ($conn->query($sql) === TRUE)
     {
+      $staffID = $conn->insert_id;
+
       unset($_SESSION['STARTDATE']);
       unset($_SESSION['FNAME']);
       unset($_SESSION['LNAME']);
@@ -93,18 +95,14 @@ else if ($_POST["Submit"] === 'Submit') {
     }
     else
     {
-      echo "Fail to insert, try again later";
+      echo "Fail to insert database, try again later";
       echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
     }
   }
   else{
-    echo "Error insert";
+    echo "Error insert picture";
     echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
   }
-
-  echo "SUCCESS".$staffID."  UND  ".$newImageName;
-
-  echo "<a href=\"javascript:history.go(-1)\">GO BACK</a>";
 }
 else {
   echo "Aloha [".$_POST["Submit"]."]";
