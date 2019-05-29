@@ -156,20 +156,8 @@ session_start();
             $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
             while ($row = mysqli_fetch_array($result))
             {
-                if ($_SESSION["checkFirst"]==1)
-                {
-                  $departmentName = $row['departmentName'];
-                }
-                if ($_SESSION["checkFirst"]==1)
-                {
-                  //$_SESSION["checkFirst"] = 1;
-                  $branchName = $row['BranchName'];
-                }
-                else
-                {
-                  $_SESSION["checkFirst"] = 0;
-                }
-
+                $departmentName = $row['departmentName'];
+                $branchName = $row['BranchName'];
             }
         ?>
         <!-- End PHP code for value -->
@@ -218,19 +206,18 @@ session_start();
                     $positionSelect = mysqli_query($con,$sqlPosition);
                     while ($row = mysqli_fetch_array($positionSelect))
                     {
-                      $positionID = $row['positionID'];
                       $PositionNameRow = $row['positionName'];
-                      $positionID = $row['positionID'];
+                      $positionIDRow = $row['positionID'];
                       $departmentID = $row['departmentID'];
                       $departmentSearch = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
                       while ($row = mysqli_fetch_array($departmentSearch))
                       {
-                        $departmentName = $row['departmentName'];
+                        $departmentNameRow = $row['departmentName'];
                         $branchNameRow = $row['BranchName'];
-                        echo "<option value='".$PositionID."'";
-                        if(!strcasecmp($positionName,$PositionNameRow))
+                        echo "<option value='".$positionIDRow."'";
+                        if(!strcasecmp($positionIDRow,$positionID))
                           echo "selected = 'true';";
-                        echo ">".$branchNameRow."-".$departmentName."-".$PositionNameRow."</option>";
+                        echo ">".$branchNameRow."-".$departmentNameRow."-".$PositionNameRow."</option>";
                       }
                     }
                   ?>
