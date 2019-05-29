@@ -61,7 +61,7 @@ session_start();
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>			
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P03-1-search.php">Any Staffs</a>		
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>		
 					</div>
 				</li>
 				<li class="nav-item dropdown">
