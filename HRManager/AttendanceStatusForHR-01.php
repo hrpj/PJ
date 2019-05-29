@@ -36,26 +36,33 @@ $dm = $_SESSION["result2"];
 				<li class="nav-item">
 					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown ">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Information
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Only Me</a>
-						<a class="dropdown-item" href="#">Any Staffs</a>
-						<a class="dropdown-item" href="#">Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Training Course</a>
 					</div>
 				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
-				</li>
+				<li class="nav-item dropdown active">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Time Attendance
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
+				</div>
+			</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/PaymentStaffForHR.php">Only Me</a>
-						<a class="dropdown-item" href="#">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -63,10 +70,12 @@ $dm = $_SESSION["result2"];
 						Create
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">New Staff</a>
-						<a class="dropdown-item" href="#">New Branch</a>
-						<a class="dropdown-item" href="#">New Department</a>
-						<a class="dropdown-item" href="#">New Training Course</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
+						<a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
+						<a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
+						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -74,18 +83,18 @@ $dm = $_SESSION["result2"];
 						Analysis Report
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Age Range of Staffs</a>
-						<a class="dropdown-item" href="#">Salary in every position and department</a>
-						<a class="dropdown-item" href="#">Top 5 Highest Concern Score</a>
-						<a class="dropdown-item" href="#">Concern Score in Bang Khae Branch</a>
-						<a class="dropdown-item" href="#">Daily Attendance in Bang Khae Branch</a>
-						<a class="dropdown-item" href="#">Work time of any position</a>
-						<a class="dropdown-item" href="#">Work time and Salary of position in any department</a>
-						<a class="dropdown-item" href="#">The highest average competency score of each department</a>
-						<a class="dropdown-item" href="#">Amount of leave of each staff of each department in Bang Khae</a>
-						<a class="dropdown-item" href="#">The highest amount of leave in each department in Bang Khae</a>
-						<a class="dropdown-item" href="#">Field and Degree in IT department</a>
-						<a class="dropdown-item" href="#">Income table of each Staff</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis1.php">Amount of degree of staff that graduated</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis2.php">Salary in every position and department</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis3.php">Daily Attendance in Bang Khae Branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis4.php">Work time of any position</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis5.php">Work time and Salary of position in any department</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis6.php">Amount of miss of every staff in Bang Khae branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis7.php">Amount of miss of IT department in Bang Khae</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis8.php">The most leave type of month in company</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis9.php">The people who has the most sick leave type</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis10.php">Amount of staff in each branch</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis11.php">The manager who has the most salary in company</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis12.php">Amount of gender in this company</a>
 					</div>
 				</li>
 			</ul>

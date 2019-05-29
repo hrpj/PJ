@@ -68,7 +68,7 @@ session_start();
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-						<a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php">New Training Course</a>
 						<a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
 						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
