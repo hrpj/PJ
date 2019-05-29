@@ -191,7 +191,7 @@ session_start();
 	<div class="Department">
 		<div class="form-group">
 		    <label for="exampleFormControlSelect1">Department</label>
-		    <select name="departmentName" class="form-control" id="exampleFormControlSelect1">
+		    <select name="departmentID" class="form-control" id="exampleFormControlSelect1">
 					<option <?php echo " value=\"".$departmentID."\""?>> <?php echo $departmentName; ?></option>
 					<?php
 					 while($row = mysqli_fetch_array($result2)) {
