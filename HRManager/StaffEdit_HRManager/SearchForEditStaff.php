@@ -14,8 +14,8 @@ session_start();
   $sql = "SELECT DISTINCT departmentName FROM department";
   $resultD = mysqli_query($con,$sql);
 
-  $sql = "SELECT DISTINCT departmentName FROM department";
-  $resultD = mysqli_query($con,$sql);
+  $sql = "SELECT DISTINCT positionName FROM position";
+  $resultP = mysqli_query($con,$sql);
 ?>
 <!doctype html>
 <html lang="en">
@@ -127,18 +127,27 @@ session_start();
       <div class="input-group-prepend">
       <label class="input-group-text" for="inputGroupSelect01">Branch</label>
       <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Bang Khae</option>
-      <option value="2">Bang Mod</option>
+        <option selected>Choose...</option>
+        <?php
+         while($row = mysqli_fetch_array($resultB)) {
+            $name = $row['branchName'];
+            echo "<option value=\"".$name."\">".$name."</option>";
+         }
+        ?>
       </select><a href="#"><i class="fas fa-search"></i></a>
       </div>
-      <div class="Department">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Department</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">1 - Marketing</option>
-      <option value="2">2 - Finance</option>
+        <div class="Department">
+        <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Department</label>
+        <select class="custom-select" id="inputGroupSelect01">
+        <option selected>Choose...</option>
+        <option><?php echo "$branchName"; ?></option>
+        <?php
+         while($row = mysqli_fetch_array($result)) {
+            $name = $row['branchName'];
+            echo "<option value=\"".$name."\">".$name."</option>";
+         }
+        ?>
       </select> <a href="#"><i class="fas fa-search"></i></a>
       </div>
       <div class="Position">
