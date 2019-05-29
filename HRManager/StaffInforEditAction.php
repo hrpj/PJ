@@ -20,8 +20,14 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 	$i = mysqli_real_escape_string($con, $_POST['i']);
 	$j = mysqli_real_escape_string($con, $_POST['j']);
 
+//Set time zone and current date
+	date_default_timezone_set("Asia/Bangkok");
+	$date = date("Y-m-d");
+	echo $date ;
+	echo $positionID;
 
-
+//if no data reciever
+//Set data that will update to original data
 	$NoBugProtect = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
 	while ($row = mysqli_fetch_array($NoBugProtect)) 
 	{
@@ -61,6 +67,8 @@ $con=mysqli_connect("localhost","root","","hrmanager");
 		{
 			$positionID = $row['positionID'];
 		}
+		//keep original positionID tocheck update
+		$positionIDForCheckUpdate = $row['positionID'];
 	}
 
 //Condition for no working history or no education history
@@ -216,7 +224,26 @@ $con=mysqli_connect("localhost","root","","hrmanager");
     }
     $updateStaff = mysqli_query($con,"UPDATE staff SET staffName = '$staffName', startDate ='$start', gender = '$gender', telNo = '$telNo', address = '$staffAddress', bankAccount = '$bankAccount',dateOfBirth ='$DOB' WHERE staffID LIKE '$search'");
 
-// end staff information
+// Update position
+    if (strcasecmp($positionID, $positionIDForCheckUpdate))
+    {
+    	$updatePosition = mysqli_query($con,"UPDATE staff SET positionID ='$positionID' WHERE staffID LIKE '$search' ");
+		$createPromotionHistory = mysqli_query($con,"INSERT INTO promotionhistory (staffID,positionID,date) VALUES ('$search','$positionID','$date')");
+		$checkUpdate = 1;
+		if (empty($updatePosition))
+		{
+			echo "Update position failed.";
+		}
+		if (empty($createPromotionHistory))
+		{
+			echo "Create promotionhistory's row failed.";
+		}
+	}
+    else
+    {
+		$checkUpdate = 0;
+    }
+echo $checkUpdate;
 if ($searchStaff)
 {
 	echo "<br>searchStaff pass";
