@@ -1,41 +1,25 @@
-<?php
-session_start();
-	$con=mysqli_connect("localhost","root","","hrmanager");
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-  $departmentID = $_SESSION["DEPARTMENT"];
-  $_SESSION["DEPARTMENT"] = $departmentID;
-  $result = mysqli_query($con,"SELECT d.departmentName AS departmentName
-                                FROM department d
-                                WHERE departmentID LIKE $departmentID");
-  $row = mysqli_fetch_array($result);
-  $departmentName = $row['departmentName'];
-?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Department</title>
+    <title>Staff Information Manage</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styleview.css" rel="stylesheet">
+    <link href="font.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
-    <!-- _______________________________________________Nav Bar_____________________________________________ -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
-        <a class="navbar-brand" href="#">&nbsp;ILoveDB Company</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Nav Bar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<font color="#FFFFFF" size="5"> <i class="far fa-building"></i></font>
+		<a class="navbar-brand" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">&nbsp;ILoveDB Company</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-		<div class="collapse navbar-collapse" id="navbarColor02">
+        <div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
 					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
@@ -60,16 +44,16 @@ session_start();
 					  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
 				</div>
 			</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P01-1-PaymentSearchForHR.php">Only Me</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
+						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P03-1-search.php">Any Staffs</a>
 					</div>
 				</li>
-				<li class="nav-item dropdown active">
+				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Create
 					</a>
@@ -109,43 +93,32 @@ session_start();
 			</ul>
 		</div>
 	</nav>
-  </head>
-<!-- _____________________________________end nav bar____________________________________________ -->
+</head>
 
-  <body>
-      <div class = "NameBranch"><h3>Edit Department</h3></div>
+<body>
+    <br>
+    <h2>&nbsp;&nbsp;&nbsp;Staff Payment Slip Search</h2>
+    <hr>
 
-      <!-- __________________________Start form_________________________ -->
-      <form action="EditDepartmentSubmit.php" method="post">
-        <div class="Previous">
-          Previous Department Name : <br><?php echo $departmentName; ?>
-        </div>
-        <div class="New">
-          New Department Name : <input type="text" name="NewDepartmentName" class="form-control" placeholder="Name">
-        </div>
-        <table class="Back">
-          <tr>
-            <td>
-                <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'ViewBranch.html';">Save</button>
-            </td>
-			<td>
-              <span>
-                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'EditBranch3.php';">Skip</button>
-              </span>
-            </td>
-            <td>
-              <span>
-                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'ViewBranch.html';">Cancel</button>
-              </span>
-            </td>
-          </tr>
-        </table>
-      </form>
-      <!-- __________________________Start form_________________________ -->
+    <!-- Search -->
+    <form action="search3.php" method="POST" class="form-inline my-2 my-lg-0">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Staff ID&nbsp;&nbsp;
+		<input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="window.location.href = '#';">Search</button>
+    </form>
+
+
+
+
+    <!-- End Search -->
+    <div class="Searching">
+		<i><font color = "#D3D3D3"> Search Staff ID that you want to Payment Slip. </font></i>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>
