@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -92,41 +101,77 @@
 		</div>
 	</nav>
 </head>
+<?php	
+		$courseID = $_SESSION['courseID'];
+		$departmentID = $_SESSION['departmentID'];
+		
+		
 
+
+
+?>
 <body>
-      <br>
-      <h2>&nbsp;&nbsp;&nbsp;Required Position</h2>
-      <!-- Search -->
-      <div class="Department">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Department</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">1 - Marketing</option>
-      <option value="2">2 - Finance</option>
-      </select> 
-	  <button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
-      </div>
-      <div class="Position">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Position</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Supervisor</option>
-      <option value="2">Manager</option>
-      </select>
-      </div>
+    <br>
+    <h2>&nbsp;&nbsp;&nbsp;Required Position</h2>
+	
+    <!-- Search -->
+	<form action="T01-2.25-PepareTrainingSearch.php" method="POST">
+		<div class="Department">
+		<div class="input-group-prepend">
+			<label class="input-group-text" for="inputGroupSelect01">Department</label>
+			<select class="custom-select" id="inputGroupSelect01">
+<?php 
+		if(empty(departmentID))
+		{
+			echo "<option value='1' selected>Choose...</option>";
+			$result = mysqli_query($con,"SELECT * FROM department");
+			while ($row = mysqli_fetch_array($result))
+			{
+				$departmentID = $row['departmentID'];
+				$departmentName = $row['departmentName'];
+				$BranchName = $row['BranchName'];
+				echo "<option value='".$departmentID."'>".$BranchName." - ".$departmentName."</option>";
+			}
+		}
+		else
+		{
+			
+			
+			
+			
+			
+		}
 
-      <!-- End Search -->
-      <table class="NextBut">
-          <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Add&nbsp;more</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Save</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
-      </td></tr>
-      </table>
+?>
+				<option selected>Choose...</option>
+				<option value="1">1 - Marketing</option>
+				<option value="2">2 - Finance</option>
+			</select> 
+			<button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
+		</div>
+	</form>
+	
+    <div class="Position">
+    <div class="input-group-prepend">
+		<label class="input-group-text" for="inputGroupSelect01">Position</label>
+		<select class="custom-select" id="inputGroupSelect01">
+			<option selected>Choose...</option>
+			<option value="1">Supervisor</option>
+			<option value="2">Manager</option>
+		</select>
+    </div>
+
+    <!-- End Search -->
+    <table class="NextBut">
+    <tr><td>
+    <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Add&nbsp;more</button>
+    </td><td>
+    <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Save</button>
+    </td><td>
+    <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
+    </td></tr>
+    </table>
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
