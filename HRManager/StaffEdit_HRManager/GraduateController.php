@@ -64,12 +64,12 @@ else if (isset($_POST['delete']))
   //end delete
 }
 else if (isset($_POST['EditSubmit'])) {
-  $whichYear = $_SESSION["STARTDATE"];
+  $whichYear = $_SESSION["YEAR"];
   unset($_SESSION['YEAR']);
   $sql = "UPDATE education
           SET university='$university', degree='$degree', field='$field'
             , year='$year'
-          WHERE year='$whichYear' AND staffID='$staffID'";
+          WHERE year='$whichYear' AND staffID=$staffID";
   if(mysqli_query($conn, $sql)){
     echo "Record was update successfully.";
     header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/GraduateHistory.php');
