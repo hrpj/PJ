@@ -4,11 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Leave</title>
+    <title>Analysis 01</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styleleave.css" rel="stylesheet">
+    <link href="styleanalysis.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -34,7 +34,7 @@
           <a class="dropdown-item" href="InforBranch.html">Branch</a>
         </div>
         </li>
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Time Attendance
         </a>
@@ -65,7 +65,7 @@
 
     </div>
   </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Analysis Report
       </a>
@@ -94,36 +94,35 @@
 </nav>
   </head>
   <body>
-      <div class = "Leave"><h3>Leave Form</h></div>
-          <!-- Fill Information -->
-          <div class="StaffID">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-          <div class="Type">
-          <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Type</label>
-          <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Choose...</option>
-          <option value="1">Sick</option>
-          <option value="2">Accident</option>
-          </select>
-          </div>
-          <div class="Description">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-         <br><br>
-          <div class="MonthAndYear">Date : <input type="date" class="form-control" name="daymonth"></div>
-          <!-- End Search -->
-          <div class="NextBut">
-          <button type="button" class="btn btn-dark" onclick="window.location.href = 'Leave.html';">Save</button>
-          <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></div>
-              <!-- Optional JavaScript -->
+      <div class = "Analysis"><h3>Age Range of Staffs</h></div>
+          <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Age Range</th>
+        <th scope="col">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>20-29</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>30-39</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>40-49</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>50-59</td>
+        <td>10</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- End Table -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

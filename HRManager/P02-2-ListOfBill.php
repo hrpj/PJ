@@ -43,9 +43,15 @@
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
-				</li>
+				<li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Time Attendance
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+		              <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
+		        </div>
+		    </li>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
@@ -56,16 +62,17 @@
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Create
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">New Staff</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-						<a class="dropdown-item" href="#">New Department</a>
-						<a class="dropdown-item" href="#">New Training Course</a>
-					</div>
-				</li>
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Create
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="NewStaff.html">New Staff</a>
+		          <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
+		          <a class="dropdown-item" href="NewDepartment.html">New Training Course</a>
+		          <a class="dropdown-item" href="NewTraining.html">Edit Branch</a>
+		          <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+		        </div>
+		      </li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Analysis Report
@@ -98,7 +105,7 @@
 <body>
     <br>
     <h2>&nbsp;&nbsp;&nbsp;List Of Bill </h2>
-	
+
     <!-- Table -->
 	<form action="P02-2.5-EditBill.php" method="POST">
 		<table class="table">
@@ -111,7 +118,7 @@
 					<th scope="col">Edit</th>
 				</tr>
 			</thead>
-			
+
 <?php 		$search5 = $_SESSION["foundID"];
 			$positionID = $_SESSION["posi"];
 			$departmentID = $_SESSION["depart"];
@@ -119,50 +126,40 @@
 			$month  = $_SESSION["month"];
 			$year = $_SESSION["year"];
 
+
 			if(!empty($search5))
 			{
-				echo "1";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE staffID LIKE '$search5' AND date LIKE '$month%' AND year LIKE '$year%'");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE staffID LIKE '$search5' AND date LIKE '$month%' AND year LIKE '$year%'");
 			}
 			else if(empty($search5) && !empty($positionID))
 			{
-				echo "11";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID LIKE '$positionID')");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID LIKE '$positionID')");
 			}
 			else if(empty($search5) && empty($positionID) && !empty($departmentID))
 			{
-				echo "111";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
-												WHERE departmentID LIKE ‘$departmentID’))");
+												WHERE departmentID LIKE '$departmentID'))");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
-												WHERE departmentID LIKE ‘$departmentID’))");
+												WHERE departmentID LIKE '$departmentID'))");
 			}
 			else if(empty($search5) && empty($positionID) && empty($departmentID) && !empty($branchName))
 			{
-				echo "1111";
 				$result1 = mysqli_query($con,"SELECT * FROM bonus WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
 												WHERE departmentID IN (SELECT departmentID FROM department WHERE branchName LIKE '$branchName%')))");
 				$result2 = mysqli_query($con,"SELECT * FROM deduction WHERE date LIKE '$month%' AND year LIKE '$year%' AND staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID  FROM position
 												WHERE departmentID IN (SELECT departmentID FROM department WHERE branchName LIKE '$branchName%'))");
 			}
-			else
-			{
-				echo  $search5;
-				echo  $positionID;
-				echo  $departmentID;
-				echo  $branchName;
-				echo "1111";
-			}
-			
+
+
 			while ($row1 = mysqli_fetch_array($result1))
 			{
 				$ID = $row1['staffID'];
 				$month  =  $row1['date'];
 				$year = $row1['year'];
 				$date = $year . '-' . $month;
-				
+
 				$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
 				while ($row = mysqli_fetch_array($result))
 				{
@@ -179,20 +176,20 @@
 				echo "<td>".$positionName."</td>";
 				echo "<td>".$date."</td>";
 				echo "<td>bonus</td>";
-				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
 				echo "<input type='hidden' name='edit2' value=".$date."</td>";
 				echo "<input type='hidden' name='edit3' value='bounus'</td>";
+				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
 				echo "</tr>";
 				echo "</tbody>";
 			}
-			
+
 			while ($row2 = mysqli_fetch_array($result2))
 			{
 				$ID = $row2['staffID'];
 				$month  =  $row2['date'];
 				$year = $row2['year'];
 				$date = $year . '-' . $month;
-				
+
 				$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
 				while ($row = mysqli_fetch_array($result))
 				{
@@ -209,9 +206,9 @@
 				echo "<td>".$positionName."</td>";
 				echo "<td>".$date."</td>";
 				echo "<td>deduction</td>";
-				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
 				echo "<input type='hidden' name='edit2' value=".$date."</td>";
 				echo "<input type='hidden' name='edit3' value='deduction'</td>";
+				echo "<td><button type='submit' name='edit' value='".$ID."' class='button-link' class='fas fa-search' style='border: none; background-color:white' class='button-link'>Click to Edit</button></td>";
 				echo "</tr>";
 				echo "</tbody>";
 			}
@@ -219,8 +216,8 @@
 		</table>
 	</form>
     <!-- End Table -->
-	
-	
+
+
     <table class="AddNCancel">
 		<tr><td>
 			<button type="button" class="btn btn-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php';">Back</button>

@@ -43,9 +43,15 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
-				</li>
+				<li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Time Attendance
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+		              <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
+		        </div>
+		    </li>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
@@ -56,16 +62,17 @@ session_start();
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Create
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">New Staff</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-						<a class="dropdown-item" href="#">New Department</a>
-						<a class="dropdown-item" href="#">New Training Course</a>
-					</div>
-				</li>
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Create
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="NewStaff.html">New Staff</a>
+		          <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
+		          <a class="dropdown-item" href="NewDepartment.html">New Training Course</a>
+		          <a class="dropdown-item" href="NewTraining.html">Edit Branch</a>
+		          <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+		        </div>
+		      </li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Analysis Report
@@ -110,7 +117,7 @@ session_start();
     <br>
     <h2>&nbsp;&nbsp;&nbsp;Payment Slip Manage</h2>
     <!-- Search -->
-	
+
 		<form id="searchform" action="P02-1.25-PepareSearch.php" method="POST">
 			<div class="StaffID">
 				<div class="input-group-prepend">
@@ -120,7 +127,7 @@ session_start();
 
 				</div>
 			</div>
-			
+
 			<div class="Branch">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Branch</label>
@@ -163,7 +170,7 @@ session_start();
 ?>				</select>
 				<button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
 			</div>
-			
+
 			<div class="Department">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Department</label>
@@ -205,8 +212,8 @@ session_start();
 							echo "<option value=".$departmentID.">".$departmentName."-".$BranchName2."</option>";
 						}
 					}
-?>		
-				</select> 
+?>
+				</select>
 				<button type="submit" form="searchform" class="fas fa-search" style="border: none; background-color:white" ></button>
 			</div>
 		</form>
@@ -215,20 +222,20 @@ session_start();
 			{
 				echo "<input type='hidden' name='search2' value=".$_SESSION["search"].">";
 			}
-			if(!empty($_SESSION["departmentID"]))
+			if(!empty($_SESSION["branchName"]))
 			{
-				echo "<input type='hidden' name='branchName' value=".$_SESSION["branchName"].">";
+				echo "<input type='hidden' name='branchName' value=".$_SESSION['branchName'].">";
 			}
 			if(!empty($_SESSION["departmentID"]))
 			{
-				echo "<input type='hidden' name='departmentID' value=".$_SESSION["departmentID"].">";
+				echo "<input type='hidden' name='departmentID' value=".$_SESSION['departmentID'].">";
 			}
-?>			
+?>
 			<div class="Position">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="inputGroupSelect01">Position</label>
 				<select class="custom-select" name="position" id="inputGroupSelect01">
-					
+
 <?php     			if(!empty($_SESSION["search"]))
 					{
 						echo "<option value=".$positionID.">".$departmentID."-".$positionName."</option>";
@@ -271,8 +278,8 @@ session_start();
 				</select>
 			</div>
 			<br><br>
-			
-		
+
+
 		<div class="Month">
 			Month : <select class="form-control" name="month" id="exampleFormControlSelect1">
 			<option value='' >--</option>
@@ -293,14 +300,14 @@ session_start();
 		<div class="Year">
 			Year : <input type="text" name="year" class="form-control" placeholder="Year">
 		</div>
-		
+
 		<!-- End Search -->
 		<table class="NextBut">
 			<tr>
 				<td>
 					<button type="submit" form="searchList" class="btn btn-dark" onclick="window.location.href = '#';">Find</button>
 				</td>
-	</form>	
+	</form>
 				<td>
 					<form id="clear">
 					<button type="submit" form="clear" name="modify" value="Modify" class="btn btn-dark" onclick="window.location.href = 'Location: http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php';">Clear</button>
@@ -311,8 +318,8 @@ session_start();
 				</td>
 			</tr>
 		</table>
-	
-			
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

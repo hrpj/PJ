@@ -18,7 +18,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylepaymentedit.css" rel="stylesheet">
+    <link href="stylepaymentedit2.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -44,9 +44,15 @@ session_start();
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Time Attendance</a>
-				</li>
+				<li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Time Attendance
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		              <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
+		              <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
+		        </div>
+		    </li>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Payment Slip
@@ -57,16 +63,17 @@ session_start();
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Create
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">New Staff</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-						<a class="dropdown-item" href="#">New Department</a>
-						<a class="dropdown-item" href="#">New Training Course</a>
-					</div>
-				</li>
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Create
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="NewStaff.html">New Staff</a>
+		          <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
+		          <a class="dropdown-item" href="NewDepartment.html">New Training Course</a>
+		          <a class="dropdown-item" href="NewTraining.html">Edit Branch</a>
+		          <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+		        </div>
+		      </li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Analysis Report
@@ -95,15 +102,15 @@ session_start();
 		</div>
 	</nav>
 </head>
-<?php       
+<?php
 			$search = $_SESSION["FoundID2"];
 			$date = $_SESSION["date"];
 			$type = $_SESSION["type"];
-			
+
 			$day = explode("-", $date);
 			$year = $day[0];
 			$month = $day[1] . '-'. $day[2];
-			
+
 			$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
             while ($row = mysqli_fetch_array($result))
             {
@@ -120,12 +127,12 @@ session_start();
             {
                 $departmentName = $row['departmentName'];
 				$branchName = $row['BranchName'];
-            }			
+            }
 ?>
 <body>
     <div class = "Payment"><h3>Payment Slip</h></div>
     <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
-	
+
     <!-- Information -->
     <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo $search ; ?><br>
 		<br><i class="fas fa-layer-group"></i>Department : <?php echo $departmentName ; ?><br>
@@ -135,7 +142,7 @@ session_start();
 		<br><i class="fas fa-map-marker-alt"></i></i>Branch :<?php echo $branchName ; ?><br>
 		<br><i class="fas fa-history"></i>Year : <?php echo $year ; ?>
 	</div>
-	
+
 <?php	$result = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$search' AND year LIKE '$year' And date < '$month%' Order by date Desc");
 
 		$count=$result->num_rows;
@@ -155,7 +162,7 @@ session_start();
 ?>
     <!-- End Information -->
 	<form action="P02-3.25-editSalary.php" method="POST">
-		<div class="Salary"><h5>Salary : 
+		<div class="Salary"><h5>Salary :
 			<div class="SalaryFill">
 				<input type='hidden' name='month' value=".<?php echo $month ; ?>.">
 				<input type='hidden' name='year' value=".<?php echo $year ; ?>.">
@@ -168,8 +175,6 @@ session_start();
 			<button href="#" type="submit" class="button-link" style="border: none; background-color:white" >Save</button>
 		</div>
 	</form>
-    <form>
-	
 		<div class="table1">
 			Bonus
 		<table class="table">
@@ -190,41 +195,16 @@ session_start();
 				</tr>
 			</tbody>
 		</table>
-		
-		<div class="table2">
-			Deduction
-			<table class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">Type</th>
-						<th scope="col">Amount</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input type="text" class="form-control" id="Type" aria-describedby="Type" placeholder="Original Type"></td>
-						<td><input type="text" class="form-control" id="Amount" aria-describedby="Amount" placeholder="Original Amount"></td>
-					</tr>
-					<tr>
-						<td><input type="text" class="form-control" id="Type" aria-describedby="Type"></td>
-						<td><input type="text" class="form-control" id="Amount" aria-describedby="Amount"></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</form>
-	
+
 	<div class ="SaveBonus"><a href="BranchToDepartment.html" class="button-link">Save</a></div>
 	<div class ="AddBonus"><a href="BranchToDepartment.html" class="button-link">Add</a></div>
-	<div class ="SaveDeduc"><a href="BranchToDepartment.html" class="button-link">Save</a></div>
-	<div class ="AddDeduc"><a href="BranchToDepartment.html" class="button-link">Add</a></div>
     <table class="Back">
 		<tr><td>
 			<button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Back</button>
 		</td></tr>
     </table>
-	
-	
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
