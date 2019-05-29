@@ -10,7 +10,7 @@ session_start();
 	
 	$trainingID = mysqli_real_escape_string($con, $_POST['trainingID']);
 	$trainingTopic = mysqli_real_escape_string($con, $_POST['trainingTopic']);
-	
+	$_SESSION['courseID'] = $trainingID;
 	$sql="INSERT INTO trainingcourse (courseID, courseName) VALUES ('$trainingID', '$trainingTopic')";
 	
 	if (!mysqli_query($con,$sql)) 
@@ -20,8 +20,8 @@ session_start();
 	}
 	
 	echo "1 record added";
-	
-	header("Refresh:2; url=http://localhost/HRPJ/HRManager/T01-2-NewTraining_2.php");
+	unset ($_SESSION["departmentID"]);
+	header("Refresh:1; url=http://localhost/HRPJ/HRManager/T01-2-NewTraining_2.php");
 	mysqli_close($con);
 ?>
 
