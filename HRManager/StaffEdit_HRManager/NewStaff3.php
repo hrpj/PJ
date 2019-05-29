@@ -17,16 +17,16 @@ session_start();
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		}
 
-		$startDate = mysqli_real_escape_string($con, $_REQUEST['startDate']);
-		$fName = mysqli_real_escape_string($con, $_REQUEST['fName']);
-		$lName = mysqli_real_escape_string($con, $_REQUEST['lName']);
-		$address = mysqli_real_escape_string($con, $_REQUEST['address']);
-		$telNo = mysqli_real_escape_string($con, $_REQUEST['telNo']);
-		$dateOfBirth = mysqli_real_escape_string($con, $_REQUEST['dateOfBirth']);
-		$gender = $_POST['gender'];  // Storing Selected Value In Variable
-		$bankAccount = mysqli_real_escape_string($con, $_REQUEST['bankAccount']);
-		$branchName = $_POST['branchName'];
-		$departmentID = $_POST['departmentID'];
+		$startDate = $_SESSION["STARTDATE"];
+	  $fName=$_SESSION["FNAME"];
+	  $lName=$_SESSION["LNAME"];
+	  $address=$_SESSION["ADDRESS"];
+	  $telNo=$_SESSION["TELNO"];
+	  $dateOfBirth=$_SESSION["DATEOFBIRTH"];
+	  $gender=$_SESSION["GENDER"];
+	  $bankAccount=$_SESSION["BANKACCOUNT"];
+	  $branchName=$_SESSION["BRANCHNAME"];
+	  $departmentID=$_SESSION["DEPARTMENT"];
 
 		$sql = "SELECT branchName FROM branch";
 		$result = mysqli_query($con,$sql);
@@ -133,21 +133,21 @@ session_start();
 <body>
   <div class = "NewStaff"><h3>Create New Staff</h></div>
 <!-- Fill Date -->
-<form action="NewStaff2.php" method="post" id="staffForm">
+<form action="CreateStaffController.php" method="post" enctype="multipart/form-data">
       <div class="StartDate">
         Start Date : <input type="Date" name="startDate" value=<?php echo "$startDate"; ?> class="form-control" id="Start" placeholder="StartDate">
       </div>
       <div class="Firstname">
-        First Name : <input type="text" name="fName" value=<?php echo "$fName"; ?> class="form-control" placeholder="First Name">
+        First Name : <input type="text" name="fName" <?php echo "value=\"$fName\""; ?> class="form-control" placeholder="First Name">
       </div>
       <div class="Lastname">
-        Last Name : <input type="text" name="lName" value=<?php echo "$lName"; ?> class="form-control" placeholder="Last Name">
+        Last Name : <input type="text" name="lName" <?php echo "value=\"$lName\""; ?> class="form-control" placeholder="Last Name">
       </div>
       <div class="Address">
-        Address : <input type="text" name="address" value=<?php echo "$address"; ?> class="form-control" placeholder="Address">
+        Address : <input type="text" name="address" <?php echo "value=\"$address\""; ?> class="form-control" placeholder="Address">
       </div>
       <div class="Mobile">
-        Mobilephone No. : <input type="text" name="telNo" value=<?php echo "$telNo"; ?> class="form-control" placeholder="Mobile">
+        Mobilephone No. : <input type="text" name="telNo" <?php echo "value=\"$telNo\""; ?> class="form-control" placeholder="Mobile">
       </div>
       <div class="DOB">
         Date Of Birth : <input type="Date" name="dateOfBirth" value=<?php echo "$dateOfBirth"; ?> class="form-control" id="DOB" placeholder="DOB">
@@ -178,63 +178,71 @@ session_start();
          }
         ?>
       </select>
-      <noscript><input type="submit" value="Submit"></noscript>
+      <button type="submit" class="btn btn-primary btn-group-xs" name="Submit" value="SubmitBName">Find</button>
     </div>
   </div>
-  </form>
+
 <!-- ____________________________________ Start Form 2 _________________________________________ -->
-<form>
-<div class="Department">
-<div class="form-group">
-	<form action="NewStaff3" method="post">
-    <label for="exampleFormControlSelect1">Department</label>
-    <select name="departmentName" class="form-control" id="exampleFormControlSelect1">
-			<option><?php echo $departmentName; ?></option>
-			<?php
-			 while($row = mysqli_fetch_array($result2)) {
-					$dName = $row['departmentName'];
-					$dId = $row['departmentID'];
-					echo "<option value=\"".$dId."\">".$dName."</option>";
-			 }
-			?>
-    </select>
-	</form>
-</div>
-</div>
-</form>
+	<div class="Department">
+		<div class="form-group">
+		    <label for="exampleFormControlSelect1">Department</label>
+		    <select name="departmentName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
+					<option>Choose Department</option>
+					<?php
+					 while($row = mysqli_fetch_array($result2)) {
+							$dName = $row['departmentName'];
+							$dId = $row['departmentID'];
+							echo "<option value=\"".$dId."\">".$dName."</option>";
+					 }
+					?>
+		    </select>
+				<button type="submit" class="btn btn-primary btn-group-xs" name="Submit" value="SubmitDName">Find</button>
+		</div>
+	</div>
 
 <!-- ___________________________Start Form 3______________________________ -->
-
   <div class="Position">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Position</label>
-      <select name="positionName" class="form-control" id="exampleFormControlSelect1">
-        <option>Manager</option>
-        <option>Staff</option>
+      <select name="positionID" class="form-control" id="exampleFormControlSelect1">
+        <option>Choose Position</option>
+				<?php
+				 while($row = mysqli_fetch_array($result3)) {
+						$pName = $row['positionName'];
+						$pId = $row['positionID'];
+						echo "<option value=\"".$pId."\">".$pName."</option>";
+				 }
+				?>
       </select>
     </div>
     <div class="StaffID">
       Password : <input type="text" name="password" class="form-control" placeholder="Password">
     </div>
+
+<!-- _________________ file upload section ______________________________________ -->
+
     <div class="Upload">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Profile picture (.jpg)</span>
         </div>
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+          <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
         </div>
       </div>
     </div>
   </div>
   <!-- End Fill -->
-  <table class="thebuttons">
-      <tr><td>
-      <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Next</button>
-  </td><td>
-      <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
-  </td></tr>
+	<table class="thebuttons">
+      <tr>
+				<td>
+					<button type="submit" name="Submit" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button>
+				</td>
+				<td>
+      		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+  			</td>
+			</tr>
   </table>
 </form>
     <!-- Optional JavaScript -->
