@@ -44,11 +44,11 @@ session_start();
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	              Time Attendance
 	            </a>
 	            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                  <a class="dropdown-item" href="PaymentSearchForHR.html">Daily Attendance Status</a>
+	                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
 	                  <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
 	            </div>
 	        </li>

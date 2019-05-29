@@ -15,6 +15,7 @@ session_start();
 	$_SESSION["date"] = $date;
 	$_SESSION["type"] = $type;
 	
-	header("Location: http://localhost/HRPJ/HRManager/P02-3-PaymentStaffEdit.php");
 	mysqli_close($con);
+	header("Location: http://localhost/HRPJ/HRManager/P02-3-PaymentStaffEdit.php");
+	
 ?>
