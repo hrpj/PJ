@@ -49,7 +49,7 @@ session_start();
 	            </a>
 	            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/TimeAttendanceSearchForHR-01.php">Daily Attendance Status</a>
-	                  <a class="dropdown-item" href="PaymentStaffSearch.html">Leave</a>
+	                  <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/L01-Leave.php">Leave</a>
 	            </div>
 	        </li>
 				<li class="nav-item dropdown">
