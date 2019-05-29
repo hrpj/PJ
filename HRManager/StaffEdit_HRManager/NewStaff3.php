@@ -243,7 +243,7 @@ session_start();
 	<table class="thebuttons">
       <tr>
 				<td>
-					<button type="submit" name="Submit" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Next</button>
+					<button type="submit" name="Submit" value="SubmitBtn" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Next</button>
 				</td>
 				<td>
       		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
