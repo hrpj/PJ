@@ -13,7 +13,7 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Analysis 05</title>
+    <title>Analysis 09</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -102,63 +102,33 @@ session_start();
 	</nav>
 </head>
 
-<?php
-	function timeDiff($firstTime,$lastTime) 
-	{
-		$firstTime=strtotime($firstTime);
-		$lastTime=strtotime($lastTime);
-		$timeDiff=$lastTime-$firstTime;
-		return $timeDiff;
-	}
-
-?>
-  
   <body>
-    <div class = "Analysis"><h3>Work time of monday and salary of position in any department</h></div>
-    <table class="table">
+      <div class = "Analysis"><h3>The people who has the most sick leave type of every branch</h></div>
+          <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Department</th>
-        <th scope="col">Position</th>
-        <th scope="col">Work Time (hrs.)</th>
-        <th scope="col">Base Salary</th>
+        <th scope="col">Staff ID</th>
+        <th scope="col">Type</th>
+        <th scope="col">Count</th>
       </tr>
     </thead>
 <?php
-	$result = mysqli_query($con,"SELECT * FROM dailyworkingtime WHERE day LIKE 'Monday'");
+	$result = mysqli_query($con,"SELECT s.staffID, l.type, COUNT(*) AS Num FROM staff s, leavehistory l WHERE l.type = 'Sick' AND s.staffID=l.staffID GROUP BY s.staffID,l.type ORDER BY Num DESC LIMIT 1");
 	while ($row = mysqli_fetch_array($result))
     {
-		$positionID = $row['positionID'];
-		$timeIn = $row['timeIn'];
-		$timeOut = $row['timeOut'];
-		
-		$diffTime = (timeDiff($timeIn,$timeOut)/60)/60;
-		
-		$result2 = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID' ");
-		while ($row2 = mysqli_fetch_array($result2))
-		{
-			$departmentID = $row2['departmentID'];
-			$positionName = $row2['positionName'];
-			$minSalary = $row2['minSalary'];
-			$maxSalary = $row2['maxSalary'];
-			$salary = $minSalary.'-'.$maxSalary ;
-		}
-		$result3 = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID' ");
-		while ($row3= mysqli_fetch_array($result3))
-		{
-			$departmentName = $row3['departmentName'];
-		}
+		$staffID = $row['staffID'];
+		$type = $row['type'];
+		$Num = $row['Num'];
 		
 		echo " 	<tbody>
 				  <tr>
-					<td>".$departmentName."</td>
-					<td>".$positionName."</td>
-					<td>".$diffTime."</td>
-					<td>".$salary."</td>
+					<td>".$staffID."</td>
+					<td>".$type."</td>
+					<td>".$Num."</td>
 				  </tr>
 				</tbody>";
 	}
-?>	
+?>
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->

@@ -100,7 +100,7 @@
         <br><br><i class="fas fa-building"></i>Adress : <?php echo "$staffAddress"; ?>
         <br><br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?>
     </div>
-    <div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
+    <div class="Training">Check Training Course : <a href="http://localhost/HRPJ/Staff/TrainingCourse.php" class="button-link">Click here!</a></div>
     <!-- End Information -->
     <!-- Table Work History -->
     <div class = "WorkHis"><h4>Work History</h></div>

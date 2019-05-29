@@ -37,6 +37,14 @@ h6
     margin-left:800px;
     margin-top:-166px;
 }
+.Infor3
+{
+    width:250px;
+    top:50%;
+    left:50%;
+    margin-left:800px;
+    margin-top:-120px;
+}
 .AddNCancel
 {
     margin-top:80px;
@@ -125,4 +133,9 @@ h6
 {
     margin-top:80px;
     margin-left:790px;
+}
+.NextBut
+{
+    margin-top:70px;
+    margin-left:900px;
 }

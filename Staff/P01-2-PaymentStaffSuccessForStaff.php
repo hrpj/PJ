@@ -34,22 +34,16 @@ session_start();
 
 		<div class="collapse navbar-collapse" id="navbarColor02">
 	        <ul class="navbar-nav mr-auto">
-	        <li class="nav-item active">
+	        <li class="nav-item">
 	        <a class="nav-link" href="#">Page <span class="sr-only">(current)</span></a>
 	        </li>
-	        <li class="nav-item dropdown active">
-	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Information
-	        </a>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="InforMeHR.html">Only Me</a>
-	          <a class="dropdown-item" href="InforBranch.html">Branch</a>
-	        </div>
-	        </li>
+			<li class="nav-item">
+            <a class="nav-link" href="#">Information</a>
+            </li>
 	        <li class="nav-item">
 	        <a class="nav-link" href="TimeAttendanceSearchForHR.html">Time Attendance</a>
 	        </li>
-	        <li class="nav-item">
+	        <li class="nav-item active">
 	        <a class="nav-link" href="#">Payment Slip</a>
 	        </li>
 	        </ul>
