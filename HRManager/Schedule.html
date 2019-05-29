@@ -4,11 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Required Position</title>
+    <title>Training Course Schedule</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styletraining2.css" rel="stylesheet">
+    <link href="styleschedule.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -24,7 +24,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown ">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Information
                     </a>
@@ -32,6 +32,7 @@
                         <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforMeHR.php">Only Me</a>
                         <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/SearchInforStaff-01.php">Any Staffs</a>
                         <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Branch</a>
+                        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/InforBranch.php">Training Course</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -52,7 +53,7 @@
                         <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Create
                     </a>
@@ -95,35 +96,32 @@
   </head>
   <body>
       <br>
-      <h2>&nbsp;&nbsp;&nbsp;Required Position</h2>
-      <!-- Search -->
-      <div class="Department">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Department</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">1 - Marketing</option>
-      <option value="2">2 - Finance</option>
-      </select> <a href="#"><i class="fas fa-search"></i></a>
-      </div>
-      <div class="Position">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Position</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Supervisor</option>
-      <option value="2">Manager</option>
-      </select>
-      </div>
-
-      <!-- End Search -->
-      <table class="NextBut">
+      <h2>&nbsp;&nbsp;&nbsp;Training Courses Schedule </h2>
+      <!-- Table -->
+      <table class="table">
+      <thead class="thead-dark">
+      <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Course ID</th>
+      <th scope="col">Topic</th>
+      <th scope="col">Location</th>
+      <th scope="col">In charge person</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>2012/02/02-2012/02/03</td>
+      <td>CPE231</td>
+      <td>Database</td>
+      <td>KMUTT</td>
+      <td>Khajornpong</td>
+      </tr>
+      </tbody>
+      </table>
+      <!-- End Table -->
+      <table class="Back">
           <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Add&nbsp;more</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Save</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
+      <button type="button" class="btn btn-dark" onclick="window.location.href = 'PaymentStaffAdd.html';">Back</button>
       </td></tr>
       </table>
     <!-- Optional JavaScript -->
