@@ -18,7 +18,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylepaymentedit.css" rel="stylesheet">
+    <link href="stylepaymentedit2.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -168,8 +168,6 @@ session_start();
 			<button href="#" type="submit" class="button-link" style="border: none; background-color:white" >Save</button>
 		</div>
 	</form>
-    <form>
-
 		<div class="table1">
 			Bonus
 		<table class="table">
@@ -190,12 +188,9 @@ session_start();
 				</tr>
 			</tbody>
 		</table>
-	</form>
 
 	<div class ="SaveBonus"><a href="BranchToDepartment.html" class="button-link">Save</a></div>
 	<div class ="AddBonus"><a href="BranchToDepartment.html" class="button-link">Add</a></div>
-	<div class ="SaveDeduc"><a href="BranchToDepartment.html" class="button-link">Save</a></div>
-	<div class ="AddDeduc"><a href="BranchToDepartment.html" class="button-link">Add</a></div>
     <table class="Back">
 		<tr><td>
 			<button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Back</button>
