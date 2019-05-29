@@ -175,7 +175,7 @@ session_start();
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
       <select name="branchName" class="form-control" id="exampleFormControlSelect1">
-        <option <?php echo "value = \"$branchName\""; ?> ><?php echo "$branchName"; ?></option>
+        <option <?php echo "value = \"".$branchName."\""; ?> ><?php echo "$branchName"; ?></option>
         <?php
          while($row = mysqli_fetch_array($result1)) {
             $name = $row['branchName'];
@@ -192,7 +192,7 @@ session_start();
 		<div class="form-group">
 		    <label for="exampleFormControlSelect1">Department</label>
 		    <select name="departmentID" class="form-control" id="exampleFormControlSelect1">
-					<option <?php echo " value=\"".$departmentID."\""?>> <?php echo $departmentName; ?></option>
+					<option <?php echo "value=\"".$departmentID."\""?>> <?php echo $departmentName; ?></option>
 					<?php
 					 while($row = mysqli_fetch_array($result2)) {
 							$dName = $row['departmentName'];
