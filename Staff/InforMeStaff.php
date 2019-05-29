@@ -53,13 +53,7 @@
         </div>
     </nav>
   </head>
-  <body>
-    <div class = "StaffInfor"><h3>Staff Information</h></div>
-    <div align ="center"><img src="ImageStaff.jpg" width="400" height="300"></div>
-    <!-- Information -->
-    <div class="Infor">
-        <i class="fas fa-address-card"></i>Staff ID : <?php echo "$id"; ?>
-        <br><br><i class="fas fa-file-signature"></i>Name : <?php
+<?php
             $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
             while ($row = mysqli_fetch_array($result))
             {
@@ -69,9 +63,17 @@
                 $telNOStaff = $row['telNo'];
                 $staffAddress = $row['address'];
                 $startDate = $row['startDate'];
+				$picture = $row['picture'];
             }
             $staffName = $_SESSION['staffName'];
-            echo $staffName; ?>
+?>
+  <body>
+    <div class = "StaffInfor"><h3>Staff Information</h></div>
+    <div align ="center"><img src="../staffImage/<?php echo $picture; ?>"></div>
+    <!-- Information -->
+    <div class="Infor">
+        <i class="fas fa-address-card"></i>Staff ID : <?php echo "$id"; ?>
+        <br><br><i class="fas fa-file-signature"></i>Name : <?php  echo $staffName; ?>
         <br><br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?>
         <br><br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?>
         <br><br><i class="fas fa-hourglass-start"></i>Start Date : <?php echo "$startDate"; ?>
