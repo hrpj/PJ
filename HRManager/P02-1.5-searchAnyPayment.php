@@ -14,12 +14,38 @@
 	$month = mysqli_real_escape_string($con, $_POST['month']);
 	$year = mysqli_real_escape_string($con, $_POST['year']);
 
-	$_SESSION["foundID"] = $search;
-	$_SESSION["posi"] = $positionID;
-	$_SESSION["depart"] = $departmentID;
-	$_SESSION["bran"] = $branchName;
-	$_SESSION["month"] = $month;
-	$_SESSION["year"] = $year;
-	
+
+	unset ($_SESSION["foundID"]);
+	unset ($_SESSION["posi"]);
+	unset ($_SESSION["depart"]);
+	unset ($_SESSION["bran"]);
+	unset ($_SESSION["month"]);
+	unset ($_SESSION["year"]);
+
+	if(!empty($search))
+	{
+		$_SESSION["foundID"] = $search;
+	}
+	if(!empty($positionID))
+	{
+		$_SESSION["posi"] = $positionID;
+	}
+	if(!empty($departmentID))
+	{
+		$_SESSION["depart"] = $departmentID;
+	}
+	if(!empty($branchName))
+	{
+		$_SESSION["bran"] = $branchName;
+	}
+	if(!empty($month))
+	{
+		$_SESSION["month"] = $month;
+	}
+	if(!empty($year))
+	{
+		$_SESSION["year"] = $year;
+	}
+
 	header("Location: http://localhost/HRPJ/HRManager/P02-2-ListOfBill.php");
 ?>
