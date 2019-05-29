@@ -165,7 +165,7 @@ session_start();
 <table class="threebuttons">
     <tr>
       <td>
-        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Finish</button>
+        <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Finish</button>
       </td>
     </tr>
 </table>

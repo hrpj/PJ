@@ -146,7 +146,7 @@
             <td>
               <span>
                 <?php $_SESSION["BRANCH"] = $branchName ?>
-                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = '/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
+                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
               </span>
             </td>
           </tr>
