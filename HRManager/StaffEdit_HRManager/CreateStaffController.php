@@ -63,6 +63,7 @@ else if ($_POST["Submit"] === 'Submit') {
   //___________________________________________upload__________________________________________________________
 
   $successs = move_uploaded_file($_FILES['picture']['tmp_name'],$uploadPath);
+  chmod("../../staffImage/",0777);
 
   if($successs){
     $picture = $newImageName; //
