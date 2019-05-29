@@ -118,7 +118,7 @@
   <body>
       <div class = "NewStaff"><h3>Work History of <?php echo $staffID; ?> </h></div>
 <!-- Univ. Table -->
-  <form class="" action="index.html" method="post">
+  <form action="WorkHistoryController.php" method="post">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -151,7 +151,7 @@
              <td>
                <button type=\"submit\"
                  name=\"edit\"
-                 value=\"".$ID."\"
+                 value=\"".$startDate."\"
                  class=\"btn btn-success\">
                  <h6>edit</h6>
                </button>
@@ -159,7 +159,7 @@
              <td>
                <button type=\"submit\"
                  name=\"delete\"
-                 value=\"".$ID."\"
+                 value=\"".$startDate."\"
                  class=\"btn btn-danger\">
                  <h6>delete</h6>
                </button>
@@ -179,20 +179,19 @@
         </tr>
       </tbody>
     </table>
+  </form>
     <!-- End Table -->
+  <form action="CancelStaff.php" method="post">
     <div class="Add">
-      <button type="submit" name="create" class="btn btn-primary" onclick="window.location.href = 'NewStaff.html';">ADD</button>
+      <button type="submit" name="create" class="btn btn-primary">ADD</button>
     </div>
     <table class="threebuttons">
         <tr>
           <td>
-            <button type="button" class="btn btn-dark" onclick="window.location.href = 'NewStaff.html';">Save</button>
+            <button type="button" class="btn btn-dark" onclick="window.location.href = 'GraduateHistory.php';">Next</button>
           </td>
           <td>
-            <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Back</button></span>
-          </td>
-          <td>
-            <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+            <span><button type="submit" class="btn btn-outline-dark">Cancel</button></span>
           </td>
         </tr>
     </table>
