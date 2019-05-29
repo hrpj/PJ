@@ -1,3 +1,13 @@
+<?php
+session_start();
+  $con=mysqli_connect("localhost","root","","hrmanager");
+  // Check connection
+  if (mysqli_connect_errno())
+  {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+  $id = $_GET["id"];
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -101,21 +111,34 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Score</th>
               <th scope="col">Description</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>10</td>
-              <td>Deal with customer successful</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>5</td>
-              <td>Never miss and late</td>
-            </tr>
+            <?php
+              $result = mysqli_query($con,"SELECT * FROM competence WHERE staffId LIKE '$id'");
+              $count=$result->num_rows;
+              $i = 1;
+              if ((empty($count)))
+              {
+                echo "<tr>";
+                echo "<th scope='row'>".$i."</th>";
+                echo "<td>No Data</td>";
+                echo "</tr> ";
+              }
+              else
+              {
+                while ($row = mysqli_fetch_array($result))
+                {
+                  $accomplishment = $row['accomplishment'];
+                  echo "<tr>";
+                  echo "<th scope='row'>".$i."</th>";
+                  echo "<td>".$accomplishment."</td>";
+                  echo "</tr> ";
+                  $i++;
+                }
+              }
+            ?>
           </tbody>
         </table>
 </div>
@@ -126,18 +149,35 @@
     <table class="table table-bordered bg-danger text-white">
       <thead>
         <tr>
-          <th scope="col">#
-          </th>
-          <th scope="col">Score</th>
+          <th scope="col">#</th>
           <th scope="col">Description</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>-2</td>
-          <td>Forget to send report</td>
-        </tr>
+        <?php
+          $result = mysqli_query($con,"SELECT * FROM concern WHERE staffId LIKE '$id'");
+          $count=$result->num_rows;
+          $i = 1;
+          if ((empty($count)))
+          {
+            echo "<tr>";
+            echo "<th scope='row'>".$i."</th>";
+            echo "<td>No Data</td>";
+            echo "</tr> ";
+          }
+          else
+          {
+            while ($row = mysqli_fetch_array($result))
+            {
+              $concernBehavior = $row['concernBehavior'];
+              echo "<tr>";
+              echo "<th scope='row'>".$i."</th>";
+              echo "<td>".$concernBehavior."</td>";
+              echo "</tr> ";
+              $i++;
+            }
+          }
+        ?>
       </tbody>
     </table>
 </div>
