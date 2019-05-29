@@ -191,7 +191,7 @@
             <button type="button" class="btn btn-dark" onclick="window.location.href = 'GraduateHistory.php';">Next</button>
           </td>
           <td>
-            <span><button type="submit" class="btn btn-outline-dark">Cancel</button></span>
+            <span><button type="submit" name="Cancel" class="btn btn-outline-dark">Cancel</button></span>
           </td>
         </tr>
     </table>
