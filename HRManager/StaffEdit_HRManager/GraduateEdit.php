@@ -14,9 +14,9 @@
   }
 
   $staffID = $_SESSION["CR_STAFFID"];
-  $startDate = $_SESSION["STARTDATE"];
+  $year = $_SESSION["YEAR"];
 
-  $sql = "SELECT * FROM workinghistory WHERE staffID LIKE '$staffID' AND startDate LIKE '$startDate'";
+  $sql = "SELECT * FROM education WHERE staffID LIKE '$staffID' AND year LIKE '$year'";
   $result = mysqli_query($conn,$sql);
   $row = mysqli_fetch_array($result)
 ?>
@@ -122,30 +122,30 @@
 
   <body>
       <div class = "NameBranch"><h3>Edit Graduate History</h3></div>
-  <form action="WorkHistoryController.php" method="post">
+  <form action="GraduateController.php" method="post">
       <div class="Previous">
-        From University : <br><?php echo $row["company"]; ?>
+        From University : <br><?php echo $row["university"]; ?>
       </div>
       <div class="New">
-        To University : <input type="text" class="form-control" name="company" <?php echo "value=\"".$row["company"]."\""; ?>>
+        To University : <input type="text" class="form-control" name="university" <?php echo "value=\"".$row["university"]."\""; ?>>
       </div>
       <div class="PreviousD">
-        Previous Degree : <br><?php echo $row["departmentBefore"]; ?>
+        Previous Degree : <br><?php echo $row["degree"]; ?>
       </div>
       <div class="NewD">
-        New Degree : <input type="text" class="form-control" name="departmentBefore" <?php echo "value=\"".$row["departmentBefore"]."\""; ?>>
+        New Degree : <input type="text" class="form-control" name="degree" <?php echo "value=\"".$row["degree"]."\""; ?>>
     </div>
       <div class="PreviousP">
-        Previous Field : <br><?php echo $row["PositionBefore"]; ?>
+        Previous Field : <br><?php echo $row["field"]; ?>
       </div>
       <div class="NewP">
-        New Field : <input type="text" class="form-control" name="positionBefore" <?php echo "value=\"".$row["PositionBefore"]."\""; ?>>
+        New Field : <input type="text" class="form-control" name="field" <?php echo "value=\"".$row["field"]."\""; ?>>
       </div>
       <div class="PreviousS">
-        Previous Year : <br><?php echo $row["startDate"]; ?>
+        Previous Year : <br><?php echo $row["year"]; ?>
       </div>
       <div class="NewS">
-        New Year : <input type="text" class="form-control" name="startDate" <?php echo "value=\"".$row["startDate"]."\""; ?>>
+        New Year : <input type="text" class="form-control" name="year" <?php echo "value=\"".$row["year"]."\""; ?>>
       </div>
   <table class="Back">
       <tr>
@@ -153,7 +153,7 @@
           <button type="submit" name="EditSubmit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Save</button>
         </td>
         <td>
-          <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WorkHistory.php';">Cancel</button></span>
+          <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.php';">Cancel</button></span>
         </td>
       </tr>
   </table>

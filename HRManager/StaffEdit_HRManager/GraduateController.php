@@ -45,7 +45,7 @@ else if (isset($_POST['edit']))
   //edit
   $_SESSION["YEAR"] = $whichYear;
   //currently not doing anything
-  header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/GraduateHistory.php');
+  header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/GraduateEdit.php');
   //end edit
 }
 else if (isset($_POST['delete']))
@@ -64,15 +64,15 @@ else if (isset($_POST['delete']))
   //end delete
 }
 else if (isset($_POST['EditSubmit'])) {
-  $whichTime = $_SESSION["STARTDATE"];
-  unset($_SESSION['STARTDATE']);
-  $sql = "UPDATE workinghistory
-          SET company='$company', startDate='$startDate', endDate='$endDate'
-            , departmentBefore='$departmentBefore', PositionBefore='$PositionBefore'
-          WHERE startDate='$whichTime' AND staffID='$staffID'";
+  $whichYear = $_SESSION["STARTDATE"];
+  unset($_SESSION['YEAR']);
+  $sql = "UPDATE education
+          SET university='$university', degree='$degree', field='$field'
+            , year='$year'
+          WHERE year='$whichYear' AND staffID='$staffID'";
   if(mysqli_query($conn, $sql)){
     echo "Record was update successfully.";
-    header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/WorkHistory.php');
+    header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/GraduateHistory.php');
   }
   else{
     echo "ERROR: Could not able to execute $sql. ". mysqli_error($conn);

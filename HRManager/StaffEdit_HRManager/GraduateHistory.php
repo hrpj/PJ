@@ -185,7 +185,7 @@
     <table class="threebuttons">
       <tr>
         <td>
-          <button type="submit" name="OK" class="btn btn-dark" onclick="window.location.href = 'WorkHistory.html';">Next</button>
+          <button type="submit" name="OK" class="btn btn-dark" onclick="window.location.href = 'WorkHistory.html';">OK</button>
         </td>
         <td>
           <span><button type="submit" name="Cancel" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
