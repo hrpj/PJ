@@ -113,6 +113,7 @@ session_start();
 		{
 			$name = $row['staffName'] ;
 			$positionID = $row['positionID'];
+			$picture = $row['picture'];
 		}
 
 		$result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
@@ -147,7 +148,7 @@ session_start();
     <!-- End Search -->
     <br><br>
     <!-- Information -->
-    <div align ="center"><img src="images/<?php echo $row['pro_image']; ?>" width="400px" height="300px"></div><br><br>
+    <div align ="center"><img src="../staffImage/<?php echo $picture; ?>" ></div><br><br>
     <dl class="row">
   <dt class="col-sm-3" align='right'>Name : </dt>
   <dd class="col-sm-9"><?php echo "$name" ;?></dd>
