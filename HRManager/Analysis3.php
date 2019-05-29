@@ -1,10 +1,19 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Analysis 02</title>
+    <title>Analysis 03</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -70,18 +79,18 @@
         Analysis Report
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="NewStaff.html">Age range of staffs</a>
-        <a class="dropdown-item" href="NewBranchForHR.html">Salary in every position and department</a>
-        <a class="dropdown-item" href="NewStaff.html">Daily Attendance in Bang Khae Branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Work time of any position</a>
-        <a class="dropdown-item" href="NewStaff.html">Work time and Salary of position in any department</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of every staff in Bang Khae branch</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of miss of IT department in Bang Khae</a>
-        <a class="dropdown-item" href="NewStaff.html">The most leave type of month in company</a>
-        <a class="dropdown-item" href="NewStaff.html">The people who has the most sick leave type</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of staff in each branch</a>
-        <a class="dropdown-item" href="NewStaff.html">The manager who has the most salary in company</a>
-        <a class="dropdown-item" href="NewStaff.html">Amount of gender in this company</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis1.php">Age range of staffs</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis2.php">Salary in every position and department</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis3.php">Daily Attendance in Bang Khae Branch</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis4.php">Work time of any position</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis5.php">Work time and Salary of position in any department</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis6.php">Amount of miss of every staff in Bang Khae branch</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis7.php">Amount of miss of IT department in Bang Khae</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis8.php">The most leave type of month in company</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis9.php">The people who has the most sick leave type</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis10.php">Amount of staff in each branch</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis11.php">The manager who has the most salary in company</a>
+        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/Analysis12.php">Amount of gender in this company</a>
       </div>
     </li>
         </ul>
@@ -92,30 +101,50 @@
         </ul>
     </div>
 </nav>
-  </head>
-  <body>
-      <div class = "Analysis"><h3>Minimum and Maximum salary in every position in department</h></div>
-          <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Department</th>
-        <th scope="col">Position</th>
-        <th scope="col">Base Salary</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>HR</td>
-        <td>Manager</td>
-        <td>30000-48000</td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- End Table -->
+</head>
+
+<body>
+    <div class = "Analysis"><h3>Daily Attendance in Bang Khae Branch</h></div>
+    <table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Staff ID</th>
+				<th scope="col">Type</th>
+				<th scope="col">Date</th>
+				<th scope="col">Arrival Time</th>
+				<th scope="col">Status</th>
+			</tr>
+		</thead>
+<?php
+	$result = mysqli_query($con,"SELECT * FROM timeattendance WHERE staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID FROM position WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE 'Bang Khae')))");
+	
+    while ($row = mysqli_fetch_array($result))
+    {
+		$ID = $row['staffID'];
+		$type = $row['type'];
+		$month = $row['date'];
+		$year = $row['year'];
+		$time = $row['time'];
+		$status = $row['status'];
+		$date = $year.'-'.$month;
+	
+		echo "<tbody>
+				<tr>
+					<td>".$ID."</td>
+					<td>".$type."</td>
+					<td>".$date."</td>
+					<td>".$time."</td>
+					<td>".$status."</td>
+				</tr>
+			</tbody>";
+	}
+?>	
+    </table>
+    <!-- End Table -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>

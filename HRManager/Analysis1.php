@@ -1,3 +1,13 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+	date_default_timezone_set("Asia/Bangkok");
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -92,7 +102,8 @@
         </ul>
     </div>
 </nav>
-  </head>
+
+</head>
   <body>
       <div class = "Analysis"><h3>Age Range of Staffs</h></div>
           <table class="table">
@@ -105,19 +116,87 @@
     <tbody>
       <tr>
         <td>20-29</td>
-        <td>10</td>
+<?php
+	$date = date("Y-m-d");
+	echo $date;
+	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF(year,dateOfBirth,'$date') AS age) FROM staff WHERE age BETWEEN 20 AND 29");
+	
+	$count=$result->num_rows;
+	if ((empty($count)))
+	{
+		$num = '----';
+		
+	}
+	else
+	{
+		while ($row = mysqli_fetch_array($result))
+		{
+			$num = $row['age'];
+			echo $num ;
+		}
+	}
+	//echo "<td>".$num."</td>";
+?>	
       </tr>
       <tr>
         <td>30-39</td>
-        <td>20</td>
+        <?php
+	$date = date("y-m-d");
+	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF('$date', dateOfBirth)AS age) FROM staff WHERE age BETWEEN 30 AND 39");
+	if (empty($result))
+	{
+		$num = '----';
+		
+	}
+	else
+	{
+		while ($row = mysqli_fetch_array($result))
+		{
+			$num = $row['age'];
+		}
+	}
+	echo "<td>".$num."</td>";
+?>
       </tr>
       <tr>
         <td>40-49</td>
-        <td>30</td>
+<?php
+	$date = date("y-m-d");
+	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF('$date', dateOfBirth)AS age) FROM staff WHERE age BETWEEN 40 AND 49");
+	if (empty($result))
+	{
+		$num = '----';
+		
+	}
+	else
+	{
+		while ($row = mysqli_fetch_array($result))
+		{
+			$num = $row['age'];
+		}
+	}
+	echo "<td>".$num."</td>";
+?>
       </tr>
       <tr>
         <td>50-59</td>
-        <td>10</td>
+<?php
+	$date = date("y-m-d");
+	$result = mysqli_query($con,"SELECT COUNT(DATEDIFF('$date', dateOfBirth)AS age) FROM staff WHERE age BETWEEN 50 AND 59");
+	if (empty($result))
+	{
+		$num = '----';
+		
+	}
+	else
+	{
+		while ($row = mysqli_fetch_array($result))
+		{
+			$num = $row['age'];
+		}
+	}
+	echo "<td>".$num."</td>";
+?>
       </tr>
     </tbody>
   </table>

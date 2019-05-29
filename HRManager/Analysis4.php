@@ -1,10 +1,19 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Analysis 03</title>
+    <title>Analysis 04</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -93,25 +102,48 @@
     </div>
 </nav>
   </head>
+<?php
+	$result = mysqli_query($con,"SELECT * FROM dailyworkingtime ");
+	while ($row = mysqli_fetch_array($result))
+    {
+		$positionID = $row['positionID'];
+		$day = $row['day'];
+		$timeIn = $row['timeIn'];
+		$timeOut = $row['timeOut'];
+		$departmentName
+		
+		$result = mysqli_query($con,"SELECT * FROM department WHERE departmentName LIKE $departmentName ");
+		while ($row = mysqli_fetch_array($result))
+		{
+			$departmentName
+			
+			
+		}
+	}
+	
+	
+	
+?>
+  
   <body>
-      <div class = "Analysis"><h3>Daily Attendance in Bang Khae Branch</h></div>
+      <div class = "Analysis"><h3>Work time of any position</h></div>
           <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Staff ID</th>
-        <th scope="col">Type</th>
-        <th scope="col">Date</th>
-        <th scope="col">Arrival Time</th>
-        <th scope="col">Status</th>
+        <th scope="col">Department</th>
+        <th scope="col">Position</th>
+        <th scope="col">Day</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">Finish Time</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>HR010001</td>
-        <td>IN</td>
-        <td>18/2/2019</td>
-        <td>9.39</td>
-        <td>LATE</td>
+        <td>HR</td>
+        <td>Manager</td>
+        <td>Monday</td>
+        <td>8.30</td>
+        <td>18.30</td>
       </tr>
     </tbody>
   </table>
