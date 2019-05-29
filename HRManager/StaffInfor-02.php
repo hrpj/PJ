@@ -137,18 +137,20 @@ session_start();
       	<div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
       	<!-- Information -->
       	<div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo "$search"; ?><br>
-	  	<br><i class="fas fa-file-signature"></i>Name : <?php echo "$staffName"; ?><br>
-	  	<br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?><br>
-	  	<br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?><br>
-	  	<br><i class="fas fa-hourglass-start"></i>Start Date : <?php echo "$startDate"; ?><br>
-	  	<br>Check behavior : <a href="CompetenceforHR.html" class="button-link">Click here!</a></div>
+		  	<br><i class="fas fa-file-signature"></i>Name : <?php echo "$staffName"; ?><br>
+		  	<br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?><br>
+		  	<br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?><br>
+		  	<br><i class="fas fa-hourglass-start"></i>Start Date : <?php echo "$startDate"; ?><br>
+		  	<br>Check behavior : <a href="CompetenceforHR.html" class="button-link">Click here!</a>
+		</div>
       	<div class="Infor1"><br>
-	  	<br><i class="fas fa-layer-group"></i>Department : <?php echo "$departmentName"; ?><br>
-	  	<br><i class="fas fa-briefcase"></i>Position : <?php echo "$positionName"; ?><br>
-	  	<br><i class="fas fa-map-marker-alt"></i></i>Branch : <?php echo "$BranchName"; ?> <br>
-	  	<br><i class="fas fa-mobile-alt"></i>Mobilephone No. : <?php echo "$telNOStaff"; ?><br>
-	  	<br><i class="fas fa-building"></i>Address : <?php echo "$staffAddress"; ?><br>
-	  	<br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?></div>
+		  	<br><i class="fas fa-layer-group"></i>Department : <?php echo "$departmentName"; ?><br>
+		  	<br><i class="fas fa-briefcase"></i>Position : <?php echo "$positionName"; ?><br>
+		  	<br><i class="fas fa-map-marker-alt"></i></i>Branch : <?php echo "$BranchName"; ?> <br>
+		  	<br><i class="fas fa-mobile-alt"></i>Mobilephone No. : <?php echo "$telNOStaff"; ?><br>
+		  	<br><i class="fas fa-building"></i>Address : <?php echo "$staffAddress"; ?><br>
+		  	<br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?>
+		</div>
       	<!-- End Information -->
 		<div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
 
