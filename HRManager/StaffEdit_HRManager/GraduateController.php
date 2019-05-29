@@ -52,7 +52,7 @@ else if (isset($_POST['delete']))
 {
   //delete
   $whichYear = $_POST['delete'];
-  $sql = "DELETE FROM education WHERE startDate='$whichTime' AND staffID='$staffID'";
+  $sql = "DELETE FROM education WHERE year='$whichYear' AND staffID='$staffID'";
   if(mysqli_query($conn, $sql)){
     echo "Record was deleted successfully.";
     header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/GraduateHistory.php');
