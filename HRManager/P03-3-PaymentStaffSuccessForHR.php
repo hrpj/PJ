@@ -233,8 +233,8 @@ session_start();
 				$amount2 = $row{'amount'};
 				echo "<tbody>";
 				echo "<tr>";
-				echo "<td>".$des."</td>" ;
-				echo "<td>".$amount."</td>";
+				echo "<td>".$des2."</td>" ;
+				echo "<td>".$amount2."</td>";
 				echo "</tr></tbody> ";
 			}
 		}
