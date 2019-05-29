@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap');
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+h6
+{
+    font-family: 'Playfair Display', serif;
+}
+.Payment
+{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.Infor
+{
+    width:390px;
+    top:50%;
+    left:50%;
+    margin-left:300px;
+    margin-top:30px;
+}
+.Infor1
+{
+    width:250px;
+    top:50%;
+    left:50%;
+    margin-left:800px;
+    margin-top:-205px;
+}
+.Infor2
+{
+    width:250px;
+    top:50%;
+    left:50%;
+    margin-left:800px;
+    margin-top:-166px;
+}
+.Infor3
+{
+    width:250px;
+    top:50%;
+    left:50%;
+    margin-left:800px;
+    margin-top:-120px;
+}
+.AddNCancel
+{
+    margin-top:80px;
+    margin-left:610px;
+}
+.FindCancel
+{
+    margin-top:80px;
+    margin-left:1030px;
+}
+.table1
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:400px;
+    margin-top:30px;
+}
+.tableone
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:300px;
+    margin-top:30px;
+}
+.Salary
+{
+    width: 200px;
+    margin-left:400px;
+    margin-top:40px;
+}
+.SalaryFill
+{
+    width: 200px;
+    margin-left:80px;
+    margin-top:-30px;
+}
+.SaveSalary
+{
+    width: 200px;
+    margin-left:680px;
+    margin-top:-40px;
+}
+.SaveBonus
+{
+    width: 200px;
+    margin-left:305px;
+    margin-top:-125px;
+}
+.AddBonus
+{
+    width: 200px;
+    margin-left:305px;
+    margin-top:40px;
+}
+.Back
+{
+    margin-top:80px;
+    margin-left:600px;
+}
