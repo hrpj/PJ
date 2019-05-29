@@ -141,6 +141,7 @@ session_start();
                   ?>
                 </tbody>
               </table>
+              <br><br>
       </div>
       <!-- End Competence -->
       <div class="InputScore1">
