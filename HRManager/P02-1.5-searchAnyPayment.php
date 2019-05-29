@@ -22,30 +22,18 @@
 	unset ($_SESSION["month"]);
 	unset ($_SESSION["year"]);
 
-	if(!empty($search))
-	{
+	
 		$_SESSION["foundID"] = $search;
-	}
-	if(!empty($positionID))
-	{
+	
 		$_SESSION["posi"] = $positionID;
-	}
-	if(!empty($departmentID))
-	{
+	
 		$_SESSION["depart"] = $departmentID;
-	}
-	if(!empty($branchName))
-	{
+	
 		$_SESSION["bran"] = $branchName;
-	}
-	if(!empty($month))
-	{
+	
 		$_SESSION["month"] = $month;
-	}
-	if(!empty($year))
-	{
+	
 		$_SESSION["year"] = $year;
-	}
 
 	header("Location: http://localhost/HRPJ/HRManager/P02-2-ListOfBill.php");
 ?>
