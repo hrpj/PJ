@@ -1,19 +1,22 @@
 <?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "hrmanager";
+  session_start();
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "hrmanager";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
 
-$staffID = $_SESSION["CR_STAFFID"]
+  $staffID = $_SESSION["CR_STAFFID"];
+  $sql = "SELECT * FROM workinghistory WHERE staffID LIKE '$staffID'";
+  $result = mysqli_query($conn,$sql);
+  $i = (int)0;
 ?>
 
 <!doctype html>
@@ -26,7 +29,7 @@ $staffID = $_SESSION["CR_STAFFID"]
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="stylenewstaff.css" rel="stylesheet">
+    <link href="styleworkhis.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -110,38 +113,90 @@ $staffID = $_SESSION["CR_STAFFID"]
         </div>
     </nav>
   </head>
+
+<!-- ___________________________________ Start Form _____________________________________________ -->
   <body>
-      <div class = "NewStaff"><h3>Work History : <?php echo $staffID; ?> </h></div>
+      <div class = "NewStaff"><h3>Work History of <?php echo $staffID; ?> </h></div>
 <!-- Univ. Table -->
+  <form class="" action="index.html" method="post">
     <table class="table">
-<thead class="thead-dark">
-<tr>
-<th scope="col">#</th>
-<th scope="col">Company</th>
-<th scope="col">Start Date</th>
-<th scope="col">End Date</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th scope="row">1</th>
-<td><input class="form-control" type="text" placeholder="Company Name"></td>
-<td><input type="Date" class="form-control" id="DOB" placeholder="Date of Birth"></td>
-<td><input type="Date" class="form-control" id="DOB" placeholder="Date of Birth"></td>
-</tr>
-</tbody>
-</table>
-<!-- End Table -->
-<div class="Add"><a href="WorkHistory.html" class="button-link">Add more</a></div>
-<table class="threebuttons">
-    <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'NewStaff.html';">Save</button>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Back</button></span>
-</td><td>
-    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
-</td></tr>
-</table>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Company</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Department</th>
+          <th scope="col">Position</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+         while($row = mysqli_fetch_array($result)) {
+            $i = $i+1;
+            $company = $row['company'];
+            $startDate = $row['startDate'];
+            $endDate = $row['endDate'];
+            $departmentBefore = $row['departmentBefore'];
+            $PositionBefore = $row['PositionBefore'];
+            echo "<tr>
+             <td>".$i."</td>
+             <td>".$company."</td>
+             <td>".$startDate."</td>
+             <td>".$endDate."</td>
+             <td>".$departmentBefore."</td>
+             <td>".$PositionBefore."</td>
+             <td>
+               <button type=\"submit\"
+                 name=\"edit\"
+                 value=\"".$ID."\"
+                 class=\"btn btn-success\">
+                 <h6>edit</h6>
+               </button>
+             </td>
+             <td>
+               <button type=\"submit\"
+                 name=\"delete\"
+                 value=\"".$ID."\"
+                 class=\"btn btn-danger\">
+                 <h6>delete</h6>
+               </button>
+             </td>
+            </tr>";
+         }
+        ?>
+        <tr>
+          <th scope="row">#</th>
+          <td><input name="company" class="form-control" type="text" placeholder="Company Name"></td>
+          <td><input name="startDate" type="Date" class="form-control" placeholder="Start Date"></td>
+          <td><input name="endDate" type="Date" class="form-control" placeholder="End Date"></td>
+          <td><input name="departmentBefore" type="text" class="form-control" placeholder="department"></td>
+          <td><input name="positionBefore" type="text" class="form-control" placeholder="position"></td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- End Table -->
+    <div class="Add">
+      <button type="submit" name="create" class="btn btn-primary" onclick="window.location.href = 'NewStaff.html';">ADD</button>
+    </div>
+    <table class="threebuttons">
+        <tr>
+          <td>
+            <button type="button" class="btn btn-dark" onclick="window.location.href = 'NewStaff.html';">Save</button>
+          </td>
+          <td>
+            <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'GraduateHistory.html';">Back</button></span>
+          </td>
+          <td>
+            <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
+          </td>
+        </tr>
+    </table>
+  </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

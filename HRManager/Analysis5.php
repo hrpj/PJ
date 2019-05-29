@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -92,10 +101,21 @@
         </ul>
     </div>
 </nav>
-  </head>
+  </head> 
+<?php
+	function timeDiff($firstTime,$lastTime) 
+	{
+		$firstTime=strtotime($firstTime);
+		$lastTime=strtotime($lastTime);
+		$timeDiff=$lastTime-$firstTime;
+		return $timeDiff;
+	}
+
+?>
+  
   <body>
-      <div class = "Analysis"><h3>Work time and salary of position in any department</h></div>
-          <table class="table">
+    <div class = "Analysis"><h3>Work time of monday and salary of position in any department</h></div>
+    <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Department</th>
@@ -104,14 +124,41 @@
         <th scope="col">Base Salary</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>HR</td>
-        <td>Manager</td>
-        <td>5</td>
-        <td>34000-40000</td>
-      </tr>
-    </tbody>
+<?php
+	$result = mysqli_query($con,"SELECT * FROM dailyworkingtime WHERE day LIKE 'Monday'");
+	while ($row = mysqli_fetch_array($result))
+    {
+		$positionID = $row['positionID'];
+		$timeIn = $row['timeIn'];
+		$timeOut = $row['timeOut'];
+		
+		$diffTime = (timeDiff($timeIn,$timeOut)/60)/60;
+		
+		$result2 = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID' ");
+		while ($row2 = mysqli_fetch_array($result2))
+		{
+			$departmentID = $row2['departmentID'];
+			$positionName = $row2['positionName'];
+			$minSalary = $row2['minSalary'];
+			$maxSalary = $row2['maxSalary'];
+			$salary = $minSalary.'-'.$maxSalary ;
+		}
+		$result3 = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID' ");
+		while ($row3= mysqli_fetch_array($result3))
+		{
+			$departmentName = $row3['departmentName'];
+		}
+		
+		echo " 	<tbody>
+				  <tr>
+					<td>".$departmentName."</td>
+					<td>".$positionName."</td>
+					<td>".$diffTime."</td>
+					<td>".$salary."</td>
+				  </tr>
+				</tbody>";
+	}
+?>	
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->

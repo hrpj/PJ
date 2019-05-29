@@ -102,28 +102,7 @@ session_start();
     </div>
 </nav>
   </head>
-<?php
-	$result = mysqli_query($con,"SELECT * FROM dailyworkingtime ");
-	while ($row = mysqli_fetch_array($result))
-    {
-		$positionID = $row['positionID'];
-		$day = $row['day'];
-		$timeIn = $row['timeIn'];
-		$timeOut = $row['timeOut'];
-		$departmentName
-		
-		$result = mysqli_query($con,"SELECT * FROM department WHERE departmentName LIKE $departmentName ");
-		while ($row = mysqli_fetch_array($result))
-		{
-			$departmentName
-			
-			
-		}
-	}
-	
-	
-	
-?>
+
   
   <body>
       <div class = "Analysis"><h3>Work time of any position</h></div>
@@ -137,15 +116,37 @@ session_start();
         <th scope="col">Finish Time</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>HR</td>
-        <td>Manager</td>
-        <td>Monday</td>
-        <td>8.30</td>
-        <td>18.30</td>
-      </tr>
-    </tbody>
+<?php
+	$result = mysqli_query($con,"SELECT * FROM dailyworkingtime ");
+	while ($row = mysqli_fetch_array($result))
+    {
+		$positionID = $row['positionID'];
+		$day = $row['day'];
+		$timeIn = $row['timeIn'];
+		$timeOut = $row['timeOut'];
+		
+		$result2 = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID' ");
+		while ($row2 = mysqli_fetch_array($result2))
+		{
+			$departmentID = $row2['departmentID'];
+			$positionName = $row2['positionName'];
+		}
+		$result3 = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID' ");
+		while ($row3= mysqli_fetch_array($result3))
+		{
+			$departmentName = $row3['departmentName'];
+		}
+		echo " 	<tbody>
+				  <tr>
+					<td>".$departmentName."</td>
+					<td>".$positionName."</td>
+					<td>".$day."</td>
+					<td>".$timeIn."</td>
+					<td>".$timeOut."</td>
+				  </tr>
+				</tbody>";
+	}
+?>	
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->
