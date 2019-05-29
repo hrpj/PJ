@@ -114,9 +114,10 @@ session_start();
   </head>
   <body>
       <br>
-      <h2>&nbsp;&nbsp;&nbsp;Staff Information Manage</h2>
+      <h2>&nbsp;&nbsp;&nbsp;Staff Information Manage : Find Staff</h2>
       <hr>
-      <!-- Search -->
+<!-- _________________________________Form start________________________________________ -->
+<form class="" action="index.html" method="post">
       <div class="StaffID">
       <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
@@ -125,47 +126,57 @@ session_start();
       </div>
       <div class="Branch">
       <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Branch</label>
-      <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Choose...</option>
-        <?php
-         while($row = mysqli_fetch_array($resultB)) {
-            $name = $row['branchName'];
-            echo "<option value=\"".$name."\">".$name."</option>";
-         }
-        ?>
-      </select><a href="#"><i class="fas fa-search"></i></a>
+	      <label class="input-group-text" for="inputGroupSelect01">Branch</label>
+<!-- _________________________________branch select________________________________________ -->
+	      <select name="branchName" class="custom-select" id="inputGroupSelect01">
+	        <option selected value="">Choose...</option>
+	        <?php
+	         while($row = mysqli_fetch_array($resultB)) {
+	            $bName = $row['branchName'];
+	            echo "<option value=\"".$bName."\">".$bName."</option>";
+	         }
+	        ?>
+	      </select><a href="#"><i class="fas fa-search"></i></a>
       </div>
-        <div class="Department">
-        <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Department</label>
-        <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Choose...</option>
-        <option><?php echo "$branchName"; ?></option>
-        <?php
-         while($row = mysqli_fetch_array($result)) {
-            $name = $row['branchName'];
-            echo "<option value=\"".$name."\">".$name."</option>";
-         }
-        ?>
-      </select> <a href="#"><i class="fas fa-search"></i></a>
-      </div>
-      <div class="Position">
-      <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Position</label>
-      <select class="custom-select" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">Supervisor</option>
-      <option value="2">Manager</option>
-      </select>
+      <div class="Department">
+      	<div class="input-group-prepend">
+      		<label class="input-group-text" for="inputGroupSelect01">Department</label>
+<!-- _________________________________department select________________________________________ -->
+      		<select name="departmentName" class="custom-select" id="inputGroupSelect01">
+	      		<option selected value=''>Choose...</option>
+		        <?php
+		         while($row = mysqli_fetch_array($resultD)) {
+		            $dName = $row['departmentName'];
+		            echo "<option value=\"".$dName."\">".$dName."</option>";
+		         }
+		        ?>
+      		</select> <a href="#"><i class="fas fa-search"></i></a>
+      	</div>
+      	<div class="Position">
+	      <div class="input-group-prepend">
+	      <label class="input-group-text" for="inputGroupSelect01">Position</label>
+<!-- _________________________________position select________________________________________ -->
+	      <select class="custom-select" id="inputGroupSelect01">
+	      	<option selected>Choose...</option>
+						<?php
+						 while($row = mysqli_fetch_array($resultP)) {
+								$pName = $row['positionName'];
+								echo "<option value=\"".$pName."\">".$pName."</option>";
+						 }
+						?>
+      	</select>
       </div>
       <table class="NextBut">
-          <tr><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Find</button>
-      </td><td>
-      <button type="button" class="btn btn-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Back</button>
-      </td></tr>
+        <tr>
+					<td>
+      			<button type="submit" class="btn btn-dark" onclick="window.location.href = 'ListOfBill.html';">Find</button>
+      		</td>
+					<td>
+      			<button type="button" class="btn btn-dark" onclick="window.location.href = '../WelcomeSignoutForHR.html';">Back</button>
+      		</td>
+				</tr>
       </table>
+		</form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

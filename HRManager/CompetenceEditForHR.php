@@ -126,15 +126,15 @@ session_start();
                       $accomplishment = $row['accomplishment'];
                       echo "<tr>";
                       echo "<th scope='row'>".$i."</th>";
-                      echo "<form action='DeleteAccomplishmentAction.php?id=$id' method='POST' id='deleteAccomplishment".$i."' >";
-                      echo "<input type='hidden' name='accomplishmentDelete' value='".$accomplishment."'>";
+                      echo "<form action='DeleteAccomplishmentAction.php?id=$id' method='post' id='deleteAccomplishment' >";
+                      echo "<input type='hidden' name='accomplishmentDelete".$i."' value='".$accomplishment."'>";
                       echo "<input type='hidden' name='id' value='".$id."'>";
+                      echo "<input type='hidden' name='i' value='".$i."'>";
                       echo "</form>";
                       echo "<td><input type='text' class='form-control' name='accomplishment".$i."' value='".$accomplishment."'></td>";
-                      echo "<td><button type='submit' form='deleteAccomplishment".$i."' class='fas fa-trash-alt' style='border: none; background: rgba(76, 175, 80, 0.1)'></button>";
+                      echo "<td><button type='submit' form='deleteAccomplishment' class='fas fa-trash-alt' style='border: none; background: rgba(76, 175, 80, 0.1)'></button>";
                       echo "</tr> ";
                       $i++;
-                      //<input type='checkbox' input'>
                     }
                     $i-=1;
                     echo "<input type='hidden' name='i' value='".$i."'>";
@@ -156,17 +156,18 @@ session_start();
             </thead>
             <tbody>
               <?php
-                $result = mysqli_query($con,"SELECT * FROM concern WHERE staffId LIKE '$id'");
+                $result2 = mysqli_query($con,"SELECT * FROM concern WHERE staffId LIKE '$id'");
                 $count=$result->num_rows;
                 $j = 1;
-                while ($row = mysqli_fetch_array($result))
+                while ($row2 = mysqli_fetch_array($result2))
                 {
-                  $concernBehavior = $row['concernBehavior'];
+                  $concernBehavior = $row2['concernBehavior'];
                   echo "<tr>";
                   echo "<th scope='row'>".$j."</th>";
-                  echo "<form action='DeleteConcernAction.php?id=$id' method='POST' id='deleteConcern' >";
-                  echo "<input type='hidden' name='concernDelete' value='".$concernBehavior."'>";
+                  echo "<form action='DeleteConcernAction.php?id=$id' method='post' id='deleteConcern' >";
+                  echo "<input type='hidden' name='concernDelete".$j."' value='".$concernBehavior."'>";
                   echo "<input type='hidden' name='id' value='".$id."'>";
+                  echo "<input type='hidden' name='j' value='".$j."'>";
                   echo "</form>";
                   echo "<td><input type='text' class='form-control' name='concern".$j."' value='".$concernBehavior."'></td>";
                   echo "<td><button type='submit' form='deleteConcern' class='fas fa-trash-alt' style='border: none; background: rgba(76, 175, 80, 0.1)'></button>";
