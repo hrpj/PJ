@@ -181,12 +181,12 @@
         </tr>
       </tbody>
     </table>
-  </form>
-    <!-- End Table -->
-  <form action="CancelStaff.php" method="post">
     <div class="Add">
       <button type="submit" name="create" class="btn btn-primary">ADD</button>
     </div>
+  </form>
+    <!-- End Table -->
+  <form action="CancelStaff.php" method="post">
     <table class="threebuttons">
         <tr>
           <td>
