@@ -153,7 +153,7 @@ session_start();
       <div class="Branch">
           <div class="form-group">
       <label for="exampleFormControlSelect1">Branch</label>
-      <select name="branchName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
+      <select name="branchName" class="form-control" id="exampleFormControlSelect1">
         <option><?php echo "$branchName"; ?></option>
         <?php
          while($row = mysqli_fetch_array($result)) {

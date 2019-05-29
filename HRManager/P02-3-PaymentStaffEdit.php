@@ -6,6 +6,7 @@ session_start();
 	{
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
+	$f == 0;
 ?>
 <!doctype html>
 <html lang="en">
@@ -98,7 +99,12 @@ session_start();
 			$search = $_SESSION["FoundID2"];
 			$date = $_SESSION["date"];
 			$type = $_SESSION["type"];
-			$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
+			
+			$day = explode("-", $date);
+			$year = $day[0];
+			$month = $day[1] . '-'. $day[2];
+			
+			$result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$search'");
             while ($row = mysqli_fetch_array($result))
             {
                 $positionID = $row['positionID'];
@@ -121,19 +127,49 @@ session_start();
     <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
 	
     <!-- Information -->
-    <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : HR031003<br>
-		<br><i class="fas fa-layer-group"></i>Department : Human Resource Management<br>
-		<br><i class="fas fa-calendar-alt"></i>Month : DEC
+    <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo $search ; ?><br>
+		<br><i class="fas fa-layer-group"></i>Department : <?php echo $departmentName ; ?><br>
+		<br><i class="fas fa-calendar-alt"></i>Month : <?php echo $day[1] ; ?>
 	</div>
-    <div class="Infor2"><br><br><i class="fas fa-briefcase"></i>Position : Manager<br>
-		<br><i class="fas fa-map-marker-alt"></i></i>Branch : Bang Mod<br>
-		<br><i class="fas fa-history"></i>Year : 2018
+    <div class="Infor2"><br><br><i class="fas fa-briefcase"></i>Position : <?php echo $positionName ; ?><br>
+		<br><i class="fas fa-map-marker-alt"></i></i>Branch :<?php echo $branchName ; ?><br>
+		<br><i class="fas fa-history"></i>Year : <?php echo $year ; ?>
 	</div>
 	
+<?php	$result = mysqli_query($con,"SELECT * FROM increasesalaryrecord WHERE staffID LIKE '$search' AND year LIKE '$year' And date < '$month%' Order by date Desc");
+
+		$count=$result->num_rows;
+		if ( empty($count) )
+		{
+			$salary = "Not found Salary";
+			$f == 0;
+		}
+		else
+		{
+			while ($row = mysqli_fetch_array($result))
+			{
+				$salary = $row['salary'];
+			}
+			$f == 1;
+		}
+?>
     <!-- End Information -->
-    <div class="Salary"><h5>Salary : <div class="SalaryFill"><input type="text" class="form-control" id="Type" aria-describedby="Type" placeholder="Original Salary"></h></div></div>
-    <div class ="SaveSalary"><a href="BranchToDepartment.html" class="button-link">Save</a></div>
+	<form action="P02-3.25-editSalary.php" method="POST">
+		<div class="Salary"><h5>Salary : 
+			<div class="SalaryFill">
+				<input type='hidden' name='month' value=".<?php echo $month ; ?>.">
+				<input type='hidden' name='year' value=".<?php echo $year ; ?>.">
+				<input type='hidden' name='search' value=".<?php echo $search ; ?>.">
+				<input type='hidden' name='f' value=".<?php echo $f ; ?>.">
+				<input type="text" name="newSalary" class="form-control" id="Type" aria-describedby="Type" placeholder="<?php echo $salary ; ?>"></h>
+			</div>
+		</div>
+		<div class ="SaveSalary">
+			<button href="#" type="submit" class="button-link" style="border: none; background-color:white" >Save</button>
+		</div>
+	</form>
     <form>
+	
 		<div class="table1">
 			Bonus
 		<table class="table">
@@ -194,5 +230,6 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	</body>
+</body>
+<?php 	mysqli_close($con); ?>
 </html>

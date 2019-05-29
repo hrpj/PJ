@@ -55,6 +55,10 @@ session_start();
 	{
 		echo "2";
 	}
+	else
+	{
+		header("Location: http://localhost/HRPJ/HRManager/P02-1NOSTAFF-PaymentStaffSearch.php");
+	}
 	
 	mysqli_close($con);
 ?>
