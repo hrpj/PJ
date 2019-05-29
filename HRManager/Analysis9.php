@@ -13,7 +13,7 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Analysis 06</title>
+    <title>Analysis 09</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -102,42 +102,38 @@ session_start();
     </div>
 </nav>
   </head>
-
-
-
-<body>
-      <div class = "Analysis"><h3>Amount of miss of every staff in Bang Khae Branch</h></div>
+  <body>
+      <div class = "Analysis"><h3>The people who has the most sick leave type of every branch</h></div>
           <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Staff ID</th>
-        <th scope="col">Staff Name</th>
-        <th scope="col">Leave Count</th>
+        <th scope="col">Type</th>
+        <th scope="col">Count</th>
       </tr>
     </thead>
 <?php
-	$result = mysqli_query($con,"SELECT *, COUNT(staffID) AS num FROM leavehistory WHERE staffID IN (SELECT staffID FROM staff WHERE positionID IN (SELECT positionID FROM position WHERE departmentID IN (SELECT departmentID FROM department WHERE BranchName LIKE 'Bang Khae')))");
-	
-    while ($row = mysqli_fetch_array($result))
+	$result = mysqli_query($con,"SELECT type, COUNT(type) AS LT FROM leavehistory");
+	while ($row = mysqli_fetch_array($result))
     {
-		$ID = $row['staffID'];
-		$num = $row['num'];
-	
-		$result2 = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$ID'");
-		while ($row2 = mysqli_fetch_array($result2))
-		{
-			$staffName = $row2['staffName'];
-		}
-
-		echo "<tbody>
-				<tr>
-					<td>".$ID."</td>
-					<td>".$staffName."</td>
-					<td>".$num."</td>
-				</tr>
-			</tbody>";
+		$type = $row['type'];
+		$LT = $row['LT'];
+		
+		echo " 	<tbody>
+				  <tr>
+					<td>".$type."</td>
+					<td>".$LT."</td>
+				  </tr>
+				</tbody>";
 	}
 ?>
+    <tbody>
+      <tr>
+        <td>HR010111</td>
+        <td>Sick</td>
+        <td>10</td>
+      </tr>
+    </tbody>
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->

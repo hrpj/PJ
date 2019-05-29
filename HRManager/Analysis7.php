@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -92,10 +101,12 @@
         </ul>
     </div>
 </nav>
-  </head>
-  <body>
+</head>
+
+
+<body>
       <div class = "Analysis"><h3>Amount of miss of IT department in Bang Khae Branch</h></div>
-          <table class="table">
+    <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Staff ID</th>
@@ -103,13 +114,24 @@
         <th scope="col">Leave Count</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>IT010001</td>
-        <td>Julong lnwza</td>
-        <td>2</td>
-      </tr>
-    </tbody>
+<?php
+	$result = mysqli_query($con,"SELECT s.staffID,s.staffName, COUNT(l.staffID) AS LeaveCount FROM staff s, leavehistory l, department d, position p WHERE s.staffID = l.staffID AND s.positionID = p.positionID  AND d.departmentName =  'IT' AND d.BranchName = 'Bang Khae' AND p.departmentID = d.departmentID GROUP BY s.staffID");
+	while ($row = mysqli_fetch_array($result))
+    {
+		$staffID = $row['staffID'];
+		$staffName = $row['staffName'];
+		$LeaveCount = $row['LeaveCount'];
+		
+		echo " 	<tbody>
+				  <tr>
+					<td>".$staffID."</td>
+					<td>".$staffName."</td>
+					<td>".$LeaveCount."</td>
+				  </tr>
+				</tbody>";
+	}
+?>
+
   </table>
   <!-- End Table -->
     <!-- Optional JavaScript -->

@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -93,7 +102,10 @@
     </div>
 </nav>
   </head>
-  <body>
+  
+
+ 
+<body>
       <div class = "Analysis"><h3>The most leave type in company</h></div>
           <table class="table">
     <thead class="thead-dark">
@@ -102,13 +114,21 @@
         <th scope="col">Count</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>Sick</td>
-        <td>45</td>
-      </tr>
-    </tbody>
-  </table>
+<?php
+	$result = mysqli_query($con,"SELECT type, COUNT(type) AS LT FROM leavehistory");
+	while ($row = mysqli_fetch_array($result))
+    {
+		$type = $row['type'];
+		$LT = $row['LT'];
+		
+		echo " 	<tbody>
+				  <tr>
+					<td>".$type."</td>
+					<td>".$LT."</td>
+				  </tr>
+				</tbody>";
+	}
+?>
   <!-- End Table -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
