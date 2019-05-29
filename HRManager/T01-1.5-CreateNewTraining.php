@@ -13,10 +13,16 @@ session_start();
 	$_SESSION['courseID'] = $trainingID;
 	$sql="INSERT INTO trainingcourse (courseID, courseName) VALUES ('$trainingID', '$trainingTopic')";
 	
+	if(empty($trainingID) || empty($trainingTopic))
+	{
+		header("Location: http://localhost/HRPJ/HRManager/T01-1ERROR-NewTraining_1.php");
+	}
+	
+	
 	if (!mysqli_query($con,$sql)) 
 	{
 		die('Error: ' . mysqli_error($con));
-		header("Refresh:5 ; Location: http://localhost/HRPJ/HRManager/P02-3-PaymentStaffEdit.php");
+		header("Refresh:5 ; url=http://localhost/HRPJ/HRManager/P02-3-PaymentStaffEdit.php");
 	}
 	
 	echo "1 record added";

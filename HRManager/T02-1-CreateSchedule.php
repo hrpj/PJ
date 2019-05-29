@@ -1,3 +1,12 @@
+<?php
+session_start();
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -92,54 +101,75 @@
         </ul>
     </div>
 </nav>
-  </head>
-  <body>
-      <div class = "NewTraining"><h3>Create Training Courses Schedule</h></div>
-          <!-- Fill Infor -->
-          <div class="Topic">
-          <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">CourseID</label>
-          <select class="custom-select" id="inputGroupSelect01">
-          <option selected>Choose...</option>
-          <option value="1">1 - Marketing</option>
-          <option value="2">2 - Finance</option>
-          </select> <a href="#"><i class="fas fa-search"></i></a>
-          </div>
-      </div>
-          <div class="Location">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Location</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-          <div class="Topic">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Helding Start Date</span>
-          <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-          <div class="End">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Helding End Date</span>
-          <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-          <div class="Incharge">
-          <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">In Charge Group</span>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          </div>
-          </div>
-          <!-- End Fill -->
-          <table class="twobuttons">
-              <tr><td>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'Required.html';">Add&nbsp;more</button>
-          </td><td>
-              <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'Required.html';">Save</button>
-          </td><td>
-          <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button>
-      </td></tr>
-          </table>
+</head>
+  
+  
+<body>
+    <div class = "NewTraining"><h3>Create Training Courses Schedule</h></div>
+	<form action="T02-1.5-ADDSchedule.php" method="POST" >
+		<!-- Fill Infor -->
+		<div class="Topic">
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="inputGroupSelect01">CourseID</label>
+				<select class="custom-select" name="courseID" id="inputGroupSelect01">
+<?php
+				echo "<option value='' selected>Choose...</option>";
+				$result = mysqli_query($con,"SELECT * FROM trainingcourse");
+				while ($row = mysqli_fetch_array($result))
+				{
+					$courseID = $row['courseID'];
+					$courseName = $row['courseName'];
+					echo "<option value='".$courseID."'>".$courseID." - ".$courseName."</option>";
+				}
+?>
+				</select>
+			</div>
+		</div>
+		
+		<div class="Location">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Location</span>
+				<input type="text" name="place" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		
+		<div class="Topic">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Helding Start Date</span>
+				<input type="date" name="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		
+		<div class="End">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Helding End Date</span>
+				<input type="date" name="endDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		
+		<div class="Incharge">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">In Charge Group</span>
+				<input type="text" name="chargePerson" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+		</div>
+		
+		<!-- End Fill -->
+		<table class="twobuttons">
+			<tr>
+				<td>
+					<button type="submit" name="loop" value="1" class="btn btn-outline-dark" onclick="window.location.href = '#';">Add&nbsp;more</button>
+				</td>
+				<td>
+					<button type="submit" name="loop" value="" class="btn btn-outline-dark" onclick="window.location.href = '#';">Save</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T01-1-NewTraining_1.php';">Cancel</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

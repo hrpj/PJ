@@ -4,11 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Create Training Course</title>
+    <title>Edit Training Course</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styletraining.css" rel="stylesheet">
+    <link href="styleedittraining.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -21,7 +21,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarColor02">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php">Page <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item dropdown ">
@@ -52,16 +52,18 @@
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/P02-1-PaymentStaffSearch.php">Any Staffs</a>
 					</div>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Create
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/StaffEdit_HRManager/NewStaff1.php">New Staff</a>
 						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/NewBranchForHR.html">New Branch</a>
-						<a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
-						<a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
-						<a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
+                        <a class="dropdown-item" href="NewBranchForHR.html">New Training Course</a>
+                        <a class="dropdown-item" href="NewTraining.html">Edit Training Course</a>
+                        <a class="dropdown-item" href="http://localhost/HRPJ/HRManager/BranchEdit_HRManager/EditBranch1.php">Edit Branch</a>
+                        <a class="dropdown-item" href="NewBranchForHR.html">Edit Staff</a>
+                        <a class="dropdown-item" href="NewTraining.html">Delete Staff</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -95,14 +97,18 @@
 
 
 <body>
-    <div class = "NewTraining"><h3>Create New Training Course</h></div>
+    <div class = "NewTraining"><h3>Edit Training Course</h></div>
 	<form action="T01-1.5-CreateNewTraining.php" method="POST" >
 		<!-- Fill Infor -->
 		<div class="Topic">
-			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-default">Training ID</span>
-				<input type="text" name="trainingID" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-			</div>
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Course ID</label>
+            <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">1 - Marketing</option>
+            <option value="2">2 - Finance</option>
+            </select> <a href="#"><i class="fas fa-search"></i></a>
+            </div>
 		</div>
 		<div class="Location">
 			<div class="input-group-prepend">
@@ -110,15 +116,15 @@
 				<input type="text" name="trainingTopic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
 		</div>
-		
+
 		<!-- End Fill -->
 		<table class="twobuttons">
 			<tr>
 				<td>
-					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T02-1-CreateSchedule.php';">Add Schedule</button>
+					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/T02-1-CreateSchedule.php';">Save</button>
 				</td>
 				<td>
-					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Next</button>
+					<button type="submit" class="btn btn-outline-dark" onclick="window.location.href = '#';">Clear</button>
 				</td>
 				<td>
 					<button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Cancel</button>
@@ -126,8 +132,8 @@
 			</tr>
 		</table>
 	</form>
-	
-	
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
