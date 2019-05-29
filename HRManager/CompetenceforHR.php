@@ -1,24 +1,14 @@
-<?php
-  session_start();
-  $id = $_SESSION["ID"];
-  $con=mysqli_connect("localhost","root","","hrmanager");
-  // Check connection
-  if (mysqli_connect_errno())
-  {
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Information Myself</title>
+    <title>Behavior</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="styleinforHR.css" rel="stylesheet">
+    <link href="stylebehaviorhr.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- Nav Bar -->
@@ -102,152 +92,65 @@
       </div>
     </nav>
   </head>
-<?php
-            $result = mysqli_query($con,"SELECT * FROM staff WHERE staffID LIKE '$id'");
-            while ($row = mysqli_fetch_array($result))
-            {
-              $staffName = $row['staffName'];
-                $gender = $row['gender'];
-                $DOB = $row['dateOfBirth'];
-                $bankAccount = $row['bankAccount'];
-                $telNOStaff = $row['telNo'];
-                $staffAddress = $row['address'];
-                $startDate = $row['startDate'];
-                $positionID = $row['positionID'];
-            }
-            $result = mysqli_query($con,"SELECT * FROM position WHERE positionID LIKE '$positionID'");
-            while ($row = mysqli_fetch_array($result))
-            {
-                $positionName = $row['positionName'];
-                $departmentID = $row['departmentID'];
-            }
-            $result = mysqli_query($con,"SELECT * FROM department WHERE departmentID LIKE '$departmentID'");
-            while ($row = mysqli_fetch_array($result))
-            {
-                $departmentName = $row['departmentName'];
-                $BranchName = $row['BranchName'];
-            }
-?>
-<body>
-        <div class = "StaffInfor"><h3>Staff Information</h></div>
-        <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
-        <!-- Information -->
-        <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <?php echo "$id"; ?><br>
-        <br><i class="fas fa-file-signature"></i>Name : <?php echo "$staffName"; ?><br>
-        <br><i class="fas fa-venus-mars"></i>Gender : <?php echo "$gender"; ?><br>
-        <br><i class="fas fa-birthday-cake"></i>Date of birth : <?php echo "$DOB"; ?><br>
-        <br><i class="fas fa-hourglass-start"></i>Start Date : <?php echo "$startDate"; ?><br>
-        <br>Check behavior : <a href="CompetenceforHR.html" class="button-link">Click here!</a>
-    </div>
-        <div class="Infor1"><br>
-        <br><i class="fas fa-layer-group"></i>Department : <?php echo "$departmentName"; ?><br>
-        <br><i class="fas fa-briefcase"></i>Position : <?php echo "$positionName"; ?><br>
-        <br><i class="fas fa-map-marker-alt"></i></i>Branch : <?php echo "$BranchName"; ?> <br>
-        <br><i class="fas fa-mobile-alt"></i>Mobilephone No. : <?php echo "$telNOStaff"; ?><br>
-        <br><i class="fas fa-building"></i>Address : <?php echo "$staffAddress"; ?><br>
-        <br><i class="fas fa-money-check-alt"></i>Bank Account : <?php echo "$bankAccount"; ?>
-    </div>
-        <!-- End Information -->
-    <div class="Training">Check Training Course : <a href="http://localhost/HRPJ/HRManager/TrainingCourse.php?id=<?php echo $_SESSION['ID'] ?> " class="button-link">Click here!</a></div>
-
-    <!-- Table Work History -->
-    <div class = "WorkHis"><h4>Work History</h></div>
-    <table class="table">
-        <thead class="thead-dark">
+  <body>
+      <div class = "Behavior"><h3>Behavior</h></div>
+    <!-- Competence -->
+    <div class="Compete">Competence</div>
+    <div class="CompeteTable">
+        <table class="table table-bordered bg-success text-white">
+          <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Company</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
+              <th scope="col">#</th>
+              <th scope="col">Score</th>
+              <th scope="col">Description</th>
             </tr>
-        </thead>
-        <tbody>
-            <?php
-                $result = mysqli_query($con,"SELECT * FROM workinghistory WHERE staffId LIKE '$id'");
-                $count=$result->num_rows;
-                $i = 1;
-                if ((empty($count)))
-                {
-                    echo "<tr>";
-                    echo "<th scope='row'>".$i."</th>";
-                    echo "<td>No Data</td>";
-                    echo "<td>----/--/--</td>";
-                    echo "<td>----/--/--</td>";
-                    echo "</tr> ";
-                }
-                else
-                {
-                    while ($row = mysqli_fetch_array($result))
-                    {
-                        $company = $row['company'];
-                        $startDate = $row['startDate'];
-                        $endDate = $row['endDate'];
-                        echo "<tr>";
-                        echo "<th scope='row'>".$i."</th>";
-                        echo "<td>".$company."</td>";
-                        echo "<td>".$startDate."</td>";
-                        echo "<td>".$endDate."</td>";
-                        echo "</tr> ";
-                        $i++;
-                    }
-                }
-            ?>
-        </tbody>
-    </table>
-    <!-- End Table Work History -->
-
-    <!-- Start Table Graduate -->
-    <div class = "Graduate"><h4>Graduate History</h></div>
-    <table class="table">
-        <thead class="thead-dark">
+          </thead>
+          <tbody>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">University</th>
-            <th scope="col">Field</th>
-            <th scope="col">Degree</th>
+              <th scope="row">1</th>
+              <td>10</td>
+              <td>Deal with customer successful</td>
             </tr>
-        </thead>
-        <tbody>
-            <?php
-                $result = mysqli_query($con,"SELECT * FROM education WHERE staffId LIKE '$id'");
-                $count=$result->num_rows;
-                $i = 1;
-                if ((empty($count)))
-                {
-                    echo "<tr>";
-                    echo "<th scope='row'>".$i."</th>";
-                    echo "<td>No Data</td>";
-                    echo "<td>No Data</td>";
-                    echo "<td>No Data</td>";
-                    echo "</tr> ";
-                }
-                else
-                {
-                  while ($row = mysqli_fetch_array($result))
-                  {
-                      $university = $row['university'];
-                      $field = $row['field'];
-                      $degree = $row['degree'];
-                      echo "<tr>";
-                      echo "<th scope='row'>".$i."</th>";
-                      echo "<td>".$university."</td>";
-                      echo "<td>".$field."</td>";
-                      echo "<td>".$degree."</td>";
-                      echo "</tr> ";
-                      $i++;
-                  }
-                }
-            ?>
-        </tbody>
-    </table>
-
-    <table class="thebuttons">
+            <tr>
+              <th scope="row">2</th>
+              <td>5</td>
+              <td>Never miss and late</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+<!-- End Competence -->
+<!-- Concern -->
+<div class="Concern">Concern</div>
+<div class="ConcernTable">
+    <table class="table table-bordered bg-danger text-white">
+      <thead>
         <tr>
-            <td>
-                <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php';">Back</button>
-            </td>
+          <th scope="col">#
+          </th>
+          <th scope="col">Score</th>
+          <th scope="col">Description</th>
         </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>-2</td>
+          <td>Forget to send report</td>
+        </tr>
+      </tbody>
     </table>
+</div>
+<!-- End Concern -->
+<!-- Buttons -->
+<table class="thebuttons">
+    <tr><td>
+    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceAddForHR.html';">Add</button>
+</td><td>
+    <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'CompetenceEditForHR.html';">Edit</button></span>
+</td></tr>
+</table>
+<!-- End Buttons -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -255,5 +158,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-  <?php mysqli_close($con);?>
 </html>

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap');
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+h6
+{
+    font-family: 'Playfair Display', serif;
+}
+.NameBranch
+{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.Department
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:200px;
+    margin-top:100px;
+}
+.Position
+{
+    width:300px;
+    top:50%;
+    left:50%;
+    margin-left:500px;
+    margin-top:-38px;
+}
+.table
+{
+    width:1000px;
+    top:50%;
+    left:50%;
+    margin-left:200px;
+    margin-top:40px;
+}
+.twobuttons
+{
+    margin-top:30px;
+    margin-left:1050px;
+    height:100px;
+}
+.Back
+{
+    margin-top:30px;
+    margin-left:1130px;
+    height:100px;
+}
+.Previous
+{
+    margin-top:100px;
+    margin-left:200px;
+}
+.New
+{
+    width: 300px;
+    margin-top:30px;
+    margin-left:200px;
+}
+.PreviousD
+{
+    margin-top:-130px;
+    margin-left:900px;
+}
+.NewD
+{
+    width: 300px;
+    margin-top:20px;
+    margin-left:900px;
+}
+.PreviousP
+{
+    margin-top:50px;
+    margin-left:200px;
+}
+.NewP
+{
+    width: 300px;
+    margin-top:30px;
+    margin-left:200px;
+}
+.PreviousS
+{
+    margin-top:-140px;
+    margin-left:900px;
+}
+.NewS
+{
+    width: 300px;
+    margin-top:30px;
+    margin-left:900px;
+}
+.PreviousE
+{
+    margin-top:50px;
+    margin-left:200px;
+}
+.NewE
+{
+    width: 300px;
+    margin-top:30px;
+    margin-left:200px;
+}
