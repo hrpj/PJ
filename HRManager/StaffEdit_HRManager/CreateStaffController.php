@@ -99,8 +99,21 @@ else if ($_POST["Submit"] === 'Submit') {
 
     if ($conn->query($sql) === TRUE)
     {
+      unset($_SESSION['STARTDATE']);
+      unset($_SESSION['FNAME']);
+      unset($_SESSION['LNAME']);
+      unset($_SESSION['ADDRESS']);
+      unset($_SESSION['TELNO']);
+      unset($_SESSION['DATEOFBIRTH']);
+      unset($_SESSION['GENDER']);
+      unset($_SESSION['BANKACCOUNT']);
+      unset($_SESSION['BRANCHNAME']);
+      unset($_SESSION['DEPARTMENT']);
+
+      $_SESSION["CR_STAFFID"] = $staffID;
       echo "Insert successfully";
-      echo "<a href=\"http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php\">GO BACK</a>";
+      header('Location: http://localhost/HRPJ/HRManager/StaffEdit_HRManager/WorkHistory.php');
+      //echo "<a href=\"http://localhost/HRPJ/HRManager/WelcomeSignoutForHR.php\">GO BACK</a>";
     }
     else
     {
@@ -120,6 +133,7 @@ else if ($_POST["Submit"] === 'Submit') {
 else {
   echo "Aloha [".$_POST["Submit"]."]";
 }
+
 
 $conn->close();
 
