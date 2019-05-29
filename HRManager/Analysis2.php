@@ -1,10 +1,20 @@
+<?php
+session_start();
+	$id = $_SESSION["ID"];
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Analysis 01</title>
+    <title>Analysis 02</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -92,32 +102,29 @@
         </ul>
     </div>
 </nav>
-  </head>
+<?php
+
+
+
+
+
+?>
+</head>
   <body>
-      <div class = "Analysis"><h3>Age Range of Staffs</h></div>
+      <div class = "Analysis"><h3>Minimum and Maximum salary in every position in department</h></div>
           <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Age Range</th>
-        <th scope="col">Count</th>
+        <th scope="col">Department</th>
+        <th scope="col">Position</th>
+        <th scope="col">Base Salary</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>20-29</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>30-39</td>
-        <td>20</td>
-      </tr>
-      <tr>
-        <td>40-49</td>
-        <td>30</td>
-      </tr>
-      <tr>
-        <td>50-59</td>
-        <td>10</td>
+        <td>HR</td>
+        <td>Manager</td>
+        <td>30000-48000</td>
       </tr>
     </tbody>
   </table>

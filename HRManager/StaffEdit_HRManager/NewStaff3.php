@@ -231,10 +231,11 @@ session_start();
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupFileAddon01">Profile picture (.jpg)</span>
         </div>
-        <div class="custom-file">
-          <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>czxcz
-        </div>
+				<div class="form-file">
+					<input type="file" name="picture">
+  				<!--<input type="file" name="picture" class="custom-file-input" id="customFileLangHTML">
+  				<label class="custom-file-label" for="customFileLangHTML" data-browse="Browse"> <?php  ?> </label>-->
+				</div>
       </div>
     </div>
   </div>
