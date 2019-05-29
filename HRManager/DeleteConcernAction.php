@@ -25,5 +25,5 @@ session_start();
 		echo "ERROR!!! : No result returned.";
 	else
 		echo "Deleted successfully.";
-	header("Location:http://localhost/HRPJ/HRManager/CompetenceAddForHR.php?id=$id");
+	header("Location:http://localhost/HRPJ/HRManager/CompetenceEditForHR.php?id=$id");
 ?>
