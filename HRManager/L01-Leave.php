@@ -101,7 +101,7 @@ session_start();
         <!-- Fill Information -->
         <div class="StaffID">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="inputGroup-sizing-default">Staff ID</span>
+				<span class="input-group-text" >Staff ID</span>
 				<input type="text" name="id" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
         </div>
