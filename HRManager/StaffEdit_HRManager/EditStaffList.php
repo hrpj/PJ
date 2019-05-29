@@ -115,16 +115,20 @@
     </div>
 </nav>
   </head>
+
+<!-- ____________________________Start Table___________________________ -->
   <body>
       <br>
       <h2>&nbsp;&nbsp;&nbsp;List Of Staff</h2>
       <!-- Table -->
+    <form action="EditStaffController2.php" method="post">
       <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Staff ID</th>
             <th scope="col">Staff Name</th>
-            <th scope="col">View</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -156,6 +160,7 @@
           ?>
         </tbody>
       </table>
+    </form>
       <!-- End Table -->
       <table class="AddNCancel">
           <tr><td>
