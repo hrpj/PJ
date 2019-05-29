@@ -8,7 +8,6 @@ session_start();
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	session_start();
 		$id = $_SESSION["ID"];
 		$con=mysqli_connect("localhost","root","","hrmanager");
 		// Check connection
@@ -27,6 +26,12 @@ session_start();
 	  $bankAccount=$_SESSION["BANKACCOUNT"];
 	  $branchName=$_SESSION["BRANCHNAME"];
 	  $departmentID=$_SESSION["DEPARTMENT"];
+
+		$result = mysqli_query($con,"SELECT departmentName
+																	FROM department
+																	WHERE departmentID LIKE '$departmentID'");
+		$row = mysqli_fetch_array($result);
+		$departmentName = $row['departmentName'];
 
 		$sql = "SELECT branchName FROM branch";
 		$result = mysqli_query($con,$sql);
@@ -187,7 +192,7 @@ session_start();
 		<div class="form-group">
 		    <label for="exampleFormControlSelect1">Department</label>
 		    <select name="departmentName" class="form-control" id="exampleFormControlSelect1" onchange='this.form.submit()'>
-					<option>Choose Department</option>
+					<?php echo "<option value=\"".$departmentID."\">".$departmentName."</option>" ?>
 					<?php
 					 while($row = mysqli_fetch_array($result2)) {
 							$dName = $row['departmentName'];
@@ -203,6 +208,7 @@ session_start();
 <!-- ___________________________Start Form 3______________________________ -->
   <div class="Position">
     <div class="form-group">
+			<?php echo"Heello" ?>
       <label for="exampleFormControlSelect1">Position</label>
       <select name="positionID" class="form-control" id="exampleFormControlSelect1">
         <option>Choose Position</option>
@@ -228,7 +234,7 @@ session_start();
         </div>
         <div class="custom-file">
           <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>czxcz
         </div>
       </div>
     </div>
@@ -237,7 +243,7 @@ session_start();
 	<table class="thebuttons">
       <tr>
 				<td>
-					<button type="submit" name="Submit" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button>
+					<button type="submit" name="Submit" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Next</button>
 				</td>
 				<td>
       		<span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'WelcomeSignoutForHR.html';">Cancel</button></span>
