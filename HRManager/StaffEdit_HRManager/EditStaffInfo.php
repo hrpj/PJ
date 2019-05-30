@@ -1,3 +1,38 @@
+<?php
+session_start();
+	$id = $_SESSION["ID"];
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+
+	$con=mysqli_connect("localhost","root","","hrmanager");
+	// Check connection
+	if (mysqli_connect_errno())
+	{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+
+	$staffID = $_SESSION["CR_STAFFID"];
+
+	$result = mysqli_query($con,"SELECT *
+																FROM staff
+																WHERE staffID LIKE $staffID");
+	$row = mysqli_fetch_array($result);
+
+  $staffName = $row["staffName"];
+  $positionID = $row["positionID"];
+  $bankAccount = $row["bankAccount"];
+  $dateOfBirth = $row["dateOfBirth"];
+  $gender = $row["gender"];
+  $address = $row["address"];
+  $telNo = $row["telNo"];
+  $startDate = $row["startDate"];
+  $password = $row["password"];
+  $picture = $row["picture"];
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -95,101 +130,88 @@
     </nav>
   </head>
   <body>
-      <div class = "StaffInfor"><h3>Staff Information</h></div>
-      <div align ="center"><img src="IMG_1543.jpg" width="400" height="300"></div>
+      <div class = "StaffInfor">
+        <h3>Staff Information</h>
+      </div>
+      <div align ="center">
+        <img src="../../staffImage/<?php echo $picture ?>" >
+      </div>
       <!-- Information -->
-      <div class="Infor"><i class="fas fa-address-card"></i>Staff ID : <br><br><i class="fas fa-file-signature"></i>Name : <br><br><i class="fas fa-venus-mars"></i>Gender : <br><br><i class="fas fa-birthday-cake"></i>Date of birth :
-<br><br><i class="fas fa-hourglass-start"></i>Start Date :<br><br>Check behavior point : <a href="CompetenceforHR.html" class="button-link">Click here!</a></div>
-      <div class="Infor1"><br><br><i class="fas fa-layer-group"></i>Department : <br><br><i class="fas fa-briefcase"></i>Position : <br><br><i class="fas fa-map-marker-alt"></i></i>Branch : <br><br><i class="fas fa-mobile-alt"></i>Mobilephone No. :
-      <br><br><i class="fas fa-building"></i>Address : <br><br><i class="fas fa-money-check-alt"></i>Bank Account :</div>
+      <div class="Infor">
+        <i class="fas fa-address-card"></i>
+        Staff ID :<br><br>
+        <i class="fas fa-file-signature"></i>
+        Name : <br><br>
+        <i class="fas fa-venus-mars"></i>
+        Gender : <br><br>
+        <i class="fas fa-birthday-cake"></i>
+        Date of birth :<br><br>
+        <i class="fas fa-hourglass-start"></i>
+        Start Date :<br><br>
+      </div>
+      <div class="Infor1">
+        <br><br>
+        <i class="fas fa-layer-group"></i>
+        Picture : <br><br>
+        <i class="fas fa-briefcase"></i>
+        Position : <br><br>
+        <i class="fas fa-map-marker-alt"></i>
+        <i class="fas fa-mobile-alt"></i>
+        Mobilephone No. :<br><br>
+        <i class="fas fa-building"></i>
+        Address : <br><br>
+        <i class="fas fa-money-check-alt"></i>
+        Bank Account :
+      </div>
       <!-- End Information -->
-      <!-- Fill Information -->
-      <form>
+  <!--_______________________________________ Fill Information _____________________________________-->
+      <form action="EditStaffController3.php" method="post" enctype="multipart/form-data">
           <div class="ID">
-            <input type="text" class="form-control" placeholder="Staff ID">
+            <input type="text" name="staffID" class="form-control" <?php echo "value=\"".$staffID."\"" ?>  placeholder="Staff ID">
           </div>
           <div class="Name">
-            <input type="text" class="form-control" placeholder="Firstname Lastname">
+            <input type="text" name="staffName" class="form-control" <?php echo "value=\"".$staffName."\"" ?> placeholder="Firstname Lastname">
           </div>
           <div class="Gender">
-              <select class="btn btn-secondary" id="master_id" onchange="sSelect()">
-                  <option value="1">Female</option>
-                  <option value="2">Male</option>
+              <select name="gender" class="btn btn-secondary" id="master_id" onchange="sSelect()">
+                  <option <?php echo "value=\"".$gender."\"" ?> selected><?php echo $gender ?></option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="transgender">Transgender</option>
               </select>
           </div>
           <div class="DOB">
-            <input type="Date" class="form-control" id="DOB" placeholder="Date of Birth">
+            <input type="Date" name="dateOfBirth" <?php echo "value=\"".$dateOfBirth."\"" ?> class="form-control" id="DOB" placeholder="Date of Birth">
           </div>
           <div class="StartDate">
-            <input type="Date" class="form-control" id="Start" placeholder="StartDate">
+            <input type="Date" name="startDate" <?php echo "value=\"".$startDate."\"" ?> class="form-control" id="Start" placeholder="StartDate">
           </div>
           <div class="Department">
-            <input type="text" class="form-control" placeholder="Department">
+            <input type="file" name="picture">
           </div>
           <div class="Position">
-            <input type="text" class="form-control" placeholder="Position">
-          </div>
-          <div class="Branch">
-            <input type="text" class="form-control" placeholder="Branch">
+            <input type="text" name="positionID" <?php echo "value=\"".$positionID."\"" ?> class="form-control" placeholder="Position">
           </div>
           <div class="Mobile">
-            <input type="text" class="form-control" placeholder="Mobile">
+            <input type="text" name="telNo" <?php echo "value=\"".$telNo."\"" ?> class="form-control" placeholder="Mobile">
           </div>
           <div class="Address">
-            <input type="text" class="form-control" placeholder="Address">
+            <input type="text" name="address" class="form-control" <?php echo "value=\"".$address."\"" ?> placeholder="Address">
           </div>
           <div class="Bank">
-            <input type="text" class="form-control" placeholder="Bank">
+            <input type="text" name="bankAccount" <?php echo "value=\"".$bankAccount."\"" ?> class="form-control" placeholder="Bank">
           </div>
-      </form>
-      <!-- Table Work History -->
-      <div class="Training">Check Training Course : <a href="TrainingCourse.html" class="button-link">Click here!</a></div>
-      <div class = "WorkHis"><h4>Work History</h></div>
-          <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Company</th>
-      <th scope="col">Start Date</th>
-      <th scope="col">End Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><input class="form-control" type="text" placeholder="Company Name"></td>
-      <td><input type="Date" class="form-control" id="DOB" placeholder="Date of Birth"></td>
-      <td><input type="Date" class="form-control" id="DOB" placeholder="Date of Birth"></td>
-    </tr>
-  </tbody>
-</table>
-<div class = "Graduate"><h4>Graduate History</h></div>
-    <table class="table">
-<thead class="thead-dark">
-<tr>
-<th scope="col">#</th>
-<th scope="col">University</th>
-<th scope="col">Field</th>
-<th scope="col">Degree</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th scope="row">1</th>
-<td><input class="form-control" type="text" placeholder="University Name"></td>
-<td><input class="form-control" type="text" placeholder="Field"></td>
-<td><input class="form-control" type="text" placeholder="Degree"></td>
-</tr>
-</tbody>
-</table>
+
+
 <!-- End Table Work History -->
 <table class="thebuttons">
     <tr><td>
-    <button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'StaffInfor.html';">Save</button>
+    <button type="submit" class="btn btn-outline-dark" onclick="window.location.href = 'StaffInfor.html';">Save</button>
 </td><td>
     <span><button type="button" class="btn btn-outline-dark" onclick="window.location.href = 'StaffInfor.html';">Cancel</button></span>
 </td></tr>
 </table>
+</form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
