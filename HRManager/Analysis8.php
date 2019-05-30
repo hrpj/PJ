@@ -116,11 +116,11 @@ session_start();
       </tr>
     </thead>
 <?php
-	$result = mysqli_query($con,"SELECT type, COUNT(type) AS LT FROM leavehistory");
+	$result = mysqli_query($con,"SELECT type, COUNT(staffID) AS Count FROM leavehistory GROUP BY type ORDER BY Count DESC LIMIT 1");
 	while ($row = mysqli_fetch_array($result))
     {
 		$type = $row['type'];
-		$LT = $row['LT'];
+		$LT = $row['Count'];
 
 		echo " 	<tbody>
 				  <tr>
