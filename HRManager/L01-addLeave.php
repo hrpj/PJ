@@ -12,7 +12,11 @@ session_start();
 	$type = mysqli_real_escape_string($con, $_POST['type']);
 	$date = mysqli_real_escape_string($con, $_POST['date']);
 	
-	$sql="INSERT INTO leavehistory (staffID, description, date, type) VALUES ('$id', '$descrip', '$date', '$type')";
+	$day = explode("-",$date);
+	$year = $day[0];
+	$month = $day[1] .'-'.$day[2];
+	
+	$sql="INSERT INTO leavehistory (staffID, description, date, type, year) VALUES ('$id', '$descrip', '$month', '$type', $year)";
 	if (!mysqli_query($con,$sql)) 
 	{
 		die('Error: ' . mysqli_error($con));
